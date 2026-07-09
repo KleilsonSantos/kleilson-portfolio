@@ -3,7 +3,7 @@
 ## Princípios
 
 1. **Separar tipos:** certificação vendor ≠ curso online (Udemy).
-2. **Somente dados verificáveis:** CV ATS + inventário local de certificados.
+2. **Somente dados verificáveis:** CV 2026 (`Kleilson_Santos_CV_2026.docx`) + inventário local de certificados.
 3. **Não versionar PDFs/JPGs** de certificados no Git (PII, tamanho, risco de vazamento).
 4. **Schema.org:** `EducationalOccupationalCredential` apenas para credenciais vendor.
 

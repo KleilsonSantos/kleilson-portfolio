@@ -24,12 +24,15 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 💄 Home: brand + headline + lead + CTAs no primeiro viewport (sem cards no hero)
 - ♻️ Modelo `Project` com `tagline` e `impact` (storytelling verificável)
 - 👷 CI com jobs `e2e` e `lighthouse` após `quality`
+- 📝 Conteúdo sincronizado com `Kleilson_Santos_CV_2026.docx`
+- 💄 Logo da nav: `Kleilson Santos` (em vez de `Kleilson.`)
 
 ### Fixed
 
 - 🐛 Padding da lista compacta de projetos (`--space-5` inexistente → texto colado na borda)
 - 🐛 Texto dos botões colado/vazando nas bordas (padding/`line-height`)
 - 🐛 Secondary CTA ilegível no dark mode (borda + contraste)
+- 🐛 Seta do `<select>` colada na borda (padding + chevron custom)
 
 ## [0.2.2] - 2026-07-09
 

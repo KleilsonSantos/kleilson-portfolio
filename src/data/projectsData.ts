@@ -1,8 +1,8 @@
 import type { Project } from '../types'
 
 /**
- * Projetos públicos — conteúdo alinhado ao CV ATS 2026 e repositórios GitHub.
- * Não inventar métricas; `impact` descreve foco técnico verificável.
+ * Projetos públicos — conteúdo alinhado ao CV 2026 (Kleilson_Santos_CV_2026.docx)
+ * e repositórios GitHub. Não inventar métricas; `impact` descreve foco técnico verificável.
  */
 
 export const PROJECTS: Project[] = [
@@ -82,6 +82,17 @@ export const PROJECTS: Project[] = [
     impact: 'Material de referência alinhado à atuação em Application Security.',
     stack: ['HTML', 'OWASP', 'DevSecOps'],
     url: 'https://github.com/KleilsonSantos/appsec-daily-hub',
+    featured: false,
+  },
+  {
+    id: 'order-processing-system',
+    name: 'OrderProcessingSystem',
+    tagline: 'Processamento assíncrono de pedidos com Spring Batch',
+    description:
+      'Sistema de processamento de pedidos com processamento assíncrono e foco em performance, usando Java, Spring Boot, Spring Batch e Redis.',
+    impact: 'Referência de batch e filas para cenários de alto volume.',
+    stack: ['Java', 'Spring Boot', 'Spring Batch', 'Redis'],
+    url: 'https://github.com/KleilsonSantos/OrderProcessingSystem',
     featured: false,
   },
   {
