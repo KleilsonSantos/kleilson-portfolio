@@ -1,11 +1,39 @@
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE, SUMMARY, EXPERIENCE } from '../data/profileData'
+import {
+  CERTIFICATIONS,
+  COURSE_GROUPS,
+  COURSES_SOURCE_NOTE,
+  EDUCATION,
+} from '../data/credentialsData'
 
 function Sobre() {
+  const primaryCert = CERTIFICATIONS[0]
+
   useDocumentMeta({
     title: `Sobre | ${PROFILE.shortName}`,
     description: SUMMARY,
     canonical: `${PROFILE.siteUrl}/sobre`,
+    jsonLd: primaryCert
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: PROFILE.name,
+          jobTitle: PROFILE.title,
+          url: PROFILE.siteUrl,
+          hasCredential: {
+            '@type': 'EducationalOccupationalCredential',
+            name: primaryCert.name,
+            credentialCategory: 'Professional Certification',
+            recognizedBy: {
+              '@type': 'Organization',
+              name: primaryCert.issuer,
+            },
+            dateCreated: primaryCert.year,
+            url: primaryCert.verificationUrl,
+          },
+        }
+      : undefined,
   })
 
   return (
@@ -29,7 +57,8 @@ function Sobre() {
             <strong>Certificação:</strong> {PROFILE.certification}
           </li>
           <li>
-            <strong>Idiomas:</strong> Português (nativo), Inglês (intermediário — leitura técnica)
+            <strong>Idiomas:</strong> Português (nativo), Inglês (intermediário —
+            leitura técnica)
           </li>
         </ul>
       </section>
@@ -37,7 +66,7 @@ function Sobre() {
       <section className="card">
         <h2>Experiência profissional</h2>
         {EXPERIENCE.map((job) => (
-          <article key={`${job.company}-${job.period}`} style={{ marginBottom: '1.5rem' }}>
+          <article key={`${job.company}-${job.period}`} className="experience-item">
             <h3>
               {job.role} — {job.company}
             </h3>
@@ -51,6 +80,75 @@ function Sobre() {
             </ul>
           </article>
         ))}
+      </section>
+
+      <section className="card" aria-labelledby="certifications-heading">
+        <h2 id="certifications-heading">Certificações</h2>
+        <p className="section-lead">
+          Credenciais emitidas por vendors (distintas de cursos online).
+        </p>
+        <ul className="credential-list">
+          {CERTIFICATIONS.map((cert) => (
+            <li key={cert.id} className="credential-item">
+              <div>
+                <strong>{cert.name}</strong>
+                <p>
+                  {cert.issuer} · {cert.year}
+                </p>
+              </div>
+              {cert.verificationUrl ? (
+                <a
+                  href={cert.verificationUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="credential-link"
+                >
+                  Sobre a credencial
+                </a>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="card" aria-labelledby="education-heading">
+        <h2 id="education-heading">Educação</h2>
+        <ul className="credential-list">
+          {EDUCATION.map((item) => (
+            <li key={item.id} className="credential-item">
+              <div>
+                <strong>{item.program}</strong>
+                <p>
+                  {item.institution} · {item.status}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="card" aria-labelledby="courses-heading">
+        <h2 id="courses-heading">Cursos e treinamentos</h2>
+        <p className="section-lead">
+          Formação contínua via Udemy, agrupada por domínio. Não equivale a
+          certificação vendor.
+        </p>
+        <div className="course-groups">
+          {COURSE_GROUPS.map((group) => (
+            <div key={group.id} className="course-group">
+              <h3>{group.title}</h3>
+              <ul>
+                {group.courses.map((course) => (
+                  <li key={course.id}>
+                    {course.title}
+                    <span className="chip chip--muted">{course.provider}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="source-note">{COURSES_SOURCE_NOTE}</p>
       </section>
     </div>
   )

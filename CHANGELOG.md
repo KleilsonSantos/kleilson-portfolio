@@ -7,6 +7,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 ### Added
 
 - 🔧 Configuração markdownlint no repositório (zero avisos nos docs do projeto)
+- ✨ Seções Certificações, Educação e Cursos/treinamentos em Sobre (#28)
+- ✨ Dados verificáveis em `src/data/credentialsData.ts` (CV ATS + inventário Udemy)
 
 ### Changed
 
