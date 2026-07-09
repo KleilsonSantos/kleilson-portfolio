@@ -4,6 +4,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-07-09
+
 ### Added
 
 - 📝 ADR-0003: estratégia canônica de documentação (evidence-based)
