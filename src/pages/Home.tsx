@@ -43,25 +43,27 @@ function Home() {
         </div>
       </header>
 
-      <section className="card" aria-labelledby="summary-heading">
+      <section className="card card--interactive" aria-labelledby="summary-heading">
         <h2 id="summary-heading">Resumo profissional</h2>
         <p>{SUMMARY}</p>
       </section>
 
-      <section className="card" aria-labelledby="highlights-heading">
+      <section className="card card--interactive" aria-labelledby="highlights-heading">
         <h2 id="highlights-heading">Destaques</h2>
-        <ul>
+        <ul className="highlight-grid">
           {HIGHLIGHTS.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item} className="highlight-card">
+              {item}
+            </li>
           ))}
         </ul>
       </section>
 
-      <section className="card" aria-labelledby="skills-heading">
+      <section className="card card--interactive" aria-labelledby="skills-heading">
         <h2 id="skills-heading">Competências</h2>
         <div className="grid-2">
           {SKILL_GROUPS.map((group) => (
-            <div key={group.title}>
+            <div key={group.title} className="skill-panel">
               <h3>{group.title}</h3>
               <div className="stack-list">
                 {group.skills.map((skill) => (
