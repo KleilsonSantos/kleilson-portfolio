@@ -4,6 +4,15 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- 📝 ADR-0003: estratégia canônica de documentação (evidence-based)
+- 📝 Guia `docs/guides/documentation-sync.md` (política operacional)
+
+### Changed
+
+- 📝 CONTRIBUTING e PR template incluem gate documental (Google/Microsoft/OpenSSF)
+
 ## [0.2.1] - 2026-07-09
 
 ### Changed

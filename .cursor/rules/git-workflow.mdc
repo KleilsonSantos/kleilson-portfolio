@@ -39,6 +39,8 @@ Guia completo: `docs/guides/task-kickoff.md`
 ## Documentação
 
 - `docs/guides/task-kickoff.md` ← **kickoff canônico**
+- `docs/guides/documentation-sync.md` ← **quando atualizar docs**
 - `docs/guides/git-workflow.md`
 - `docs/guides/releases.md`
 - `docs/adr/0002-git-branching-strategy.md`
+- `docs/adr/0003-documentation-strategy.md` ← **política evidence-based**
