@@ -28,7 +28,9 @@ function Footer() {
         </nav>
       </div>
 
-      <p className="footer-copy">© {currentYear} {PROFILE.name}. Conteúdo baseado em experiência profissional verificável.</p>
+      <p className="footer-copy">
+        © {currentYear} {PROFILE.name}. Conteúdo baseado em experiência profissional verificável.
+      </p>
     </footer>
   )
 }

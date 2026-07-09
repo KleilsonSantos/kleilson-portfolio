@@ -1,4 +1,6 @@
-export async function sendContactForm(data) {
+import type { ContactApiError, ContactApiResponse, ContactForm } from '../types'
+
+export async function sendContactForm(data: ContactForm): Promise<ContactApiResponse> {
   const response = await fetch('/api/contact', {
     method: 'POST',
     headers: {
@@ -9,9 +11,9 @@ export async function sendContactForm(data) {
   })
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({}))
+    const error = (await response.json().catch(() => ({}))) as ContactApiError
     throw new Error(error.message || 'Não foi possível enviar sua mensagem.')
   }
 
-  return response.json()
+  return response.json() as Promise<ContactApiResponse>
 }

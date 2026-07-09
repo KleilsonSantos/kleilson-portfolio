@@ -19,10 +19,18 @@ function Sobre() {
       <section className="card">
         <h2>Informações</h2>
         <ul>
-          <li><strong>Experiência:</strong> {PROFILE.yearsOfExperience} anos</li>
-          <li><strong>Empresa atual:</strong> {PROFILE.currentCompany}</li>
-          <li><strong>Certificação:</strong> {PROFILE.certification}</li>
-          <li><strong>Idiomas:</strong> Português (nativo), Inglês (intermediário — leitura técnica)</li>
+          <li>
+            <strong>Experiência:</strong> {PROFILE.yearsOfExperience} anos
+          </li>
+          <li>
+            <strong>Empresa atual:</strong> {PROFILE.currentCompany}
+          </li>
+          <li>
+            <strong>Certificação:</strong> {PROFILE.certification}
+          </li>
+          <li>
+            <strong>Idiomas:</strong> Português (nativo), Inglês (intermediário — leitura técnica)
+          </li>
         </ul>
       </section>
 
@@ -30,8 +38,12 @@ function Sobre() {
         <h2>Experiência profissional</h2>
         {EXPERIENCE.map((job) => (
           <article key={`${job.company}-${job.period}`} style={{ marginBottom: '1.5rem' }}>
-            <h3>{job.role} — {job.company}</h3>
-            <p><strong>{job.period}</strong> · {job.client}</p>
+            <h3>
+              {job.role} — {job.company}
+            </h3>
+            <p>
+              <strong>{job.period}</strong> · {job.client}
+            </p>
             <ul>
               {job.highlights.map((item) => (
                 <li key={item}>{item}</li>
