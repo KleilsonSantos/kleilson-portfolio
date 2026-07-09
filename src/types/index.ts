@@ -60,7 +60,11 @@ export interface EducationItem {
 export interface Project {
   id: string
   name: string
+  /** Uma linha de posicionamento (storytelling). */
+  tagline: string
   description: string
+  /** Impacto ou foco técnico verificável (CV / README público). */
+  impact: string
   stack: string[]
   url: string
   featured: boolean
