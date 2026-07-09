@@ -26,12 +26,12 @@ function Home() {
 
   return (
     <div className="page">
-      <header className="hero">
-        <span className="badge">{PROFILE.certification}</span>
-        <h1>{PROFILE.name}</h1>
-        <p>{PROFILE.headline}</p>
-        <p>
-          {PROFILE.location} · {PROFILE.remote}
+      <header className="hero hero--home">
+        <p className="hero__brand">{PROFILE.shortName}</p>
+        <h1>{PROFILE.headline}</h1>
+        <p className="hero__lead">{PROFILE.title}</p>
+        <p className="hero__meta">
+          {PROFILE.location} · {PROFILE.remote} · {PROFILE.certification}
         </p>
         <div className="cta-row">
           <Link to="/projetos" className="button-link">
@@ -43,13 +43,13 @@ function Home() {
         </div>
       </header>
 
-      <section className="card">
-        <h2>Resumo profissional</h2>
+      <section className="card" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Resumo profissional</h2>
         <p>{SUMMARY}</p>
       </section>
 
-      <section className="card">
-        <h2>Destaques</h2>
+      <section className="card" aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading">Destaques</h2>
         <ul>
           {HIGHLIGHTS.map((item) => (
             <li key={item}>{item}</li>
@@ -57,8 +57,8 @@ function Home() {
         </ul>
       </section>
 
-      <section className="card">
-        <h2>Competências</h2>
+      <section className="card" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Competências</h2>
         <div className="grid-2">
           {SKILL_GROUPS.map((group) => (
             <div key={group.title}>
