@@ -4,6 +4,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- 🔧 Configuração markdownlint no repositório (zero avisos nos docs do projeto)
+
+### Changed
+
+- 📝 Política de lint documental alinhada a Keep a Changelog (`MD024.siblings_only`)
+
 ## [0.2.2] - 2026-07-09
 
 ### Added
