@@ -54,11 +54,18 @@ chore/dependabot-config
 
 ## Fluxo de trabalho (passo a passo)
 
-### 1. Iniciar tarefa
+> **Kickoff canônico:** todo início de tarefa segue [`task-kickoff.md`](./task-kickoff.md) — issue → Project **In Progress** → branch `feature/*` from `sandbox`.
+
+### 1. Iniciar tarefa (canônico)
 
 ```bash
+# 1. Mover issue para "In Progress" no GitHub Project #6
+# 2. Branch a partir de sandbox
 git checkout sandbox && git pull origin sandbox
-git checkout -b feature/minha-tarefa
+git checkout -b feature/nome-da-tarefa
+# 3. Comentar na issue com a branch criada
+gh issue comment <NUMERO> --repo KleilsonSantos/kleilson-portfolio \
+  --body "🚀 Kickoff: branch \`feature/nome-da-tarefa\` criada."
 ```
 
 ### 2. Desenvolver com commits semânticos
@@ -131,6 +138,7 @@ Os commits iniciais da Fase 1 foram feitos diretamente em `main` durante o boots
 
 ## Referências
 
+- [task-kickoff.md](./task-kickoff.md) — **kickoff canônico de tarefas**
 - [ADR-0002](../adr/0002-git-branching-strategy.md)
 - [CONTRIBUTING.md](../../CONTRIBUTING.md)
 - [ROADMAP.md](../../ROADMAP.md)
