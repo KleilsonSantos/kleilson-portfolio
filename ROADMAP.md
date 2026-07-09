@@ -51,3 +51,6 @@
 - [x] Fundação visual V1 (ADR-0004 — tokens, tipografia, nav, hero)
 - [x] Projetos V2 (featured hierarchy + storytelling)
 - [x] Motion V3 (fade-up + hovers + reduced-motion)
+- [x] Cards interativos + polish de componentes (V4 visual)
+- [x] Playwright E2E smoke (#4)
+- [x] Lighthouse CI scaffold (#5)

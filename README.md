@@ -47,6 +47,7 @@ Issue → Project (In Progress) → feature/* from sandbox → PR → sandbox �
 - Kickoff: [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
 - Docs sync: [`docs/guides/documentation-sync.md`](./docs/guides/documentation-sync.md) · [ADR-0003](./docs/adr/0003-documentation-strategy.md)
 - Credenciais: [`docs/guides/credentials.md`](./docs/guides/credentials.md)
+- Testes: [`docs/guides/testing.md`](./docs/guides/testing.md)
 
 ## Scripts
 
