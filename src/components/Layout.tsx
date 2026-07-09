@@ -1,5 +1,4 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
 import Footer from './Footer'
 import { PROFILE } from '../data/profileData'
 
@@ -8,7 +7,7 @@ const navItems = [
   { to: '/sobre', label: 'Sobre' },
   { to: '/projetos', label: 'Projetos' },
   { to: '/contatos', label: 'Contatos' },
-]
+] as const
 
 function Layout() {
   const { pathname } = useLocation()

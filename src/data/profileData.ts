@@ -1,4 +1,6 @@
-export const PROFILE = {
+import type { Experience, Profile, SkillGroup } from '../types'
+
+export const PROFILE: Profile = {
   name: 'Kleilson dos Santos',
   shortName: 'Kleilson Santos',
   title: 'Software Engineer | Full Stack Developer',
@@ -18,7 +20,7 @@ export const PROFILE = {
 
 export const SUMMARY = `Desenvolvedor Full Stack com mais de 9 anos de experiência projetando e operando microsserviços event-driven em Java e Spring Boot, com forte atuação em squads de Application Security (AppSec) no setor financeiro. Praticante de AI Agentic Engineering e Spec-Driven Development (SDD). Especialista em arquitetura hexagonal, APIs RESTful, Apache Kafka, PostgreSQL, Docker, Kubernetes e GitOps com ArgoCD.`
 
-export const HIGHLIGHTS = [
+export const HIGHLIGHTS: string[] = [
   'Redução de 50% em vulnerabilidades com Mend (SCA) e Fortify (SAST)',
   'Mais de 20 APIs RESTful em Spring Boot com arquitetura hexagonal',
   'Cobertura de testes JaCoCo ≥ 80% com JUnit 5 e Testcontainers',
@@ -27,7 +29,7 @@ export const HIGHLIGHTS = [
   'Microsoft Azure AI Fundamentals (AI-900)',
 ]
 
-export const SKILL_GROUPS = [
+export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: 'Backend & Arquitetura',
     skills: [
@@ -69,7 +71,7 @@ export const SKILL_GROUPS = [
   },
 ]
 
-export const EXPERIENCE = [
+export const EXPERIENCE: Experience[] = [
   {
     company: 'Capgemini Brasil',
     role: 'Desenvolvedor Full Stack',

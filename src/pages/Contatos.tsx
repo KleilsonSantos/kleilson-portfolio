@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE } from '../data/profileData'
 import { CONTACT_INFO, SOCIAL_LINKS, CATEGORIES } from '../data/contactData'
 import { sendContactForm } from '../api/contact'
 import { INITIAL_FORM, validateField, validateForm, hasErrors } from '../utils/validation'
 import { sanitizeFormData } from '../utils/sanitize'
+import type { ContactForm, ContactFormField, FormErrors, FormStatus } from '../types'
 
 function Contatos() {
-  const [form, setForm] = useState(INITIAL_FORM)
-  const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle')
+  const [form, setForm] = useState<ContactForm>(INITIAL_FORM)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [status, setStatus] = useState<FormStatus>('idle')
   const [message, setMessage] = useState('')
 
   useDocumentMeta({
@@ -18,12 +19,12 @@ function Contatos() {
     canonical: `${PROFILE.siteUrl}/contatos`,
   })
 
-  const updateField = (name, value) => {
+  const updateField = (name: ContactFormField, value: string) => {
     setForm((prev) => ({ ...prev, [name]: value }))
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }))
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const validationErrors = validateForm(form)
     setErrors(validationErrors)
@@ -65,7 +66,9 @@ function Contatos() {
                 onChange={(e) => updateField('name', e.target.value)}
                 required
               />
-              {errors.name ? <small style={{ color: 'var(--color-error)' }}>{errors.name}</small> : null}
+              {errors.name ? (
+                <small style={{ color: 'var(--color-error)' }}>{errors.name}</small>
+              ) : null}
             </div>
 
             <div className="form-field" style={{ marginBottom: '1rem' }}>
@@ -78,7 +81,9 @@ function Contatos() {
                 onChange={(e) => updateField('email', e.target.value)}
                 required
               />
-              {errors.email ? <small style={{ color: 'var(--color-error)' }}>{errors.email}</small> : null}
+              {errors.email ? (
+                <small style={{ color: 'var(--color-error)' }}>{errors.email}</small>
+              ) : null}
             </div>
 
             <div className="form-field" style={{ marginBottom: '1rem' }}>
@@ -103,12 +108,14 @@ function Contatos() {
               <textarea
                 id="message"
                 name="message"
-                rows="5"
+                rows={5}
                 value={form.message}
                 onChange={(e) => updateField('message', e.target.value)}
                 required
               />
-              {errors.message ? <small style={{ color: 'var(--color-error)' }}>{errors.message}</small> : null}
+              {errors.message ? (
+                <small style={{ color: 'var(--color-error)' }}>{errors.message}</small>
+              ) : null}
             </div>
 
             <button className="btn" type="submit" disabled={status === 'loading'}>

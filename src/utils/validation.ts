@@ -1,13 +1,15 @@
+import type { ContactForm, ContactFormField, FormErrors } from '../types'
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
-export const INITIAL_FORM = {
+export const INITIAL_FORM: ContactForm = {
   name: '',
   email: '',
   category: '',
   message: '',
 }
 
-export function validateField(name, value) {
+export function validateField(name: ContactFormField, value: string): string {
   switch (name) {
     case 'name':
       if (!value.trim()) return 'Nome é obrigatório.'
@@ -26,14 +28,17 @@ export function validateField(name, value) {
   }
 }
 
-export function validateForm(form) {
-  return Object.keys(INITIAL_FORM).reduce((errors, field) => {
-    const error = validateField(field, form[field])
-    if (error) errors[field] = error
-    return errors
-  }, {})
+export function validateForm(form: ContactForm): FormErrors {
+  return (Object.keys(INITIAL_FORM) as ContactFormField[]).reduce<FormErrors>(
+    (errors, field) => {
+      const error = validateField(field, form[field])
+      if (error) errors[field] = error
+      return errors
+    },
+    {},
+  )
 }
 
-export function hasErrors(errors) {
+export function hasErrors(errors: FormErrors): boolean {
   return Object.values(errors).some(Boolean)
 }

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
+import type { DocumentMetaOptions } from '../types'
 
-function setMetaTag(attribute, key, content) {
+function setMetaTag(attribute: string, key: string, content: string | undefined): void {
   if (!content) return
 
   let element = document.querySelector(`meta[${attribute}="${key}"]`)
@@ -14,7 +15,7 @@ function setMetaTag(attribute, key, content) {
   element.setAttribute('content', content)
 }
 
-function setLinkTag(rel, href) {
+function setLinkTag(rel: string, href: string | undefined): void {
   if (!href) return
 
   let element = document.querySelector(`link[rel="${rel}"]`)
@@ -28,20 +29,27 @@ function setLinkTag(rel, href) {
   element.setAttribute('href', href)
 }
 
-function setJsonLd(id, data) {
+function setJsonLd(id: string, data: Record<string, unknown>): void {
   let element = document.getElementById(id)
 
   if (!element) {
-    element = document.createElement('script')
-    element.id = id
-    element.type = 'application/ld+json'
-    document.head.appendChild(element)
+    const script = document.createElement('script')
+    script.id = id
+    script.type = 'application/ld+json'
+    document.head.appendChild(script)
+    element = script
   }
 
   element.textContent = JSON.stringify(data)
 }
 
-export function useDocumentMeta({ title, description, canonical, ogImage, jsonLd }) {
+export function useDocumentMeta({
+  title,
+  description,
+  canonical,
+  ogImage,
+  jsonLd,
+}: DocumentMetaOptions): void {
   useEffect(() => {
     const previousTitle = document.title
     document.title = title
