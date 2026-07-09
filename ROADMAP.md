@@ -45,5 +45,6 @@
 
 - [ ] Turborepo + pnpm workspaces — issue #10
 - [x] CodeQL + Dependabot (básico já ativo)
-- [x] ADRs iniciais (0001, 0002)
+- [x] ADRs iniciais (0001, 0002, 0003 — documentação evidence-based)
 - [x] GitHub Projects + milestones
+- [x] Política canônica de sync documental (ADR-0003)
