@@ -5,37 +5,36 @@ alwaysApply: true
 
 # Kleilson Portfolio — Contexto
 
-## Stack (Fase 1 — não substituir sem ADR)
+## Stack (Fase 2)
 
 - React 19 + Vite 8 + React Router 7
-- JavaScript (JSX) — TypeScript na Fase 2
+- **TypeScript** (strict) — `.ts` / `.tsx`
 - CSS com design tokens (`src/index.css`, `src/App.css`)
-- oxlint (`npm run lint`)
+- oxlint (`npm run lint`) + `tsc -b` (`npm run typecheck`)
 
-## Estrutura
+## Estrutura de pastas
 
 ```
 src/
-├── api/          → HTTP clients
-├── components/   → Layout, Footer
-├── data/         → Conteúdo do CV (verificável)
-├── hooks/        → useDocumentMeta
-├── pages/        → Rotas
-└── utils/        → validation, sanitize
+├── api/          → HTTP clients (.ts)
+├── components/   → Layout, Footer (.tsx)
+├── data/         → Conteúdo do CV (.ts)
+├── hooks/        → useDocumentMeta (.ts)
+├── pages/        → Rotas (.tsx)
+├── types/        → Tipos compartilhados
+├── utils/        → validation, sanitize (.ts)
+├── App.tsx
+└── main.tsx
 docs/             → ADRs, architecture, guides
 ```
 
-## Regras de conteúdo
+## Git workflow (canônico)
 
-- Textos em **pt-BR**
-- **Nunca inventar** dados profissionais
-- Fontes: CV ATS, GitHub público, LinkedIn
-- Projetos listados devem ter URL GitHub verificável
+Ver `docs/guides/task-kickoff.md` — issue In Progress → `feature/*` from `sandbox` → PR.
 
-## Princípios de código
+## Princípios
 
+- Tipos em `src/types/` para dados compartilhados
 - Escopo mínimo por tarefa
-- Reutilizar design tokens — sem cores arbitrárias
-- Validar com `npm run lint` e `npm run build`
-- Não criar commits sem solicitação explícita
+- Validar: `npm run typecheck`, `npm run lint`, `npm run build`
 - Decisões arquiteturais → `docs/adr/`

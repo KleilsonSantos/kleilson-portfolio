@@ -1,6 +1,6 @@
 ---
 description: Padrões para páginas e rotas React Router
-globs: src/pages/**/*.{jsx,tsx}
+globs: src/pages/**/*.{tsx,jsx}
 alwaysApply: false
 ---
 
