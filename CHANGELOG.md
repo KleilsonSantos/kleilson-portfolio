@@ -11,6 +11,12 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 ### Changed
 
 - 📝 Política de lint documental alinhada a Keep a Changelog (`MD024.siblings_only`)
+- 💄 CTAs com padding, alinhamento e contraste corrigidos (#24)
+
+### Fixed
+
+- 🐛 Texto dos botões colado/vazando nas bordas (padding/`line-height`)
+- 🐛 Secondary CTA ilegível no dark mode (borda + contraste)
 
 ## [0.2.2] - 2026-07-09
 
