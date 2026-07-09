@@ -38,6 +38,71 @@
   padding: 0.25rem 0.625rem; border-radius: var(--radius-full); background: var(--color-primary-subtle);
   color: var(--color-primary); font-size: var(--font-size-sm); font-weight: 500;
 }
+.chip--muted {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+.experience-item { margin-bottom: var(--space-6); }
+.experience-item:last-child { margin-bottom: 0; }
+.section-lead {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+.credential-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+.credential-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.credential-item p {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-secondary);
+}
+.credential-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.credential-link:hover { text-decoration: underline; }
+.course-groups {
+  display: grid;
+  gap: var(--space-6);
+}
+.course-group h3 {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-lg);
+}
+.course-group ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--space-2);
+}
+.course-group li {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.source-note {
+  margin: var(--space-6) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
 .cta-row {
   display: flex;
   justify-content: center;
