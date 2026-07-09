@@ -16,6 +16,7 @@ vMAJOR.MINOR.PATCH
 | `v0.1.1` | 2026-07-09 | Estratégia Git enterprise (sandbox, PRs, documentação de fluxo) |
 | `v0.2.0` | 2026-07-09 | Fase 2 (parcial) — TypeScript strict + typecheck no CI |
 | `v0.2.1` | 2026-07-09 | Sync de documentação alinhada ao status real do projeto |
+| `v0.2.2` | 2026-07-09 | ADR-0003 — estratégia canônica de documentação (evidence-based) |
 
 ## Criar uma nova release
 
@@ -43,6 +44,7 @@ gh release create vX.Y.Z \
 | Git workflow | `v0.1.1` | ✅ |
 | Fase 2 — TypeScript | `v0.2.0` | ✅ (testes ainda pendentes) |
 | Docs sync | `v0.2.1` | ✅ |
+| Docs strategy (ADR-0003) | `v0.2.2` | ✅ |
 | Fase 2 — Testes | `v0.3.0` (sugerido) | 📋 |
 | Fase 3 — Backend | `v0.4.0` (sugerido) | 📋 |
 | Fase 4 — Deploy produção | `v1.0.0` (sugerido) | 📋 |
