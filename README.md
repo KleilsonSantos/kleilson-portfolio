@@ -6,7 +6,7 @@ Portfólio profissional open source de **Kleilson dos Santos** — Software Engi
 
 | Fase | Escopo | Status |
 |------|--------|--------|
-| Fase 1 | Frontend foundation (React + Vite + Router) | ✅ Em andamento |
+| Fase 1 | Frontend foundation (React + Vite + Router) | ✅ Concluída (`v0.1.0`) |
 | Fase 2 | TypeScript, design system, testes | 📋 Planejado |
 | Fase 3 | Backend API + persistência | 📋 Planejado |
 | Fase 4 | Observabilidade + deploy produção | 📋 Planejado |
@@ -28,9 +28,18 @@ Portfólio profissional open source de **Kleilson dos Santos** — Software Engi
 ```bash
 git clone https://github.com/KleilsonSantos/kleilson-portfolio.git
 cd kleilson-portfolio
+git checkout sandbox
 npm install
 npm run dev
 ```
+
+## Fluxo Git
+
+```text
+feature/* → sandbox → PR → main → tag vX.Y.Z
+```
+
+Guia completo: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
 
 ## Scripts
 
