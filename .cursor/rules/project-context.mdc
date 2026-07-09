@@ -1,0 +1,41 @@
+---
+description: Contexto do portfólio, stack e princípios gerais
+alwaysApply: true
+---
+
+# Kleilson Portfolio — Contexto
+
+## Stack (Fase 1 — não substituir sem ADR)
+
+- React 19 + Vite 8 + React Router 7
+- JavaScript (JSX) — TypeScript na Fase 2
+- CSS com design tokens (`src/index.css`, `src/App.css`)
+- oxlint (`npm run lint`)
+
+## Estrutura
+
+```
+src/
+├── api/          → HTTP clients
+├── components/   → Layout, Footer
+├── data/         → Conteúdo do CV (verificável)
+├── hooks/        → useDocumentMeta
+├── pages/        → Rotas
+└── utils/        → validation, sanitize
+docs/             → ADRs, architecture, guides
+```
+
+## Regras de conteúdo
+
+- Textos em **pt-BR**
+- **Nunca inventar** dados profissionais
+- Fontes: CV ATS, GitHub público, LinkedIn
+- Projetos listados devem ter URL GitHub verificável
+
+## Princípios de código
+
+- Escopo mínimo por tarefa
+- Reutilizar design tokens — sem cores arbitrárias
+- Validar com `npm run lint` e `npm run build`
+- Não criar commits sem solicitação explícita
+- Decisões arquiteturais → `docs/adr/`

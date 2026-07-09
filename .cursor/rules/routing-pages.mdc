@@ -1,0 +1,13 @@
+---
+description: Padrões para páginas e rotas React Router
+globs: src/pages/**/*.{jsx,tsx}
+alwaysApply: false
+---
+
+# Páginas e Rotas
+
+- Uma página por rota em `src/pages/`
+- Registrar rotas em `src/App.jsx` dentro do `Layout`
+- Usar `useDocumentMeta` para title, description e canonical
+- Páginas wide (`/contatos`, `/projetos`): layout já trata via `app--wide`
+- Conteúdo estático vem de `src/data/` — não hardcodar no JSX
