@@ -8,8 +8,12 @@ function NotFound() {
         <h1>Página não encontrada</h1>
         <p>A rota solicitada não existe neste portfólio.</p>
         <div className="cta-row">
-          <Link to="/" className="button-link">Ir para Home</Link>
-          <Link to="/contatos" className="button-link secondary">Contato</Link>
+          <Link to="/" className="button-link">
+            Ir para Home
+          </Link>
+          <Link to="/contatos" className="button-link secondary">
+            Contato
+          </Link>
         </div>
       </header>
     </div>
