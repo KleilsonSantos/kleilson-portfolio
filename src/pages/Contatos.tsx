@@ -54,7 +54,7 @@ function Contatos() {
       </header>
 
       <div className="contact-grid">
-        <section className="card">
+        <section className="card card--interactive">
           <h2>Enviar mensagem</h2>
           <form onSubmit={handleSubmit} noValidate>
             <div className="form-field" style={{ marginBottom: '1rem' }}>
@@ -130,7 +130,7 @@ function Contatos() {
           </form>
         </section>
 
-        <aside className="card">
+        <aside className="card card--interactive">
           <h2>Canais diretos</h2>
           <ul className="info-list">
             {CONTACT_INFO.map((item) => (

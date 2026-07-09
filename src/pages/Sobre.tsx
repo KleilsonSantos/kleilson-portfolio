@@ -44,7 +44,7 @@ function Sobre() {
         <p>{SUMMARY}</p>
       </header>
 
-      <section className="card">
+      <section className="card card--interactive">
         <h2>Informações</h2>
         <ul>
           <li>
@@ -63,7 +63,7 @@ function Sobre() {
         </ul>
       </section>
 
-      <section className="card">
+      <section className="card card--interactive">
         <h2>Experiência profissional</h2>
         {EXPERIENCE.map((job) => (
           <article key={`${job.company}-${job.period}`} className="experience-item">
@@ -82,7 +82,7 @@ function Sobre() {
         ))}
       </section>
 
-      <section className="card" aria-labelledby="certifications-heading">
+      <section className="card card--interactive" aria-labelledby="certifications-heading">
         <h2 id="certifications-heading">Certificações</h2>
         <p className="section-lead">
           Credenciais emitidas por vendors (distintas de cursos online).
@@ -111,7 +111,7 @@ function Sobre() {
         </ul>
       </section>
 
-      <section className="card" aria-labelledby="education-heading">
+      <section className="card card--interactive" aria-labelledby="education-heading">
         <h2 id="education-heading">Educação</h2>
         <ul className="credential-list">
           {EDUCATION.map((item) => (
@@ -127,7 +127,7 @@ function Sobre() {
         </ul>
       </section>
 
-      <section className="card" aria-labelledby="courses-heading">
+      <section className="card card--interactive" aria-labelledby="courses-heading">
         <h2 id="courses-heading">Cursos e treinamentos</h2>
         <p className="section-lead">
           Formação contínua via Udemy, agrupada por domínio. Não equivale a

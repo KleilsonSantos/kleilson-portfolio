@@ -13,6 +13,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 🎨 Fundação visual: nav sticky, hero enxuto, tokens sem Inter/indigo (#25)
 - 🎨 Projetos V2: featured primary + grid + lista compacta com tagline/impact (#25)
 - ✨ Motion V3: fade-up de seções + hovers discretos (`prefers-reduced-motion`) (#25)
+- ✨ Cards interativos (highlight/skill panels) + polish de componentes (#25)
+- ✅ Playwright E2E smoke no CI (#4)
+- ⚡ Lighthouse CI scaffold com asserts conservadores (#5)
 
 ### Changed
 
@@ -20,6 +23,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 💄 CTAs com padding, alinhamento e contraste corrigidos (#24)
 - 💄 Home: brand + headline + lead + CTAs no primeiro viewport (sem cards no hero)
 - ♻️ Modelo `Project` com `tagline` e `impact` (storytelling verificável)
+- 👷 CI com jobs `e2e` e `lighthouse` após `quality`
 
 ### Fixed
 
