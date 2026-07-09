@@ -7,16 +7,20 @@ Portfólio profissional open source de **Kleilson dos Santos** — Software Engi
 | Fase | Escopo | Status |
 |------|--------|--------|
 | Fase 1 | Frontend foundation (React + Vite + Router) | ✅ Concluída (`v0.1.0`) |
-| Fase 2 | TypeScript, design system, testes | 📋 Planejado |
+| Git workflow | Sandbox, PRs, SemVer | ✅ Concluída (`v0.1.1`) |
+| Fase 2 | TypeScript (strict) | ✅ Parcial (`v0.2.0`) — testes ainda pendentes |
 | Fase 3 | Backend API + persistência | 📋 Planejado |
 | Fase 4 | Observabilidade + deploy produção | 📋 Planejado |
+| Fase 5 | Monorepo enterprise | 📋 Planejado |
 
-## Stack (Fase 1)
+**Release atual:** [`v0.2.0`](https://github.com/KleilsonSantos/kleilson-portfolio/releases/tag/v0.2.0)
+
+## Stack (atual)
 
 - React 19 + Vite 8 + React Router 7
-- JavaScript (JSX) — migração TypeScript na Fase 2
+- **TypeScript** (strict) — `.ts` / `.tsx`
 - CSS com design tokens
-- oxlint + GitHub Actions (CI)
+- oxlint + `tsc` (typecheck) + GitHub Actions (CI) + CodeQL
 
 ## Pré-requisitos
 
@@ -33,37 +37,42 @@ npm install
 npm run dev
 ```
 
-## Fluxo Git
+## Fluxo Git (canônico)
 
 ```text
-feature/* → sandbox → PR → main → tag vX.Y.Z
+Issue → Project (In Progress) → feature/* from sandbox → PR → sandbox → PR → main → tag vX.Y.Z
 ```
 
-Guia completo: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
+- Guia: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
+- Kickoff: [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
 
 ## Scripts
 
 | Comando | Descrição |
 |---------|-----------|
 | `npm run dev` | Servidor de desenvolvimento |
-| `npm run build` | Build de produção |
-| `npm run preview` | Preview do build |
+| `npm run typecheck` | Verificação TypeScript (`tsc -b`) |
 | `npm run lint` | Lint com oxlint |
+| `npm run build` | Typecheck + build de produção |
+| `npm run preview` | Preview do build |
 
 ## Estrutura
 
 ```text
 src/
-├── api/          # Clientes HTTP
-├── components/   # Layout, Footer
+├── api/          # Clientes HTTP (.ts)
+├── components/   # Layout, Footer (.tsx)
 ├── data/         # Conteúdo derivado do CV (fonte verificável)
 ├── hooks/        # useDocumentMeta (SEO)
 ├── pages/        # Home, Sobre, Projetos, Contatos, 404
-└── utils/        # Validação e sanitização
+├── types/        # Tipos compartilhados
+├── utils/        # Validação e sanitização
+├── App.tsx
+└── main.tsx
 docs/
 ├── adr/          # Architecture Decision Records
 ├── architecture/ # Visão arquitetural
-└── guides/       # Onboarding e contribuição
+└── guides/       # Onboarding, git-workflow, releases, kickoff
 ```
 
 ## Fontes de conteúdo
