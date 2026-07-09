@@ -33,8 +33,11 @@ Backend, banco e monorepo Turborepo ficam para fases posteriores, conforme aprov
 ### Negativas
 
 - Formulário de contato usa mock em dev (`/api/contact`)
-- TypeScript adiado para Fase 2
 - SEO avançado requer fase dedicada (sitemap, OG images)
+
+### Atualização (2026-07-09)
+
+TypeScript strict foi adotado na Fase 2 (`v0.2.0`). Esta ADR permanece válida quanto à escolha React + Vite; a linguagem passou de JavaScript para TypeScript sem alterar a decisão de frontend-first.
 
 ## Referências
 
