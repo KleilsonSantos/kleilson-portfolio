@@ -1,6 +1,5 @@
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
 import Footer from './Footer'
-import { PROFILE } from '../data/profileData'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -17,7 +16,7 @@ function Layout() {
     <div className="layout">
       <nav className="navbar" aria-label="Navegação principal">
         <Link to="/" className="logo">
-          {PROFILE.shortName}
+          Kleilson<span>.</span>
         </Link>
         <ul className="nav-links">
           {navItems.map((item) => (

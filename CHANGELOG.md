@@ -9,11 +9,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 🔧 Configuração markdownlint no repositório (zero avisos nos docs do projeto)
 - ✨ Seções Certificações, Educação e Cursos/treinamentos em Sobre (#28)
 - ✨ Dados verificáveis em `src/data/credentialsData.ts` (CV ATS + inventário Udemy)
+- 🎨 ADR-0004: direção visual V1 (dark-first, Sora + IBM Plex Sans, accent teal)
+- 🎨 Fundação visual: nav sticky, hero enxuto, tokens sem Inter/indigo (#25)
 
 ### Changed
 
 - 📝 Política de lint documental alinhada a Keep a Changelog (`MD024.siblings_only`)
 - 💄 CTAs com padding, alinhamento e contraste corrigidos (#24)
+- 💄 Home: brand + headline + lead + CTAs no primeiro viewport (sem cards no hero)
 
 ### Fixed
 
