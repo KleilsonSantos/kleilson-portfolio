@@ -9,7 +9,7 @@ alwaysApply: true
 
 - React 19 + Vite 8 + React Router 7
 - **TypeScript** (strict) — `.ts` / `.tsx`
-- CSS com design tokens (`src/index.css`, `src/App.css`)
+- CSS com design tokens (`src/index.css`, `src/App.css`) — dark-first, Sora + IBM Plex Sans, accent teal ([ADR-0004](../../docs/adr/0004-visual-direction.md))
 - oxlint (`npm run lint`) + `tsc -b` (`npm run typecheck`)
 
 ## Estrutura de pastas
