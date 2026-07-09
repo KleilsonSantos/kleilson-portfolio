@@ -18,8 +18,10 @@
 - [ ] `npm run typecheck` passou
 - [ ] `npm run lint` passou
 - [ ] `npm run build` passou
+- [ ] Documentação atualizada se o PR altera build/test/uso/release/arquitetura ([ADR-0003](../docs/adr/0003-documentation-strategy.md))
+- [ ] `CHANGELOG.md` `[Unreleased]` atualizado (se mudança notável)
 - [ ] Conteúdo profissional verificável (sem dados inventados)
-- [ ] ADR atualizado (se mudança arquitetural)
+- [ ] ADR criado/atualizado (se decisão arquitetural)
 
 ## Test plan
 

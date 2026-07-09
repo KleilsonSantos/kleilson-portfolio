@@ -25,8 +25,9 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 3. Mova a issue para **In Progress** no Project → crie branch de `sandbox`
 4. Commits com [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji
 5. `npm run typecheck`, `npm run lint` e `npm run build` antes do PR
-6. Abra **PR para `sandbox`** → após merge, abra **PR `sandbox` → `main`**
-7. Releases: tag SemVer após merge em `main` (ver [`docs/guides/releases.md`](./docs/guides/releases.md))
+6. Se a mudança afetar build/test/uso/release/arquitetura → atualize docs no **mesmo PR** ([ADR-0003](./docs/adr/0003-documentation-strategy.md), [documentation-sync](./docs/guides/documentation-sync.md))
+7. Abra **PR para `sandbox`** → após merge, abra **PR `sandbox` → `main`**
+8. Releases: tag SemVer após merge em `main` (ver [`docs/guides/releases.md`](./docs/guides/releases.md))
 
 ## Prefixos de branch
 

@@ -38,3 +38,5 @@ Ver `docs/guides/task-kickoff.md` — issue In Progress → `feature/*` from `sa
 - Escopo mínimo por tarefa
 - Validar: `npm run typecheck`, `npm run lint`, `npm run build`
 - Decisões arquiteturais → `docs/adr/`
+- Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](../../docs/adr/0003-documentation-strategy.md))
+- Recomendações técnicas devem citar fonte oficial; se não houver padrão oficial, declarar explicitamente

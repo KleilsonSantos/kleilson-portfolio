@@ -45,6 +45,7 @@ Issue → Project (In Progress) → feature/* from sandbox → PR → sandbox �
 
 - Guia: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
 - Kickoff: [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
+- Docs sync: [`docs/guides/documentation-sync.md`](./docs/guides/documentation-sync.md) · [ADR-0003](./docs/adr/0003-documentation-strategy.md)
 
 ## Scripts
 
