@@ -38,8 +38,8 @@ O layout atual é um scaffold (Inter + indigo + cards centrados). Referências a
 
 ### Fora de escopo (V1)
 
-- Redesign completo de Projetos (V2) — **entregue em PR subsequente**
-- Animações de entrada / timeline (V3)
+- Redesign completo de Projetos (V2) — **entregue**
+- Animações de entrada / timeline (V3) — **entregue** (fade-up + hovers; sem timeline)
 - Playwright visual / Lighthouse CI (V4 / #4 / #5)
 - Blog / newsletter
 
@@ -48,6 +48,12 @@ O layout atual é um scaffold (Inter + indigo + cards centrados). Referências a
 Hierarquia: 1 featured primary + grid de destaques + lista compacta dos demais.
 Campos `tagline` e `impact` no modelo `Project` (dados verificáveis do CV/GitHub).
 Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee Robinson (clareza).
+
+## V3 — Motion (slice)
+
+- Fade-up escalonado nas seções da página (`prefers-reduced-motion` respeitado)
+- Hover sutil em featured cards e linhas da lista compacta
+- Sem WebGL / parallax / timeline (fora do escopo enterprise)
 
 ## Consequences
 
