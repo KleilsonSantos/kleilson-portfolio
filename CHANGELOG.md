@@ -11,12 +11,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - ✨ Dados verificáveis em `src/data/credentialsData.ts` (CV ATS + inventário Udemy)
 - 🎨 ADR-0004: direção visual V1 (dark-first, Sora + IBM Plex Sans, accent teal)
 - 🎨 Fundação visual: nav sticky, hero enxuto, tokens sem Inter/indigo (#25)
+- 🎨 Projetos V2: featured primary + grid + lista compacta com tagline/impact (#25)
 
 ### Changed
 
 - 📝 Política de lint documental alinhada a Keep a Changelog (`MD024.siblings_only`)
 - 💄 CTAs com padding, alinhamento e contraste corrigidos (#24)
 - 💄 Home: brand + headline + lead + CTAs no primeiro viewport (sem cards no hero)
+- ♻️ Modelo `Project` com `tagline` e `impact` (storytelling verificável)
 
 ### Fixed
 
