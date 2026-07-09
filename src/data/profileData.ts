@@ -91,7 +91,7 @@ export const EXPERIENCE: Experience[] = [
     company: 'Capgemini Brasil',
     role: 'Desenvolvedor Full Stack',
     period: 'Jan 2026 – Mai 2026',
-    client: 'Setor Financeiro (Bradesco) — Projeto eDOX (migração e classificação documental)',
+    client: 'Projeto interno Capgemini — eDOX (migração e classificação documental)',
     highlights: [
       'Cadeia Angular → backend Java → ingestão → análise (fullstack com prioridade backend)',
       'Bibliotecas Java de OCR, extração de conteúdo e conversão PDF no pipeline documental',
