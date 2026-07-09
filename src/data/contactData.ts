@@ -1,4 +1,5 @@
 import { PROFILE } from './profileData'
+import type { ContactCategory, ContactInfo, SocialLink } from '../types'
 
 export const COMPANY = {
   name: PROFILE.shortName,
@@ -8,14 +9,14 @@ export const COMPANY = {
 
 export const MESSAGE_MAX_LENGTH = 2000
 
-export const CATEGORIES = [
+export const CATEGORIES: ContactCategory[] = [
   { value: 'oportunidade', label: 'Oportunidade profissional' },
   { value: 'projeto', label: 'Projeto / Consultoria' },
   { value: 'colaboracao', label: 'Colaboração open source' },
   { value: 'outro', label: 'Outro assunto' },
 ]
 
-export const CONTACT_INFO = [
+export const CONTACT_INFO: ContactInfo[] = [
   {
     id: 'email',
     label: 'E-mail',
@@ -42,7 +43,7 @@ export const CONTACT_INFO = [
   },
 ]
 
-export const SOCIAL_LINKS = [
+export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'github',
     label: 'GitHub',

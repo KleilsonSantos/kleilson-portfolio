@@ -30,7 +30,9 @@ function Home() {
         <span className="badge">{PROFILE.certification}</span>
         <h1>{PROFILE.name}</h1>
         <p>{PROFILE.headline}</p>
-        <p>{PROFILE.location} · {PROFILE.remote}</p>
+        <p>
+          {PROFILE.location} · {PROFILE.remote}
+        </p>
         <div className="cta-row">
           <Link to="/projetos" className="button-link">
             Ver projetos
