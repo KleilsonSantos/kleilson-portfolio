@@ -40,7 +40,7 @@ O layout atual é um scaffold (Inter + indigo + cards centrados). Referências a
 
 - Redesign completo de Projetos (V2) — **entregue**
 - Animações de entrada / timeline (V3) — **entregue** (fade-up + hovers; sem timeline)
-- Playwright visual / Lighthouse CI (V4 / #4 / #5)
+- Playwright visual / Lighthouse CI (V4 / #4 / #5) — **scaffold entregue**
 - Blog / newsletter
 
 ## V2 — Projetos (slice)
@@ -54,6 +54,12 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 - Fade-up escalonado nas seções da página (`prefers-reduced-motion` respeitado)
 - Hover sutil em featured cards e linhas da lista compacta
 - Sem WebGL / parallax / timeline (fora do escopo enterprise)
+
+## V4 — Guardrails + polish de componentes
+
+- Cards interativos (`card--interactive`, highlight cards, skill panels) alinhados ao teal dark-first
+- Playwright smoke E2E (`e2e/smoke.spec.ts`) no CI (#4)
+- Lighthouse CI (`lighthouserc.cjs`) com asserts conservadores (#5)
 
 ## Consequences
 
