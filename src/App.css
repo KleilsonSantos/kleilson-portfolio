@@ -34,7 +34,7 @@
 
 .nav-links {
   display: flex;
-  gap: var(--space-1, 0.25rem);
+  gap: var(--space-1);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -78,6 +78,48 @@
 .page {
   display: grid;
   gap: var(--space-12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page > * {
+    animation: fade-up var(--duration-normal) var(--ease-out) both;
+  }
+
+  .page > *:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .page > *:nth-child(2) {
+    animation-delay: 60ms;
+  }
+
+  .page > *:nth-child(3) {
+    animation-delay: 120ms;
+  }
+
+  .page > *:nth-child(4) {
+    animation-delay: 180ms;
+  }
+
+  .page > *:nth-child(5) {
+    animation-delay: 240ms;
+  }
+
+  .page > *:nth-child(n + 6) {
+    animation-delay: 280ms;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero {
@@ -380,6 +422,15 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-bg-elevated);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-feature:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+  }
 }
 
 .project-feature--primary {
@@ -478,13 +529,20 @@
 .project-row {
   display: grid;
   gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-5) var(--space-6);
   border-bottom: 1px solid var(--color-border);
   align-items: center;
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
 .project-row:last-child {
   border-bottom: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-row:hover {
+    background: var(--color-bg-subtle);
+  }
 }
 
 .project-row__main h3 {

@@ -12,6 +12,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 🎨 ADR-0004: direção visual V1 (dark-first, Sora + IBM Plex Sans, accent teal)
 - 🎨 Fundação visual: nav sticky, hero enxuto, tokens sem Inter/indigo (#25)
 - 🎨 Projetos V2: featured primary + grid + lista compacta com tagline/impact (#25)
+- ✨ Motion V3: fade-up de seções + hovers discretos (`prefers-reduced-motion`) (#25)
 
 ### Changed
 
@@ -22,6 +23,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 🐛 Padding da lista compacta de projetos (`--space-5` inexistente → texto colado na borda)
 - 🐛 Texto dos botões colado/vazando nas bordas (padding/`line-height`)
 - 🐛 Secondary CTA ilegível no dark mode (borda + contraste)
 
