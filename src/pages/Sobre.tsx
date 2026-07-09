@@ -66,7 +66,7 @@ function Sobre() {
       <section className="card card--interactive">
         <h2>Experiência profissional</h2>
         {EXPERIENCE.map((job) => (
-          <article key={`${job.company}-${job.period}`} className="experience-item">
+          <article key={`${job.company}-${job.period}-${job.client}`} className="experience-item">
             <h3>
               {job.role} — {job.company}
             </h3>
