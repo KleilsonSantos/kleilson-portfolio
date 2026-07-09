@@ -26,7 +26,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 👷 CI com jobs `e2e` e `lighthouse` após `quality`
 - 📝 Conteúdo sincronizado com `Kleilson_Santos_CV_2026.docx`
 - 💄 Logo da nav: `Kleilson Santos` (em vez de `Kleilson.`)
-- 📝 Experiência Bradesco: Abertura de Contas PF (2024), Renegociação Mobile (2025) e eDOX (Jan–Mai 2026)
+- 📝 Experiência: Abertura de Contas PF e Renegociação Mobile (Bradesco); eDOX como projeto interno Capgemini (Jan–Mai 2026)
 
 ### Fixed
 
