@@ -13,6 +13,8 @@
 
 ## Checklist
 
+- [ ] Branch semântica criada a partir de `sandbox`
+- [ ] PR aberto para `sandbox` (não para `main` diretamente)
 - [ ] `npm run lint` passou
 - [ ] `npm run build` passou
 - [ ] Conteúdo profissional verificável (sem dados inventados)

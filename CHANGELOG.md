@@ -4,6 +4,23 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-07-09
+
+### Added
+
+- 📝 ADR-0002: estratégia de branches, sandbox e SemVer
+- 📝 Guia completo de fluxo Git (`docs/guides/git-workflow.md`)
+- 📝 Guia de releases e tags (`docs/guides/releases.md`)
+- 🌿 Branch `sandbox` como ambiente de integração
+- 🏷️ Tag `v0.1.0` retroativa para Fase 1
+
+### Changed
+
+- 👷 CI e CodeQL executam em `sandbox` e PRs para `main`/`sandbox`
+- 📝 CONTRIBUTING.md atualizado com fluxo enterprise de PRs
+
+## [0.1.0] - 2026-07-09
+
 ### Added
 
 - ✨ Fase 1: frontend foundation com React 19, Vite 8 e React Router 7
@@ -12,9 +29,4 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS: README, ROADMAP, ADR-0001, guias
 - 🔧 Regras Cursor (`.cursor/rules/`)
 - 🚀 CI GitHub Actions (lint + build)
-
-## [0.1.0] - 2026-07-09
-
-### Added
-
-- 🎉 Bootstrap inicial do repositório `kleilson-portfolio`
+- 🔒 CodeQL para JavaScript/TypeScript
