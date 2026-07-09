@@ -28,6 +28,35 @@ export interface Experience {
   highlights: string[]
 }
 
+/** Certificação emitida por vendor (ex.: Microsoft Learn) — distinta de curso online. */
+export interface ProfessionalCertification {
+  id: string
+  name: string
+  issuer: string
+  year: string
+  credentialId?: string
+  verificationUrl?: string
+}
+
+export interface CourseItem {
+  id: string
+  title: string
+  provider: 'Udemy'
+}
+
+export interface CourseGroup {
+  id: string
+  title: string
+  courses: CourseItem[]
+}
+
+export interface EducationItem {
+  id: string
+  institution: string
+  program: string
+  status: string
+}
+
 export interface Project {
   id: string
   name: string
