@@ -4,6 +4,20 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-09
+
+### Added
+
+- ✨ Migração completa para TypeScript (strict mode)
+- ✨ Tipos compartilhados em `src/types/`
+- 👷 `npm run typecheck` integrado ao CI
+
+### Changed
+
+- ♻️ Todos os módulos `.js`/`.jsx` convertidos para `.ts`/`.tsx`
+- ♻️ `vite.config.ts` com tipagem do mock de contato
+- 📝 Regras Cursor atualizadas para Fase 2
+
 ## [0.1.1] - 2026-07-09
 
 ### Added

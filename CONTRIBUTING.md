@@ -21,8 +21,8 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 ## Como contribuir
 
 1. Faça fork (ou trabalhe no repo com permissão)
-2. Atualize `sandbox`: `git checkout sandbox && git pull`
-3. Crie branch semântica: `feature/nome`, `fix/nome`, `docs/nome`, etc.
+2. **Kickoff canônico:** leia [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
+3. Mova a issue para **In Progress** no Project → crie branch de `sandbox`
 4. Commits com [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji
 5. `npm run lint` e `npm run build` antes do PR
 6. Abra **PR para `sandbox`** → após merge, abra **PR `sandbox` → `main`**

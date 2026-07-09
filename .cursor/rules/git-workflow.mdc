@@ -8,7 +8,7 @@ alwaysApply: true
 ## Fluxo
 
 ```text
-feature/* | fix/* | docs/* | chore/* | ci/* ...
+Issue → Project (In Progress) → feature/* from sandbox
                     │
                     ▼  PR #1
                 sandbox
@@ -17,6 +17,16 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
                   main  →  tag vX.Y.Z
 ```
 
+## Kickoff canônico (sempre ao iniciar tarefa)
+
+1. Mover issue para **In Progress** no GitHub Project #6 (Workflow + Status)
+2. `git checkout sandbox && git pull`
+3. `git checkout -b feature/<slug>` (nunca a partir de `main`)
+4. Comentar na issue com a branch criada
+5. PR sempre para `sandbox` (nunca direto para `main`)
+
+Guia completo: `docs/guides/task-kickoff.md`
+
 ## Regras
 
 - **Nunca** commitar diretamente em `main` ou `sandbox`
@@ -24,9 +34,11 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 - Commits: Conventional Commits + Gitmoji (✨ feat, 🐛 fix, 📝 docs, 👷 ci)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
 - Releases: SemVer com tags anotadas (`v0.1.0`, `v0.2.0`, etc.)
+- PR body deve referenciar issue: `Closes #N`
 
 ## Documentação
 
+- `docs/guides/task-kickoff.md` ← **kickoff canônico**
 - `docs/guides/git-workflow.md`
 - `docs/guides/releases.md`
 - `docs/adr/0002-git-branching-strategy.md`
