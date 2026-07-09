@@ -48,3 +48,4 @@
 - [x] ADRs iniciais (0001, 0002, 0003 — documentação evidence-based)
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
+- [x] Fundação visual V1 (ADR-0004 — tokens, tipografia, nav, hero)
