@@ -1,0 +1,32 @@
+---
+description: Regras de branches, PRs e versionamento Git
+alwaysApply: true
+---
+
+# Git Workflow — Obrigatório
+
+## Fluxo
+
+```text
+feature/* | fix/* | docs/* | chore/* | ci/* ...
+                    │
+                    ▼  PR #1
+                sandbox
+                    │
+                    ▼  PR #2
+                  main  →  tag vX.Y.Z
+```
+
+## Regras
+
+- **Nunca** commitar diretamente em `main` ou `sandbox`
+- Branch semântica a partir de `sandbox` atualizada
+- Commits: Conventional Commits + Gitmoji (✨ feat, 🐛 fix, 📝 docs, 👷 ci)
+- Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
+- Releases: SemVer com tags anotadas (`v0.1.0`, `v0.2.0`, etc.)
+
+## Documentação
+
+- `docs/guides/git-workflow.md`
+- `docs/guides/releases.md`
+- `docs/adr/0002-git-branching-strategy.md`
