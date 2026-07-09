@@ -62,6 +62,9 @@ feature/* | fix/* | docs/* | chore/* | ci/* | ...
 | Tag | Marco |
 |-----|-------|
 | `v0.1.0` | Fase 1 — Frontend Foundation (bootstrap) |
+| `v0.1.1` | Estratégia Git enterprise (sandbox + PRs) |
+| `v0.2.0` | TypeScript strict |
+| `v0.2.1` | Sync de documentação com status real |
 
 ## Alternativas consideradas
 

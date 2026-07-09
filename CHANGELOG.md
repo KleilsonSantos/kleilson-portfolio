@@ -4,6 +4,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-07-09
+
+### Changed
+
+- 📝 Sincronização da documentação com o status real do projeto (`v0.2.0` + TypeScript)
+- 📝 README, ROADMAP, onboarding, architecture e releases atualizados
+- 📝 package.json version alinhada a `0.2.1`
+
 ## [0.2.0] - 2026-07-09
 
 ### Added
