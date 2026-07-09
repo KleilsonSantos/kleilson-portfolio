@@ -1,7 +1,7 @@
 {
   "name": "kleilson-portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Portfólio profissional open source — Kleilson dos Santos",
   "type": "module",
   "scripts": {

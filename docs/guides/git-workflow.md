@@ -114,8 +114,10 @@ gh release create v0.2.0 --title "v0.2.0" --notes "Notas da release"
 | Versão | Significado | Exemplo neste projeto |
 |--------|-------------|----------------------|
 | `v0.1.0` | Fase 1 — Frontend Foundation | ✅ Publicada |
-| `v0.2.0` | Fase 2 — TypeScript + Testes | Planejada |
-| `v1.0.0` | Primeira release produção pública | Planejada |
+| `v0.1.1` | Git workflow enterprise | ✅ Publicada |
+| `v0.2.0` | Fase 2 — TypeScript strict | ✅ Publicada |
+| `v0.2.1` | Sync de documentação | ✅ Publicada |
+| `v0.3.0+` | Testes / backend / deploy | 📋 Planejada |
 
 ## O que NÃO fazer
 
