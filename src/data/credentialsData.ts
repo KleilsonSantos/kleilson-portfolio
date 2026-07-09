@@ -6,12 +6,9 @@ import type {
 
 /**
  * Credenciais e formação contínua.
- * Fontes verificáveis:
- * - CV ATS 2026 (`cv-kleilson-2026-ats.md`)
- * - Inventário local de certificados Udemy (`Documents/Certificado Udemy`)
- *
- * Política: PDFs/JPGs de certificados NÃO são versionados no repositório
- * (PII + tamanho). Cursos Udemy não são apresentados como certificação vendor.
+ * Fontes verificáveis: CV 2026 (`Kleilson_Santos_CV_2026.docx`) + inventário Udemy local.
+ * PDFs/JPGs de certificados NÃO são versionados (PII + tamanho).
+ * Cursos Udemy não são apresentados como certificação vendor.
  */
 
 export const CERTIFICATIONS: ProfessionalCertification[] = [
@@ -159,6 +156,12 @@ export const COURSE_GROUPS: CourseGroup[] = [
         title: 'JavaScript, jQuery, Ajax e JSON do Zero na Prática',
         provider: 'Udemy',
       },
+      {
+        id: 'web-moderno-js',
+        title:
+          'Curso Web Moderno com JavaScript (HTML5, CSS3, Node, React, Angular, Vue)',
+        provider: 'Udemy',
+      },
     ],
   },
   {
@@ -185,4 +188,4 @@ export const COURSE_GROUPS: CourseGroup[] = [
 ]
 
 export const COURSES_SOURCE_NOTE =
-  'Lista baseada no CV ATS 2026 e nos certificados Udemy arquivados localmente. Artefatos PDF/JPG não são publicados no repositório.'
+  'Lista baseada no CV 2026 (Kleilson_Santos_CV_2026) e nos certificados Udemy arquivados localmente. Artefatos PDF/JPG não são publicados no repositório.'
