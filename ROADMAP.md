@@ -49,3 +49,4 @@
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
 - [x] Fundação visual V1 (ADR-0004 — tokens, tipografia, nav, hero)
+- [x] Projetos V2 (featured hierarchy + storytelling)
