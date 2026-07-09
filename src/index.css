@@ -57,10 +57,11 @@
     --color-text: #f1f5f9;
     --color-text-secondary: #cbd5e1;
     --color-text-muted: #94a3b8;
-    --color-primary: #818cf8;
-    --color-primary-hover: #a5b4fc;
-    --color-primary-subtle: rgba(129, 140, 248, 0.14);
-    --color-primary-ring: rgba(129, 140, 248, 0.35);
+    --color-primary: #a5b4fc;
+    --color-primary-hover: #c7d2fe;
+    --color-primary-subtle: rgba(165, 180, 252, 0.18);
+    --color-primary-ring: rgba(165, 180, 252, 0.4);
+    --color-text-inverse: #0b1120;
     --color-success: #34d399;
     --color-success-subtle: rgba(52, 211, 153, 0.12);
     --color-error: #f87171;
