@@ -54,3 +54,4 @@
 - [x] Cards interativos + polish de componentes (V4 visual)
 - [x] Playwright E2E smoke (#4)
 - [x] Lighthouse CI scaffold (#5)
+- [x] View Transitions + toggle de tema (V5 — #52)

@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🎨 View Transitions (React Router) + toggle de tema dark/light (#52)
 - ✅ Vitest + Testing Library (utils + Footer) e job `npm run test` no CI (#3)
 - 🔧 Hook `.githooks/commit-msg` + CI `commitlint` (Conventional Commits + Gitmoji)
 - 📝 `AGENTS.md` + `.github/copilot-instructions.md` + instructions/prompts (camada AI IDE-agnóstica)

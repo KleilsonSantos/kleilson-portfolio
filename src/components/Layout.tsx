@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
 import Footer from './Footer'
 import { PROFILE } from '../data/profileData'
+import { useTheme } from '../hooks/useTheme'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -12,26 +13,39 @@ const navItems = [
 function Layout() {
   const { pathname } = useLocation()
   const isWidePage = pathname === '/contatos' || pathname === '/projetos'
+  const { isDark, toggle } = useTheme()
 
   return (
     <div className="layout">
       <nav className="navbar" aria-label="Navegação principal">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" viewTransition>
           {PROFILE.shortName}
         </Link>
-        <ul className="nav-links">
-          {navItems.map((item) => (
-            <li key={item.to}>
-              <NavLink
-                to={item.to}
-                className={({ isActive }) => (isActive ? 'active' : undefined)}
-                end={item.to === '/'}
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="nav-end">
+          <ul className="nav-links">
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) => (isActive ? 'active' : undefined)}
+                  end={item.to === '/'}
+                  viewTransition
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggle}
+            aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
+            aria-pressed={isDark}
+          >
+            {isDark ? 'Tema claro' : 'Tema escuro'}
+          </button>
+        </div>
       </nav>
 
       <main className={`app${isWidePage ? ' app--wide' : ''}`}>
