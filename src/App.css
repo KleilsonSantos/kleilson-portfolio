@@ -27,6 +27,39 @@
   text-decoration: none;
   letter-spacing: -0.02em;
   white-space: nowrap;
+  view-transition-name: site-logo;
+}
+
+.nav-end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.theme-toggle:hover {
+  color: var(--color-text);
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
 }
 
 .nav-links {
@@ -824,9 +857,15 @@
     padding-block: var(--space-4);
   }
 
+  .nav-end {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
   .nav-links {
     flex-wrap: wrap;
-    width: 100%;
+    flex: 1;
   }
 
   .hero--home {

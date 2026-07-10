@@ -34,10 +34,10 @@ function Home() {
           {PROFILE.location} · {PROFILE.remote} · {PROFILE.certification}
         </p>
         <div className="cta-row">
-          <Link to="/projetos" className="button-link">
+          <Link to="/projetos" className="button-link" viewTransition>
             Ver projetos
           </Link>
-          <Link to="/contatos" className="button-link secondary">
+          <Link to="/contatos" className="button-link secondary" viewTransition>
             Entrar em contato
           </Link>
         </div>

@@ -61,6 +61,13 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 - Playwright smoke E2E (`e2e/smoke.spec.ts`) no CI (#4)
 - Lighthouse CI (`lighthouserc.cjs`) com asserts conservadores (#5)
 
+## V5 — View Transitions + tema controlável
+
+- Navegação com `viewTransition` (React Router 7 oficial) + CSS `::view-transition-*`
+- Toggle dark/light com `data-theme` + `localStorage` (sem lib de tema)
+- `prefers-reduced-motion` desativa view transitions
+- **Não** adotar MUI/Chakra/Motion: redundante com tokens ADR-0004 e motion CSS existente
+
 ## Consequences
 
 ### Positivas
