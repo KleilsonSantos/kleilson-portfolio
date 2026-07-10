@@ -194,17 +194,22 @@
   border-radius: 50%;
   overflow: hidden;
   isolation: isolate;
+  /* Folga entre cabelo e anel teal (fundo = studio da foto) */
+  padding: 0.4rem;
+  box-sizing: border-box;
   border: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
   box-shadow:
     0 0 0 6px color-mix(in srgb, var(--color-primary) 12%, transparent),
     0 12px 32px color-mix(in srgb, #000 35%, transparent);
-  background: var(--color-surface);
+  background: #fff;
 }
 
 .profile-photo picture {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .profile-photo__img {
@@ -212,8 +217,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Desce o enquadramento → folga acima do cabelo, sem letterbox */
-  object-position: center 58%;
+  /* Só CSS: desce o foco → folga entre cabelo e anel (sem novo crop) */
+  object-position: center 28%;
   border-radius: 50%;
 }
 
