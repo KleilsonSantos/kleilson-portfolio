@@ -188,18 +188,32 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
   background-image: var(--hero-glow);
-  background-attachment: fixed;
+  background-attachment: scroll;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+
+body.nav-lock {
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 #root {
   min-height: 100vh;
+  border-radius: 50px;
 }
 
 :focus-visible {

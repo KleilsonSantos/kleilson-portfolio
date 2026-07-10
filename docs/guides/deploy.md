@@ -1,0 +1,208 @@
+# Guia — Deploy (Cloudflare Pages + API)
+
+How-to do [ADR-0008](../adr/0008-cloudflare-deploy.md). Issue: [#8](https://github.com/KleilsonSantos/kleilson-portfolio/issues/8).
+
+## Visão
+
+```text
+Browser  →  Cloudflare Pages (SPA dist/)
+         →  /api/*  e  /health  →  Container (Fastify + Drizzle)
+                                      →  Supabase Postgres
+```
+
+Conteúdo do site continua em Git (`src/data/*`, ADR-0007). Só mensagens de contato vão ao banco.
+
+**Ordem recomendada:** conta → Pages (site) → API Container → ligar origins/CORS → smoke → cutover.
+
+---
+
+## Passo 0 — Conta e pré-requisitos
+
+1. Crie/entre em [dash.cloudflare.com](https://dash.cloudflare.com).
+2. Plano **Free** basta para Pages; Containers pode exigir conta com Workers habilitado (verifique o dashboard).
+3. No Mac, para a API depois:
+   - [Docker Desktop](https://docs.docker.com/desktop/) rodando (`docker info` ok)
+   - Node 22+ (já usado no repo)
+4. Tenha à mão (do Supabase → Settings → Database):
+   - `DATABASE_URL` do **pooler** (porta **6543**), senha real no lugar de `[YOUR-PASSWORD]`
+
+---
+
+## Passo 1 — Conectar o GitHub ao Cloudflare Pages
+
+Docs: [Git integration](https://developers.cloudflare.com/pages/get-started/git-integration/).
+
+1. Dashboard → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
+2. Autorize o Cloudflare no GitHub (conta / org `KleilsonSantos`).
+3. Selecione o repositório **`kleilson-portfolio`**.
+4. **Install & Authorize** → **Begin setup**.
+
+---
+
+## Passo 2 — Configurar o build do SPA (Pages)
+
+Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/).
+
+| Campo | Valor |
+|-------|--------|
+| Project name | `kleilson-portfolio` (gera `*.pages.dev`) |
+| Production branch | `main` |
+| Framework preset | **None** (ou Vite, se aparecer) |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | `/` (vazio / raiz do repo) |
+
+**Variáveis de ambiente (Pages) — nesta fase:**
+
+- **Não** adicione `DATABASE_URL` nem chaves Supabase secret.
+- Deixe `VITE_API_BASE_URL` **vazio** enquanto a API não existir (o formulário de contato no Pages puro ainda não gravará no banco — esperado até o Passo 4).
+
+5. Clique **Save and Deploy**.
+6. Aguarde o build. Anote a URL: `https://kleilson-portfolio-XXXX.pages.dev` (ou o nome que escolheu).
+
+**SPA:** não crie `public/404.html` — sem esse arquivo o Pages trata o site como SPA ([Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/)).
+
+### Previews de PR
+
+Branches ≠ `main` geram **preview deployments** automaticamente. Útil para validar PRs `feature/* → sandbox → main`.
+
+### Se o build falhar
+
+- Confira Node: em Settings → Environment variables, pode definir `NODE_VERSION=22`.
+- Logs do build no dashboard mostram `npm ci` / `tsc` / `vite build`.
+
+---
+
+## Passo 3 — API Fastify em Cloudflare Containers
+
+Docs: [Containers get started](https://developers.cloudflare.com/containers/get-started/).
+
+A API **não** sobe só pelo dashboard de Pages. É um Worker + imagem Docker (`Dockerfile` na raiz do repo).
+
+### Pré-requisito local
+
+- [Docker Desktop](https://docs.docker.com/desktop/) instalado e rodando (`docker info` ok)
+- Sem Docker, o `wrangler deploy` da API **não** consegue buildar/pushar a imagem
+
+### 3.1 No seu Mac (depois que o PR #8 com Wrangler estiver no repo)
+
+```bash
+# Na branch com o Worker da API (feature/cloudflare-pages-deploy)
+npx wrangler login          # abre o browser, autoriza a conta
+docker info                 # deve responder sem erro
+npx wrangler deploy         # build da imagem + push + deploy do Worker
+npx wrangler containers list
+```
+
+Na **primeira** vez, aguarde alguns minutos até o container ficar pronto (cold provision).
+
+### 3.2 Secrets da API (nunca no Git)
+
+No dashboard: **Workers & Pages** → seu Worker da API → **Settings** → **Variables and Secrets**, **ou** via CLI:
+
+```bash
+npx wrangler secret put DATABASE_URL
+# cole a connection string pooler 6543
+
+npx wrangler secret put CORS_ORIGIN
+# ex.: https://kleilson-portfolio-XXXX.pages.dev
+# (depois: https://seu-dominio.com)
+```
+
+| Secret | Obrigatório | Notas |
+|--------|-------------|--------|
+| `DATABASE_URL` | Sim | Pooler Supabase **6543** |
+| `CORS_ORIGIN` | Sim | URL exata do Pages (sem barra final) |
+| `PORT` | Se a imagem não fixar | Default do `Dockerfile`: `8787` |
+
+### 3.3 URL da API
+
+Após o deploy, anote o host do Worker, algo como:
+
+`https://kleilson-portfolio-api.<sua-subconta>.workers.dev`
+
+Teste:
+
+```bash
+curl -sS https://SEU_WORKER.workers.dev/health
+```
+
+Esperado: JSON com `"status":"ok"` e `"storage":"postgres"` (se o secret estiver certo).
+
+---
+
+## Passo 4 — Ligar o frontend à API
+
+Enquanto Pages e API estiverem em **origins diferentes**:
+
+1. Pages → projeto → **Settings** → **Environment variables** → Production:
+   - `VITE_API_BASE_URL` = `https://SEU_WORKER.workers.dev` (sem `/` no final)
+2. **Retry deployment** / novo deploy de `main` (Vite embute a var no build).
+3. Confirme `CORS_ORIGIN` no Worker = URL do Pages.
+
+**Meta final (same-origin):** domínio custom com rotas `/api` e `/health` → Container; aí **remova** `VITE_API_BASE_URL` e use só paths relativos. Isso pode ficar para um PR seguinte do #8.
+
+---
+
+## Passo 5 — Smoke de produção
+
+```bash
+# Health
+curl -sS https://SEU_API_HOST/health
+
+# Contato
+curl -sS -X POST https://SEU_API_HOST/api/contact \
+  -H 'content-type: application/json' \
+  -d '{"name":"Smoke","email":"smoke@example.com","message":"teste deploy #8"}'
+```
+
+1. Abra o site no Pages → Contatos → envie uma mensagem real.
+2. No Supabase → Table Editor → `contact_messages` → confirme a linha.
+
+---
+
+## Passo 6 — Domínio custom (opcional neste #8)
+
+1. Pages → **Custom domains** → Add → siga o DNS (CNAME para `*.pages.dev`).
+2. Atualize `CORS_ORIGIN` (e `VITE_API_BASE_URL` se ainda split-origin).
+3. Atualize `PROFILE.siteUrl` / README quando for canônico.
+
+---
+
+## Passo 7 — Cutover do GitHub Pages
+
+Só depois do smoke OK:
+
+1. README com URL Cloudflare canônica.
+2. No GitHub Pages: redirect/banner ou desligar quando estável.
+3. Não apague o Pages antigo no mesmo dia do primeiro deploy.
+
+---
+
+## O que você faz agora vs o que o código ainda entrega
+
+| Agora (você no dashboard) | Depois (código / Wrangler no PR #8) |
+|---------------------------|-------------------------------------|
+| Conta Cloudflare | `wrangler.toml` / Worker proxy do Container |
+| Projeto **Pages** + build `main` | Secrets via `wrangler secret` |
+| Anotar URL `*.pages.dev` | Deploy `npx wrangler deploy` da API |
+| | Ligar `VITE_API_BASE_URL` + CORS |
+
+**Comece pelo Passo 1–2** (Pages). A API (Passo 3) depende do Worker Wrangler que ainda completa o #8 no repositório.
+
+---
+
+## Checklist (#8)
+
+- [ ] Pages build verde a partir de `main`
+- [ ] API `/health` com `storage: postgres`
+- [ ] Contato grava no Supabase
+- [ ] README / ROADMAP / ADR-0008
+- [ ] Secrets só no Cloudflare
+
+## Relacionados
+
+- [api.md](./api.md) — rodar API local
+- [observability.md](./observability.md) — ordem Fase 4
+- [content.md](./content.md) — editar conteúdo (não é deploy)
+- [ADR-0008](../adr/0008-cloudflare-deploy.md)

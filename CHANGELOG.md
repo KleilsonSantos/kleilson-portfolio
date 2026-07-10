@@ -4,11 +4,27 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- ✨ Foto profissional no hero (Home/Sobre) + assets WebP em `public/images/profile/`
+- ✨ Soft skills (habilidades interpessoais) na página Sobre
+- ✨ Canal WhatsApp em Contatos (`wa.me` com mensagem pré-preenchida)
+- 📝 ADR-0007 Content-as-Code + guia `docs/guides/content.md` (gestão de conteúdo / admin Git-backed opcional pós-#8)
+- 📝 ADR-0008 Deploy Cloudflare Pages + API Container (#8) + guia `docs/guides/deploy.md`
+- 🐳 `Dockerfile` / `.dockerignore` para a API Fastify (Containers)
+- ✨ `VITE_API_BASE_URL` opcional em `src/api/contact.ts` (API em origin separado)
+
 ### Changed
 
+- 💄 Avatar: recorte com headroom + anel branco fino no círculo
+- 📱 Nav mobile (hamburger, safe-area, alvos 44pt) alinhada a HIG
+- 📝 ROADMAP Fase 4 aponta ADR-0008 / guia de deploy
 - 📝 Sync docs pós-`v0.4.0`: ROADMAP Fase 4, observability map, SECURITY, onboarding, README
 - 📝 `observability.md` + #9: princípios BP-008/BP-015 (health/logs) sem OTel/Prometheus
 - 📝 Regra canônica: agente marca `[x]` nos Aceites cumpridos da issue (não esperar clique humano)
+- 📝 ROADMAP / architecture: ADR-0007 e CMS Git-backed como evolução Fase 5 (não portar admin 2024)
+
+## [0.4.0] - 2026-07-10
 
 ### Added
 

@@ -8,7 +8,7 @@ Portfólio de baixo tráfego: **um caminho por preocupação**, sem APM enterpri
 | --- | --- | --- | --- |
 | Disponibilidade / liveness | `GET /health` (+ `storage`) | ✅ | #6 / #7 |
 | Readiness / DB | Ping Postgres quando `DATABASE_URL` | 📋 | **#9** (com Sentry/logs) |
-| Deploy + CDN + API em produção | Cloudflare Pages (+ API) | 📋 | **#8** (próximo) |
+| Deploy + CDN + API em produção | Cloudflare Pages (+ Container) | 📋 | **#8** · [ADR-0008](../adr/0008-cloudflare-deploy.md) · [deploy.md](./deploy.md) |
 | Erros (frontend + API) | Sentry | 📋 | **#9** |
 | Logs estruturados (API) | Logger Fastify (JSON em prod) + `requestId`; sem PII | 📋 | **#9** |
 | Analytics privacy-first (pageviews) | Umami **ou** Plausible | 📋 | **#65** |
