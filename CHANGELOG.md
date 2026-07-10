@@ -4,6 +4,18 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-10
+
+### Added
+
+- ✨ Persistência de contato com Supabase Postgres + Drizzle ORM (`contact_messages`, ADR-0006) (#7)
+- 🔒 `.gitignore` para `.env` + `.env.example` (sem segredos)
+
+### Changed
+
+- ♻️ Store da API: Postgres quando `DATABASE_URL` válida; memória em testes / sem DB
+- 📝 Guia `docs/guides/api.md` atualizado para #7
+
 ## [0.3.0] - 2026-07-10
 
 ### Added

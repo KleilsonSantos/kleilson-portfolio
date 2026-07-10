@@ -45,7 +45,7 @@ npm run server:dev
 
 ## 5. Status atual
 
-- Release: **`v0.3.0`**
+- Release: **`v0.4.0`**
 - Frontend: React 19 + Vite 8 + TypeScript strict + visual ADR-0004
 - Qualidade: oxlint + Vitest + Playwright + Lighthouse CI
 - API: Fastify em `server/` (store em memória até #7)

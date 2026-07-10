@@ -1,7 +1,7 @@
 {
   "name": "kleilson-portfolio",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Portfólio profissional open source — Kleilson dos Santos",
   "type": "module",
   "scripts": {
@@ -23,7 +23,10 @@
     "@fastify/cors": "^11.3.0",
     "@fastify/helmet": "^13.1.0",
     "@fastify/rate-limit": "^11.1.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "fastify": "^5.10.0",
+    "postgres": "^3.4.9",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1"
@@ -40,6 +43,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "@vitest/coverage-v8": "^4.1.10",
     "concurrently": "^10.0.3",
+    "drizzle-kit": "^0.31.10",
     "jsdom": "^29.1.1",
     "oxlint": "^1.71.0",
     "tsx": "^4.23.0",
