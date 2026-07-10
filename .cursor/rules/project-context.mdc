@@ -34,9 +34,11 @@ Ver `docs/guides/task-kickoff.md` — issue In Progress → `feature/*` from `sa
 
 ## Princípios
 
+- Contrato canônico de agentes: `AGENTS.md` (IDE-agnóstico); esta pasta é projeção Cursor
 - Tipos em `src/types/` para dados compartilhados
 - Escopo mínimo por tarefa
 - Validar: `npm run typecheck`, `npm run lint`, `npm run build`
 - Decisões arquiteturais → `docs/adr/`
 - Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](../../docs/adr/0003-documentation-strategy.md))
 - Recomendações técnicas devem citar fonte oficial; se não houver padrão oficial, declarar explicitamente
+- Conteúdo profissional: só CV / GitHub / LinkedIn — nunca inventar

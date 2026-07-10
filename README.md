@@ -1,70 +1,80 @@
 # Kleilson Portfolio
 
-Portfólio profissional open source de **Kleilson dos Santos** — Software Engineer / Full Stack Developer com foco em microsserviços, AppSec, DevSecOps e AI Agentic Engineering.
+> Portfólio profissional enterprise-ready — React 19 + Vite 8 + TypeScript strict.
+> Conteúdo 100% verificável (CV · GitHub · LinkedIn). Nenhuma informação inventada.
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
+
+[Live](https://kleilsonsantos.github.io/kleilson-portfolio/) · [Issues](https://github.com/KleilsonSantos/kleilson-portfolio/issues) · [Project board](https://github.com/users/KleilsonSantos/projects/6) · [Releases](https://github.com/KleilsonSantos/kleilson-portfolio/releases)
+
+---
 
 ## Status
 
-| Fase | Escopo | Status |
-|------|--------|--------|
-| Fase 1 | Frontend foundation (React + Vite + Router) | ✅ Concluída (`v0.1.0`) |
-| Git workflow | Sandbox, PRs, SemVer | ✅ Concluída (`v0.1.1`) |
-| Fase 2 | TypeScript (strict) | ✅ Parcial (`v0.2.0`) — testes ainda pendentes |
-| Fase 3 | Backend API + persistência | 📋 Planejado |
-| Fase 4 | Observabilidade + deploy produção | 📋 Planejado |
-| Fase 5 | Monorepo enterprise | 📋 Planejado |
+| Item | Valor |
+| --- | --- |
+| Branch de integração | `sandbox` |
+| Produção | `main` + tags SemVer |
+| Última release | `v0.2.2` |
+| Qualidade | ESLint + Prettier + TypeScript strict + Playwright + Lighthouse CI |
+| Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
+| AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
 
-**Release atual:** [`v0.2.0`](https://github.com/KleilsonSantos/kleilson-portfolio/releases/tag/v0.2.0)
+---
 
-## Stack (atual)
+## Por que este projeto
 
-- React 19 + Vite 8 + React Router 7
-- **TypeScript** (strict) — `.ts` / `.tsx`
-- CSS com design tokens
-- oxlint + `tsc` (typecheck) + GitHub Actions (CI) + CodeQL
+Portfólio pessoal com disciplina de engenharia de produto:
 
-## Pré-requisitos
+- **Conteúdo auditável** — só o que está no CV, GitHub e LinkedIn
+- **Arquitetura documentada** — ADRs, fluxo Git canônico, releases SemVer
+- **UI dark-first** — tipografia Sora + IBM Plex Sans, accent teal (ADR-0004)
+- **Qualidade contínua** — lint, typecheck, E2E Playwright, Lighthouse CI
+- **Agentes de IA portáveis** — mesmas regras no Cursor, Copilot, Claude Code ou outro
 
-- Node.js 20+
-- npm 10+
+---
 
-## Desenvolvimento local
+## Stack
+
+| Camada | Tecnologia |
+| --- | --- |
+| UI | React 19, React Router 7 |
+| Build | Vite 8 |
+| Linguagem | TypeScript 5.9 (strict) |
+| Qualidade | ESLint 9, Prettier, Playwright, Lighthouse CI |
+| Deploy | GitHub Pages (`gh-pages`) |
+| Docs | Markdown + ADRs em `docs/` |
+
+---
+
+## Quick start
 
 ```bash
 git clone https://github.com/KleilsonSantos/kleilson-portfolio.git
 cd kleilson-portfolio
-git checkout sandbox
-npm install
+npm ci
 npm run dev
 ```
 
-## Fluxo Git (canônico)
-
-```text
-Issue → Project (In Progress) → feature/* from sandbox → PR → sandbox → PR → main → tag vX.Y.Z
-```
-
-- Guia: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
-- Kickoff: [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
-- Docs sync: [`docs/guides/documentation-sync.md`](./docs/guides/documentation-sync.md) · [ADR-0003](./docs/adr/0003-documentation-strategy.md)
-- Credenciais: [`docs/guides/credentials.md`](./docs/guides/credentials.md)
-- Testes: [`docs/guides/testing.md`](./docs/guides/testing.md)
-
-## Scripts
-
 | Comando | Descrição |
-|---------|-----------|
-| `npm run dev` | Servidor de desenvolvimento |
-| `npm run typecheck` | Verificação TypeScript (`tsc -b`) |
-| `npm run lint` | Lint com oxlint |
-| `npm run build` | Typecheck + build de produção |
+| --- | --- |
+| `npm run dev` | Dev server |
+| `npm run build` | Typecheck + build |
+| `npm run lint` / `npm run format` | Qualidade de código |
+| `npm run test:e2e` | Playwright smoke |
 | `npm run preview` | Preview do build |
+
+---
 
 ## Estrutura
 
 ```text
 src/
 ├── api/          # Clientes HTTP (.ts)
-├── components/   # Layout, Footer (.tsx)
+├── components/   # Layout, Footer, UI (.tsx)
 ├── data/         # Conteúdo derivado do CV (fonte verificável)
 ├── hooks/        # useDocumentMeta (SEO)
 ├── pages/        # Home, Sobre, Projetos, Contatos, 404
@@ -75,8 +85,15 @@ src/
 docs/
 ├── adr/          # Architecture Decision Records
 ├── architecture/ # Visão arquitetural
-└── guides/       # Onboarding, git-workflow, releases, kickoff
+└── guides/       # Onboarding, git-workflow, AI agents, releases
+.github/
+├── copilot-instructions.md
+├── instructions/ # Regras por path (Copilot / agentes)
+└── prompts/      # Prompts reutilizáveis
+AGENTS.md         # Contrato único para qualquer agente de IA
 ```
+
+---
 
 ## Fontes de conteúdo
 
@@ -87,6 +104,19 @@ Todo conteúdo profissional é extraído de fontes verificáveis:
 - [LinkedIn](https://www.linkedin.com/in/kleilson-dev-full-stack/)
 
 **Nenhuma informação é inventada.**
+
+---
+
+## Agentes de IA
+
+Regras portáveis (independentes de IDE e modelo):
+
+- [`AGENTS.md`](./AGENTS.md) — contrato canônico
+- [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) — GitHub Copilot
+- [`.cursor/rules/`](./.cursor/rules/) — projeção Cursor
+- [`docs/guides/ai-agentic.md`](./docs/guides/ai-agentic.md) — como usar
+
+---
 
 ## Licença
 
