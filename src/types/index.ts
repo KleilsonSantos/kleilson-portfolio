@@ -13,6 +13,10 @@ export interface Profile {
   yearsOfExperience: string
   currentCompany: string
   certification: string
+  /** Avatar otimizado (WebP) — path sob `public/` */
+  photo: string
+  /** Fallback JPEG */
+  photoFallback: string
 }
 
 export interface SkillGroup {

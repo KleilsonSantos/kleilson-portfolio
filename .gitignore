@@ -12,6 +12,11 @@ lerna-debug.log*
 .env.*
 !.env.example
 
+# Capturas / dumps locais (usar scripts/optimize-profile-photo.mjs → public/images/)
+Captura*.png
+Captura*.jpg
+*.screenshot.png
+
 node_modules
 dist
 dist-ssr

@@ -6,14 +6,17 @@ import {
   COURSES_SOURCE_NOTE,
   EDUCATION,
 } from '../data/credentialsData'
+import { ProfilePhoto } from '../components/ProfilePhoto'
 
 function Sobre() {
   const primaryCert = CERTIFICATIONS[0]
+  const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/profile/kleilson-avatar.webp`
 
   useDocumentMeta({
     title: `Sobre | ${PROFILE.shortName}`,
     description: SUMMARY,
     canonical: `${PROFILE.siteUrl}/sobre`,
+    ogImage,
     jsonLd: primaryCert
       ? {
           '@context': 'https://schema.org',
@@ -21,6 +24,7 @@ function Sobre() {
           name: PROFILE.name,
           jobTitle: PROFILE.title,
           url: PROFILE.siteUrl,
+          image: ogImage,
           hasCredential: {
             '@type': 'EducationalOccupationalCredential',
             name: primaryCert.name,
@@ -38,10 +42,13 @@ function Sobre() {
 
   return (
     <div className="page">
-      <header className="hero">
-        <span className="badge">Trajetória profissional</span>
-        <h1>Sobre</h1>
-        <p>{SUMMARY}</p>
+      <header className="hero hero--about">
+        <ProfilePhoto size="md" className="hero__photo" />
+        <div className="hero__copy">
+          <span className="badge">Trajetória profissional</span>
+          <h1>Sobre</h1>
+          <p>{SUMMARY}</p>
+        </div>
       </header>
 
       <section className="card card--interactive">

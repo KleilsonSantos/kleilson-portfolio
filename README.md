@@ -81,9 +81,13 @@ npm run dev
 ## Estrutura
 
 ```text
+public/
+├── favicon.svg
+├── icons.svg
+└── images/profile/   # retrato otimizado (WebP/JPEG) — não versionar capturas cruas
 src/
 ├── api/          # Clientes HTTP (.ts)
-├── components/   # Layout, Footer, UI (.tsx)
+├── components/   # Layout, Footer, ProfilePhoto, UI (.tsx)
 ├── data/         # Conteúdo derivado do CV (fonte verificável)
 ├── hooks/        # useDocumentMeta (SEO)
 ├── pages/        # Home, Sobre, Projetos, Contatos, 404
