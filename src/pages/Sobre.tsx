@@ -1,5 +1,5 @@
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
-import { PROFILE, SUMMARY, EXPERIENCE } from '../data/profileData'
+import { PROFILE, SUMMARY, EXPERIENCE, SOFT_SKILLS } from '../data/profileData'
 import {
   CERTIFICATIONS,
   COURSE_GROUPS,
@@ -68,6 +68,17 @@ function Sobre() {
             leitura técnica)
           </li>
         </ul>
+      </section>
+
+      <section className="card card--interactive" aria-labelledby="soft-skills-heading">
+        <h2 id="soft-skills-heading">Habilidades interpessoais</h2>
+        <div className="stack-list">
+          {SOFT_SKILLS.map((skill) => (
+            <span key={skill} className="chip">
+              {skill}
+            </span>
+          ))}
+        </div>
       </section>
 
       <section className="card card--interactive">

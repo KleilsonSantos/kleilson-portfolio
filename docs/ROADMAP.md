@@ -38,7 +38,7 @@
 
 Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`guides/observability.md`](./guides/observability.md).
 
-- [ ] Deploy: Cloudflare Pages + API — issue #8 ← **foco atual**
+- [ ] Deploy: Cloudflare Pages + API Container — issue #8 · [ADR-0008](./adr/0008-cloudflare-deploy.md) · [`guides/deploy.md`](./guides/deploy.md) ← **foco atual**
 - [ ] Substituição gradual de `kleilsonsantos.github.io`
 - [ ] Sentry (errors) + logs estruturados API — issue #9
 - [ ] Analytics privacy-first (Umami/Plausible) — issue #65
@@ -50,10 +50,12 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 
 - [ ] Turborepo + pnpm workspaces — issue #10
 - [x] CodeQL + Dependabot (básico já ativo)
-- [x] ADRs (0001–0006)
+- [x] ADRs (0001–0008)
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
 - [x] Fundação visual V1–V5 (ADR-0004)
+- [x] Content-as-Code canônico (ADR-0007) + guia `guides/content.md`
+- [ ] CMS Git-backed opcional (Decap/Tina → commits/PR em `sandbox`) — [#71](https://github.com/KleilsonSantos/kleilson-portfolio/issues/71), pós-#8, ver ADR-0007
 - [x] Playwright E2E smoke (#4)
 - [x] Lighthouse CI scaffold (#5)
 - [x] Camada AI portável (`AGENTS.md` / Copilot / Cursor pointers)

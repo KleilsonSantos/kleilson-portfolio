@@ -137,7 +137,18 @@ function Contatos() {
               <li key={item.id}>
                 <strong>{item.label}</strong>
                 <br />
-                {item.href ? <a href={item.href}>{item.value}</a> : item.value}
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    {...(item.href.startsWith('http')
+                      ? { target: '_blank', rel: 'noreferrer' }
+                      : {})}
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  item.value
+                )}
                 <br />
                 <small>{item.detail}</small>
               </li>

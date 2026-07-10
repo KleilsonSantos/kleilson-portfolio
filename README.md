@@ -24,7 +24,8 @@
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
 | API | Fastify em `server/` (`/health`, `/api/contact`) — ADR-0005 |
 | Persistência | Supabase Postgres + Drizzle — ADR-0006 (`DATABASE_URL`) |
-| Deploy | GitHub Pages (`gh-pages`) — produção Cloudflare em #8 |
+| Conteúdo | Content-as-Code em `src/data/*` — [ADR-0007](./docs/adr/0007-content-as-code.md) · [guia](./docs/guides/content.md) |
+| Deploy | Cloudflare Pages + API Container — [ADR-0008](./docs/adr/0008-cloudflare-deploy.md) (#8) |
 | Observabilidade | [`docs/guides/observability.md`](./docs/guides/observability.md) |
 
 ---
