@@ -19,25 +19,32 @@ vMAJOR.MINOR.PATCH
 | `v0.2.2` | 2026-07-09 | ADR-0003 — estratégia canônica de documentação (evidence-based) |
 | `v0.3.0` | 2026-07-10 | Qualidade (Vitest/Playwright/Lighthouse), visual ADR-0004 V1–V5, AI agents, Fastify API (#6) |
 
-## Criar uma nova release
+## Criar uma nova release (canônico)
+
+Este passo faz parte do fluxo Git obrigatório (após `sandbox` → `main`), não é opcional para entregas releaseable.
 
 ```bash
 # 1. Garantir main atualizada após merge sandbox → main
 git checkout main && git pull origin main
 
-# 2. Tag anotada
+# 2. Confirmar artefatos já na main:
+#    - CHANGELOG.md tem ## [X.Y.Z] - YYYY-MM-DD
+#    - package.json "version": "X.Y.Z"
+
+# 3. Tag anotada
 git tag -a vX.Y.Z -m "vX.Y.Z — descrição da release"
 
-# 3. Push da tag
+# 4. Push da tag
 git push origin vX.Y.Z
 
-# 4. GitHub Release (notas a partir do CHANGELOG da versão)
+# 5. GitHub Release
 gh release create vX.Y.Z \
-  --title "vX.Y.Z — título" \
-  --notes-file - <<'EOF'
-Notas curtas + link para CHANGELOG seção [X.Y.Z]
-EOF
+  --title "vX.Y.Z — título humano" \
+  --notes "Ver CHANGELOG seção [X.Y.Z]. Highlights: …"
 ```
+
+**Não** usar tag leve (`git tag vX.Y.Z` sem `-a`).  
+**Não** publicar release sem a seção correspondente no CHANGELOG.
 
 ## Alinhamento com ROADMAP
 

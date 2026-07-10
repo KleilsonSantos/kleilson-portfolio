@@ -27,6 +27,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 6. **Visual:** seguir ADR-0004 (dark-first, Sora + IBM Plex Sans, accent teal). Evitar look genérico “AI default” (roxo/indigo, Inter, glow excessivo).
 7. **TypeScript strict** — sem `any` desnecessário; tipar props e dados.
 8. **Commits** só quando o humano pedir; mensagens `type: <gitmoji> …` (obrigatório). Merges: `merge: 🔀 PR #n — branch`.
+9. **Releases:** após merge releaseable `sandbox` → `main`, alinhar CHANGELOG + `package.json` e publicar tag anotada + GitHub Release (`docs/guides/releases.md`). Não deixar docs/versão à frente da última tag.
 
 ## Escopo típico de mudanças
 

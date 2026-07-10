@@ -27,7 +27,7 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 5. `npm run typecheck`, `npm run lint` e `npm run build` antes do PR
 6. Se a mudança afetar build/test/uso/release/arquitetura → atualize docs no **mesmo PR** ([ADR-0003](./docs/adr/0003-documentation-strategy.md), [documentation-sync](./docs/guides/documentation-sync.md))
 7. Abra **PR para `sandbox`** → após merge, abra **PR `sandbox` → `main`**
-8. Releases: tag SemVer após merge em `main` (ver [`docs/guides/releases.md`](./docs/guides/releases.md))
+8. Releases (**canônico**): após merge `sandbox` → `main` releaseable → promover CHANGELOG + bump `package.json` → tag anotada `vX.Y.Z` → `gh release create` (ver [`docs/guides/releases.md`](./docs/guides/releases.md) e Passo 8 em [`task-kickoff.md`](./docs/guides/task-kickoff.md))
 
 ## Prefixos de branch
 
