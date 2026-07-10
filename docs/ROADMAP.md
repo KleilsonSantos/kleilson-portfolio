@@ -29,9 +29,9 @@
 
 ## Fase 3 — Backend & Dados
 
-- [ ] API Fastify (contato, health) — issue #6
+- [x] API Fastify (contato, health) — issue #6 / ADR-0005
 - [ ] PostgreSQL via Supabase + Drizzle ORM — issue #7
-- [ ] Rate limiting e validação server-side
+- [x] Rate limiting e validação server-side (na API Fastify #6)
 
 ## Fase 4 — Observabilidade & Deploy
 

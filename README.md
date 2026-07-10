@@ -22,6 +22,7 @@
 | Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
+| API | Fastify em `server/` (`/health`, `/api/contact`) — ADR-0005 |
 
 ---
 
@@ -66,6 +67,8 @@ npm run dev
 | `npm run lint` / `npm run format` | Qualidade de código |
 | `npm run test` | Vitest (unit) |
 | `npm run test:e2e` | Playwright smoke |
+| `npm run server:dev` | API Fastify (porta 8787) |
+| `npm run dev:full` | API + Vite com proxy |
 | `npm run preview` | Preview do build |
 
 ---
@@ -94,7 +97,14 @@ docs/
 └── prompts/      # Prompts canônicos (também @ no Cursor)
 .cursor/rules/    # Projeção fina Cursor (ponteiros; sem cópia)
 AGENTS.md         # Contrato único para qualquer agente de IA
+server/           # API Fastify (health + contact) — ADR-0005
 ```
+
+---
+
+## API
+
+Ver [`docs/guides/api.md`](./docs/guides/api.md) e [ADR-0005](./docs/adr/0005-fastify-contact-api.md).
 
 ---
 
