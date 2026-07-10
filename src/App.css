@@ -212,8 +212,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Headroom: cabelo não cola no anel */
-  object-position: center center;
+  /* Desce o enquadramento → folga acima do cabelo, sem letterbox */
+  object-position: center 58%;
+  border-radius: 50%;
 }
 
 .profile-photo--sm {
