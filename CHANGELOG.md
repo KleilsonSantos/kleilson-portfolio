@@ -10,6 +10,12 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Guia `docs/guides/ai-agentic.md` (contrato portável Cursor/Copilot/outros)
 - 💄 README com badges, status atualizado, Project board e seção de agentes
 - 🔧 Configuração markdownlint no repositório (zero avisos nos docs do projeto)
+- 📝 Rules Cursor finas (ponteiros para `AGENTS.md` / `.github/prompts`, sem cópia)
+
+### Changed
+
+- ♻️ `ROADMAP.md` movido para `docs/ROADMAP.md`
+- ♻️ markdownlint consolidado em `.markdownlint-cli2.jsonc` + `.vscode/settings.json`
 - ✨ Seções Certificações, Educação e Cursos/treinamentos em Sobre (#28)
 - ✨ Dados verificáveis em `src/data/credentialsData.ts` (CV ATS + inventário Udemy)
 - 🎨 ADR-0004: direção visual V1 (dark-first, Sora + IBM Plex Sans, accent teal)

@@ -1,0 +1,11 @@
+---
+description: Conteúdo verificável do CV — sem inventar fatos
+globs: src/data/**/*.ts
+alwaysApply: false
+---
+
+# Conteúdo verificável
+
+- Fonte: CV ATS, GitHub, LinkedIn — nunca inventar.
+- Detalhe: `.github/instructions/content-data.instructions.md`
+- eDOX (Jan–Mai 2026) = Capgemini interno, não Bradesco.

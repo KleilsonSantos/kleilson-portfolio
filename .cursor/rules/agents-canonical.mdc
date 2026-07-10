@@ -1,0 +1,12 @@
+---
+description: Contrato canônico AGENTS.md — não duplicar políticas aqui
+alwaysApply: true
+---
+
+# Fonte canônica
+
+- Políticas de agentes: `AGENTS.md` (raiz) — Cursor lê nativamente.
+- Detalhe operacional: `docs/guides/ai-agentic.md`.
+- Copilot / prompts compartilhados: `.github/copilot-instructions.md`, `.github/instructions/`, `.github/prompts/`.
+
+Esta pasta `.cursor/rules/` só adiciona escopo Cursor (`globs` / `@`-mention). **Não copiar** o texto de `.github/prompts` ou `instructions`.
