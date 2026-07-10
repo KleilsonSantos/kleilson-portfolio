@@ -7,6 +7,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 ### Changed
 
 - 📝 Sync docs pós-`v0.4.0`: ROADMAP Fase 4, observability map, SECURITY, onboarding, README
+- 📝 `observability.md` + #9: princípios BP-008/BP-015 (health/logs) sem OTel/Prometheus
 
 ### Added
 
