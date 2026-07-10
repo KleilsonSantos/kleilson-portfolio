@@ -4,6 +4,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-10
+
 ### Added
 
 - ✨ API Fastify (`server/`) com `/health` + `POST /api/contact`, rate limit e ADR-0005 (#6)
@@ -15,14 +17,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 💄 README com badges, status atualizado, Project board e seção de agentes
 - 🔧 Configuração markdownlint no repositório (zero avisos nos docs do projeto)
 - 📝 Rules Cursor finas (ponteiros para `AGENTS.md` / `.github/prompts`, sem cópia)
-
-### Changed
-
-- ♻️ `ROADMAP.md` movido para `docs/ROADMAP.md`
-- ♻️ markdownlint consolidado em `.markdownlint-cli2.jsonc` + `.vscode/settings.json`
 - ✨ Seções Certificações, Educação e Cursos/treinamentos em Sobre (#28)
 - ✨ Dados verificáveis em `src/data/credentialsData.ts` (CV ATS + inventário Udemy)
-- 🎨 ADR-0004: direção visual V1 (dark-first, Sora + IBM Plex Sans, accent teal)
+- 🎨 ADR-0004: direção visual V1–V5 (dark-first, Sora + IBM Plex Sans, accent teal)
 - 🎨 Fundação visual: nav sticky, hero enxuto, tokens sem Inter/indigo (#25)
 - 🎨 Projetos V2: featured primary + grid + lista compacta com tagline/impact (#25)
 - ✨ Motion V3: fade-up de seções + hovers discretos (`prefers-reduced-motion`) (#25)
@@ -32,14 +29,17 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
+- ♻️ `ROADMAP.md` movido para `docs/ROADMAP.md`
+- ♻️ markdownlint consolidado em `.markdownlint-cli2.jsonc` + `.vscode/settings.json`
 - 📝 Política de lint documental alinhada a Keep a Changelog (`MD024.siblings_only`)
 - 💄 CTAs com padding, alinhamento e contraste corrigidos (#24)
 - 💄 Home: brand + headline + lead + CTAs no primeiro viewport (sem cards no hero)
 - ♻️ Modelo `Project` com `tagline` e `impact` (storytelling verificável)
-- 👷 CI com jobs `e2e` e `lighthouse` após `quality`
+- 👷 CI com jobs `e2e`, `lighthouse` e `commitlint` após `quality`
 - 📝 Conteúdo sincronizado com `Kleilson_Santos_CV_2026.docx`
 - 💄 Logo da nav: `Kleilson Santos` (em vez de `Kleilson.`)
 - 📝 Experiência: Abertura de Contas PF e Renegociação Mobile (Bradesco); eDOX como projeto interno Capgemini (Jan–Mai 2026)
+- 📝 Lint canônico: **oxlint** (item ROADMAP “ESLint” substituído sem redundância); hooks via `.githooks`
 
 ### Fixed
 
@@ -93,17 +93,16 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
-- 👷 CI e CodeQL executam em `sandbox` e PRs para `main`/`sandbox`
-- 📝 CONTRIBUTING.md atualizado com fluxo enterprise de PRs
+- 📝 CONTRIBUTING alinhado ao fluxo `feature → sandbox → main`
 
 ## [0.1.0] - 2026-07-09
 
 ### Added
 
-- ✨ Fase 1: frontend foundation com React 19, Vite 8 e React Router 7
+- ✨ Bootstrap React 19 + Vite 8 + React Router 7
 - ✨ Páginas Home, Sobre, Projetos, Contatos e 404
-- ✨ Conteúdo profissional derivado do CV ATS verificável
-- 📝 Documentação OSS: README, ROADMAP, ADR-0001, guias
-- 🔧 Regras Cursor (`.cursor/rules/`)
-- 🚀 CI GitHub Actions (lint + build)
-- 🔒 CodeQL para JavaScript/TypeScript
+- ✨ Conteúdo baseado no CV verificável
+- ✨ Design tokens e layout responsivo
+- ✨ SEO (meta + JSON-LD) e mock de API de contato
+- 📝 Documentação OSS inicial + ADR-0001
+- 👷 CI: lint + build

@@ -18,7 +18,7 @@
 | --- | --- |
 | Branch de integração | `sandbox` |
 | Produção | `main` + tags SemVer |
-| Última release | `v0.2.2` |
+| Última release | `v0.3.0` |
 | Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
@@ -45,8 +45,9 @@ Portfólio pessoal com disciplina de engenharia de produto:
 | UI | React 19, React Router 7 |
 | Build | Vite 8 |
 | Linguagem | TypeScript 5.9 (strict) |
-| Qualidade | ESLint 9, Prettier, Playwright, Lighthouse CI |
-| Deploy | GitHub Pages (`gh-pages`) |
+| Qualidade | oxlint + Vitest + Playwright + Lighthouse CI |
+| API | Fastify 5 (`server/`) |
+| Deploy | GitHub Pages (`gh-pages`) — API em deploy futuro (#8) |
 | Docs | Markdown + ADRs em `docs/` |
 
 ---
