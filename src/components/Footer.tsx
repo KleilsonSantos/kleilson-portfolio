@@ -15,10 +15,18 @@ function Footer() {
         </div>
 
         <nav className="footer-links" aria-label="Links do rodapé">
-          <Link to="/">Home</Link>
-          <Link to="/sobre">Sobre</Link>
-          <Link to="/projetos">Projetos</Link>
-          <Link to="/contatos">Contatos</Link>
+          <Link to="/" viewTransition>
+            Home
+          </Link>
+          <Link to="/sobre" viewTransition>
+            Sobre
+          </Link>
+          <Link to="/projetos" viewTransition>
+            Projetos
+          </Link>
+          <Link to="/contatos" viewTransition>
+            Contatos
+          </Link>
           <a href={PROFILE.github} target="_blank" rel="noreferrer">
             GitHub
           </a>
