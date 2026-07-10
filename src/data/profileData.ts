@@ -90,6 +90,40 @@ export const EXPERIENCE: Experience[] = [
   {
     company: 'Capgemini Brasil',
     role: 'Desenvolvedor Full Stack',
+    period: 'Jan 2026 – Mai 2026',
+    client: 'Projeto interno Capgemini — eDOX (migração e classificação documental)',
+    highlights: [
+      'Cadeia Angular → backend Java → ingestão → análise (fullstack com prioridade backend)',
+      'Bibliotecas Java de OCR, extração de conteúdo e conversão PDF no pipeline documental',
+      'Integração do motor de regras GraalVM e fluxos de CRUD/operacionais no frontend',
+      'Atuação alinhada a go-live previsto para out/2026 (repos Azure DevOps: edox-services, edox-frontend, eDOX — branch feature/V1)',
+    ],
+  },
+  {
+    company: 'Capgemini Brasil',
+    role: 'Desenvolvedor Full Stack',
+    period: '2025',
+    client: 'Setor Financeiro (Bradesco) — Projeto Renegociação Mobile',
+    highlights: [
+      'Desenvolvimento full stack em solução mobile de renegociação no setor bancário',
+      'Integração de APIs e fluxos de negócio com foco em experiência do cliente',
+      'Colaboração em squad com práticas de qualidade, code review e entrega contínua',
+    ],
+  },
+  {
+    company: 'Capgemini Brasil',
+    role: 'Desenvolvedor Full Stack',
+    period: '2024',
+    client: 'Setor Financeiro (Bradesco) — Projeto Abertura de Contas PF',
+    highlights: [
+      'Desenvolvimento full stack no fluxo de abertura de contas pessoa física',
+      'APIs e interfaces alinhadas a requisitos de compliance e jornada digital bancária',
+      'Atuação em squad com integração a sistemas do ecossistema Bradesco',
+    ],
+  },
+  {
+    company: 'Capgemini Brasil',
+    role: 'Desenvolvedor Full Stack',
     period: 'Ago 2024 – Presente',
     client: 'Setor Financeiro (Bradesco) — Squad Application Security e Backend Java',
     highlights: [
