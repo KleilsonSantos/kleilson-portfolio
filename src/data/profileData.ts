@@ -18,8 +18,8 @@ export const PROFILE: Profile = {
   yearsOfExperience: '9+',
   currentCompany: 'Capgemini Brasil',
   certification: 'Microsoft Certified: Azure AI Fundamentals (AI-900)',
-  photo: '/images/profile/kleilson-avatar-320.webp?v=14',
-  photoFallback: '/images/profile/kleilson-avatar.jpg?v=14',
+  photo: '/images/profile/kleilson-avatar-320.webp?v=15',
+  photoFallback: '/images/profile/kleilson-avatar.jpg?v=15',
 }
 
 export const SUMMARY = `Desenvolvedor Full Stack com mais de 9 anos de experiência projetando e operando microsserviços event-driven em Java e Spring Boot, com forte atuação em squads de Application Security (AppSec) no setor financeiro (financial services e banking industry). Praticante de AI Agentic Engineering e Spec-Driven Development (SDD): autor de agentes customizados do GitHub Copilot, prompts reutilizáveis e arquivos de instruções (applyTo). Especialista em arquitetura hexagonal, APIs RESTful, Apache Kafka, PostgreSQL, Docker, Kubernetes e GitOps com ArgoCD. Experiência consolidada em frontend com Angular (v2 a v17+), AngularJS, React e TypeScript. Práticas DevSecOps com Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check.`
