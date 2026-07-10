@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Valida Conventional Commits + Gitmoji no subject (primeira linha).
+# Formato: type: <emoji> descrição
+# Merges: merge: 🔀 ...  OU  Merge pull request ... (legado GitHub — aviso, não bloqueia se tiver 🔀)
+
+set -euo pipefail
+
+MSG_FILE="${1:-}"
+if [[ -z "$MSG_FILE" || ! -f "$MSG_FILE" ]]; then
+  echo "commit-msg: missing message file" >&2
+  exit 1
+fi
+
+subject="$(head -n 1 "$MSG_FILE" | tr -d '\r')"
+
+# allow merge commits already rewritten with gitmoji
+if [[ "$subject" =~ ^merge:\ 🔀 ]]; then
+  exit 0
+fi
+
+# block bare GitHub default merge subjects (no emoji)
+if [[ "$subject" =~ ^Merge\ pull\ request ]]; then
+  echo "commit-msg: merge sem gitmoji. Use: merge: 🔀 PR #<n> — <branch>" >&2
+  exit 1
+fi
+
+# Conventional type + emoji after colon
+# Emoji: any non-ASCII symbol / common gitmoji range (python for reliable unicode)
+python3 - "$subject" <<'PY'
+import re, sys
+subject = sys.argv[1]
+pat = re.compile(
+    r"^(feat|fix|docs|chore|ci|refactor|test|style|perf|build|merge):\s+"
+    r"(?P<emoji>\S+)\s+.+"
+)
+m = pat.match(subject)
+if not m:
+    print(
+        "commit-msg: use Conventional Commits + Gitmoji\n"
+        "  exemplo: feat: ✨ adicionar página de projetos\n"
+        "  merge:   merge: 🔀 PR #12 — feature/foo",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+emoji = m.group("emoji")
+# must not be pure ASCII word
+if emoji.isascii() and emoji.isalnum():
+    print(f"commit-msg: falta gitmoji após o tipo (recebido {emoji!r})", file=sys.stderr)
+    sys.exit(1)
+# first char should be non-ascii (emoji) or known symbol
+if emoji[0].isascii() and emoji[0].isalnum():
+    print("commit-msg: gitmoji inválido — coloque o emoji logo após 'type: '", file=sys.stderr)
+    sys.exit(1)
+sys.exit(0)
+PY

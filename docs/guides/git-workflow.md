@@ -75,7 +75,16 @@ git add .
 git commit -m "feat: ✨ descrição objetiva do que e por quê"
 ```
 
-**Gitmoji de referência:** ✨ feat · 🐛 fix · ♻️ refactor · 📝 docs · 🚀 deploy · ⚡ perf · 🔒 security · ✅ test · 🎨 style · 🔥 remove · 🏗️ build · 👷 ci
+**Formato obrigatório:** `type: <gitmoji> descrição`  
+**Gitmoji de referência:** ✨ feat · 🐛 fix · ♻️ refactor · 📝 docs · 🔧 chore · 🚀 deploy · ⚡ perf · 🔒 security · ✅ test · 🎨 style · 🔥 remove · 🏗️ build · 👷 ci · 🔀 merge
+
+Hook local (recomendado):
+
+```bash
+git config core.hooksPath .githooks
+```
+
+O CI (`commitlint`) rejeita PRs cujos commits no range não tenham gitmoji.
 
 ### 3. Push e PR para sandbox
 
@@ -86,7 +95,14 @@ gh pr create --base sandbox --head feature/minha-tarefa \
   --body "Resumo, contexto técnico e test plan."
 ```
 
-Aguarde CI passar → revise → **merge** → delete a branch.
+Aguarde CI passar → revise → **merge com subject gitmoji** → delete a branch:
+
+```bash
+gh pr merge <N> --merge \
+  --subject "merge: 🔀 PR #<N> — <branch>"
+```
+
+Não usar o subject padrão `Merge pull request #…` (sem emoji).
 
 ### 4. PR de sandbox para main
 
@@ -125,6 +141,7 @@ gh release create v0.2.0 --title "v0.2.0" --notes "Notas da release"
 - ❌ Commit direto em `sandbox` sem PR
 - ❌ PR de `feature/*` direto para `main` (pular sandbox)
 - ❌ Commits genéricos (`update`, `fix stuff`, `wip`)
+- ❌ Commits/merges sem gitmoji (`docs: polish…`, `Merge pull request #…`)
 - ❌ Tags sem mensagem anotada
 
 ## CI/CD
