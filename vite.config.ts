@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig, type Plugin, type PreviewServer, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import type { IncomingMessage, ServerResponse } from 'node:http'
@@ -61,4 +62,10 @@ function contactApiMock(): Plugin {
 
 export default defineConfig({
   plugins: [react(), contactApiMock()],
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    css: false,
+  },
 })
