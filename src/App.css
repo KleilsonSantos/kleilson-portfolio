@@ -187,27 +187,27 @@
 }
 
 .profile-photo {
-  display: block;
+  display: grid;
+  place-items: center;
   flex: 0 0 auto;
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  overflow: hidden;
-  isolation: isolate;
-  /* Folga entre cabelo e anel teal (fundo = studio da foto) */
-  padding: 0.4rem;
   box-sizing: border-box;
   border: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
   box-shadow:
     0 0 0 6px color-mix(in srgb, var(--color-primary) 12%, transparent),
     0 12px 32px color-mix(in srgb, #000 35%, transparent);
+  /* Anel branco visível entre foto e teal — folga no cabelo */
   background: #fff;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .profile-photo picture {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
   border-radius: 50%;
   overflow: hidden;
 }
@@ -217,8 +217,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Só CSS: desce o foco → folga entre cabelo e anel (sem novo crop) */
-  object-position: center 28%;
+  object-position: center center;
   border-radius: 50%;
 }
 
@@ -227,9 +226,19 @@
   height: 4.5rem;
 }
 
+.profile-photo--sm picture {
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+
 .profile-photo--md {
   width: 7rem;
   height: 7rem;
+}
+
+.profile-photo--md picture {
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
 }
 
 .profile-photo--lg {
@@ -241,6 +250,11 @@
   .profile-photo--lg {
     width: 11.5rem;
     height: 11.5rem;
+  }
+
+  .profile-photo--lg picture {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
   }
 }
 
