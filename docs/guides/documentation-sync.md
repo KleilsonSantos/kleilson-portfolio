@@ -67,7 +67,7 @@ Fonte: [Diátaxis](https://diataxis.fr/start-here/) — framework, **não** espe
 | Nível | Controle | Status normativo |
 |-------|----------|------------------|
 | Atual | CI typecheck/lint/build | Obrigatório no projeto |
-| Atual | markdownlint no IDE (`.markdownlint.json`) | Consenso indústria; config no repo |
+| Atual | markdownlint (`.markdownlint-cli2.jsonc` + `.vscode/settings.json`) | Consenso indústria; config única no repo |
 | Próximo | link check no CI | Consenso indústria (não oficial único) |
 | Contínuo | OpenSSF Scorecard / Best Practices Badge | Oficial OpenSSF |
 

@@ -1,0 +1,11 @@
+---
+description: Docs/CHANGELOG — ADR-0003 e Keep a Changelog
+globs: docs/**/*.md,README.md,CHANGELOG.md,AGENTS.md,CONTRIBUTING.md
+alwaysApply: false
+---
+
+# Documentação
+
+- Política: ADR-0003 + `docs/guides/documentation-sync.md`
+- Path-scoped: `.github/instructions/docs.instructions.md`
+- ROADMAP: `docs/ROADMAP.md`

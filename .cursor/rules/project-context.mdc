@@ -34,6 +34,7 @@ Ver `docs/guides/task-kickoff.md` — issue In Progress → `feature/*` from `sa
 
 ## Princípios
 
+- Agentes: ver rule `agents-canonical` + `AGENTS.md` (não duplicar políticas)
 - Tipos em `src/types/` para dados compartilhados
 - Escopo mínimo por tarefa
 - Validar: `npm run typecheck`, `npm run lint`, `npm run build`

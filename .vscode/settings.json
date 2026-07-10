@@ -1,0 +1,21 @@
+{
+  "markdownlint.config": {
+    "default": true,
+    "MD013": false,
+    "MD024": {
+      "siblings_only": true
+    },
+    "MD033": {
+      "allowed_elements": ["a", "img", "br", "details", "summary", "p", "div"]
+    },
+    "MD034": false,
+    "MD041": false,
+    "MD060": false
+  },
+  "markdownlint.ignore": [
+    "node_modules/**",
+    "dist/**",
+    "coverage/**",
+    "**/*.tsbuildinfo"
+  ]
+}

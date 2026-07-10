@@ -16,8 +16,9 @@ npm run dev
 - **Dados** em `src/data/` — única fonte de conteúdo estático (`.ts`)
 - **Tipos** em `src/types/` — contratos TypeScript compartilhados
 - **Decisões** em `docs/adr/` — leia antes de mudanças grandes
-- **IA** em `.cursor/rules/` — alinhado com esta documentação
+- **IA** em [`AGENTS.md`](../../AGENTS.md) + [`.cursor/rules/`](../../.cursor/rules/) — ver [`ai-agentic.md`](./ai-agentic.md)
 - **Kickoff** em [`task-kickoff.md`](./task-kickoff.md) — procedimento obrigatório
+- **Project board:** https://github.com/users/KleilsonSantos/projects/6
 
 ## 3. Fluxo de trabalho (canônico)
 
@@ -36,7 +37,7 @@ npm run dev
 
 ## 5. Status atual
 
-- Release: **`v0.2.0`** (TypeScript strict)
-- Próximo: testes (issues #3, #4, #5)
+- Release: **`v0.2.2`** (+ Unreleased: visual ADR-0004, Playwright, Lighthouse, camada AI)
+- Project: [kleilson-portfolio #6](https://github.com/users/KleilsonSantos/projects/6)
 
-Consulte [ROADMAP.md](../../ROADMAP.md) e aguarde validação antes de iniciar backend/monorepo.
+Consulte [ROADMAP.md](../ROADMAP.md) e aguarde validação antes de iniciar backend/monorepo.
