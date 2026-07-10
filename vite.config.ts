@@ -48,10 +48,12 @@ function contactHandler(
   })
 }
 
+/** Mock local para preview/E2E. Desative com API_PROXY=1 e `npm run server:dev`. */
 function contactApiMock(): Plugin {
   return {
     name: 'contact-api-mock',
     configureServer(server: ViteDevServer) {
+      if (process.env.API_PROXY === '1') return
       server.middlewares.use('/api/contact', contactHandler)
     },
     configurePreviewServer(server: PreviewServer) {
@@ -60,12 +62,26 @@ function contactApiMock(): Plugin {
   }
 }
 
+const apiTarget = process.env.API_PROXY_TARGET ?? 'http://127.0.0.1:8787'
+
 export default defineConfig({
   plugins: [react(), contactApiMock()],
+  server:
+    process.env.API_PROXY === '1'
+      ? {
+          proxy: {
+            '/api': apiTarget,
+            '/health': apiTarget,
+          },
+        }
+      : undefined,
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    include: ['src/**/*.{test,spec}.{ts,tsx}', 'server/**/*.{test,spec}.ts'],
     css: false,
+    env: {
+      NODE_ENV: 'test',
+    },
   },
 })

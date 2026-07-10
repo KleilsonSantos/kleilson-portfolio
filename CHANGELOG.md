@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- ✨ API Fastify (`server/`) com `/health` + `POST /api/contact`, rate limit e ADR-0005 (#6)
 - 🎨 View Transitions (React Router) + toggle de tema dark/light (#52)
 - ✅ Vitest + Testing Library (utils + Footer) e job `npm run test` no CI (#3)
 - 🔧 Hook `.githooks/commit-msg` + CI `commitlint` (Conventional Commits + Gitmoji)
