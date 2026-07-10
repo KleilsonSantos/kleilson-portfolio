@@ -26,7 +26,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 5. **Docs sincronizados** com o código (ADR-0003): README, CHANGELOG, ADRs quando a decisão mudar.
 6. **Visual:** seguir ADR-0004 (dark-first, Sora + IBM Plex Sans, accent teal). Evitar look genérico “AI default” (roxo/indigo, Inter, glow excessivo).
 7. **TypeScript strict** — sem `any` desnecessário; tipar props e dados.
-8. **Commits** só quando o humano pedir; mensagens Conventional Commits.
+8. **Commits** só quando o humano pedir; mensagens `type: <gitmoji> …` (obrigatório). Merges: `merge: 🔀 PR #n — branch`.
 
 ## Escopo típico de mudanças
 

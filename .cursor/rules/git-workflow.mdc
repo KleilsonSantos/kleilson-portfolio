@@ -31,7 +31,8 @@ Guia completo: `docs/guides/task-kickoff.md`
 
 - **Nunca** commitar diretamente em `main` ou `sandbox`
 - Branch semântica a partir de `sandbox` atualizada
-- Commits: Conventional Commits + Gitmoji (✨ feat, 🐛 fix, 📝 docs, 👷 ci)
+- Commits: Conventional Commits + Gitmoji obrigatório (`type: <emoji> …`)
+- Merges: `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub sem emoji)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
 - Releases: SemVer com tags anotadas (`v0.1.0`, `v0.2.0`, etc.)
 - PR body deve referenciar issue: `Closes #N`

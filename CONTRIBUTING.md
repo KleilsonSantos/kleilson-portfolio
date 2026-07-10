@@ -23,7 +23,7 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 1. Faça fork (ou trabalhe no repo com permissão)
 2. **Kickoff canônico:** leia [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
 3. Mova a issue para **In Progress** no Project → crie branch de `sandbox`
-4. Commits com [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji
+4. Commits com [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji (`type: <emoji> …`; merges: `merge: 🔀 PR #n — branch`). Opcional: `git config core.hooksPath .githooks`
 5. `npm run typecheck`, `npm run lint` e `npm run build` antes do PR
 6. Se a mudança afetar build/test/uso/release/arquitetura → atualize docs no **mesmo PR** ([ADR-0003](./docs/adr/0003-documentation-strategy.md), [documentation-sync](./docs/guides/documentation-sync.md))
 7. Abra **PR para `sandbox`** → após merge, abra **PR `sandbox` → `main`**
