@@ -84,8 +84,9 @@ gh pr create --base sandbox --head feature/<slug> \
 1. Merge PR → `sandbox` com subject `merge: 🔀 PR #<n> — <branch>` (e delete a branch)
 2. PR `sandbox` → `main` (após CI verde)
 3. Merge em `main` com subject `merge: 🔀 PR #<n> — sandbox`
-4. **Release canônica (obrigatória quando a entrega for releaseable):** ver Passo 8
-5. Mover issue para **Done** no Project
+4. **Atualizar checkboxes da issue:** o que a PR entregou → `[x]` no corpo (`gh issue edit`). Não deixar Aceite “aberto” pedindo clique manual do humano no que já está feito. O que **não** entrou na entrega permanece `[ ]`.
+5. **Release canônica (obrigatória quando a entrega for releaseable):** ver Passo 8
+6. Mover issue para **Done** no Project (quando Aceite de implementação estiver completo)
 
 ### Passo 8 — Tag SemVer + GitHub Release (canônico)
 
