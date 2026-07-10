@@ -1,5 +1,5 @@
 /**
- * Avatar 1:1 full-bleed (fit: cover) — o círculo é só CSS.
+ * Avatar 1:1 full-bleed com headroom (padding superior) + upscale em 2 passos.
  * Uso: npm run optimize:photo
  */
 import sharp from 'sharp'
@@ -22,22 +22,40 @@ if (!srcName) {
 }
 
 const src = join(root, srcName)
+const meta = await sharp(src).metadata()
+const w = meta.width ?? 268
+const h = meta.height ?? 360
+const padTop = Math.round(h * 0.28)
+const padSide = Math.round(w * 0.08)
+
+const padded = await sharp(src)
+  .extend({
+    top: padTop,
+    bottom: Math.round(h * 0.06),
+    left: padSide,
+    right: padSide,
+    background: { r: 255, g: 255, b: 255 },
+  })
+  .toBuffer()
+
+const mid = await sharp(padded)
+  .resize(560, 560, { fit: 'cover', position: 'north', kernel: sharp.kernel.lanczos3 })
+  .toBuffer()
 
 const pipeline = () =>
-  sharp(src)
-    .resize(800, 800, {
-      fit: 'cover',
-      position: 'centre',
-      kernel: sharp.kernel.lanczos3,
-    })
-    .sharpen({ sigma: 1.1 })
-    .modulate({ brightness: 0.98, saturation: 1.05 })
+  sharp(mid)
+    .resize(800, 800, { fit: 'cover', position: 'north', kernel: sharp.kernel.lanczos3 })
+    .sharpen({ sigma: 0.85, m1: 0.65, m2: 0.25 })
+    .modulate({ brightness: 1.01, saturation: 1.05 })
 
-await pipeline().webp({ quality: 88, effort: 6 }).toFile(join(outDir, 'kleilson-avatar.webp'))
-await pipeline().jpeg({ quality: 90, mozjpeg: true }).toFile(join(outDir, 'kleilson-avatar.jpg'))
+await pipeline().webp({ quality: 90, effort: 6 }).toFile(join(outDir, 'kleilson-avatar.webp'))
+await pipeline()
+  .jpeg({ quality: 92, mozjpeg: true, chromaSubsampling: '4:4:4' })
+  .toFile(join(outDir, 'kleilson-avatar.jpg'))
 await sharp(join(outDir, 'kleilson-avatar.webp'))
-  .resize(320, 320)
-  .webp({ quality: 86 })
+  .resize(320, 320, { kernel: sharp.kernel.lanczos3 })
+  .sharpen({ sigma: 0.55 })
+  .webp({ quality: 88 })
   .toFile(join(outDir, 'kleilson-avatar-320.webp'))
 
-console.log('OK', { src: srcName, mode: 'cover 800x800' })
+console.log('OK', { src: srcName, padTop, padSide })
