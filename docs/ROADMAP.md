@@ -22,10 +22,10 @@
 ## Fase 2 — Qualidade & TypeScript (em andamento)
 
 - [x] Migração para TypeScript (strict) — issue #2 / `v0.2.0`
-- [ ] Vitest (unit) + Testing Library — issue #3
-- [ ] Playwright (E2E) — issue #4
+- [x] Vitest (unit) + Testing Library — issue #3
+- [x] Playwright (E2E) — issue #4
 - [ ] ESLint + Prettier + Husky
-- [ ] Lighthouse CI — issue #5
+- [x] Lighthouse CI — issue #5
 
 ## Fase 3 — Backend & Dados
 
