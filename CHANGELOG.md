@@ -6,6 +6,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 📝 `AGENTS.md` + `.github/copilot-instructions.md` + instructions/prompts (camada AI IDE-agnóstica)
+- 📝 Guia `docs/guides/ai-agentic.md` (contrato portável Cursor/Copilot/outros)
+- 💄 README com badges, status atualizado, Project board e seção de agentes
 - 🔧 Configuração markdownlint no repositório (zero avisos nos docs do projeto)
 - ✨ Seções Certificações, Educação e Cursos/treinamentos em Sobre (#28)
 - ✨ Dados verificáveis em `src/data/credentialsData.ts` (CV ATS + inventário Udemy)
