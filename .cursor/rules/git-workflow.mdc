@@ -34,7 +34,8 @@ Guia completo: `docs/guides/task-kickoff.md`
 - Commits: Conventional Commits + Gitmoji obrigatório (`type: <emoji> …`)
 - Merges: `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub sem emoji)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
-- Releases: SemVer com tags anotadas (`v0.1.0`, `v0.2.0`, etc.)
+- Após merge releaseable em `main`: **tag anotada SemVer + GitHub Release** (CHANGELOG e `package.json` alinhados) — ver `docs/guides/releases.md`
+- Releases: SemVer com tags anotadas (`v0.1.0`, `v0.2.0`, `v0.3.0`, …)
 - PR body deve referenciar issue: `Closes #N`
 
 ## Documentação

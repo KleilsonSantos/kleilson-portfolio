@@ -17,8 +17,12 @@ Este documento define o fluxo oficial do repositório `kleilson-portfolio`.
                             │  Pull Request #2 (após validação)
                             ▼
                     ┌───────────────┐
-                    │     main      │  ← produção + tags SemVer
-                    └───────────────┘
+                    │     main      │  ← produção
+                    └───────┬───────┘
+                            │  Passo canônico (releaseable)
+                            ▼
+              tag anotada vX.Y.Z + GitHub Release
+              (CHANGELOG + package.json alinhados)
 ```
 
 ## Branches permanentes
@@ -114,16 +118,39 @@ gh pr create --base main --head sandbox \
   --body "Release notes e checklist de validação."
 ```
 
-Merge após aprovação.
+Aguarde CI → merge com subject gitmoji:
 
-### 5. Tag de release (SemVer)
+```bash
+gh pr merge <N> --merge --subject "merge: 🔀 PR #<N> — sandbox"
+```
+
+### 5. Tag SemVer + GitHub Release (passo canônico)
+
+**Obrigatório** após merge em `main` quando a entrega for releaseable (marco de fase, feature user-facing, ou bump documental de versão). Não deixar `CHANGELOG`/`package.json` à frente da última tag.
 
 ```bash
 git checkout main && git pull origin main
-git tag -a v0.2.0 -m "v0.2.0 — descrição da release"
-git push origin v0.2.0
-gh release create v0.2.0 --title "v0.2.0" --notes "Notas da release"
+
+# Pré-requisitos no código (já mergeados):
+# - CHANGELOG: [Unreleased] promovido para [X.Y.Z] - data
+# - package.json "version": "X.Y.Z"
+
+git tag -a vX.Y.Z -m "vX.Y.Z — descrição da release"
+git push origin vX.Y.Z
+gh release create vX.Y.Z \
+  --title "vX.Y.Z — título" \
+  --notes "Ver CHANGELOG seção [X.Y.Z]."
 ```
+
+Checklist rápido:
+
+- [ ] `main` atualizada e CI verde no PR sandbox→main
+- [ ] Versão no CHANGELOG = tag = `package.json`
+- [ ] Tag **anotada** (`-a`), não leve
+- [ ] GitHub Release publicado
+- [ ] README “Última release” aponta para a tag nova
+
+Detalhes e histórico: [`releases.md`](./releases.md)
 
 ## Versionamento SemVer
 

@@ -79,11 +79,40 @@ gh pr create --base sandbox --head feature/<slug> \
 - [ ] npm run build"
 ```
 
-### Passo 7 — Ao concluir a integração
+### Passo 7 — Integração e promoção
 
-1. Merge PR → `sandbox` (Workflow: **Review** → **Done** na issue se entregue isoladamente)
-2. Quando fase/milestone completo: PR `sandbox` → `main` + tag SemVer
-3. Mover issue para **Done** no Project
+1. Merge PR → `sandbox` com subject `merge: 🔀 PR #<n> — <branch>` (e delete a branch)
+2. PR `sandbox` → `main` (após CI verde)
+3. Merge em `main` com subject `merge: 🔀 PR #<n> — sandbox`
+4. **Release canônica (obrigatória quando a entrega for releaseable):** ver Passo 8
+5. Mover issue para **Done** no Project
+
+### Passo 8 — Tag SemVer + GitHub Release (canônico)
+
+Após **todo** merge `sandbox` → `main` que conclua um marco (fase, feature user-facing, ou sync documental de versão):
+
+```bash
+git checkout main && git pull origin main
+
+# 1) CHANGELOG: promover [Unreleased] → [X.Y.Z] - YYYY-MM-DD (mesmo PR ou PR de release)
+# 2) package.json version = X.Y.Z
+# 3) Tag anotada (nunca tag leve)
+git tag -a vX.Y.Z -m "vX.Y.Z — resumo em uma linha"
+git push origin vX.Y.Z
+
+# 4) GitHub Release apontando para a seção do CHANGELOG
+gh release create vX.Y.Z \
+  --title "vX.Y.Z — título humano" \
+  --notes "Ver CHANGELOG [X.Y.Z]. Highlights: …"
+```
+
+| Quando taggear | Exemplo |
+| --- | --- |
+| Fim de fase / marco SemVer | `v0.3.0` qualidade + visual + Fastify |
+| Patch de correção em produção | `v0.3.1` |
+| Só chore interno sem impacto user-facing | Pode adiar até o próximo minor (documentar no Unreleased) |
+
+Guia completo: [`releases.md`](./releases.md)
 
 ## Exemplo real — Fase 2 / Issue #2
 
