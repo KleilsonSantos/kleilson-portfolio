@@ -33,6 +33,10 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 
 `feature/` · `fix/` · `bugfix/` · `hotfix/` · `refactor/` · `docs/` · `test/` · `chore/` · `build/` · `ci/` · `perf/` · `style/`
 
+## Agentes de IA
+
+Contrato portável (qualquer IDE/modelo): [`AGENTS.md`](./AGENTS.md) · guia [`docs/guides/ai-agentic.md`](./docs/guides/ai-agentic.md)
+
 ## Padrões
 
 - Escopo mínimo por PR
