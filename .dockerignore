@@ -1,0 +1,18 @@
+# Dependências e artefatos de build locais — imagem usa multi-stage
+node_modules
+dist
+.git
+.github
+.lighthouseci
+test-results
+e2e
+docs
+*.md
+.env
+.env.*
+!.env.example
+Captura*
+.cursor
+.vscode
+coverage
+playwright-report

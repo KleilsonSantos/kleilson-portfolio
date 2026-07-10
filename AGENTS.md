@@ -20,20 +20,21 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 ## Regras invioláveis
 
 1. **Não inventar** experiência, empresa, cargo, data, stack ou credencial.
-2. **Não alterar** fatos profissionais sem evidência no CV / GitHub / LinkedIn.
+2. **Não alterar** fatos profissionais sem evidência no CV / GitHub / LinkedIn. Conteúdo narrativo **não** vai para Supabase (ADR-0007).
 3. **Fluxo Git canônico:** Issue → Project In Progress → `feature/*` a partir de `sandbox` → PR → `sandbox` → PR → `main` → tag SemVer.
 4. **Não fazer push direto** em `main` ou `sandbox`.
 5. **Docs sincronizados** com o código (ADR-0003): README, CHANGELOG, ADRs quando a decisão mudar.
-6. **Visual:** seguir ADR-0004 (dark-first, Sora + IBM Plex Sans, accent teal). Evitar look genérico “AI default” (roxo/indigo, Inter, glow excessivo).
-7. **TypeScript strict** — sem `any` desnecessário; tipar props e dados.
-8. **Commits** só quando o humano pedir; mensagens `type: <gitmoji> …` (obrigatório). Merges: `merge: 🔀 PR #n — branch`.
-9. **Releases:** após merge releaseable `sandbox` → `main`, alinhar CHANGELOG + `package.json` e publicar tag anotada + GitHub Release (`docs/guides/releases.md`). Não deixar docs/versão à frente da última tag.
+6. **Não reintroduzir** admin JWT/`localStorage`/Firebase do portfólio antigo; editorial futuro só Git-backed (ADR-0007).
+7. **Visual:** seguir ADR-0004 (dark-first, Sora + IBM Plex Sans, accent teal). Evitar look genérico “AI default” (roxo/indigo, Inter, glow excessivo).
+8. **TypeScript strict** — sem `any` desnecessário; tipar props e dados.
+9. **Commits** só quando o humano pedir; mensagens `type: <gitmoji> …` (obrigatório). Merges: `merge: 🔀 PR #n — branch`.
+10. **Releases:** após merge releaseable `sandbox` → `main`, alinhar CHANGELOG + `package.json` e publicar tag anotada + GitHub Release (`docs/guides/releases.md`). Não deixar docs/versão à frente da última tag.
 
 ## Escopo típico de mudanças
 
 | Área | Onde | Cuidado |
 | --- | --- | --- |
-| Conteúdo do site | `src/data/*.ts` | Só fatos verificáveis |
+| Conteúdo do site | `src/data/*.ts` | Só fatos verificáveis; fluxo ADR-0007 / `docs/guides/content.md` |
 | UI / CSS | `src/index.css`, pages, components | ADR-0004 |
 | Rotas | `src/App.tsx`, `src/pages/` | Manter 404 e meta SEO |
 | Docs | `docs/`, `README.md`, `CHANGELOG.md` | Keep a Changelog |
@@ -47,6 +48,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 - Adicionar dependências sem necessidade clara
 - Bypass de hooks Git (`--no-verify`)
 - Force-push em `main` / `sandbox`
+- Reintroduzir painel admin com JWT/`localStorage` ou conteúdo narrativo no Supabase (ADR-0007)
 
 ## Checklist antes de concluir uma tarefa
 

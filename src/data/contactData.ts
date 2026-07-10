@@ -34,6 +34,16 @@ export const CONTACT_INFO: ContactInfo[] = [
     icon: 'phone',
   },
   {
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    value: PROFILE.phone,
+    detail: 'Mensagem rápida para oportunidades e projetos',
+    href: `https://wa.me/5575991610301?text=${encodeURIComponent(
+      'Olá Kleilson, gostaria de conversar sobre uma oportunidade profissional.',
+    )}`,
+    icon: 'whatsapp',
+  },
+  {
     id: 'location',
     label: 'Localização',
     value: PROFILE.location,

@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE, SUMMARY, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
+import { ProfilePhoto } from '../components/ProfilePhoto'
 
 function Home() {
+  const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/profile/kleilson-avatar.webp`
+
   useDocumentMeta({
     title: `${PROFILE.name} | ${PROFILE.title}`,
     description: SUMMARY,
     canonical: PROFILE.siteUrl,
+    ogImage,
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -14,6 +18,7 @@ function Home() {
       jobTitle: PROFILE.title,
       email: PROFILE.email,
       url: PROFILE.siteUrl,
+      image: ogImage,
       sameAs: [PROFILE.github, PROFILE.linkedin],
       address: {
         '@type': 'PostalAddress',
@@ -27,19 +32,24 @@ function Home() {
   return (
     <div className="page">
       <header className="hero hero--home">
-        <p className="hero__brand">{PROFILE.shortName}</p>
-        <h1>{PROFILE.headline}</h1>
-        <p className="hero__lead">{PROFILE.title}</p>
-        <p className="hero__meta">
-          {PROFILE.location} · {PROFILE.remote} · {PROFILE.certification}
-        </p>
-        <div className="cta-row">
-          <Link to="/projetos" className="button-link" viewTransition>
-            Ver projetos
-          </Link>
-          <Link to="/contatos" className="button-link secondary" viewTransition>
-            Entrar em contato
-          </Link>
+        <div className="hero__intro">
+          <ProfilePhoto size="lg" className="hero__photo" />
+          <div className="hero__copy">
+            <p className="hero__brand">{PROFILE.shortName}</p>
+            <h1>{PROFILE.headline}</h1>
+            <p className="hero__lead">{PROFILE.title}</p>
+            <p className="hero__meta">
+              {PROFILE.location} · {PROFILE.remote} · {PROFILE.certification}
+            </p>
+            <div className="cta-row">
+              <Link to="/projetos" className="button-link" viewTransition>
+                Ver projetos
+              </Link>
+              <Link to="/contatos" className="button-link secondary" viewTransition>
+                Entrar em contato
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
 

@@ -1,7 +1,12 @@
 import type { ContactApiError, ContactApiResponse, ContactForm } from '../types'
 
+function contactEndpoint(): string {
+  const base = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, '')
+  return base ? `${base}/api/contact` : '/api/contact'
+}
+
 export async function sendContactForm(data: ContactForm): Promise<ContactApiResponse> {
-  const response = await fetch('/api/contact', {
+  const response = await fetch(contactEndpoint(), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
