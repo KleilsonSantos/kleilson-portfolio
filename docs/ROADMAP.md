@@ -28,10 +28,10 @@
 - [x] Lighthouse CI — issue #5
 - [x] Direção visual ADR-0004 (V1–V5) + View Transitions / tema (#52)
 
-## Fase 3 — Backend & Dados (em andamento · `v0.3.0+`)
+## Fase 3 — Backend & Dados ✅ (`v0.3.0` → `v0.4.0`)
 
 - [x] API Fastify (contato, health) — issue #6 / ADR-0005
-- [ ] PostgreSQL via Supabase + Drizzle ORM — issue #7
+- [x] PostgreSQL via Supabase + Drizzle ORM — issue #7 / ADR-0006
 - [x] Rate limiting e validação server-side (na API Fastify #6)
 
 ## Fase 4 — Observabilidade & Deploy

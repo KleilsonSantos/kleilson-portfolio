@@ -1,7 +1,7 @@
 /** @vitest-environment node */
 import { afterEach, describe, expect, it } from 'vitest'
 import { buildApp } from './app'
-import { clearContacts } from './store/memory'
+import { clearContacts } from './store/index'
 
 describe('Fastify API', () => {
   afterEach(() => {

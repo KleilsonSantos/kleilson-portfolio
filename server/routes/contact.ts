@@ -4,7 +4,7 @@ import {
   contactBodySchema,
   type ContactPayload,
 } from '../schemas/contact'
-import { saveContact } from '../store/memory'
+import { saveContact } from '../store/index'
 
 function sanitize(value: string): string {
   const trimmed = value.trim()
@@ -55,7 +55,7 @@ export const contactRoutes: FastifyPluginAsync = async (app) => {
         return reply.code(400).send({ message: businessError })
       }
 
-      const saved = saveContact(body)
+      const saved = await saveContact(body)
       request.log.info({ contactId: saved.id }, 'contact message accepted')
       return { success: true, id: saved.id }
     },

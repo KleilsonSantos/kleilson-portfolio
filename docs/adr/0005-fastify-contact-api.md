@@ -27,7 +27,7 @@ O formulário de contato usa mock no middleware Vite. A Fase 3 exige API real (c
 
 - Código em `server/` (Fastify 5 + `@fastify/cors` + `@fastify/helmet` + `@fastify/rate-limit`)
 - Rotas: `GET /health`, `POST /api/contact`
-- Persistência temporária em memória (substituída em #7)
+- Persistência temporária em memória (substituída em #7 / ADR-0006)
 - Dev integrado: `API_PROXY=1` + `npm run server:dev` + `npm run dev`
 - Preview/Playwright: mock Vite permanece (sem servidor)
 
