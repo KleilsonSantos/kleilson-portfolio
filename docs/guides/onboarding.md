@@ -40,4 +40,4 @@ npm run dev
 - Release: **`v0.2.2`** (+ Unreleased: visual ADR-0004, Playwright, Lighthouse, camada AI)
 - Project: [kleilson-portfolio #6](https://github.com/users/KleilsonSantos/projects/6)
 
-Consulte [ROADMAP.md](../../ROADMAP.md) e aguarde validação antes de iniciar backend/monorepo.
+Consulte [ROADMAP.md](../ROADMAP.md) e aguarde validação antes de iniciar backend/monorepo.

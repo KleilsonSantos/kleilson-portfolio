@@ -1,0 +1,11 @@
+---
+description: TypeScript/React — aponta para instruções canônicas
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TypeScript / React
+
+- Seguir `AGENTS.md` e ADR-0004 (visual).
+- Detalhe path-scoped (Copilot): `.github/instructions/typescript-react.instructions.md`
+- Strict TS; dados profissionais só em `src/data/`.

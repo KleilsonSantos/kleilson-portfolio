@@ -1,0 +1,10 @@
+---
+description: Prompt task-planner (manual @) — não duplica .github/prompts
+alwaysApply: false
+---
+
+# Task planner
+
+Usar o prompt canônico (não reescrever aqui):
+
+@.github/prompts/task-planner.prompt.md

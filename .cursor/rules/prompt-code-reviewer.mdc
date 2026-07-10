@@ -1,0 +1,10 @@
+---
+description: Prompt code-reviewer (manual @) — não duplica .github/prompts
+alwaysApply: false
+---
+
+# Code reviewer
+
+Usar o prompt canônico:
+
+@.github/prompts/code-reviewer.prompt.md
