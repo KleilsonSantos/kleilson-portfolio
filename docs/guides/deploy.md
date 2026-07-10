@@ -28,18 +28,39 @@ Conteúdo do site continua em Git (`src/data/*`, ADR-0007). Só mensagens de con
 
 ---
 
-## Passo 1 — Conectar o GitHub ao Cloudflare Pages
+## Passo 1 — Deploy automático do SPA (escolha uma)
+
+Há **duas** formas equivalentes. A **B** já está no repo (GitHub Actions).
+
+### Opção A — Connect to Git (dashboard Cloudflare)
 
 Docs: [Git integration](https://developers.cloudflare.com/pages/get-started/git-integration/).
 
-1. Dashboard → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
-2. Autorize o Cloudflare no GitHub (conta / org `KleilsonSantos`).
-3. Selecione o repositório **`kleilson-portfolio`**.
-4. **Install & Authorize** → **Begin setup**.
+1. Dashboard → **Workers & Pages** → projeto **`kleilson-portfolio`** (ou Create → Pages → **Connect to Git**).
+2. Autorize o Cloudflare no GitHub (`KleilsonSantos` / repo **`kleilson-portfolio`**).
+3. Production branch: **`main`** · Build: `npm run build` · Output: `dist` · `NODE_VERSION=22`.
+4. **Save and Deploy**.
+
+Se o projeto já existia via upload manual, use **Settings → Builds → Connect to Git** (ou migre para um projeto novo e aponte o domínio).
+
+### Opção B — GitHub Actions (recomendado se o projeto já é “Direct Upload”)
+
+Workflow: [`.github/workflows/deploy-pages.yml`](../../.github/workflows/deploy-pages.yml).
+
+1. Crie um token em [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens) com:
+   - **Account** → Cloudflare Pages → Edit
+   - **Account** → Account Settings → Read
+2. No GitHub: repo → **Settings** → **Secrets and variables** → **Actions** → New repository secret:
+   - `CLOUDFLARE_API_TOKEN` = o token
+   - `CLOUDFLARE_ACCOUNT_ID` = id da conta (Overview do dashboard, barra lateral)
+3. Merge em **`main`** (ou **Actions** → Deploy Cloudflare Pages → **Run workflow**).
+4. Cada push em `main` publica `https://kleilson-portfolio.pages.dev`.
+
+**Não use A e B ao mesmo tempo** no mesmo projeto (dois deploys competindo). Escolha um.
 
 ---
 
-## Passo 2 — Configurar o build do SPA (Pages)
+## Passo 2 — Configurar o build do SPA (só se usar Opção A)
 
 Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/).
 
@@ -58,18 +79,19 @@ Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/dep
 - Deixe `VITE_API_BASE_URL` **vazio** enquanto a API não existir (o formulário de contato no Pages puro ainda não gravará no banco — esperado até o Passo 4).
 
 5. Clique **Save and Deploy**.
-6. Aguarde o build. Anote a URL: `https://kleilson-portfolio-XXXX.pages.dev` (ou o nome que escolheu).
+6. Aguarde o build. Anote a URL: `https://kleilson-portfolio.pages.dev` (ou o nome que escolheu).
 
 **SPA:** não crie `public/404.html` — sem esse arquivo o Pages trata o site como SPA ([Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/)).
 
 ### Previews de PR
 
-Branches ≠ `main` geram **preview deployments** automaticamente. Útil para validar PRs `feature/* → sandbox → main`.
+- **Opção A:** branches ≠ `main` geram preview deployments automaticamente.
+- **Opção B:** só produção em `main` (previews podem ser adicionados depois).
 
 ### Se o build falhar
 
-- Confira Node: em Settings → Environment variables, pode definir `NODE_VERSION=22`.
-- Logs do build no dashboard mostram `npm ci` / `tsc` / `vite build`.
+- Confira Node: `NODE_VERSION=22` (A) ou o workflow já usa Node 22 (B).
+- Logs: dashboard Cloudflare (A) ou aba **Actions** no GitHub (B).
 
 ---
 
@@ -181,24 +203,25 @@ Só depois do smoke OK:
 
 ## O que você faz agora vs o que o código ainda entrega
 
-| Agora (você no dashboard) | Depois (código / Wrangler no PR #8) |
-|---------------------------|-------------------------------------|
-| Conta Cloudflare | `wrangler.toml` / Worker proxy do Container |
-| Projeto **Pages** + build `main` | Secrets via `wrangler secret` |
-| Anotar URL `*.pages.dev` | Deploy `npx wrangler deploy` da API |
-| | Ligar `VITE_API_BASE_URL` + CORS |
+| Agora (você — 1×) | Automático / código |
+|-------------------|---------------------|
+| Secrets GitHub `CLOUDFLARE_*` **ou** Connect to Git | Workflow `deploy-pages.yml` em cada push `main` |
+| Docker Desktop + `wrangler deploy` da API (#8) | `Dockerfile` + ADR-0008 |
+| Secrets Worker: `DATABASE_URL`, `CORS_ORIGIN` | Contato → Supabase |
+| (Opcional) `VITE_API_BASE_URL` no Pages | Front fala com a API |
 
-**Comece pelo Passo 1–2** (Pages). A API (Passo 3) depende do Worker Wrangler que ainda completa o #8 no repositório.
+**Site:** Opção B (Actions) ou A (Connect to Git). **Não os dois.**  
+**Supabase:** só depois da API em produção — não é disparado pelo merge sozinho.
 
 ---
 
 ## Checklist (#8)
 
-- [ ] Pages build verde a partir de `main`
+- [ ] Pages auto-deploy verde a partir de `main` (Actions **ou** Connect to Git)
 - [ ] API `/health` com `storage: postgres`
 - [ ] Contato grava no Supabase
 - [ ] README / ROADMAP / ADR-0008
-- [ ] Secrets só no Cloudflare
+- [ ] Secrets só no Cloudflare / GitHub Actions (nunca no Git)
 
 ## Relacionados
 
