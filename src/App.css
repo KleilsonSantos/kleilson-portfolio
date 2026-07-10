@@ -297,16 +297,16 @@
   box-shadow:
     0 0 0 3px color-mix(in srgb, var(--color-primary) 12%, transparent),
     0 12px 32px color-mix(in srgb, #000 35%, transparent);
-  /* Anel branco fino entre a foto e a borda teal */
   background: #fff;
   overflow: hidden;
   isolation: isolate;
 }
 
+/* Foto full-bleed no círculo — sem anel branco grosso */
 .profile-photo picture {
   display: block;
-  width: calc(100% - 6px);
-  height: calc(100% - 6px);
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -316,7 +316,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 12%;
   border-radius: 50%;
 }
 
@@ -325,19 +325,9 @@
   height: 4.5rem;
 }
 
-.profile-photo--sm picture {
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
-}
-
 .profile-photo--md {
   width: 7rem;
   height: 7rem;
-}
-
-.profile-photo--md picture {
-  width: calc(100% - 5px);
-  height: calc(100% - 5px);
 }
 
 .profile-photo--lg {
@@ -349,11 +339,6 @@
   .profile-photo--lg {
     width: 11.5rem;
     height: 11.5rem;
-  }
-
-  .profile-photo--lg picture {
-    width: calc(100% - 6px);
-    height: calc(100% - 6px);
   }
 }
 
