@@ -48,7 +48,8 @@ npm run server:dev
 - Release: **`v0.4.0`**
 - Frontend: React 19 + Vite 8 + TypeScript strict + visual ADR-0004
 - Qualidade: oxlint + Vitest + Playwright + Lighthouse CI
-- API: Fastify em `server/` (store em memória até #7)
+- API: Fastify em `server/` + Postgres (Supabase/Drizzle) quando `DATABASE_URL` — ADR-0005/0006
+- Observabilidade: ver [`observability.md`](./observability.md) · próximo foco **#8** Cloudflare
 - Project: [kleilson-portfolio #6](https://github.com/users/KleilsonSantos/projects/6)
 
 Consulte [ROADMAP.md](../ROADMAP.md).
