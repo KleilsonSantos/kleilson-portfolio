@@ -183,7 +183,7 @@ Manter e formalizar (já parcialmente existente):
 ├── SECURITY.md            # OpenSSF: vulnerability_report_process
 ├── CHANGELOG.md           # Keep a Changelog + OpenSSF release_notes
 ├── CODE_OF_CONDUCT.md     # Governança comunitária (consenso OSS)
-├── ROADMAP.md             # OpenSSF silver sugere roadmap (documentation_roadmap)
+├── docs/ROADMAP.md        # OpenSSF silver sugere roadmap (documentation_roadmap)
 └── docs/
     ├── adr/               # Nygard/MADR — decisões arquiteturais
     ├── architecture/      # Diátaxis: Explanation + Reference de sistema

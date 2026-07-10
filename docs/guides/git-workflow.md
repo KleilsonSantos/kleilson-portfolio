@@ -143,4 +143,4 @@ Os commits iniciais da Fase 1 foram feitos diretamente em `main` durante o boots
 - [task-kickoff.md](./task-kickoff.md) — **kickoff canônico de tarefas**
 - [ADR-0002](../adr/0002-git-branching-strategy.md)
 - [CONTRIBUTING.md](../../CONTRIBUTING.md)
-- [ROADMAP.md](../../ROADMAP.md)
+- [ROADMAP.md](../ROADMAP.md)

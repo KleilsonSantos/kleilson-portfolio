@@ -1,0 +1,10 @@
+---
+description: Prompt docs-writer (manual @) — não duplica .github/prompts
+alwaysApply: false
+---
+
+# Docs writer
+
+Usar o prompt canônico:
+
+@.github/prompts/docs-writer.prompt.md

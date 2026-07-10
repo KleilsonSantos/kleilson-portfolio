@@ -85,11 +85,13 @@ src/
 docs/
 ├── adr/          # Architecture Decision Records
 ├── architecture/ # Visão arquitetural
-└── guides/       # Onboarding, git-workflow, AI agents, releases
+├── guides/       # Onboarding, git-workflow, AI agents, releases
+└── ROADMAP.md    # Fases / roadmap
 .github/
 ├── copilot-instructions.md
-├── instructions/ # Regras por path (Copilot / agentes)
-└── prompts/      # Prompts reutilizáveis
+├── instructions/ # Regras por path (Copilot)
+└── prompts/      # Prompts canônicos (também @ no Cursor)
+.cursor/rules/    # Projeção fina Cursor (ponteiros; sem cópia)
 AGENTS.md         # Contrato único para qualquer agente de IA
 ```
 
@@ -113,7 +115,7 @@ Regras portáveis (independentes de IDE e modelo):
 
 - [`AGENTS.md`](./AGENTS.md) — contrato canônico
 - [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) — GitHub Copilot
-- [`.cursor/rules/`](./.cursor/rules/) — projeção Cursor
+- [`.cursor/rules/`](./.cursor/rules/) — projeção Cursor (ponteiros; sem duplicar prompts)
 - [`docs/guides/ai-agentic.md`](./docs/guides/ai-agentic.md) — como usar
 
 ---
