@@ -1,4 +1,4 @@
-# Arquitetura — Visão Geral (atual: v0.3.0)
+# Arquitetura — Visão Geral (atual: v0.4.0)
 
 ## Diagrama lógico
 
@@ -26,11 +26,12 @@
    /api/contact         │  Fastify (server/)│
                         │  GET  /health     │
                         │  POST /api/contact│
-                        │  memory store     │
+                        │  Drizzle store    │
                         └────────┬─────────┘
-                                 │ (#7 planejado)
+                                 │ DATABASE_URL
                                  ▼
                            Supabase/Postgres
+                           (contact_messages)
 ```
 
 ## Stack vigente
@@ -44,7 +45,7 @@
 | Qualidade | oxlint + Vitest + Playwright + Lighthouse + CodeQL |
 | Contato (dev/preview) | Mock Vite `/api/contact` |
 | Contato (API) | Fastify 5 em `server/` (ADR-0005) |
-| Persistência | Memória (até #7) |
+| Persistência | Supabase Postgres + Drizzle (ADR-0006); memória em testes |
 
 ## Princípios
 

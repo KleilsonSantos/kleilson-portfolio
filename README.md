@@ -18,7 +18,7 @@
 | --- | --- |
 | Branch de integração | `sandbox` |
 | Produção | `main` + tags SemVer |
-| Última release | `v0.3.0` |
+| Última release | `v0.4.0` |
 | Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |

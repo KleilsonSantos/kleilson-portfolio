@@ -162,7 +162,8 @@ Detalhes e histórico: [`releases.md`](./releases.md)
 | `v0.2.1` | Sync de documentação | ✅ Publicada |
 | `v0.2.2` | ADR-0003 documentação | ✅ Publicada |
 | `v0.3.0` | Qualidade + visual + AI + Fastify | ✅ Publicada |
-| `v0.3.0+` | Testes / backend / deploy | 📋 Planejada |
+| `v0.4.0` | Fase 3 — Supabase + Drizzle (#7) | ✅ Publicada |
+| `v0.4.0+` | Deploy / observabilidade (#8/#9) | 📋 Planejada |
 
 ## O que NÃO fazer
 
