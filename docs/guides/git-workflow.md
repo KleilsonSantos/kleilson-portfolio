@@ -133,6 +133,8 @@ gh release create v0.2.0 --title "v0.2.0" --notes "Notas da release"
 | `v0.1.1` | Git workflow enterprise | ✅ Publicada |
 | `v0.2.0` | Fase 2 — TypeScript strict | ✅ Publicada |
 | `v0.2.1` | Sync de documentação | ✅ Publicada |
+| `v0.2.2` | ADR-0003 documentação | ✅ Publicada |
+| `v0.3.0` | Qualidade + visual + AI + Fastify | ✅ Publicada |
 | `v0.3.0+` | Testes / backend / deploy | 📋 Planejada |
 
 ## O que NÃO fazer

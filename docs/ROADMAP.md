@@ -19,15 +19,16 @@
 - [x] Tags SemVer e GitHub Releases
 - [x] Kickoff canônico (`docs/guides/task-kickoff.md`)
 
-## Fase 2 — Qualidade & TypeScript (em andamento)
+## Fase 2 — Qualidade & TypeScript ✅ (`v0.2.0` → `v0.3.0`)
 
 - [x] Migração para TypeScript (strict) — issue #2 / `v0.2.0`
 - [x] Vitest (unit) + Testing Library — issue #3
 - [x] Playwright (E2E) — issue #4
-- [ ] ESLint + Prettier + Husky
+- [x] Lint + hooks: **oxlint** + `.githooks` + CI `commitlint` (substitui o item original “ESLint + Prettier + Husky” sem redundância)
 - [x] Lighthouse CI — issue #5
+- [x] Direção visual ADR-0004 (V1–V5) + View Transitions / tema (#52)
 
-## Fase 3 — Backend & Dados
+## Fase 3 — Backend & Dados (em andamento · `v0.3.0+`)
 
 - [x] API Fastify (contato, health) — issue #6 / ADR-0005
 - [ ] PostgreSQL via Supabase + Drizzle ORM — issue #7
@@ -37,7 +38,7 @@
 
 - [ ] Sentry (errors) — issue #9
 - [ ] Analytics (Umami/Plausible)
-- [ ] Health checks e structured logging
+- [x] Health check HTTP (`GET /health` na API) — logging estruturado ainda pendente
 - [ ] Deploy: Cloudflare Pages + API — issue #8
 - [ ] Substituição gradual de `kleilsonsantos.github.io`
 
@@ -45,13 +46,10 @@
 
 - [ ] Turborepo + pnpm workspaces — issue #10
 - [x] CodeQL + Dependabot (básico já ativo)
-- [x] ADRs iniciais (0001, 0002, 0003 — documentação evidence-based)
+- [x] ADRs (0001–0005)
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
-- [x] Fundação visual V1 (ADR-0004 — tokens, tipografia, nav, hero)
-- [x] Projetos V2 (featured hierarchy + storytelling)
-- [x] Motion V3 (fade-up + hovers + reduced-motion)
-- [x] Cards interativos + polish de componentes (V4 visual)
+- [x] Fundação visual V1–V5 (ADR-0004)
 - [x] Playwright E2E smoke (#4)
 - [x] Lighthouse CI scaffold (#5)
-- [x] View Transitions + toggle de tema (V5 — #52)
+- [x] Camada AI portável (`AGENTS.md` / Copilot / Cursor pointers)

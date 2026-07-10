@@ -6,8 +6,15 @@
 git clone https://github.com/KleilsonSantos/kleilson-portfolio.git
 cd kleilson-portfolio
 git checkout sandbox
-npm install
+npm ci
 npm run dev
+```
+
+API local (opcional):
+
+```bash
+npm run server:dev
+# ou frontend + API: npm run dev:full
 ```
 
 ## 2. Estrutura mental
@@ -15,6 +22,7 @@ npm run dev
 - **Páginas** em `src/pages/` — uma rota por arquivo (`.tsx`)
 - **Dados** em `src/data/` — única fonte de conteúdo estático (`.ts`)
 - **Tipos** em `src/types/` — contratos TypeScript compartilhados
+- **API** em `server/` — Fastify (`/health`, `/api/contact`) — [api.md](./api.md)
 - **Decisões** em `docs/adr/` — leia antes de mudanças grandes
 - **IA** em [`AGENTS.md`](../../AGENTS.md) + [`.cursor/rules/`](../../.cursor/rules/) — ver [`ai-agentic.md`](./ai-agentic.md)
 - **Kickoff** em [`task-kickoff.md`](./task-kickoff.md) — procedimento obrigatório
@@ -25,9 +33,9 @@ npm run dev
 1. Mover issue para **In Progress** no GitHub Project
 2. Branch a partir de **`sandbox`** (nunca de `main`)
 3. Implementar com escopo mínimo
-4. `npm run typecheck && npm run lint && npm run build`
+4. `npm run typecheck && npm run typecheck:server && npm run lint && npm run test && npm run build`
 5. PR para `sandbox` → após merge, PR `sandbox` → `main`
-6. CI deve passar (typecheck + lint + build)
+6. CI deve passar
 
 ## 4. Atualizar conteúdo profissional
 
@@ -37,7 +45,10 @@ npm run dev
 
 ## 5. Status atual
 
-- Release: **`v0.2.2`** (+ Unreleased: visual ADR-0004, Playwright, Lighthouse, camada AI)
+- Release: **`v0.3.0`**
+- Frontend: React 19 + Vite 8 + TypeScript strict + visual ADR-0004
+- Qualidade: oxlint + Vitest + Playwright + Lighthouse CI
+- API: Fastify em `server/` (store em memória até #7)
 - Project: [kleilson-portfolio #6](https://github.com/users/KleilsonSantos/projects/6)
 
-Consulte [ROADMAP.md](../ROADMAP.md) e aguarde validação antes de iniciar backend/monorepo.
+Consulte [ROADMAP.md](../ROADMAP.md).
