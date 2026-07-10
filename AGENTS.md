@@ -55,6 +55,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 - [ ] CHANGELOG `[Unreleased]` atualizado se houver mudança user-facing?
 - [ ] Docs/ADR atualizados se houve decisão arquitetural?
 - [ ] PR segue o fluxo `feature → sandbox → main`?
+- [ ] **Checkboxes da issue:** itens de Aceite **cumpridos** → `gh issue edit` com `[x]` (não deixar `[ ]` esperando o humano). Itens **não** feitos permanecem `[ ]`. Separar “Planejamento/docs” de “Aceite/implementação” quando a issue misturar os dois.
 
 ## Referências rápidas
 
