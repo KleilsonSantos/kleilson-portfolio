@@ -1,5 +1,5 @@
 /**
- * Gera assets de perfil 1:1 a partir da captura retangular (sem máscara circular).
+ * Gera avatar 1:1 centrado (canvas quadrado) a partir da captura retangular.
  * Uso: npm run optimize:photo
  * Não versionar capturas cruas — só public/images/profile/*
  */
@@ -11,7 +11,6 @@ const root = process.cwd()
 const outDir = join(root, 'public/images/profile')
 mkdirSync(outDir, { recursive: true })
 
-/** Preferir retangular limpa; circular só como fallback. */
 const candidates = [
   'Captura de Tela 2026-07-10 às 15.07.07.png',
   'Captura de Tela 2026-07-10 às 15.10.47.png',
@@ -24,20 +23,27 @@ if (!srcName) {
 }
 
 const src = join(root, srcName)
-const meta = await sharp(src).metadata()
-const w = meta.width ?? 268
-const h = meta.height ?? 360
-const side = Math.min(w, h)
-const left = Math.round((w - side) / 2)
-/** Leve bias para baixo do topo: preserva cabeça no círculo CSS */
-const top = Math.max(0, Math.round((h - side) * 0.12))
+const canvas = 800
+
+const sized = await sharp(src)
+  .resize({ width: 700, height: 700, fit: 'inside', kernel: sharp.kernel.lanczos3 })
+  .toBuffer({ resolveWithObject: true })
+
+// Rosto na fonte pende à direita → offset óptico à esquerda
+const left = Math.round((canvas - sized.info.width) / 2) - 36
+const top = Math.round((canvas - sized.info.height) / 2) - 8
 
 const pipeline = () =>
-  sharp(src)
-    .extract({ left, top, width: side, height: side })
-    .resize(800, 800, { kernel: sharp.kernel.lanczos3 })
-    .sharpen({ sigma: 1.1, m1: 1.0, m2: 0.5 })
-    .modulate({ brightness: 0.98, saturation: 1.05 })
+  sharp({
+    create: {
+      width: canvas,
+      height: canvas,
+      channels: 3,
+      background: { r: 245, g: 247, b: 250 },
+    },
+  })
+    .composite([{ input: sized.data, left: Math.max(0, left), top: Math.max(0, top) }])
+    .sharpen({ sigma: 1.0 })
 
 await pipeline().webp({ quality: 88, effort: 6 }).toFile(join(outDir, 'kleilson-avatar.webp'))
 await pipeline().jpeg({ quality: 90, mozjpeg: true }).toFile(join(outDir, 'kleilson-avatar.jpg'))
@@ -46,4 +52,4 @@ await sharp(join(outDir, 'kleilson-avatar.webp'))
   .webp({ quality: 86 })
   .toFile(join(outDir, 'kleilson-avatar-320.webp'))
 
-console.log('OK', { src: srcName, crop: { left, top, side }, out: outDir })
+console.log('OK', { src: srcName, composite: { left, top, w: sized.info.width, h: sized.info.height } })
