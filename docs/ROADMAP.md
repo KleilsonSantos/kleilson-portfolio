@@ -36,17 +36,21 @@
 
 ## Fase 4 — Observabilidade & Deploy
 
-- [ ] Sentry (errors) — issue #9
-- [ ] Analytics (Umami/Plausible)
-- [x] Health check HTTP (`GET /health` na API) — logging estruturado ainda pendente
-- [ ] Deploy: Cloudflare Pages + API — issue #8
+Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`guides/observability.md`](./guides/observability.md).
+
+- [ ] Deploy: Cloudflare Pages + API — issue #8 ← **foco atual**
 - [ ] Substituição gradual de `kleilsonsantos.github.io`
+- [ ] Sentry (errors) + logs estruturados API — issue #9
+- [ ] Analytics privacy-first (Umami/Plausible) — issue #65
+- [x] Health check HTTP (`GET /health` na API)
+- [ ] Matriz MCP (Cursor) — issue #62
+- [ ] Grafana Cloud (métricas) — opcional, só com tráfego real (#62)
 
 ## Fase 5 — Monorepo & Enterprise
 
 - [ ] Turborepo + pnpm workspaces — issue #10
 - [x] CodeQL + Dependabot (básico já ativo)
-- [x] ADRs (0001–0005)
+- [x] ADRs (0001–0006)
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
 - [x] Fundação visual V1–V5 (ADR-0004)

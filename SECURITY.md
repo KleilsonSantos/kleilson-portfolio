@@ -4,7 +4,9 @@
 
 | Versão | Suportada |
 |--------|-----------|
-| 0.1.x  | ✅        |
+| 0.4.x  | ✅        |
+| 0.3.x  | ✅ (segurança) |
+| < 0.3  | ❌        |
 
 ## Reportar vulnerabilidade
 
@@ -24,11 +26,14 @@ Responderemos em até 5 dias úteis.
 ## Escopo
 
 - Código deste repositório
-- Formulário de contato e APIs associadas (quando em produção)
+- Formulário de contato e API Fastify (`server/`)
 - Pipeline CI/CD
+- Dados em Postgres (Supabase) associados ao contato
 
 ## Práticas adotadas
 
 - Sanitização de inputs no frontend
-- Validação server-side (planejada Fase 3)
-- Dependabot e CodeQL (planejados Fase 2+)
+- Validação + rate limit server-side (Fastify)
+- RLS + revoke em `contact_messages` (Data API pública bloqueada) — ADR-0006
+- Segredos só em `.env` local / secrets do host (nunca `VITE_` para service_role)
+- Dependabot e CodeQL ativos no GitHub

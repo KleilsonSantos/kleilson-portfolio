@@ -23,6 +23,9 @@
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
 | API | Fastify em `server/` (`/health`, `/api/contact`) — ADR-0005 |
+| Persistência | Supabase Postgres + Drizzle — ADR-0006 (`DATABASE_URL`) |
+| Deploy | GitHub Pages (`gh-pages`) — produção Cloudflare em #8 |
+| Observabilidade | [`docs/guides/observability.md`](./docs/guides/observability.md) |
 
 ---
 
@@ -47,7 +50,8 @@ Portfólio pessoal com disciplina de engenharia de produto:
 | Linguagem | TypeScript 5.9 (strict) |
 | Qualidade | oxlint + Vitest + Playwright + Lighthouse CI |
 | API | Fastify 5 (`server/`) |
-| Deploy | GitHub Pages (`gh-pages`) — API em deploy futuro (#8) |
+| Dados | Supabase Postgres + Drizzle ORM |
+| Deploy | GitHub Pages (`gh-pages`) — API/site unificados em #8 (Cloudflare) |
 | Docs | Markdown + ADRs em `docs/` |
 
 ---
@@ -98,14 +102,16 @@ docs/
 └── prompts/      # Prompts canônicos (também @ no Cursor)
 .cursor/rules/    # Projeção fina Cursor (ponteiros; sem cópia)
 AGENTS.md         # Contrato único para qualquer agente de IA
-server/           # API Fastify (health + contact) — ADR-0005
+server/           # API Fastify + Drizzle (ADR-0005 / ADR-0006)
 ```
 
 ---
 
 ## API
 
-Ver [`docs/guides/api.md`](./docs/guides/api.md) e [ADR-0005](./docs/adr/0005-fastify-contact-api.md).
+Ver [`docs/guides/api.md`](./docs/guides/api.md), [ADR-0005](./docs/adr/0005-fastify-contact-api.md) e [ADR-0006](./docs/adr/0006-supabase-drizzle-contact.md).
+
+Setup local: `cp .env.example .env` (ver comentários no arquivo).
 
 ---
 

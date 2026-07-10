@@ -108,8 +108,8 @@ gh release create vX.Y.Z \
 
 | Quando taggear | Exemplo |
 | --- | --- |
-| Fim de fase / marco SemVer | `v0.3.0` qualidade + visual + Fastify |
-| Patch de correção em produção | `v0.3.1` |
+| Fim de fase / marco SemVer | `v0.4.0` persistência Supabase; `v0.3.0` qualidade + Fastify |
+| Patch de correção em produção | `v0.4.1` |
 | Só chore interno sem impacto user-facing | Pode adiar até o próximo minor (documentar no Unreleased) |
 
 Guia completo: [`releases.md`](./releases.md)
