@@ -1,4 +1,16 @@
-# Guia — Testes E2E (Playwright) e Lighthouse CI
+# Guia — Testes (unit, E2E, Lighthouse)
+
+## Vitest + Testing Library (#3)
+
+Config: `vite.config.ts` (`test`) · setup: `src/test/setup.ts`  
+Specs: `src/**/*.{test,spec}.{ts,tsx}`
+
+```bash
+npm run test
+npm run test:watch
+```
+
+Cobertura inicial: `validation`, `sanitize` e componente `Footer`.
 
 ## Playwright (#4)
 
@@ -25,4 +37,4 @@ Asserts iniciais são conservadores (a11y error ≥ 0.9; performance/SEO warn). 
 
 ## CI
 
-Jobs em `.github/workflows/ci.yml`: `quality` → `e2e` + `lighthouse` em paralelo.
+Jobs em `.github/workflows/ci.yml`: `quality` (typecheck + lint + **unit** + build) → `e2e` + `lighthouse` em paralelo.

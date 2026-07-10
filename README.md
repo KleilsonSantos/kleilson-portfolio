@@ -19,7 +19,7 @@
 | Branch de integração | `sandbox` |
 | Produção | `main` + tags SemVer |
 | Última release | `v0.2.2` |
-| Qualidade | ESLint + Prettier + TypeScript strict + Playwright + Lighthouse CI |
+| Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
 
@@ -64,6 +64,7 @@ npm run dev
 | `npm run dev` | Dev server |
 | `npm run build` | Typecheck + build |
 | `npm run lint` / `npm run format` | Qualidade de código |
+| `npm run test` | Vitest (unit) |
 | `npm run test:e2e` | Playwright smoke |
 | `npm run preview` | Preview do build |
 

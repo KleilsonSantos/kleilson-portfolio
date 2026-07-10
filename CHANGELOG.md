@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- ✅ Vitest + Testing Library (utils + Footer) e job `npm run test` no CI (#3)
 - 🔧 Hook `.githooks/commit-msg` + CI `commitlint` (Conventional Commits + Gitmoji)
 - 📝 `AGENTS.md` + `.github/copilot-instructions.md` + instructions/prompts (camada AI IDE-agnóstica)
 - 📝 Guia `docs/guides/ai-agentic.md` (contrato portável Cursor/Copilot/outros)
