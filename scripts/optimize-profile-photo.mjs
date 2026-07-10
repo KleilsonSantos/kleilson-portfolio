@@ -1,7 +1,6 @@
 /**
- * Gera avatar 1:1 centrado (canvas quadrado) a partir da captura retangular.
+ * Avatar 1:1 full-bleed (fit: cover) — o círculo é só CSS.
  * Uso: npm run optimize:photo
- * Não versionar capturas cruas — só public/images/profile/*
  */
 import sharp from 'sharp'
 import { mkdirSync, existsSync } from 'node:fs'
@@ -23,27 +22,16 @@ if (!srcName) {
 }
 
 const src = join(root, srcName)
-const canvas = 800
-
-const sized = await sharp(src)
-  .resize({ width: 700, height: 700, fit: 'inside', kernel: sharp.kernel.lanczos3 })
-  .toBuffer({ resolveWithObject: true })
-
-// Rosto na fonte pende à direita → offset óptico à esquerda
-const left = Math.round((canvas - sized.info.width) / 2) - 36
-const top = Math.round((canvas - sized.info.height) / 2) - 8
 
 const pipeline = () =>
-  sharp({
-    create: {
-      width: canvas,
-      height: canvas,
-      channels: 3,
-      background: { r: 245, g: 247, b: 250 },
-    },
-  })
-    .composite([{ input: sized.data, left: Math.max(0, left), top: Math.max(0, top) }])
-    .sharpen({ sigma: 1.0 })
+  sharp(src)
+    .resize(800, 800, {
+      fit: 'cover',
+      position: 'centre',
+      kernel: sharp.kernel.lanczos3,
+    })
+    .sharpen({ sigma: 1.1 })
+    .modulate({ brightness: 0.98, saturation: 1.05 })
 
 await pipeline().webp({ quality: 88, effort: 6 }).toFile(join(outDir, 'kleilson-avatar.webp'))
 await pipeline().jpeg({ quality: 90, mozjpeg: true }).toFile(join(outDir, 'kleilson-avatar.jpg'))
@@ -52,4 +40,4 @@ await sharp(join(outDir, 'kleilson-avatar.webp'))
   .webp({ quality: 86 })
   .toFile(join(outDir, 'kleilson-avatar-320.webp'))
 
-console.log('OK', { src: srcName, composite: { left, top, w: sized.info.width, h: sized.info.height } })
+console.log('OK', { src: srcName, mode: 'cover 800x800' })
