@@ -56,8 +56,9 @@ export const contactRoutes: FastifyPluginAsync = async (app) => {
       }
 
       const saved = await saveContact(body)
-      request.log.info({ contactId: saved.id }, 'contact message accepted')
-      return { success: true, id: saved.id }
+      // BP-008: só contactId + requestId — sem e-mail/mensagem
+      request.log.info({ contactId: saved.id, requestId: request.id }, 'contact message accepted')
+      return { success: true, id: saved.id, requestId: request.id }
     },
   )
 }

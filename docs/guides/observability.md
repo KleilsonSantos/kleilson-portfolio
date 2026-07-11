@@ -6,13 +6,13 @@ Portfólio de baixo tráfego: **um caminho por preocupação**, sem APM enterpri
 
 | Preocupação | Ferramenta | Status | Issue |
 | --- | --- | --- | --- |
-| Disponibilidade / liveness | `GET /health` (+ `storage`) | ✅ | #6 / #7 |
-| Readiness / DB | Ping Postgres quando `DATABASE_URL` | 📋 | **#9** (com Sentry/logs) |
-| Deploy + CDN + API em produção | Cloudflare Pages (+ Container) | 📋 | **#8** · [ADR-0008](../adr/0008-cloudflare-deploy.md) · [deploy.md](./deploy.md) |
-| Erros (frontend + API) | Sentry | 📋 | **#9** |
-| Logs estruturados (API) | Logger Fastify (JSON em prod) + `requestId`; sem PII | 📋 | **#9** |
+| Disponibilidade / liveness | `GET /health` (`liveness: ok`) | ✅ | #6 / #7 / **#9** |
+| Readiness / DB | `readiness` + `checks.database` (ping/probe) | ✅ | **#9** · [ADR-0009](../adr/0009-sentry-health.md) |
+| Deploy + CDN + API em produção | Cloudflare Pages + Workers Free | ✅ | **#8** · [ADR-0008](../adr/0008-cloudflare-deploy.md) · [deploy.md](./deploy.md) |
+| Erros (frontend + API) | Sentry (no-op sem DSN) | ✅ código | **#9** · ADR-0009 |
+| Logs estruturados (API) | Pino/Fastify + Worker JSON; `requestId`; sem PII | ✅ | **#9** |
 | Analytics privacy-first (pageviews) | Umami **ou** Plausible | 📋 | **#65** |
-| Métricas / dashboards infra | Grafana Cloud (opcional) | 📋 pós-#8 | #62 (MCP) — só com tráfego real |
+| Métricas / dashboards infra | Grafana Cloud (opcional) | 📋 | #62 (MCP) — só com tráfego real |
 | Logs de banco / advisors | Supabase MCP / Dashboard | ✅ ops | #7 feito; uso contínuo |
 | Qualidade / CVE no CI | CodeQL + Dependabot | ✅ | — |
 | Agentes / MCP | Matriz oficial | 📋 | **#62** |
@@ -20,7 +20,7 @@ Portfólio de baixo tráfego: **um caminho por preocupação**, sem APM enterpri
 ## Ordem recomendada
 
 ```text
-#8 Deploy Cloudflare  →  #9 Sentry + logs + readiness/DB  →  #65 Analytics
+#8 Deploy Cloudflare ✅  →  #9 Sentry + logs + readiness ✅  →  #65 Analytics
          ↓
    (#62 docs MCP quando útil)
          ↓
@@ -39,16 +39,18 @@ Do workspace `curso-spring-boot-kafka` (BP-015 Actuator probes, BP-008 logging, 
 | ADR curta ao escolher stack | Prometheus scrape + Grafana Compose local |
 | Métricas só com necessidade real | Datadog / APM multi-serviço |
 
+## Sentry (opt-in free)
+
+Sem `VITE_SENTRY_DSN` / `SENTRY_DSN` o SDK **não envia nada**. Para ativar: criar projeto no [Sentry](https://sentry.io) (tier free) e setar DSN no Pages / `wrangler secret put SENTRY_DSN`.
+
 ## O que NÃO fazer neste repo
 
 - Datadog + Grafana + Sentry ao mesmo tempo (redundância)
-- Vercel como hosting (conflita com #8)
+- Vercel como hosting (conflito com #8)
 - Trazer Compose Prometheus/Grafana/Jaeger do lab Java
-- Prometer “escala/monitoramento de produção” antes do deploy (#8)
 
 ## Relacionados
 
-- ROADMAP Fase 4 · releases `v0.4.0+` → `v1.0.0` sugerido no deploy
-- ADR-0005 (API) · ADR-0006 (Postgres)
-- Issue #9 (escopo detalhado com aceite)
-- Guia MCP: issue #62 → `docs/guides/mcp-tooling.md` (quando entregue)
+- ROADMAP Fase 4 · releases `v0.4.0+`
+- ADR-0005 (API) · ADR-0006 (Postgres) · ADR-0008 (deploy) · ADR-0009 (Sentry/health)
+- Guia API: [api.md](./api.md)

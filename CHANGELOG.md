@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🔒 Sentry (React/Node/Workers) no-op sem DSN + health liveness/readiness + `requestId` (#9 / ADR-0009)
 - 🚀 API de produção em Cloudflare Workers (Free) via PostgREST — sem Containers pagos #8
 - 🚀 Worker + Container Wrangler para API Fastify (`workers/api`, `wrangler.toml`, `npm run deploy:api`) #8
 - ✨ Foto profissional no hero (Home/Sobre) + assets WebP em `public/images/profile/`
