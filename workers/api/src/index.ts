@@ -1,10 +1,7 @@
 /**
  * API de produção — Cloudflare Workers (plano Free).
- * Substitui Containers (Workers Paid) enquanto #8 não tiver plano pago.
- * Local continua em Fastify (`npm run server:dev`) — ADR-0005.
- *
- * Rotas: GET /health · POST /api/contact
- * Persistência: Supabase PostgREST (service_role) → contact_messages
+ * Observabilidade #9: requestId, readiness; erros → CF Workers Observability.
+ * Sentry SDK no Worker omitido (peer conflict com workers-types v5); React/Fastify cobrem DSN opt-in.
  */
 import {
   assertContactBusinessRules,
@@ -12,17 +9,20 @@ import {
 } from '../../../server/schemas/contact'
 
 export interface Env {
-  /** URL do projeto Supabase, ex. https://xxxx.supabase.co */
   SUPABASE_URL: string
-  /** service_role — bypass RLS; nunca no frontend */
   SUPABASE_SERVICE_ROLE_KEY: string
-  /** Origens permitidas, CSV. Ex.: https://kleilson-portfolio.pages.dev */
   CORS_ORIGIN: string
 }
 
 const CONTACT_WINDOW_MS = 60_000
 const CONTACT_MAX = 5
 const rateBuckets = new Map<string, { count: number; resetAt: number }>()
+
+function requestIdOf(request: Request): string {
+  const incoming = request.headers.get('x-request-id')?.trim()
+  if (incoming) return incoming
+  return crypto.randomUUID()
+}
 
 function sanitize(value: string): string {
   const trimmed = value.trim()
@@ -43,14 +43,16 @@ function allowedOrigins(env: Env): string[] {
     .filter(Boolean)
 }
 
-function corsHeaders(request: Request, env: Env): HeadersInit {
+function corsHeaders(request: Request, env: Env, requestId: string): HeadersInit {
   const origin = request.headers.get('Origin') ?? ''
   const allowed = allowedOrigins(env)
   const headers: Record<string, string> = {
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Accept',
+    'Access-Control-Allow-Headers': 'Content-Type, Accept, X-Request-Id',
+    'Access-Control-Expose-Headers': 'X-Request-Id',
     'Access-Control-Max-Age': '86400',
     Vary: 'Origin',
+    'X-Request-Id': requestId,
   }
   if (origin && (allowed.length === 0 || allowed.includes(origin))) {
     headers['Access-Control-Allow-Origin'] = origin
@@ -60,10 +62,16 @@ function corsHeaders(request: Request, env: Env): HeadersInit {
   return headers
 }
 
-function json(data: unknown, status: number, request: Request, env: Env): Response {
+function json(
+  data: unknown,
+  status: number,
+  request: Request,
+  env: Env,
+  requestId: string,
+): Response {
   return Response.json(data, {
     status,
-    headers: corsHeaders(request, env),
+    headers: corsHeaders(request, env, requestId),
   })
 }
 
@@ -83,40 +91,67 @@ function rateLimitContact(ip: string): boolean {
   return true
 }
 
-async function handleHealth(request: Request, env: Env): Promise<Response> {
-  const hasDb = Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY)
-  return json(
-    {
-      status: 'ok',
-      service: 'kleilson-portfolio-api',
-      runtime: 'cloudflare-workers',
-      storage: hasDb ? 'postgres' : 'unconfigured',
-      timestamp: new Date().toISOString(),
-    },
-    200,
-    request,
-    env,
-  )
+async function probeDatabase(env: Env): Promise<'ok' | 'skip' | 'fail'> {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return 'skip'
+  try {
+    const base = env.SUPABASE_URL.replace(/\/$/, '')
+    const res = await fetch(`${base}/rest/v1/contact_messages?select=id&limit=1`, {
+      method: 'GET',
+      headers: {
+        apikey: env.SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+      },
+    })
+    return res.ok ? 'ok' : 'fail'
+  } catch {
+    return 'fail'
+  }
 }
 
-async function handleContact(request: Request, env: Env): Promise<Response> {
+async function handleHealth(request: Request, env: Env, requestId: string): Promise<Response> {
+  const database = await probeDatabase(env)
+  const readiness = database === 'fail' ? 'unavailable' : database === 'ok' ? 'ok' : 'degraded'
+  const storage =
+    database === 'ok' ? 'postgres' : env.SUPABASE_URL ? 'unconfigured' : 'unconfigured'
+
+  const payload = {
+    status: readiness === 'unavailable' ? 'degraded' : 'ok',
+    liveness: 'ok',
+    readiness,
+    service: 'kleilson-portfolio-api',
+    runtime: 'cloudflare-workers',
+    storage,
+    checks: { database },
+    timestamp: new Date().toISOString(),
+    requestId,
+  }
+  return json(payload, readiness === 'unavailable' ? 503 : 200, request, env, requestId)
+}
+
+async function handleContact(request: Request, env: Env, requestId: string): Promise<Response> {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
-    return json({ message: 'API sem secrets de banco.' }, 503, request, env)
+    return json({ message: 'API sem secrets de banco.', requestId }, 503, request, env, requestId)
   }
 
   if (!rateLimitContact(clientIp(request))) {
-    return json({ message: 'Muitas tentativas. Aguarde um minuto.' }, 429, request, env)
+    return json(
+      { message: 'Muitas tentativas. Aguarde um minuto.', requestId },
+      429,
+      request,
+      env,
+      requestId,
+    )
   }
 
   let raw: unknown
   try {
     raw = await request.json()
   } catch {
-    return json({ message: 'JSON inválido.' }, 400, request, env)
+    return json({ message: 'JSON inválido.', requestId }, 400, request, env, requestId)
   }
 
   if (!raw || typeof raw !== 'object') {
-    return json({ message: 'Corpo inválido.' }, 400, request, env)
+    return json({ message: 'Corpo inválido.', requestId }, 400, request, env, requestId)
   }
 
   const bodyIn = raw as Record<string, unknown>
@@ -128,21 +163,21 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   }
 
   if (body.name.length < 2 || body.name.length > 120) {
-    return json({ message: 'Nome inválido.' }, 400, request, env)
+    return json({ message: 'Nome inválido.', requestId }, 400, request, env, requestId)
   }
   if (body.email.length < 5 || body.email.length > 254) {
-    return json({ message: 'E-mail inválido.' }, 400, request, env)
+    return json({ message: 'E-mail inválido.', requestId }, 400, request, env, requestId)
   }
   if (body.message.length < 10 || body.message.length > 4000) {
-    return json({ message: 'Mensagem inválida.' }, 400, request, env)
+    return json({ message: 'Mensagem inválida.', requestId }, 400, request, env, requestId)
   }
   if (body.category && body.category.length > 80) {
-    return json({ message: 'Categoria inválida.' }, 400, request, env)
+    return json({ message: 'Categoria inválida.', requestId }, 400, request, env, requestId)
   }
 
   const businessError = assertContactBusinessRules(body)
   if (businessError) {
-    return json({ message: businessError }, 400, request, env)
+    return json({ message: businessError, requestId }, 400, request, env, requestId)
   }
 
   const base = env.SUPABASE_URL.replace(/\/$/, '')
@@ -164,45 +199,51 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
 
   if (!insertRes.ok) {
     const detail = await insertRes.text().catch(() => '')
-    console.error('contact insert failed', insertRes.status, detail.slice(0, 200))
-    return json({ message: 'Não foi possível salvar a mensagem.' }, 502, request, env)
+    console.error(JSON.stringify({ msg: 'contact insert failed', status: insertRes.status, requestId, detail: detail.slice(0, 200) }))
+    return json({ message: 'Não foi possível salvar a mensagem.', requestId }, 502, request, env, requestId)
   }
 
   const rows = (await insertRes.json()) as Array<{ id?: string }>
   const id = rows[0]?.id
   if (!id) {
-    return json({ message: 'Resposta inesperada do banco.' }, 502, request, env)
+    return json({ message: 'Resposta inesperada do banco.', requestId }, 502, request, env, requestId)
   }
 
-  console.log(JSON.stringify({ msg: 'contact message accepted', contactId: id }))
-  return json({ success: true, id }, 200, request, env)
+  // BP-008: sem PII — só contactId + requestId
+  console.log(JSON.stringify({ msg: 'contact message accepted', contactId: id, requestId }))
+  return json({ success: true, id, requestId }, 200, request, env, requestId)
 }
 
-export default {
+const worker = {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url)
     const path = url.pathname
+    const requestId = requestIdOf(request)
 
     if (request.method === 'OPTIONS' && (path === '/health' || path.startsWith('/api/'))) {
-      return new Response(null, { status: 204, headers: corsHeaders(request, env) })
+      return new Response(null, { status: 204, headers: corsHeaders(request, env, requestId) })
     }
 
     if (path === '/health' && request.method === 'GET') {
-      return handleHealth(request, env)
+      return handleHealth(request, env, requestId)
     }
 
     if (path === '/api/contact' && request.method === 'POST') {
-      return handleContact(request, env)
+      return handleContact(request, env, requestId)
     }
 
     return json(
       {
         error: 'not_found',
         hint: 'Use GET /health or POST /api/contact — SPA is on Cloudflare Pages',
+        requestId,
       },
       404,
       request,
       env,
+      requestId,
     )
   },
 }
+
+export default worker

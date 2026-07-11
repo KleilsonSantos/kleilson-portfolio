@@ -8,11 +8,17 @@ describe('Fastify API', () => {
     clearContacts()
   })
 
-  it('GET /health retorna ok', async () => {
+  it('GET /health retorna ok com liveness/readiness', async () => {
     const app = await buildApp()
     const response = await app.inject({ method: 'GET', url: '/health' })
     expect(response.statusCode).toBe(200)
-    expect(response.json()).toMatchObject({ status: 'ok', service: 'kleilson-portfolio-api' })
+    expect(response.json()).toMatchObject({
+      status: 'ok',
+      liveness: 'ok',
+      service: 'kleilson-portfolio-api',
+      runtime: 'node-fastify',
+    })
+    expect(response.headers['x-request-id']).toBeTruthy()
     await app.close()
   })
 
