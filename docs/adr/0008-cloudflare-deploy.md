@@ -50,20 +50,22 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 | **Fly.io / Railway só para API** | Node simples | Dois vendors; CORS/`VITE_API_BASE_URL` |
 | **Só mock / sem API em prod** | — | Rejeita aceite #8 |
 
-**Escolhido:** Cloudflare **Containers** hospedando a imagem Node da API Fastify, com Worker (ou rota de domínio) encaminhando `/api/*` e `/health` para o container. Pages serve o SPA estático.
+**Escolhido (original):** Cloudflare **Containers** + Fastify.
+
+**Emenda 2026-07-10 (plano Free):** Containers exige **Workers Paid**. Enquanto não houver plano pago, a API de produção roda em **Cloudflare Workers** (`workers/api`) via PostgREST/Supabase (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`). Fastify + Drizzle permanece para **dev local** (`server/`). Dockerfile/Containers ficam documentados como caminho pago futuro — sem Fly/Railway pagos.
 
 ### 3. Same-origin vs URL absoluta
 
-- **Preferido:** domínio custom (ex. `kleilsonsantos.dev`) com Pages no apex/www e rotas `/api` + `/health` → Container — `fetch('/api/contact')` permanece.
-- **Escape hatch:** `VITE_API_BASE_URL` no build do Pages se a API ficar em subdomínio temporário (`api.…`).
+- **Preferido:** domínio custom (ex. `kleilsonsantos.dev`) com Pages no apex/www e rotas `/api` + `/health` → API — `fetch('/api/contact')` permanece.
+- **Escape hatch (atual Free):** `VITE_API_BASE_URL` = `https://kleilson-portfolio-api.<subdomínio>.workers.dev` no build do Pages.
 
 ## Considered Options
 
 1. **Só GitHub Pages** — rejeitado (#8 / cutover)
 2. **Vercel** — rejeitado (#62)
-3. **Pages + reescrever API em Workers** — adiado (custo de reescrita; possível pós-estabilização)
-4. **Pages + Containers (Fastify)** — **escolhido**
-5. **Pages + Fly.io (API)** — fallback documentado se Containers bloquear o prazo
+3. **Pages + API em Workers (PostgREST)** — **ativo agora (Free)** — evita Containers pagos
+4. **Pages + Containers (Fastify)** — alvo quando houver Workers Paid
+5. **Pages + Fly.io / Railway (API)** — rejeitado no momento (nada pago / outro vendor)
 
 ## Decision Outcome
 
@@ -73,14 +75,17 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 2. Build: `npm run build` → `dist`
 3. Branch de produção: `main` (previews em PRs)
 4. Não adicionar `public/404.html` (preserva comportamento SPA do Pages)
-5. Variáveis de build só se necessário (`VITE_API_BASE_URL`); nunca `DATABASE_URL` / service_role no Pages
+5. Variáveis de build: `VITE_API_BASE_URL` enquanto split-origin; nunca `DATABASE_URL` / service_role no Pages
 
-### API (Containers)
+### API (Workers Free — atual)
 
-6. Dockerfile multi-stage para `server/` (Node LTS, `PORT` injetado)
-7. Secrets no Cloudflare: `DATABASE_URL`, `CORS_ORIGIN`, etc.
-8. `GET /health` público; `POST /api/contact` com rate limit (já no Fastify)
-9. CORS: origem do Pages / domínio custom
+6. Worker `kleilson-portfolio-api` em `workers/api` — `GET /health`, `POST /api/contact`
+7. Secrets: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `CORS_ORIGIN`
+8. Fastify local inalterado (ADR-0005); Dockerfile reservado para Containers pagos
+
+### API (Containers — futuro pago)
+
+9. Quando houver Workers Paid: restaurar proxy Container + `DATABASE_URL` (ver `docs/guides/deploy.md`)
 
 ### Cutover
 
