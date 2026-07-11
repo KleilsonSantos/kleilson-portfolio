@@ -6,7 +6,6 @@
 name = "kleilson-portfolio-api"
 main = "workers/api/src/index.ts"
 compatibility_date = "2026-06-01"
-compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
 [observability]
@@ -21,5 +20,4 @@ deleted_classes = ["ApiContainer"]
 #   npx wrangler secret put SUPABASE_URL
 #   npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
 #   npx wrangler secret put CORS_ORIGIN
-#   npx wrangler secret put SENTRY_DSN   # opcional (#9)
 # CORS_ORIGIN ex.: https://kleilson-portfolio.pages.dev

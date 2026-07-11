@@ -13,7 +13,7 @@ Após #8 (Pages + Workers Free), falta rastrear erros e distinguir liveness de r
 
 ## Decision
 
-1. **Sentry** via SDK (`@sentry/react`, `@sentry/node`, `@sentry/cloudflare`) — **só ativa com DSN** (`VITE_SENTRY_DSN` / `SENTRY_DSN`). Sem DSN = no-op (plano free / opt-in).
+1. **Sentry** via SDK (`@sentry/react`, `@sentry/node`) — **só ativa com DSN** (`VITE_SENTRY_DSN` / `SENTRY_DSN`). Sem DSN = no-op (plano free / opt-in). Worker de produção usa **Cloudflare Workers Observability** + logs JSON (`requestId`) — `@sentry/cloudflare` evitado por conflito de peer com `workers-types` v5.
 2. **Logs:** Fastify/Pino JSON + `requestId`; Worker com log JSON `{ requestId, contactId }` — sem e-mail/mensagem.
 3. **Health:** `GET /health` sempre liveness `ok`; `readiness` + `checks.database` (ping Postgres local / probe PostgREST no Worker).
 4. **Fora:** Prometheus, OTel, Datadog, Grafana obrigatório (#62 opcional).

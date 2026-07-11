@@ -1,8 +1,8 @@
 /**
  * API de produção — Cloudflare Workers (plano Free).
- * Observabilidade #9: requestId, readiness, Sentry no-op sem SENTRY_DSN.
+ * Observabilidade #9: requestId, readiness; erros → CF Workers Observability.
+ * Sentry SDK no Worker omitido (peer conflict com workers-types v5); React/Fastify cobrem DSN opt-in.
  */
-import { withSentry } from '@sentry/cloudflare'
 import {
   assertContactBusinessRules,
   type ContactPayload,
@@ -12,8 +12,6 @@ export interface Env {
   SUPABASE_URL: string
   SUPABASE_SERVICE_ROLE_KEY: string
   CORS_ORIGIN: string
-  /** Opcional — sem DSN o Sentry fica no-op (ADR-0009) */
-  SENTRY_DSN?: string
 }
 
 const CONTACT_WINDOW_MS = 60_000
@@ -248,11 +246,4 @@ const worker = {
   },
 }
 
-export default withSentry((env: Env) => {
-  const dsn = env.SENTRY_DSN?.trim()
-  return {
-    dsn: dsn || undefined,
-    enabled: Boolean(dsn),
-    sendDefaultPii: false,
-  }
-}, worker)
+export default worker
