@@ -47,12 +47,14 @@ Se o projeto já existia via upload manual, use **Settings → Builds → Connec
 
 Workflow: [`.github/workflows/deploy-pages.yml`](../../.github/workflows/deploy-pages.yml).
 
-1. Crie um token em [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens) com:
-   - **Account** → Cloudflare Pages → Edit
-   - **Account** → Account Settings → Read
+1. Crie um token em [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens) (**Create Token** → template *Edit Cloudflare Workers* ou Custom) com **no mínimo**:
+   - **Account** → Cloudflare Pages → **Edit**
+   - **Account** → Account Settings → **Read**
+   - Include resources: a conta correta (não “All accounts” se tiver várias)
 2. No GitHub: repo → **Settings** → **Secrets and variables** → **Actions** → New repository secret:
-   - `CLOUDFLARE_API_TOKEN` = o token
-   - `CLOUDFLARE_ACCOUNT_ID` = id da conta (Overview do dashboard, barra lateral)
+   - `CLOUDFLARE_API_TOKEN` = o token (sem aspas / sem espaço no fim)
+   - `CLOUDFLARE_ACCOUNT_ID` = id da conta (Overview do dashboard, barra lateral direita)
+3. Se o Action falhar com `Authentication error [code: 10000]`, o token no secret está inválido ou sem **Pages Edit** — regenere o token e atualize o secret.
 3. Merge em **`main`** (ou **Actions** → Deploy Cloudflare Pages → **Run workflow**).
 4. Cada push em `main` publica `https://kleilson-portfolio.pages.dev`.
 
