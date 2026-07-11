@@ -51,10 +51,14 @@ Workflow: [`.github/workflows/deploy-pages.yml`](../../.github/workflows/deploy-
    - **Account** → Cloudflare Pages → **Edit**
    - **Account** → Account Settings → **Read**
    - Include resources: a conta correta (não “All accounts” se tiver várias)
+   - **Client IP Address Filtering: deixe vazio / Allow all** — tokens com IP fixo **falham no GitHub Actions** (`Cannot use the access token from location… [code: 9109]`)
 2. No GitHub: repo → **Settings** → **Secrets and variables** → **Actions** → New repository secret:
    - `CLOUDFLARE_API_TOKEN` = o token (sem aspas / sem espaço no fim)
    - `CLOUDFLARE_ACCOUNT_ID` = id da conta (Overview do dashboard, barra lateral direita)
-3. Se o Action falhar com `Authentication error [code: 10000]`, o token no secret está inválido ou sem **Pages Edit** — regenere o token e atualize o secret.
+3. Troubleshooting:
+   - `Authentication error [code: 10000]` → token inválido ou sem **Pages Edit**
+   - `Cannot use the access token from location… [code: 9109]` → remova o filtro de IP do token (ou crie um token só para Actions, sem IP allowlist) → atualize o secret → **Actions** → Deploy Cloudflare Pages → **Run workflow**
+
 3. Merge em **`main`** (ou **Actions** → Deploy Cloudflare Pages → **Run workflow**).
 4. Cada push em `main` publica `https://kleilson-portfolio.pages.dev`.
 
