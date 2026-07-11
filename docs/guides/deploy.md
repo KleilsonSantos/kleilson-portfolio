@@ -101,62 +101,57 @@ Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/dep
 
 ---
 
-## Passo 3 — API Fastify em Cloudflare Containers
+## Passo 3 — API em Cloudflare Workers (plano Free)
 
-Docs: [Containers get started](https://developers.cloudflare.com/containers/get-started/).
+Containers exige **Workers Paid**. Enquanto não houver plano pago, a API de produção é um **Worker** (`workers/api`) que grava em `contact_messages` via Supabase PostgREST. **Sem Docker.**
 
-A API **não** sobe só pelo dashboard de Pages. É um Worker + imagem Docker (`Dockerfile` na raiz do repo).
+Fastify (`server/`) continua para desenvolvimento local (`npm run server:dev` / `dev:full`).
 
-### Pré-requisito local
-
-- [Docker Desktop](https://docs.docker.com/desktop/) instalado e rodando (`docker info` ok)
-- Sem Docker, o `wrangler deploy` da API **não** consegue buildar/pushar a imagem
-
-### 3.1 No seu Mac (código Wrangler já no repo: `wrangler.toml` + `workers/api/`)
+### 3.1 Deploy
 
 ```bash
-# Na branch com o Worker da API (ex.: feature/api-container-worker ou main)
-npx wrangler login          # abre o browser, autoriza a conta
-docker info                 # deve responder sem erro
-npm run deploy:api          # wrangler deploy — build da imagem + push + Worker
-npm run containers:list
+npx wrangler login          # se ainda não autenticado
+npm run deploy:api          # wrangler deploy — sem Docker
 ```
 
-Na **primeira** vez, aguarde alguns minutos até o container ficar pronto (cold provision).
+URL esperada: `https://kleilson-portfolio-api.kleilsonsantos.workers.dev`
 
 ### 3.2 Secrets da API (nunca no Git)
 
-No dashboard: **Workers & Pages** → seu Worker da API → **Settings** → **Variables and Secrets**, **ou** via CLI:
-
 ```bash
-npx wrangler secret put DATABASE_URL
-# cole a connection string pooler 6543
+npx wrangler secret put SUPABASE_URL
+# https://YOUR_PROJECT_REF.supabase.co
+
+npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+# service_role do Dashboard Supabase (server-only)
 
 npx wrangler secret put CORS_ORIGIN
-# ex.: https://kleilson-portfolio-XXXX.pages.dev
-# (depois: https://seu-dominio.com)
+# https://kleilson-portfolio.pages.dev
 ```
 
 | Secret | Obrigatório | Notas |
 |--------|-------------|--------|
-| `DATABASE_URL` | Sim | Pooler Supabase **6543** |
+| `SUPABASE_URL` | Sim | URL do projeto |
+| `SUPABASE_SERVICE_ROLE_KEY` | Sim | Bypass RLS; só no Worker |
 | `CORS_ORIGIN` | Sim | URL exata do Pages (sem barra final) |
-| `PORT` | Se a imagem não fixar | Default do `Dockerfile`: `8787` |
 
-### 3.3 URL da API
-
-Após o deploy, anote o host do Worker, algo como:
-
-`https://kleilson-portfolio-api.<sua-subconta>.workers.dev`
-
-Teste:
+### 3.3 Smoke
 
 ```bash
-curl -sS https://SEU_WORKER.workers.dev/health
+curl -sS https://kleilson-portfolio-api.kleilsonsantos.workers.dev/health
 ```
 
-Esperado: JSON com `"status":"ok"` e `"storage":"postgres"` (se o secret estiver certo).
+Esperado: `"status":"ok"` e `"storage":"postgres"`.
 
+### 3.4 Caminho pago futuro (Containers + Fastify)
+
+Quando houver Workers Paid + Colima/Docker: restaurar `[[containers]]` no `wrangler.toml` (histórico no Git) e secrets `DATABASE_URL` / `CORS_ORIGIN`. Até lá, **não** use Fly/Railway pagos.
+
+---
+
+## Passo 3-alt — (legado) Containers
+
+Docs: [Containers get started](https://developers.cloudflare.com/containers/get-started/). Requer plano pago + Colima/Docker (`docker info` ok).
 ---
 
 ## Passo 4 — Ligar o frontend à API
@@ -164,7 +159,7 @@ Esperado: JSON com `"status":"ok"` e `"storage":"postgres"` (se o secret estiver
 Enquanto Pages e API estiverem em **origins diferentes**:
 
 1. Pages → projeto → **Settings** → **Environment variables** → Production:
-   - `VITE_API_BASE_URL` = `https://SEU_WORKER.workers.dev` (sem `/` no final)
+   - `VITE_API_BASE_URL` = `https://kleilson-portfolio-api.kleilsonsantos.workers.dev` (sem `/` no final)
 2. **Retry deployment** / novo deploy de `main` (Vite embute a var no build).
 3. Confirme `CORS_ORIGIN` no Worker = URL do Pages.
 
@@ -212,21 +207,21 @@ Só depois do smoke OK:
 | Agora (você — 1×) | Automático / código |
 |-------------------|---------------------|
 | Secrets GitHub `CLOUDFLARE_*` **ou** Connect to Git | Workflow `deploy-pages.yml` em cada push `main` |
-| Docker Desktop + `npm run deploy:api` (#8) | `wrangler.toml` + `workers/api` + `Dockerfile` |
-| Secrets Worker: `DATABASE_URL`, `CORS_ORIGIN` | Contato → Supabase |
-| (Opcional) `VITE_API_BASE_URL` no Pages | Front fala com a API |
+| Docker/Colima + Containers (futuro pago) | `Dockerfile` reservado |
+| Secrets Worker: `SUPABASE_*`, `CORS_ORIGIN` | Contato → Supabase (Free) |
+| `VITE_API_BASE_URL` no Pages | Front fala com o Worker |
 
 **Site:** Opção B (Actions) ou A (Connect to Git). **Não os dois.**  
-**Supabase:** só depois da API em produção — não é disparado pelo merge sozinho.
+**Supabase:** após Worker + secrets — não é disparado pelo merge sozinho.
 
 ---
 
 ## Checklist (#8)
 
-- [x] Pages auto-deploy verde a partir de `main` (Actions **ou** Connect to Git) — `kleilson-portfolio.pages.dev`
-- [ ] API `/health` com `storage: postgres` (após `npm run deploy:api` + secrets)
+- [x] Pages auto-deploy verde a partir de `main` — `kleilson-portfolio.pages.dev`
+- [ ] API `/health` com `storage: postgres` (Worker Free + secrets)
 - [ ] Contato grava no Supabase
-- [x] README / ROADMAP / ADR-0008 (URL Pages documentada; Worker no repo)
+- [x] README / ROADMAP / ADR-0008 (emenda Free Workers)
 - [x] Secrets só no Cloudflare / GitHub Actions (nunca no Git)
 
 ## Relacionados
