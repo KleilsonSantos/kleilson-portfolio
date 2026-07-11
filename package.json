@@ -18,9 +18,12 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "lighthouse": "lhci autorun",
-    "optimize:photo": "node scripts/optimize-profile-photo.mjs"
+    "optimize:photo": "node scripts/optimize-profile-photo.mjs",
+    "deploy:api": "wrangler deploy",
+    "containers:list": "wrangler containers list"
   },
   "dependencies": {
+    "@cloudflare/containers": "^0.3.7",
     "@fastify/cors": "^11.3.0",
     "@fastify/helmet": "^13.1.0",
     "@fastify/rate-limit": "^11.1.0",
@@ -33,6 +36,7 @@
     "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260711.1",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.61.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -51,6 +55,7 @@
     "tsx": "^4.23.0",
     "typescript": "^7.0.2",
     "vite": "^8.1.1",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "wrangler": "^4.110.0"
   }
 }

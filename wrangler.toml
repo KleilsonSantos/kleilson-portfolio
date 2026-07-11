@@ -1,0 +1,28 @@
+# API Fastify — Cloudflare Containers (ADR-0008 / #8)
+# Deploy: npm run deploy:api  (requer Docker Desktop rodando)
+# Docs: https://developers.cloudflare.com/containers/get-started/
+
+name = "kleilson-portfolio-api"
+main = "workers/api/src/index.ts"
+compatibility_date = "2026-06-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[[containers]]
+max_instances = 3
+class_name = "ApiContainer"
+image = "./Dockerfile"
+
+[[durable_objects.bindings]]
+name = "API_CONTAINER"
+class_name = "ApiContainer"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ApiContainer"]
+
+# Secrets (não versionar): DATABASE_URL, CORS_ORIGIN
+#   npx wrangler secret put DATABASE_URL
+#   npx wrangler secret put CORS_ORIGIN
