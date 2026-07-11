@@ -110,11 +110,11 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 
 ## Confirmation
 
-- [ ] Site em `*.pages.dev` (ou custom) documentado no README
+- [x] Site em `*.pages.dev` (ou custom) documentado no README (`https://kleilson-portfolio.pages.dev`)
 - [ ] `POST /api/contact` em produção grava no Supabase
 - [ ] `GET /health` público retorna `storage: postgres` (ou documenta fallback)
-- [ ] Este ADR + `docs/guides/deploy.md`
-- [ ] Secrets só no dashboard Cloudflare
+- [x] Este ADR + `docs/guides/deploy.md`
+- [x] Secrets só no dashboard Cloudflare (Pages token / CI; API via `wrangler secret`)
 - [ ] Aceite da issue #8 marcado via `gh issue edit`
 
 ## More Information

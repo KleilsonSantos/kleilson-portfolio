@@ -112,14 +112,14 @@ A API **não** sobe só pelo dashboard de Pages. É um Worker + imagem Docker (`
 - [Docker Desktop](https://docs.docker.com/desktop/) instalado e rodando (`docker info` ok)
 - Sem Docker, o `wrangler deploy` da API **não** consegue buildar/pushar a imagem
 
-### 3.1 No seu Mac (depois que o PR #8 com Wrangler estiver no repo)
+### 3.1 No seu Mac (código Wrangler já no repo: `wrangler.toml` + `workers/api/`)
 
 ```bash
-# Na branch com o Worker da API (feature/cloudflare-pages-deploy)
+# Na branch com o Worker da API (ex.: feature/api-container-worker ou main)
 npx wrangler login          # abre o browser, autoriza a conta
 docker info                 # deve responder sem erro
-npx wrangler deploy         # build da imagem + push + deploy do Worker
-npx wrangler containers list
+npm run deploy:api          # wrangler deploy — build da imagem + push + Worker
+npm run containers:list
 ```
 
 Na **primeira** vez, aguarde alguns minutos até o container ficar pronto (cold provision).
@@ -212,7 +212,7 @@ Só depois do smoke OK:
 | Agora (você — 1×) | Automático / código |
 |-------------------|---------------------|
 | Secrets GitHub `CLOUDFLARE_*` **ou** Connect to Git | Workflow `deploy-pages.yml` em cada push `main` |
-| Docker Desktop + `wrangler deploy` da API (#8) | `Dockerfile` + ADR-0008 |
+| Docker Desktop + `npm run deploy:api` (#8) | `wrangler.toml` + `workers/api` + `Dockerfile` |
 | Secrets Worker: `DATABASE_URL`, `CORS_ORIGIN` | Contato → Supabase |
 | (Opcional) `VITE_API_BASE_URL` no Pages | Front fala com a API |
 
@@ -223,11 +223,11 @@ Só depois do smoke OK:
 
 ## Checklist (#8)
 
-- [ ] Pages auto-deploy verde a partir de `main` (Actions **ou** Connect to Git)
-- [ ] API `/health` com `storage: postgres`
+- [x] Pages auto-deploy verde a partir de `main` (Actions **ou** Connect to Git) — `kleilson-portfolio.pages.dev`
+- [ ] API `/health` com `storage: postgres` (após `npm run deploy:api` + secrets)
 - [ ] Contato grava no Supabase
-- [ ] README / ROADMAP / ADR-0008
-- [ ] Secrets só no Cloudflare / GitHub Actions (nunca no Git)
+- [x] README / ROADMAP / ADR-0008 (URL Pages documentada; Worker no repo)
+- [x] Secrets só no Cloudflare / GitHub Actions (nunca no Git)
 
 ## Relacionados
 

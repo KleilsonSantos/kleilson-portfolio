@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
 
-[Live](https://kleilsonsantos.github.io/kleilson-portfolio/) · [Issues](https://github.com/KleilsonSantos/kleilson-portfolio/issues) · [Project board](https://github.com/users/KleilsonSantos/projects/6) · [Releases](https://github.com/KleilsonSantos/kleilson-portfolio/releases)
+[Live (Cloudflare Pages)](https://kleilson-portfolio.pages.dev) · [GitHub Pages (legado)](https://kleilsonsantos.github.io/kleilson-portfolio/) · [Issues](https://github.com/KleilsonSantos/kleilson-portfolio/issues) · [Project board](https://github.com/users/KleilsonSantos/projects/6) · [Releases](https://github.com/KleilsonSantos/kleilson-portfolio/releases)
 
 ---
 
@@ -25,7 +25,7 @@
 | API | Fastify em `server/` (`/health`, `/api/contact`) — ADR-0005 |
 | Persistência | Supabase Postgres + Drizzle — ADR-0006 (`DATABASE_URL`) |
 | Conteúdo | Content-as-Code em `src/data/*` — [ADR-0007](./docs/adr/0007-content-as-code.md) · [guia](./docs/guides/content.md) |
-| Deploy | Cloudflare Pages + API Container — [ADR-0008](./docs/adr/0008-cloudflare-deploy.md) (#8) |
+| Deploy | Cloudflare Pages (`kleilson-portfolio.pages.dev`) + API Container — [ADR-0008](./docs/adr/0008-cloudflare-deploy.md) (#8) |
 | Observabilidade | [`docs/guides/observability.md`](./docs/guides/observability.md) |
 
 ---
