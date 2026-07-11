@@ -22,7 +22,7 @@
 | Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
-| API | Fastify em `server/` (`/health`, `/api/contact`) — ADR-0005 |
+| API | Prod: Workers Free (`kleilson-portfolio-api.kleilsonsantos.workers.dev`) · Local: Fastify `server/` — ADR-0005/0008 |
 | Persistência | Supabase Postgres + Drizzle — ADR-0006 (`DATABASE_URL`) |
 | Conteúdo | Content-as-Code em `src/data/*` — [ADR-0007](./docs/adr/0007-content-as-code.md) · [guia](./docs/guides/content.md) |
 | Deploy | Cloudflare Pages (`kleilson-portfolio.pages.dev`) + API Container — [ADR-0008](./docs/adr/0008-cloudflare-deploy.md) (#8) |
