@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🚀 API de produção em Cloudflare Workers (Free) via PostgREST — sem Containers pagos #8
 - 🚀 Worker + Container Wrangler para API Fastify (`workers/api`, `wrangler.toml`, `npm run deploy:api`) #8
 - ✨ Foto profissional no hero (Home/Sobre) + assets WebP em `public/images/profile/`
 - ✨ Soft skills (habilidades interpessoais) na página Sobre
