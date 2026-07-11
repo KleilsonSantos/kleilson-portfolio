@@ -11,7 +11,7 @@ Portfólio de baixo tráfego: **um caminho por preocupação**, sem APM enterpri
 | Deploy + CDN + API em produção | Cloudflare Pages + Workers Free | ✅ | **#8** · [ADR-0008](../adr/0008-cloudflare-deploy.md) · [deploy.md](./deploy.md) |
 | Erros (frontend + API) | Sentry (no-op sem DSN) | ✅ código | **#9** · ADR-0009 |
 | Logs estruturados (API) | Pino/Fastify + Worker JSON; `requestId`; sem PII | ✅ | **#9** |
-| Analytics privacy-first (pageviews) | Umami **ou** Plausible | 📋 | **#65** |
+| Analytics privacy-first (pageviews) | Umami (opt-in env) | ✅ código | **#65** · [ADR-0010](../adr/0010-analytics-umami.md) |
 | Métricas / dashboards infra | Grafana Cloud (opcional) | 📋 | #62 (MCP) — só com tráfego real |
 | Logs de banco / advisors | Supabase MCP / Dashboard | ✅ ops | #7 feito; uso contínuo |
 | Qualidade / CVE no CI | CodeQL + Dependabot | ✅ | — |
@@ -20,7 +20,7 @@ Portfólio de baixo tráfego: **um caminho por preocupação**, sem APM enterpri
 ## Ordem recomendada
 
 ```text
-#8 Deploy Cloudflare ✅  →  #9 Sentry + logs + readiness ✅  →  #65 Analytics
+#8 Deploy Cloudflare ✅  →  #9 Sentry + logs + readiness ✅  →  #65 Analytics ✅
          ↓
    (#62 docs MCP quando útil)
          ↓
@@ -43,6 +43,10 @@ Do workspace `curso-spring-boot-kafka` (BP-015 Actuator probes, BP-008 logging, 
 
 Sem `VITE_SENTRY_DSN` / `SENTRY_DSN` o SDK **não envia nada**. Para ativar: criar projeto no [Sentry](https://sentry.io) (tier free) e setar DSN no Pages / `wrangler secret put SENTRY_DSN`.
 
+## Umami (opt-in free) — #65
+
+Sem `VITE_UMAMI_SCRIPT_URL` + `VITE_UMAMI_WEBSITE_ID` o script **não carrega**. Ativar: [Umami Cloud](https://cloud.umami.is) ou self-host → vars no Pages → redeploy. Ver [ADR-0010](../adr/0010-analytics-umami.md).
+
 ## O que NÃO fazer neste repo
 
 - Datadog + Grafana + Sentry ao mesmo tempo (redundância)
@@ -52,5 +56,5 @@ Sem `VITE_SENTRY_DSN` / `SENTRY_DSN` o SDK **não envia nada**. Para ativar: cri
 ## Relacionados
 
 - ROADMAP Fase 4 · releases `v0.4.0+`
-- ADR-0005 (API) · ADR-0006 (Postgres) · ADR-0008 (deploy) · ADR-0009 (Sentry/health)
+- ADR-0005 (API) · ADR-0006 (Postgres) · ADR-0008 (deploy) · ADR-0009 (Sentry/health) · ADR-0010 (Umami)
 - Guia API: [api.md](./api.md)
