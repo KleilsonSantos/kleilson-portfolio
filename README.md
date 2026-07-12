@@ -126,6 +126,7 @@ Todo conteúdo profissional é extraído de fontes verificáveis:
 Regras portáveis (independentes de IDE e modelo):
 
 - [AGENTS.md](./AGENTS.md) — contrato canônico
+- [.github/agents/](./.github/agents/) — custom agents (aba Agents no GitHub)
 - [.github/copilot-instructions.md](./.github/copilot-instructions.md) — GitHub Copilot
 - [.cursor/rules/](./.cursor/rules/) — projeção Cursor (ponteiros; sem duplicar prompts)
 - [docs/guides/ai-agentic.md](./docs/guides/ai-agentic.md) — como usar
