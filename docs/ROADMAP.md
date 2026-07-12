@@ -39,7 +39,7 @@
 Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`guides/observability.md`](./guides/observability.md).
 
 - [x] Deploy: Cloudflare Pages + API Workers Free — issue #8 · [ADR-0008](./adr/0008-cloudflare-deploy.md) · [`guides/deploy.md`](./guides/deploy.md)
-- [ ] Substituição gradual de `kleilsonsantos.github.io`
+- [x] Substituição gradual de `kleilsonsantos.github.io` — redirect em `legacy-github-pages/` + workflow
 - [x] Sentry (errors, no-op sem DSN) + logs + readiness — issue #9 · [ADR-0009](./adr/0009-sentry-health.md)
 - [x] Analytics privacy-first (Umami opt-in) — issue #65 · [ADR-0010](./adr/0010-analytics-umami.md)
 - [x] Health check HTTP (`GET /health` na API)
