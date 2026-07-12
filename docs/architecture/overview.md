@@ -84,4 +84,4 @@ flowchart TB
 - [ADR-0008](../adr/0008-cloudflare-deploy.md) — deploy Cloudflare
 - [ADR-0011](../adr/0011-turborepo-pnpm.md) — monorepo
 - [ADR-0012](../adr/0012-decap-cms-git-backed.md) — Decap
-- [content.md](../guides/content.md) · [deploy.md](../guides/deploy.md) · [api.md](../guides/api.md) · [releases.md](../guides/releases.md)
+- [content.md](../guides/content.md) · [admin-operations.md](../guides/admin-operations.md) · [deploy.md](../guides/deploy.md) · [api.md](../guides/api.md) · [releases.md](../guides/releases.md)
