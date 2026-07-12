@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 📝 Guia completo de arquitetura/fluxos (`docs/architecture/system-guide.md`)
 - 📝 `SUPPORT.md` (community health) + links no README/CONTRIBUTING (#109)
 - 🤖 Custom agents Copilot (`.github/agents/` — task-planner, code-reviewer, docs-writer) para a aba Agents
 - ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `apps/decap-oauth`, `packages/shared`) #10 / ADR-0011
