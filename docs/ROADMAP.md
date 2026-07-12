@@ -55,7 +55,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Política canônica de sync documental (ADR-0003)
 - [x] Fundação visual V1–V5 (ADR-0004)
 - [x] Content-as-Code canônico (ADR-0007) + guia `guides/content.md`
-- [ ] CMS Git-backed opcional (Decap/Tina → commits/PR em `sandbox`) — [#71](https://github.com/KleilsonSantos/kleilson-portfolio/issues/71), pós-#8, ver ADR-0007
+- [x] CMS Git-backed opcional (Decap → commits em `sandbox`) — [#71](https://github.com/KleilsonSantos/kleilson-portfolio/issues/71) · [ADR-0012](./adr/0012-decap-cms-git-backed.md)
 - [x] Playwright E2E smoke (#4)
 - [x] Lighthouse CI scaffold (#5)
 - [x] Camada AI portável (`AGENTS.md` / Copilot / Cursor pointers)

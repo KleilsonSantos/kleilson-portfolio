@@ -19,7 +19,8 @@
     "lighthouse": "env -u VITE_API_BASE_URL pnpm --filter @kleilson/web lighthouse",
     "preview": "pnpm --filter @kleilson/web preview",
     "optimize:photo": "pnpm --filter @kleilson/web optimize:photo",
-    "deploy:api": "pnpm --filter @kleilson/worker-api deploy"
+    "deploy:api": "pnpm --filter @kleilson/worker-api deploy",
+    "deploy:decap-oauth": "pnpm --filter @kleilson/decap-oauth deploy"
   },
   "devDependencies": {
     "concurrently": "^10.0.3",
