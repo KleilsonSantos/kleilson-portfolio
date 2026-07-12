@@ -133,6 +133,10 @@ Regras portáveis (independentes de IDE e modelo):
 
 ---
 
+## Ajuda / suporte
+
+Onde obter ajuda: [SUPPORT.md](./SUPPORT.md) · [Issues](https://github.com/KleilsonSantos/kleilson-portfolio/issues).
+
 ## Licença
 
 MIT — veja [LICENSE](./LICENSE).
