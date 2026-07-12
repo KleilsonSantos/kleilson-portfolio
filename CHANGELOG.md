@@ -24,15 +24,6 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 ### Changed
 
 - 📝 Guides: seção `## Relacionados` padronizada (links correlacionados; sem chrome da Wiki) #113
-
-
-### Fixed
-
-- 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
-- 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
-
-### Changed
-
 - ♻️ Dockerfile / Containers = caminho **pago futuro** (não path ativo de produção)
 - 🔧 Dependabot monorepo: apenas `directory: "/"`; política de autoria Git sem trailer de IDE
 - 🚚 Cutover GitHub Pages → redirect para Cloudflare Pages (`legacy-github-pages/` + workflow)
@@ -44,6 +35,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 `observability.md` + #9: princípios BP-008/BP-015 (health/logs) sem OTel/Prometheus
 - 📝 Regra canônica: agente marca `[x]` nos Aceites cumpridos da issue (não esperar clique humano)
 - 📝 Docs alinhadas ao monorepo/Decap/Workers Free (overview, ADRs 0007/0008/0011, guides)
+
+### Fixed
+
+- 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
+- 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
 
 ## [0.4.0] - 2026-07-10
 
