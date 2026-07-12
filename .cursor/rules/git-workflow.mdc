@@ -32,6 +32,7 @@ Guia completo: `docs/guides/task-kickoff.md`
 - **Nunca** commitar diretamente em `main` ou `sandbox`
 - Branch semântica a partir de `sandbox` atualizada
 - Commits: Conventional Commits + Gitmoji obrigatório (`type: <emoji> …`)
+- Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **nunca** `Co-authored-by: Cursor` / `cursoragent@…` / trailers de IDE
 - Merges: `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub sem emoji)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
 - Após merge releaseable em `main`: **tag anotada SemVer + GitHub Release** (CHANGELOG e `package.json` alinhados) — ver `docs/guides/releases.md`

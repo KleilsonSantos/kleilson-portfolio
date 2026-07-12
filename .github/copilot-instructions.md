@@ -11,7 +11,8 @@ Deploy: Cloudflare Pages + Workers Free (ADR-0008). Conteúdo: apenas fatos veri
 ## Sempre
 
 - Preferir TypeScript estrito; tipar props e dados em `apps/web/src/data/`.
-- Seguir Conventional Commits e fluxo: Issue → `feature/*` → PR → `sandbox` → PR → `main`.
+- Seguir Conventional Commits + Gitmoji e fluxo: Issue → `feature/*` → PR → `sandbox` → PR → `main`.
+- Autoria Git: `Kleilson Santos <kdsddesign1@gmail.com>` — sem co-autoria de IDE/agente.
 - Atualizar `CHANGELOG.md` `[Unreleased]` em mudanças user-facing.
 - Respeitar ADR-0004 (dark-first, teal, Sora + IBM Plex Sans).
 - Manter docs alinhados ao código (ADR-0003).
@@ -20,6 +21,7 @@ Deploy: Cloudflare Pages + Workers Free (ADR-0008). Conteúdo: apenas fatos veri
 
 - Inventar experiência profissional, empresas, datas ou stacks.
 - Push direto em `main`/`sandbox`.
+- Adicionar `Co-authored-by: Cursor` / `cursoragent@…` ou trailers de ferramenta.
 - Introduzir look visual genérico (roxo/indigo, Inter como display, glow).
 - Usar `any` sem justificativa.
 
