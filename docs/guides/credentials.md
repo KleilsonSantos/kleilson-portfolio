@@ -11,16 +11,16 @@
 
 | Artefato | Caminho |
 |----------|---------|
-| JSON (editável) | `apps/web/content/credentials.json` |
-| Wrapper TS | `apps/web/src/data/credentialsData.ts` |
+| Dados (JSON) | `apps/web/content/credentials.json` |
+| Wrapper | `apps/web/src/data/credentialsData.ts` |
 | UI | `apps/web/src/pages/Sobre.tsx` |
 | Tipos | `apps/web/src/types/index.ts` |
 
 ## Como atualizar
 
 1. Adicione o certificado na pasta local (fora do repo).
-2. Atualize `apps/web/content/credentials.json` (e o wrapper só se tipos mudarem) no mesmo PR da UI (ADR-0003 · [content.md](./content.md)).
-3. Se for certificação vendor, use `CERTIFICATIONS` (via JSON `certifications`); se for curso, `COURSE_GROUPS` (`courseGroups`).
+2. Atualize `apps/web/content/credentials.json` (ou Decap; wrapper só se tipos mudarem) no mesmo PR da UI (ADR-0003 · [content.md](./content.md)).
+3. Se for certificação vendor, use `CERTIFICATIONS` (JSON `certifications`); se for curso, `COURSE_GROUPS` (`courseGroups`).
 4. Não invente datas, IDs ou URLs de verificação pessoais sem comprovante.
 
 ## Relacionados

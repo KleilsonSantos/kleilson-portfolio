@@ -15,8 +15,8 @@ Contrato geral: [`AGENTS.md`](../../AGENTS.md) · Agentes: [`ai-agentic.md`](./a
 | Sentry (no-op sem DSN) + health readiness | ✅ | #9 · ADR-0009 |
 | Analytics Umami (opt-in) | ✅ código | #65 · ADR-0010 |
 | CodeQL + Dependabot | ✅ | não substituir sem ADR |
-| Monorepo | 📋 | #10 |
-| CMS Git-backed | 📋 | #71 · Fase 5 |
+| Monorepo | ✅ | #10 · ADR-0011 |
+| CMS Git-backed (Decap) | ✅ | #71 · ADR-0012 |
 
 ## Princípio
 

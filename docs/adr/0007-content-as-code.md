@@ -1,14 +1,27 @@
 # ADR-0007: Gestão de conteúdo — Content-as-Code (Git) + editorial Git-backed opcional
 
-- **Status:** Aceito
+- **Status:** Aceito (emenda 2026-07-12: Decap + JSON — ver ADR-0012)
 - **Data:** 2026-07-10
 - **Decisores:** Kleilson dos Santos
 - **Tipo:** Conteúdo / arquitetura / segurança
-- **Relacionados:** ADR-0002 (Git), ADR-0003 (docs), ADR-0005/0006 (API contato), AGENTS.md
+- **Relacionados:** ADR-0002 (Git), ADR-0003 (docs), ADR-0005/0006 (API contato), ADR-0012 (Decap), AGENTS.md
+
+## Emenda (2026-07-12)
+
+A evolução opcional (#71) foi **implementada** sem abandonar este ADR:
+
+| Princípio (mantido) | Forma atual |
+| --- | --- |
+| Desired state no Git + PR | `apps/web/content/*.json` (fonte) + wrappers `apps/web/src/data/*` |
+| Sem JWT/`localStorage`/Firebase admin | Decap `/admin` + GitHub OAuth (`apps/decap-oauth`) |
+| Postgres só contato | Inalterado (ADR-0006) |
+| Branch editorial | `sandbox` (ADR-0012) |
+
+Detalhes operacionais: [ADR-0012](./0012-decap-cms-git-backed.md), [content.md](../guides/content.md).
 
 ## Context and Problem Statement
 
-O portfólio anterior (`homepage` + `backend-homepage`) tinha painel `/admin` com login JWT (e tentativa Firebase SSO) para editar JSON de Sobre/Habilidades via `PUT` na API. O `kleilson-portfolio` atual **não** possui admin: o conteúdo vive em `src/data/*.ts`, versionado no Git.
+O portfólio anterior (`homepage` + `backend-homepage`) tinha painel `/admin` com login JWT (e tentativa Firebase SSO) para editar JSON via `PUT` na API. Na decisão original deste ADR, o `kleilson-portfolio` usava só `src/data/*.ts` versionado no Git (sem UI editorial).
 
 Precisamos decidir, com evidências oficiais/credíveis, se e como elevar a gestão de conteúdo (incluindo UI de administração) **sem** quebrar:
 
@@ -97,25 +110,19 @@ Isso eleva maturidade **sem** nova superfície de ataque e sem antecipar Fase 5.
 
 ## Decision Outcome
 
-### Canônico (agora)
+### Canônico (após emenda 2026-07-12)
 
-1. **Fonte de verdade do conteúdo profissional:** `src/data/*.ts` (+ tipos em `src/types/`)
-2. **Fluxo de mudança:** Issue → `feature/*` from `sandbox` → PR → `sandbox` → `main` → tag (ADR-0002 / task-kickoff)
+1. **Fonte de verdade do conteúdo profissional:** `apps/web/content/*.json` (+ wrappers tipados em `apps/web/src/data/*`)
+2. **Fluxo de mudança:** Issue → `feature/*` from `sandbox` → PR → `sandbox` → `main` → tag (ADR-0002); Decap também commit em `sandbox`
 3. **Critério de aceite de conteúdo:** evidência no CV ATS, GitHub ou LinkedIn; sem inventar fatos
-4. **Admin HTTP do site antigo:** não será reintroduzido
-5. **Supabase:** continua exclusivo para contato (e futuros dados operacionais), não para páginas do portfólio
-
-### Evolução opcional (depois de #8 Deploy)
-
-6. Avaliar **Decap CMS** (ou Tina) com backend GitHub, branch alvo `sandbox` ou editorial workflow com PR, collections mapeadas aos modelos atuais (profile, projects, credentials, contact channels)
-7. Autenticação do editorial = **GitHub OAuth** (não JWT custom / não Firebase keys no frontend)
-8. Qualquer CMS Git-backed exige ADR aditivo ou atualização deste ADR + issue dedicada
+4. **Admin HTTP do site antigo (JWT/Firebase):** não será reintroduzido
+5. **Supabase:** exclusivo para contato (e futuros dados operacionais), não para narrativa
+6. **Editorial Git-backed:** Decap + OAuth GitHub — [ADR-0012](./0012-decap-cms-git-backed.md)
 
 ### Fora de escopo deste ADR
 
-- Implementação imediata de `/admin`
-- Migrar conteúdo para Markdown/MDX (pode ser revisitado no monorepo #10)
-- Notificação e-mail no contato (ideia do backend antigo; issue separada)
+- Migrar conteúdo para Markdown/MDX (opcional futuro)
+- Notificação e-mail no contato (issue separada)
 
 ## Consequences
 
@@ -128,16 +135,15 @@ Isso eleva maturidade **sem** nova superfície de ataque e sem antecipar Fase 5.
 
 ### Negativas / limitações
 
-- Edição de conteúdo exige IDE/PR (aceitável para autor único técnico)
-- CMS Git-backed só após deploy e OAuth — não “amanhã”
-- Soft skills / WhatsApp e demais campos continuam sendo mudanças de código (já o padrão)
+- Editorial no browser ainda passa por GitHub OAuth + PR/CI (não “salvar no banco”)
+- Soft skills / WhatsApp e demais campos continuam versionados no Git
 
 ## Confirmation
 
 - [x] Este ADR referenciado em `docs/architecture/overview.md` e `docs/ROADMAP.md`
 - [x] Guia `docs/guides/content.md` descreve o fluxo operacional
-- [x] Nenhuma rota `/admin` ou auth de conteúdo no código atual
-- [x] Issue GitHub [#71](https://github.com/KleilsonSantos/kleilson-portfolio/issues/71) — CMS Git-backed (backlog Fase 5; não In Progress até #8)
+- [x] Sem JWT/`localStorage`/Firebase para admin; Decap + OAuth (ADR-0012)
+- [x] Issue [#71](https://github.com/KleilsonSantos/kleilson-portfolio/issues/71) concluída; ADR-0012 Aceito
 
 ## More Information
 

@@ -1,10 +1,10 @@
 # Guia — Testes (unit, E2E, Lighthouse)
 
-Comandos abaixo a partir da **raiz do monorepo** (`pnpm`). Pacote web: `apps/web`.
+Tudo sob `apps/web` no monorepo. Na raiz use os scripts `pnpm` (orquestram o package).
 
-## Vitest + Testing Library (#3)
+## Vitest + Testing Library
 
-Config: `apps/web/vite.config.ts` (`test`) · setup: `apps/web/src/test/setup.ts`  
+Config: `apps/web/vite.config.ts` · setup: `apps/web/src/test/setup.ts`  
 Specs: `apps/web/src/**/*.{test,spec}.{ts,tsx}`
 
 ```bash
@@ -12,22 +12,17 @@ pnpm test
 pnpm --filter @kleilson/web test:watch
 ```
 
-Cobertura inicial: `validation`, `sanitize` e componente `Footer`.
+## Playwright
 
-## Playwright (#4)
-
-Config: `apps/web/playwright.config.ts`  
-Specs: `apps/web/e2e/`
+Config: `apps/web/playwright.config.ts` · specs: `apps/web/e2e/`
 
 ```bash
 pnpm test:e2e
 ```
 
-(`test:e2e` na raiz já faz build do package web antes dos testes.)
+O script de E2E faz o build do package web (`tsc` + `vite`) e sobe o preview; mock `/api/contact` funciona em preview.
 
-O preview Vite sobe automaticamente; o mock `/api/contact` também funciona em preview.
-
-## Lighthouse CI (#5)
+## Lighthouse CI
 
 Config: `apps/web/lighthouserc.cjs` (coleta via `staticDistDir` — Home).
 
@@ -35,11 +30,11 @@ Config: `apps/web/lighthouserc.cjs` (coleta via `staticDistDir` — Home).
 pnpm lighthouse
 ```
 
-Asserts iniciais são conservadores (a11y error ≥ 0.9; performance/SEO warn). Rotas SPA profundas podem ser adicionadas depois com server SPA-aware.
+Asserts iniciais conservadores (a11y; performance/SEO em warn).
 
 ## CI
 
-Jobs em `.github/workflows/ci.yml`: `quality` (typecheck + lint + **unit** + build) → `e2e` + `lighthouse` em paralelo.
+`.github/workflows/ci.yml`: `quality` (typecheck + lint + unit + build) → `e2e` + `lighthouse` em paralelo.
 
 ## Relacionados
 

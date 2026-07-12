@@ -50,7 +50,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 
 - [x] Turborepo + pnpm workspaces — issue #10 · [ADR-0011](./adr/0011-turborepo-pnpm.md)
 - [x] CodeQL + Dependabot (básico já ativo)
-- [x] ADRs (0001–0010)
+- [x] ADRs 0001–0012 (canônicos)
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
 - [x] Fundação visual V1–V5 (ADR-0004)

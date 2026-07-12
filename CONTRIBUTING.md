@@ -6,30 +6,27 @@ Dúvidas de uso, bugs ou “como pedir ajuda”: [SUPPORT.md](./SUPPORT.md).
 
 ## Fluxo Git (obrigatório)
 
-Leia o guia completo: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
+Guia completo: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md) · kickoff: [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
 
-```text
-feature/* | fix/* | docs/* | chore/* | ci/* ...
-                    │
-                    ▼ PR #1
-                sandbox
-                    │
-                    ▼ PR #2
-                  main  →  tag vX.Y.Z
+```mermaid
+flowchart LR
+  F["feature/*"] --> S["sandbox"]
+  S --> M["main"]
+  M --> T["tag vX.Y.Z"]
 ```
 
-**Nunca commite diretamente em `main` ou `sandbox`.**
+**Nunca** commit direto em `main` ou `sandbox`.
 
 ## Como contribuir
 
-1. Faça fork (ou trabalhe no repo com permissão)
-2. **Kickoff canônico:** leia [`docs/guides/task-kickoff.md`](./docs/guides/task-kickoff.md)
-3. Mova a issue para **In Progress** no Project → crie branch de `sandbox`
-4. Commits com [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji (`type: <emoji> …`; merges: `merge: 🔀 PR #n — branch`). Opcional: `git config core.hooksPath .githooks`
-5. `npm run typecheck`, `npm run lint` e `npm run build` antes do PR
-6. Se a mudança afetar build/test/uso/release/arquitetura → atualize docs no **mesmo PR** ([ADR-0003](./docs/adr/0003-documentation-strategy.md), [documentation-sync](./docs/guides/documentation-sync.md))
-7. Abra **PR para `sandbox`** → após merge, abra **PR `sandbox` → `main`**
-8. Releases (**canônico**): após merge `sandbox` → `main` releaseable → promover CHANGELOG + bump `package.json` → tag anotada `vX.Y.Z` → `gh release create` (ver [`docs/guides/releases.md`](./docs/guides/releases.md) e Passo 8 em [`task-kickoff.md`](./docs/guides/task-kickoff.md))
+1. Fork (ou clone com permissão)
+2. Kickoff canônico (`task-kickoff.md`) — issue → In Progress → branch de `sandbox`
+3. Commits: [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji (`type: <emoji> …`; merges: `merge: 🔀 PR #n — branch`). Hooks: `git config core.hooksPath .githooks`
+4. Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **sem** `Co-authored-by: Cursor` / trailers de IDE ([AGENTS.md](./AGENTS.md))
+5. Antes do PR: `pnpm typecheck && pnpm lint && pnpm build`
+6. Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](./docs/adr/0003-documentation-strategy.md))
+7. PR → `sandbox` → depois PR `sandbox` → `main`
+8. Release: CHANGELOG + bump + tag anotada ([releases.md](./docs/guides/releases.md))
 
 ## Prefixos de branch
 
@@ -37,15 +34,15 @@ feature/* | fix/* | docs/* | chore/* | ci/* ...
 
 ## Agentes de IA
 
-Contrato portável (qualquer IDE/modelo): [`AGENTS.md`](./AGENTS.md) · guia [`docs/guides/ai-agentic.md`](./docs/guides/ai-agentic.md)
+[`AGENTS.md`](./AGENTS.md) · [`docs/guides/ai-agentic.md`](./docs/guides/ai-agentic.md) · custom agents: [`.github/agents/`](./.github/agents/)
 
 ## Padrões
 
 - Escopo mínimo por PR
-- Textos de interface em pt-BR
-- Não inventar informações profissionais
-- Consulte `docs/adr/` antes de mudanças arquiteturais
+- UI em pt-BR
+- Não inventar fatos profissionais
+- Consulte `docs/adr/` antes de mudança arquitetural
 
 ## Código de conduta
 
-Este projeto segue o [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
+[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)

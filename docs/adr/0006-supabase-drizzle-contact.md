@@ -5,6 +5,7 @@
 - **Decisores:** Kleilson dos Santos
 - **Issue:** #7
 - **Tipo:** Backend / dados
+- **Path atual (2026-07-12):** Drizzle/store em `apps/api/` · prod via `apps/worker-api` + PostgREST (texto histórico pode citar `server/`)
 
 ## Context and Problem Statement
 

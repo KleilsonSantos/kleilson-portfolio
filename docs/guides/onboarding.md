@@ -21,13 +21,14 @@ pnpm --filter @kleilson/api dev
 
 - **Monorepo** — pnpm + Turborepo ([ADR-0011](../adr/0011-turborepo-pnpm.md))
 - **Páginas** em `apps/web/src/pages/` — uma rota por arquivo (`.tsx`)
-- **Dados** em `apps/web/src/data/` — única fonte de conteúdo estático (`.ts`)
+- **Dados** — fonte: `apps/web/content/*.json`; wrappers: `apps/web/src/data/`
 - **Tipos** em `apps/web/src/types/` — contratos TypeScript do SPA
 - **API local** em `apps/api/` — Fastify (`/health`, `/api/contact`) — [api.md](./api.md)
 - **API prod** em `apps/worker-api/` — Cloudflare Workers Free
+- **Decap OAuth** em `apps/decap-oauth/` — login do `/admin`
 - **Shared** em `packages/shared/` — schema de contato
 - **Decisões** em `docs/adr/` — leia antes de mudanças grandes
-- **IA** em [`AGENTS.md`](../../AGENTS.md) + [`.cursor/rules/`](../../.cursor/rules/) — ver [`ai-agentic.md`](./ai-agentic.md)
+- **IA** em [`AGENTS.md`](../../AGENTS.md) + [`.github/agents/`](../../.github/agents/) — ver [`ai-agentic.md`](./ai-agentic.md)
 - **Kickoff** em [`task-kickoff.md`](./task-kickoff.md) — procedimento obrigatório
 - **Project board:** https://github.com/users/KleilsonSantos/projects/6
 
@@ -43,7 +44,7 @@ pnpm --filter @kleilson/api dev
 ## 4. Atualizar conteúdo profissional
 
 1. Confira CV / GitHub / LinkedIn
-2. Propague mudanças via [content.md](./content.md) (`apps/web/content/*.json` + wrappers)
+2. Edite `apps/web/content/*.json` (ou Decap `/admin` → branch `sandbox`) — [content.md](./content.md)
 3. Não invente fatos
 
 ## Relacionados

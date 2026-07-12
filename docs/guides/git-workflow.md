@@ -167,7 +167,17 @@ Detalhes e histórico: [`releases.md`](./releases.md)
 | `v0.2.2` | ADR-0003 documentação | ✅ Publicada |
 | `v0.3.0` | Qualidade + visual + AI + Fastify | ✅ Publicada |
 | `v0.4.0` | Fase 3 — Supabase + Drizzle (#7) | ✅ Publicada |
-| `v0.4.0+` | Deploy / observabilidade (#8/#9) | 📋 Planejada |
+| `v0.4.0+` / próximo SemVer | Deploy Pages + Workers Free (#8), Sentry (#9), Umami (#65), monorepo (#10), Decap (#71) | ✅ No `main` (CHANGELOG Unreleased — tag SemVer pendente) |
+
+## Fluxo (resumo)
+
+```mermaid
+flowchart LR
+  I[Issue] --> B["feature/* from sandbox"]
+  B --> P1[PR → sandbox]
+  P1 --> P2[PR → main]
+  P2 --> T[tag anotada]
+```
 
 ## O que NÃO fazer
 

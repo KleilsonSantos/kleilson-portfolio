@@ -58,8 +58,8 @@ gh release create vX.Y.Z \
 | Docs strategy (ADR-0003) | `v0.2.2` | ✅ |
 | Fase 2 — Qualidade + visual + AI; início Fase 3 (Fastify) | `v0.3.0` | ✅ |
 | Fase 3 — Persistência (Supabase) | `v0.4.0` | ✅ #7 |
-| Fase 4 — Deploy produção | `v1.0.0` (sugerido) | 📋 #8/#9 |
-| Fase 5 — Monorepo | `v2.0.0` (sugerido) | 📋 #10 |
+| Fase 4 — Deploy + observabilidade | próximo SemVer (sugerido `v0.5.0` / `v1.0.0`) | ✅ no `main` (#8/#9/#65) — tag pendente |
+| Fase 5 — Monorepo + Decap | (mesmo Unreleased) | ✅ no `main` (#10/#71) — tag pendente |
 
 ## Relacionados
 
