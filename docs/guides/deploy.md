@@ -231,7 +231,8 @@ Opcional depois de estável: desligar Pages legado por completo.
 
 ## Relacionados
 
-- [api.md](./api.md) — rodar API local
-- [observability.md](./observability.md) — ordem Fase 4
+- [api.md](./api.md) — rodar API local / Worker
+- [observability.md](./observability.md) — ordem Fase 4 (health / Sentry / analytics)
 - [content.md](./content.md) — editar conteúdo (não é deploy)
+- [credentials.md](./credentials.md) — política de certificados (não é secret de deploy)
 - [ADR-0008](../adr/0008-cloudflare-deploy.md)

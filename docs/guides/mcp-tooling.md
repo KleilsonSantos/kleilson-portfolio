@@ -83,5 +83,7 @@ Contrato geral: [`AGENTS.md`](../../AGENTS.md) · Agentes: [`ai-agentic.md`](./a
 
 ## Relacionados
 
-- Issues: #7 · #8 · #9 · #62 · #65 · #10  
-- Deploy: [`deploy.md`](./deploy.md) · Observabilidade: [`observability.md`](./observability.md)
+- [ai-agentic.md](./ai-agentic.md) — camadas de agentes
+- [observability.md](./observability.md) — ferramentas canônicas
+- [deploy.md](./deploy.md) — ops de publish
+- [AGENTS.md](../../AGENTS.md)

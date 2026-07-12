@@ -64,3 +64,10 @@ UI: [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pag
 - [ADR-0007](../adr/0007-content-as-code.md) · [ADR-0012](../adr/0012-decap-cms-git-backed.md)
 - [Decap backends](https://decapcms.org/docs/backends-overview/)
 - [OpenGitOps](https://opengitops.dev/)
+
+## Relacionados
+
+- [credentials.md](./credentials.md) — política de certificados
+- [onboarding.md](./onboarding.md) — setup
+- [deploy.md](./deploy.md) — publicar (conteúdo ≠ deploy)
+- [git-workflow.md](./git-workflow.md) — PR com evidência

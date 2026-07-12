@@ -47,3 +47,11 @@ Custom agents no GitHub: `.github/agents/{task-planner,code-reviewer,docs-writer
 ## MCP
 
 Matriz canônica: [`mcp-tooling.md`](./mcp-tooling.md). Preferir Supabase / Postman / Grafana opcional; **não** Vercel deploy, Datadog ou GitLab neste repo.
+
+## Relacionados
+
+- [AGENTS.md](../../AGENTS.md) — contrato
+- [mcp-tooling.md](./mcp-tooling.md) — matriz MCP
+- [task-kickoff.md](./task-kickoff.md) — fluxo com agentes
+- [documentation-sync.md](./documentation-sync.md) — docs sem duplicar na Wiki
+- [SUPPORT.md](../../SUPPORT.md)

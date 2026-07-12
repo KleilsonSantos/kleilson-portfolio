@@ -60,3 +60,11 @@ gh release create vX.Y.Z \
 | Fase 3 — Persistência (Supabase) | `v0.4.0` | ✅ #7 |
 | Fase 4 — Deploy produção | `v1.0.0` (sugerido) | 📋 #8/#9 |
 | Fase 5 — Monorepo | `v2.0.0` (sugerido) | 📋 #10 |
+
+## Relacionados
+
+- [git-workflow.md](./git-workflow.md) — promote `sandbox` → `main` antes da tag
+- [documentation-sync.md](./documentation-sync.md) — Unreleased → versão
+- [task-kickoff.md](./task-kickoff.md) — Passo 8 (release)
+- [CHANGELOG.md](../../CHANGELOG.md)
+- [ROADMAP.md](../ROADMAP.md)

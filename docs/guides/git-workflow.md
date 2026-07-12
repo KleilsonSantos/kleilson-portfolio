@@ -189,9 +189,11 @@ O pipeline roda em:
 
 Os commits iniciais da Fase 1 foram feitos diretamente em `main` durante o bootstrap. A tag `v0.1.0` marca esse marco. **A partir de v0.1.1**, todo desenvolvimento segue este guia.
 
-## Referências
+## Relacionados
 
-- [task-kickoff.md](./task-kickoff.md) — **kickoff canônico de tarefas**
+- [task-kickoff.md](./task-kickoff.md) — kickoff canônico
+- [releases.md](./releases.md) — tags e SemVer
+- [documentation-sync.md](./documentation-sync.md) — docs no mesmo PR
 - [ADR-0002](../adr/0002-git-branching-strategy.md)
 - [CONTRIBUTING.md](../../CONTRIBUTING.md)
-- [ROADMAP.md](../ROADMAP.md)
+- [SUPPORT.md](../../SUPPORT.md)

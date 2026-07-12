@@ -43,10 +43,14 @@ pnpm --filter @kleilson/api dev
 ## 4. Atualizar conteúdo profissional
 
 1. Confira CV / GitHub / LinkedIn
-2. Propague mudanças para `apps/web/src/data/profileData.ts` e `projectsData.ts`
+2. Propague mudanças via [content.md](./content.md) (`apps/web/content/*.json` + wrappers)
 3. Não invente fatos
 
-## 5. Referências
+## Relacionados
 
-- API: Fastify em `apps/api/` + Postgres (Supabase/Drizzle) quando `DATABASE_URL` — ADR-0005/0006
-- Deploy: [deploy.md](./deploy.md)
+- [task-kickoff.md](./task-kickoff.md) — iniciar tarefa
+- [git-workflow.md](./git-workflow.md) — branches / PRs
+- [api.md](./api.md) — API local + Worker
+- [content.md](./content.md) — editar conteúdo
+- [deploy.md](./deploy.md) — publicar
+- [SUPPORT.md](../../SUPPORT.md) — ajuda / issues

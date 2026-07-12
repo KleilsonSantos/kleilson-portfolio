@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 📝 `SUPPORT.md` (community health) + links no README/CONTRIBUTING (#109)
 - 🤖 Custom agents Copilot (`.github/agents/` — task-planner, code-reviewer, docs-writer) para a aba Agents
 - ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `packages/shared`) #10 / ADR-0011
 - 📝 Decap CMS Git-backed (`/admin` + `content/*.json` + OAuth Worker) #71 / ADR-0012
@@ -21,6 +22,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 ADR-0008 Deploy Cloudflare Pages + API Container (#8) + guia `docs/guides/deploy.md`
 - 🐳 `Dockerfile` / `.dockerignore` para a API Fastify (Containers)
 - ✨ `VITE_API_BASE_URL` opcional em `apps/web/src/api/contact.ts` (API em origin separado)
+
+### Changed
+
+- 📝 Guides: seção `## Relacionados` padronizada (links correlacionados; sem chrome da Wiki) #113
+
 
 ### Fixed
 

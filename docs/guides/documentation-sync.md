@@ -55,12 +55,24 @@ feature/* (código + docs + Unreleased)
 
 | Tipo Diátaxis | Onde vive |
 |---------------|-----------|
-| How-to | `docs/guides/` |
+| How-to | `docs/guides/` (API how-to: [`api.md`](./api.md)) |
 | Explanation / Reference de sistema | `docs/architecture/`, `docs/adr/` |
-| Reference de API | `docs/api/` (quando existir API) |
 | Tutorial | sob demanda (evitar misturar com how-to) |
 
 Fonte: [Diátaxis](https://diataxis.fr/start-here/) — framework, **não** especificação ISO.
+
+## Links correlacionados (`## Relacionados`)
+
+How-tos e hubs leves devem terminar (ou quase) com **`## Relacionados`**: 3–6 links para o próximo passo do leitor (guides/ADRs/raiz). Não duplicar o corpo do outro doc.
+
+| Papel | O quê usar |
+| --- | --- |
+| Wiki GitHub | Hub visual (badges, Mermaid, `<details>`) — **só mapa**; ADR-0003 |
+| `README` / `SUPPORT.md` | Atalhos curtos + links; sem virar segunda Wiki |
+| `docs/guides/*` | `## Relacionados` (texto) |
+| ADRs / `CHANGELOG` / `SECURITY` | Formato próprio — sem chrome de hub |
+
+**Não** espalhar badges `for-the-badge`, Mermaid de mapa mental ou `<details>` em massa nos how-tos.
 
 ## Automação (maturidade)
 
@@ -79,3 +91,13 @@ Fonte: [Diátaxis](https://diataxis.fr/start-here/) — framework, **não** espe
 | Docs só no release final | Drift; review não vê docs | Google + Microsoft DoD |
 | Docs em todo commit | Sem padrão oficial; custo sem benefício | — |
 | Inventar pastas sem ADR | Overengineering | Google (complexity / over-engineering) |
+| Copiar chrome da Wiki para todo `.md` | Ruído; foge do Diátaxis; Wiki ≠ canônico | ADR-0003 · Diátaxis |
+| Duplicar o mesmo how-to em Wiki + `docs/` | Drift garantido | ADR-0003 |
+
+## Relacionados
+
+- [ADR-0003](../adr/0003-documentation-strategy.md) — política normativa
+- [onboarding.md](./onboarding.md) — setup
+- [git-workflow.md](./git-workflow.md) — PRs e sync no fluxo
+- [SUPPORT.md](../../SUPPORT.md) — onde pedir ajuda
+- [Wiki Home](https://github.com/KleilsonSantos/kleilson-portfolio/wiki) — mapa (não fonte)

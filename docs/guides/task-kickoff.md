@@ -140,8 +140,10 @@ git push -u origin feature/typescript-migration
 - ❌ Branch sem prefixo semântico (`feature/`, `fix/`, etc.)
 - ❌ PR direto para `main`
 
-## Referências
+## Relacionados
 
-- [git-workflow.md](./git-workflow.md)
+- [git-workflow.md](./git-workflow.md) — fluxo completo
+- [documentation-sync.md](./documentation-sync.md) — docs no PR
+- [ai-agentic.md](./ai-agentic.md) — agentes no kickoff
 - [ADR-0002](../adr/0002-git-branching-strategy.md)
 - [CONTRIBUTING.md](../../CONTRIBUTING.md)
