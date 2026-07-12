@@ -7,19 +7,17 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 ### Added
 
 - 🤖 Custom agents Copilot (`.github/agents/` — task-planner, code-reviewer, docs-writer) para a aba Agents
-- ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `packages/shared`) #10 / ADR-0011
+- ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `apps/decap-oauth`, `packages/shared`) #10 / ADR-0011
 - 📝 Decap CMS Git-backed (`/admin` + `content/*.json` + OAuth Worker) #71 / ADR-0012
 - 🤖 Matriz MCP canônica (`docs/guides/mcp-tooling.md`) alinhada ao roadmap #62
 - 📊 Analytics Umami privacy-first (opt-in via `VITE_UMAMI_*`, SPA pageviews) #65 / ADR-0010
 - 🔒 Sentry (React/Node/Workers) no-op sem DSN + health liveness/readiness + `requestId` (#9 / ADR-0009)
-- 🚀 API de produção em Cloudflare Workers (Free) via PostgREST — sem Containers pagos #8
-- 🚀 Worker + Container Wrangler para API Fastify (`apps/worker-api`, `pnpm deploy:api`) #8
+- 🚀 API de produção em Cloudflare Workers Free (`apps/worker-api`) via PostgREST — sem Containers pagos #8 / ADR-0008
 - ✨ Foto profissional no hero (Home/Sobre) + assets WebP em `apps/web/public/images/profile/`
 - ✨ Soft skills (habilidades interpessoais) na página Sobre
 - ✨ Canal WhatsApp em Contatos (`wa.me` com mensagem pré-preenchida)
-- 📝 ADR-0007 Content-as-Code + guia `docs/guides/content.md` (gestão de conteúdo / admin Git-backed opcional pós-#8)
-- 📝 ADR-0008 Deploy Cloudflare Pages + API Container (#8) + guia `docs/guides/deploy.md`
-- 🐳 `Dockerfile` / `.dockerignore` para a API Fastify (Containers)
+- 📝 ADR-0007 Content-as-Code (emenda JSON/Decap) + guia `docs/guides/content.md`
+- 📝 ADR-0008 Deploy Cloudflare Pages + Workers Free (#8) + guia `docs/guides/deploy.md`
 - ✨ `VITE_API_BASE_URL` opcional em `apps/web/src/api/contact.ts` (API em origin separado)
 
 ### Fixed
@@ -29,6 +27,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
+- ♻️ Dockerfile / Containers = caminho **pago futuro** (não path ativo de produção)
+- 🔧 Dependabot monorepo: apenas `directory: "/"`; política de autoria Git sem trailer de IDE
 - 🚚 Cutover GitHub Pages → redirect para Cloudflare Pages (`legacy-github-pages/` + workflow)
 - 📱 Layout responsivo multi-device: containers/tipografia fluidos, hero em grid (tablet→desktop), breakpoints por conteúdo
 - 💄 Avatar: recorte com headroom + anel branco fino no círculo
@@ -37,7 +37,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Sync docs pós-`v0.4.0`: ROADMAP Fase 4, observability map, SECURITY, onboarding, README
 - 📝 `observability.md` + #9: princípios BP-008/BP-015 (health/logs) sem OTel/Prometheus
 - 📝 Regra canônica: agente marca `[x]` nos Aceites cumpridos da issue (não esperar clique humano)
-- 📝 ROADMAP / architecture: ADR-0007 e CMS Git-backed como evolução Fase 5 (não portar admin 2024)
+- 📝 Docs alinhadas ao monorepo/Decap/Workers Free (overview, ADRs 0007/0008/0011, guides)
 
 ## [0.4.0] - 2026-07-10
 

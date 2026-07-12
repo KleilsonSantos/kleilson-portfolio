@@ -32,7 +32,7 @@ Baseado em [Microsoft DoD](https://microsoft.github.io/code-with-engineering-pla
 - [ ] `CHANGELOG.md` → seção `[Unreleased]` preenchida se mudança **notável**
 - [ ] Se decisão arquitetural → novo ADR ou atualização de ADR existente
 - [ ] Template de PR marca o item de documentação
-- [ ] `npm run typecheck && npm run lint && npm run build` passam
+- [ ] `pnpm typecheck && pnpm lint && pnpm build` passam
 
 ## Checklist do revisor
 
