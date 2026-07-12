@@ -7,12 +7,12 @@ Política normativa: ADR-0007 + `AGENTS.md` + `.github/instructions/content-data
 
 | Domínio | Arquivo | Página |
 |---------|---------|--------|
-| Perfil, summary, skills, soft skills, experiência | `src/data/profileData.ts` | Home, Sobre |
-| Projetos públicos | `src/data/projectsData.ts` | Projetos, Home (featured) |
-| Certificações, educação, cursos | `src/data/credentialsData.ts` | Sobre |
-| Contato, categorias, redes | `src/data/contactData.ts` | Contatos |
+| Perfil, summary, skills, soft skills, experiência | `apps/web/src/data/profileData.ts` | Home, Sobre |
+| Projetos públicos | `apps/web/src/data/projectsData.ts` | Projetos, Home (featured) |
+| Certificações, educação, cursos | `apps/web/src/data/credentialsData.ts` | Sobre |
+| Contato, categorias, redes | `apps/web/src/data/contactData.ts` | Contatos |
 
-Tipos: `src/types/index.ts`.
+Tipos: `apps/web/src/types/index.ts`.
 
 **Não** gravar narrativa profissional no Supabase. Postgres (ADR-0006) = apenas mensagens de contato.
 
@@ -20,7 +20,7 @@ Tipos: `src/types/index.ts`.
 
 1. Abrir/usar issue no GitHub (milestone adequado).
 2. Kickoff: Issue → Project **In Progress** → branch `feature/*` a partir de `sandbox` ([task-kickoff.md](./task-kickoff.md)).
-3. Editar só os arquivos em `src/data/` (e tipos se necessário).
+3. Editar só os arquivos em `apps/web/src/data/` (e tipos se necessário).
 4. Evidência: CV ATS, README/repo GitHub ou LinkedIn — anotar na descrição do PR se o fato for novo.
 5. PR → `sandbox` → `main` → tag se releaseable.
 
@@ -30,7 +30,7 @@ Tipos: `src/types/index.ts`.
 - [ ] Datas/cargos/clientes não inventados (eDOX = interno Capgemini, não Bradesco)?
 - [ ] Cursos Udemy **não** listados como certificação vendor?
 - [ ] Links (`url`, `verificationUrl`, WhatsApp, social) abrem e estão atualizados?
-- [ ] `npm run lint` / `npm run typecheck` / `npm run build` OK?
+- [ ] `pnpm lint` / `pnpm typecheck` / `pnpm build` OK?
 
 ## O que não fazer
 

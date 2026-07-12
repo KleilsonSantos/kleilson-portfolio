@@ -1,0 +1,11 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+autoInstallPeers: true
+strictDepBuilds: true
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true

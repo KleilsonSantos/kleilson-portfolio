@@ -25,10 +25,13 @@ dist-ssr
 
 # Playwright / Lighthouse
 /test-results/
+**/test-results/
 /playwright-report/
+**/playwright-report/
 /blob-report/
 /playwright/.cache/
 .lighthouseci/
+**/.lighthouseci/
 
 # Editor directories and files
 .vscode/*

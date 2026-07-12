@@ -48,7 +48,7 @@ function contactHandler(
   })
 }
 
-/** Mock local para preview/E2E. Desative com API_PROXY=1 e `npm run server:dev`. */
+/** Mock local para preview/E2E. Desative com API_PROXY=1 e `pnpm --filter @kleilson/api dev`. */
 function contactApiMock(): Plugin {
   return {
     name: 'contact-api-mock',
@@ -78,7 +78,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.{test,spec}.{ts,tsx}', 'server/**/*.{test,spec}.ts'],
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
     css: false,
     env: {
       NODE_ENV: 'test',

@@ -1,7 +1,7 @@
 import { desc } from 'drizzle-orm'
 import { getDb } from '../db/client'
 import { contactMessages } from '../db/schema'
-import type { ContactPayload, StoredContact } from '../schemas/contact'
+import type { ContactPayload, StoredContact } from '@kleilson/shared'
 
 export async function saveContact(payload: ContactPayload): Promise<StoredContact> {
   const db = getDb()

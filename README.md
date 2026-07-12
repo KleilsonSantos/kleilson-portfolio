@@ -22,9 +22,10 @@
 | Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
 | Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
-| API | Prod: Workers Free (`kleilson-portfolio-api.kleilsonsantos.workers.dev`) · Local: Fastify `server/` — ADR-0005/0008 |
+| Monorepo | pnpm workspaces + Turborepo — [ADR-0011](./docs/adr/0011-turborepo-pnpm.md) (#10) |
+| API | Prod: Workers Free (`kleilson-portfolio-api.kleilsonsantos.workers.dev`) · Local: Fastify `apps/api` — ADR-0005/0008 |
 | Persistência | Supabase Postgres + Drizzle — ADR-0006 (`DATABASE_URL`) |
-| Conteúdo | Content-as-Code em `src/data/*` — [ADR-0007](./docs/adr/0007-content-as-code.md) · [guia](./docs/guides/content.md) |
+| Conteúdo | Content-as-Code em `apps/web/src/data/*` — [ADR-0007](./docs/adr/0007-content-as-code.md) · [guia](./docs/guides/content.md) |
 | Deploy | Cloudflare Pages (`kleilson-portfolio.pages.dev`) + Workers Free — [ADR-0008](./docs/adr/0008-cloudflare-deploy.md) (#8) |
 | Observabilidade | [`docs/guides/observability.md`](./docs/guides/observability.md) |
 
@@ -46,11 +47,12 @@ Portfólio pessoal com disciplina de engenharia de produto:
 
 | Camada | Tecnologia |
 | --- | --- |
-| UI | React 19, React Router 7 |
+| Monorepo | pnpm + Turborepo |
+| UI | React 19, React Router 7 (`apps/web`) |
 | Build | Vite 8 |
 | Linguagem | TypeScript 5.9 (strict) |
 | Qualidade | oxlint + Vitest + Playwright + Lighthouse CI |
-| API | Fastify 5 (`server/`) |
+| API | Fastify 5 (`apps/api`) · Worker (`apps/worker-api`) |
 | Dados | Supabase Postgres + Drizzle ORM |
 | Deploy | Cloudflare Pages + Workers Free (API) — GitHub Pages só redirect legado |
 | Docs | Markdown + ADRs em `docs/` |
@@ -62,61 +64,48 @@ Portfólio pessoal com disciplina de engenharia de produto:
 ```bash
 git clone https://github.com/KleilsonSantos/kleilson-portfolio.git
 cd kleilson-portfolio
-npm ci
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 | Comando | Descrição |
 | --- | --- |
-| `npm run dev` | Dev server |
-| `npm run build` | Typecheck + build |
-| `npm run lint` / `npm run format` | Qualidade de código |
-| `npm run test` | Vitest (unit) |
-| `npm run test:e2e` | Playwright smoke |
-| `npm run server:dev` | API Fastify (porta 8787) |
-| `npm run dev:full` | API + Vite com proxy |
-| `npm run preview` | Preview do build |
+| `pnpm dev` | Dev server do web |
+| `pnpm build` | Build via Turborepo |
+| `pnpm lint` / `pnpm typecheck` / `pnpm test` | Qualidade |
+| `pnpm test:e2e` | Playwright smoke |
+| `pnpm --filter @kleilson/api dev` | API Fastify (porta 8787) |
+| `pnpm dev:full` | API + Vite com proxy |
+| `pnpm preview` | Preview do build web |
+| `pnpm deploy:api` | Deploy Worker API |
 
 ---
 
 ## Estrutura
 
 ```text
-public/
-├── favicon.svg
-├── icons.svg
-└── images/profile/   # retrato otimizado (WebP/JPEG) — não versionar capturas cruas
-src/
-├── api/          # Clientes HTTP (.ts)
-├── components/   # Layout, Footer, ProfilePhoto, UI (.tsx)
-├── data/         # Conteúdo derivado do CV (fonte verificável)
-├── hooks/        # useDocumentMeta (SEO)
-├── pages/        # Home, Sobre, Projetos, Contatos, 404
-├── types/        # Tipos compartilhados
-├── utils/        # Validação e sanitização
-├── App.tsx
-└── main.tsx
+apps/
+├── web/                 # SPA Vite/React (+ e2e, Lighthouse)
+│   ├── public/images/profile/
+│   └── src/data/        # Content-as-Code (fonte verificável)
+├── api/                 # Fastify + Drizzle (dev/local)
+└── worker-api/          # Cloudflare Workers (API prod Free)
+packages/
+└── shared/              # Schema/regras de contato
 docs/
-├── adr/          # Architecture Decision Records
-├── architecture/ # Visão arquitetural
-├── guides/       # Onboarding, git-workflow, AI agents, releases
-└── ROADMAP.md    # Fases / roadmap
-.github/
-├── copilot-instructions.md
-├── instructions/ # Regras por path (Copilot)
-└── prompts/      # Prompts canônicos (também @ no Cursor)
-.cursor/rules/    # Projeção fina Cursor (ponteiros; sem cópia)
-AGENTS.md         # Contrato único para qualquer agente de IA
-server/           # API Fastify + Drizzle (ADR-0005 / ADR-0006)
+├── adr/
+├── architecture/
+└── guides/
+legacy-github-pages/     # Redirect legado → Pages.dev
 ```
 
 ---
 
 ## API
 
-Ver [`docs/guides/api.md`](./docs/guides/api.md), [ADR-0005](./docs/adr/0005-fastify-contact-api.md) e [ADR-0006](./docs/adr/0006-supabase-drizzle-contact.md).
+Ver [docs/guides/api.md](./docs/guides/api.md), ADR-0005 e ADR-0006.
 
-Setup local: `cp .env.example .env` (ver comentários no arquivo).
+Setup local: `cp .env.example .env` (raiz do monorepo).
 
 ---
 
@@ -125,8 +114,8 @@ Setup local: `cp .env.example .env` (ver comentários no arquivo).
 Todo conteúdo profissional é extraído de fontes verificáveis:
 
 - Currículo ATS (`cv-kleilson-2026-ats.md`)
-- [GitHub](https://github.com/KleilsonSantos)
-- [LinkedIn](https://www.linkedin.com/in/kleilson-dev-full-stack/)
+- GitHub
+- LinkedIn
 
 **Nenhuma informação é inventada.**
 
@@ -136,10 +125,10 @@ Todo conteúdo profissional é extraído de fontes verificáveis:
 
 Regras portáveis (independentes de IDE e modelo):
 
-- [`AGENTS.md`](./AGENTS.md) — contrato canônico
-- [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) — GitHub Copilot
-- [`.cursor/rules/`](./.cursor/rules/) — projeção Cursor (ponteiros; sem duplicar prompts)
-- [`docs/guides/ai-agentic.md`](./docs/guides/ai-agentic.md) — como usar
+- [AGENTS.md](./AGENTS.md) — contrato canônico
+- [.github/copilot-instructions.md](./.github/copilot-instructions.md) — GitHub Copilot
+- [.cursor/rules/](./.cursor/rules/) — projeção Cursor (ponteiros; sem duplicar prompts)
+- [docs/guides/ai-agentic.md](./docs/guides/ai-agentic.md) — como usar
 
 ---
 

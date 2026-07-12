@@ -1,10 +1,10 @@
 # API — Cloudflare Workers (plano Free) · ADR-0008 / #8
-# Deploy: npm run deploy:api  (sem Docker / sem Containers pagos)
+# Deploy: pnpm deploy:api  (sem Docker / sem Containers pagos)
 #
 # Caminho pago futuro (Containers + Fastify): ver docs/guides/deploy.md
 
 name = "kleilson-portfolio-api"
-main = "workers/api/src/index.ts"
+main = "src/index.ts"
 compatibility_date = "2026-06-01"
 workers_dev = true
 
@@ -17,7 +17,7 @@ tag = "v2"
 deleted_classes = ["ApiContainer"]
 
 # Secrets (nunca no Git):
-#   npx wrangler secret put SUPABASE_URL
-#   npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
-#   npx wrangler secret put CORS_ORIGIN
+#   pnpm --filter @kleilson/worker-api exec wrangler secret put SUPABASE_URL
+#   pnpm --filter @kleilson/worker-api exec wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+#   pnpm --filter @kleilson/worker-api exec wrangler secret put CORS_ORIGIN
 # CORS_ORIGIN ex.: https://kleilson-portfolio.pages.dev

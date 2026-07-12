@@ -9,7 +9,7 @@ Manter um portfólio profissional **enterprise-ready**, com conteúdo **100% ver
 
 ## Fontes de verdade (nesta ordem)
 
-1. Código e dados em `src/` (especialmente `src/data/`)
+1. Código e dados em `apps/web/src/` (especialmente `apps/web/src/data/`)
 2. ADRs em `docs/adr/`
 3. Guias em `docs/guides/`
 4. `CHANGELOG.md` + issues/PRs no GitHub
@@ -34,9 +34,12 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 
 | Área | Onde | Cuidado |
 | --- | --- | --- |
-| Conteúdo do site | `src/data/*.ts` | Só fatos verificáveis; fluxo ADR-0007 / `docs/guides/content.md` |
-| UI / CSS | `src/index.css`, pages, components | ADR-0004 |
-| Rotas | `src/App.tsx`, `src/pages/` | Manter 404 e meta SEO |
+| Conteúdo do site | `apps/web/src/data/*.ts` | Só fatos verificáveis; fluxo ADR-0007 / `docs/guides/content.md` |
+| UI / CSS | `apps/web/src/index.css`, pages, components | ADR-0004 |
+| Rotas | `apps/web/src/App.tsx`, `apps/web/src/pages/` | Manter 404 e meta SEO |
+| API local | `apps/api/` | Fastify + Drizzle |
+| API prod | `apps/worker-api/` | Workers Free |
+| Shared | `packages/shared/` | Schema de contato |
 | Docs | `docs/`, `README.md`, `CHANGELOG.md` | Keep a Changelog |
 | AI / agents | `AGENTS.md`, `.github/`, `.cursor/rules/` | Manter alinhados entre si |
 | CI / qualidade | `.github/workflows/`, Playwright, Lighthouse | Não enfraquecer gates |

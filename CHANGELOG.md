@@ -6,18 +6,19 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `packages/shared`) #10 / ADR-0011
 - 🤖 Matriz MCP canônica (`docs/guides/mcp-tooling.md`) alinhada ao roadmap #62
 - 📊 Analytics Umami privacy-first (opt-in via `VITE_UMAMI_*`, SPA pageviews) #65 / ADR-0010
 - 🔒 Sentry (React/Node/Workers) no-op sem DSN + health liveness/readiness + `requestId` (#9 / ADR-0009)
 - 🚀 API de produção em Cloudflare Workers (Free) via PostgREST — sem Containers pagos #8
-- 🚀 Worker + Container Wrangler para API Fastify (`workers/api`, `wrangler.toml`, `npm run deploy:api`) #8
-- ✨ Foto profissional no hero (Home/Sobre) + assets WebP em `public/images/profile/`
+- 🚀 Worker + Container Wrangler para API Fastify (`apps/worker-api`, `pnpm deploy:api`) #8
+- ✨ Foto profissional no hero (Home/Sobre) + assets WebP em `apps/web/public/images/profile/`
 - ✨ Soft skills (habilidades interpessoais) na página Sobre
 - ✨ Canal WhatsApp em Contatos (`wa.me` com mensagem pré-preenchida)
 - 📝 ADR-0007 Content-as-Code + guia `docs/guides/content.md` (gestão de conteúdo / admin Git-backed opcional pós-#8)
 - 📝 ADR-0008 Deploy Cloudflare Pages + API Container (#8) + guia `docs/guides/deploy.md`
 - 🐳 `Dockerfile` / `.dockerignore` para a API Fastify (Containers)
-- ✨ `VITE_API_BASE_URL` opcional em `src/api/contact.ts` (API em origin separado)
+- ✨ `VITE_API_BASE_URL` opcional em `apps/web/src/api/contact.ts` (API em origin separado)
 
 ### Fixed
 

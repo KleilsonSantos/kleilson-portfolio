@@ -1,12 +1,16 @@
-# Dependências e artefatos de build locais — imagem usa multi-stage
+# Dependências e artefatos locais — build a partir da raiz do monorepo
 node_modules
+**/node_modules
 dist
+**/dist
 .git
 .github
 .lighthouseci
 test-results
-e2e
+apps/web
+apps/worker-api
 docs
+legacy-github-pages
 *.md
 .env
 .env.*
