@@ -34,7 +34,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 
 | Área | Onde | Cuidado |
 | --- | --- | --- |
-| Conteúdo do site | `apps/web/src/data/*.ts` | Só fatos verificáveis; fluxo ADR-0007 / `docs/guides/content.md` |
+| Conteúdo do site | `apps/web/content/*.json` (+ wrappers `src/data/`) | Só fatos verificáveis; Decap opcional ADR-0012 |
 | UI / CSS | `apps/web/src/index.css`, pages, components | ADR-0004 |
 | Rotas | `apps/web/src/App.tsx`, `apps/web/src/pages/` | Manter 404 e meta SEO |
 | API local | `apps/api/` | Fastify + Drizzle |

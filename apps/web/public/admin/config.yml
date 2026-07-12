@@ -1,0 +1,176 @@
+# Decap CMS — editorial Git-backed (ADR-0012 / #71)
+# Auth: GitHub OAuth via Worker `kleilson-decap-oauth` (sem JWT/Firebase/Netlify Identity).
+# Branch alvo: sandbox — publicação em main continua via PR + CI.
+
+backend:
+  name: github
+  repo: KleilsonSantos/kleilson-portfolio
+  branch: sandbox
+  base_url: https://kleilson-decap-oauth.kleilsonsantos.workers.dev
+  auth_endpoint: auth
+
+site_url: https://kleilson-portfolio.pages.dev
+display_url: https://kleilson-portfolio.pages.dev
+logo_url: /favicon.svg
+
+# Commits do CMS → sandbox; CI + PR humano antes de main.
+publish_mode: simple
+
+media_folder: apps/web/public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: profile
+    label: Perfil & experiência
+    files:
+      - name: profile
+        label: Profile
+        file: apps/web/content/profile.json
+        fields:
+          - label: Profile
+            name: profile
+            widget: object
+            fields:
+              - { label: Nome, name: name, widget: string }
+              - { label: Nome curto, name: shortName, widget: string }
+              - { label: Título, name: title, widget: string }
+              - { label: Headline, name: headline, widget: text }
+              - { label: Localização, name: location, widget: string }
+              - { label: Remoto, name: remote, widget: string }
+              - { label: E-mail, name: email, widget: string }
+              - { label: Telefone, name: phone, widget: string }
+              - { label: LinkedIn, name: linkedin, widget: string }
+              - { label: GitHub, name: github, widget: string }
+              - { label: Site URL, name: siteUrl, widget: string }
+              - { label: Anos de experiência, name: yearsOfExperience, widget: string }
+              - { label: Empresa atual, name: currentCompany, widget: string }
+              - { label: Certificação (resumo), name: certification, widget: string }
+              - { label: Foto WebP, name: photo, widget: string }
+              - { label: Foto JPEG fallback, name: photoFallback, widget: string }
+          - { label: Resumo, name: summary, widget: text }
+          - label: Destaques
+            name: highlights
+            widget: list
+            field: { label: Destaque, name: item, widget: string }
+          - label: Soft skills
+            name: softSkills
+            widget: list
+            field: { label: Skill, name: item, widget: string }
+          - label: Grupos de skills
+            name: skillGroups
+            widget: list
+            fields:
+              - { label: Título, name: title, widget: string }
+              - label: Skills
+                name: skills
+                widget: list
+                field: { label: Skill, name: item, widget: string }
+          - label: Experiência
+            name: experience
+            widget: list
+            fields:
+              - { label: Empresa, name: company, widget: string }
+              - { label: Cargo, name: role, widget: string }
+              - { label: Período, name: period, widget: string }
+              - { label: Cliente / contexto, name: client, widget: string }
+              - label: Highlights
+                name: highlights
+                widget: list
+                field: { label: Highlight, name: item, widget: string }
+
+  - name: projects
+    label: Projetos
+    files:
+      - name: projects
+        label: Projects
+        file: apps/web/content/projects.json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Nome, name: name, widget: string }
+              - { label: Tagline, name: tagline, widget: string }
+              - { label: Descrição, name: description, widget: text }
+              - { label: Impacto, name: impact, widget: text }
+              - label: Stack
+                name: stack
+                widget: list
+                field: { label: Tech, name: item, widget: string }
+              - { label: URL GitHub, name: url, widget: string }
+              - { label: Featured, name: featured, widget: boolean, default: false }
+
+  - name: credentials
+    label: Credenciais & cursos
+    files:
+      - name: credentials
+        label: Credentials
+        file: apps/web/content/credentials.json
+        fields:
+          - label: Certificações vendor
+            name: certifications
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Nome, name: name, widget: string }
+              - { label: Emissor, name: issuer, widget: string }
+              - { label: Ano, name: year, widget: string }
+              - { label: Credential ID, name: credentialId, widget: string, required: false }
+              - { label: URL verificação, name: verificationUrl, widget: string, required: false }
+          - label: Educação
+            name: education
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Instituição, name: institution, widget: string }
+              - { label: Programa, name: program, widget: string }
+              - { label: Status, name: status, widget: string }
+          - label: Grupos de cursos
+            name: courseGroups
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Título, name: title, widget: string }
+              - label: Cursos
+                name: courses
+                widget: list
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Título, name: title, widget: string }
+                  - { label: Provider, name: provider, widget: select, options: [Udemy] }
+          - { label: Nota de fonte, name: sourceNote, widget: text }
+
+  - name: contact
+    label: Contato & canais
+    files:
+      - name: contact
+        label: Contact
+        file: apps/web/content/contact.json
+        fields:
+          - { label: Max length mensagem, name: messageMaxLength, widget: number, value_type: int }
+          - label: Categorias do formulário
+            name: categories
+            widget: list
+            fields:
+              - { label: Value, name: value, widget: string }
+              - { label: Label, name: label, widget: string }
+          - label: Canais
+            name: channels
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Value, name: value, widget: string }
+              - { label: Detail, name: detail, widget: string }
+              - { label: Href, name: href, widget: string, required: false }
+              - { label: Icon, name: icon, widget: string }
+          - label: Redes
+            name: social
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Href, name: href, widget: string }
+              - { label: Icon, name: icon, widget: string }
