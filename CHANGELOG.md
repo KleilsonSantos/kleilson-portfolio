@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🤖 Custom agents Copilot (`.github/agents/` — task-planner, code-reviewer, docs-writer) para a aba Agents
 - ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `packages/shared`) #10 / ADR-0011
 - 📝 Decap CMS Git-backed (`/admin` + `content/*.json` + OAuth Worker) #71 / ADR-0012
 - 🤖 Matriz MCP canônica (`docs/guides/mcp-tooling.md`) alinhada ao roadmap #62

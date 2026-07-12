@@ -42,7 +42,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 | API prod | `apps/worker-api/` | Workers Free |
 | Shared | `packages/shared/` | Schema de contato |
 | Docs | `docs/`, `README.md`, `CHANGELOG.md` | Keep a Changelog |
-| AI / agents | `AGENTS.md`, `.github/`, `.cursor/rules/` | Manter alinhados entre si |
+| AI / agents | `AGENTS.md`, `.github/agents/`, `.github/prompts/`, `.cursor/rules/` | Manter alinhados; agents apontam para este arquivo |
 | CI / qualidade | `.github/workflows/`, Playwright, Lighthouse | Não enfraquecer gates |
 
 ## O que NÃO fazer
@@ -72,3 +72,4 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 - **MCP (Cursor):** `docs/guides/mcp-tooling.md` — só matriz canônica; write ops só com pedido explícito
 - AI detalhado: `docs/guides/ai-agentic.md`
 - Copilot: `.github/copilot-instructions.md`
+- Custom agents (aba Agents): `.github/agents/*.agent.md`

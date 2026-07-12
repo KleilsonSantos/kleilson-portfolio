@@ -15,9 +15,10 @@ A fonte canônica é [`AGENTS.md`](../../AGENTS.md) na raiz.
 | Copilot | `.github/copilot-instructions.md` | GitHub Copilot |
 | Regras por path | `.github/instructions/*.instructions.md` | Copilot (`applyTo`) |
 | Prompts reutilizáveis | `.github/prompts/*.prompt.md` | Copilot Chat + `@` no Cursor |
+| Custom agents (aba Agents) | `.github/agents/*.agent.md` | Copilot cloud agent / [Agents tab](https://github.com/KleilsonSantos/kleilson-portfolio/agents) |
 | Cursor (projeção fina) | `.cursor/rules/*.mdc` | Só `globs` / `@`-mention; **aponta** para os arquivos acima |
 
-**Regra:** se divergirem, atualize `AGENTS.md` primeiro. Não clonar `.github/prompts` nem `instructions` para dentro de `.cursor/`.
+**Regra:** se divergirem, atualize `AGENTS.md` primeiro. Não clonar `.github/prompts` / `agents` / `instructions` para dentro de `.cursor/`. Os `*.agent.md` **apontam** para `AGENTS.md` + prompts — não duplicam o contrato.
 
 **Deprecado:** `.cursorrules` na raiz — não usar.
 
@@ -29,10 +30,12 @@ Evidências: [Cursor Docs — Rules / AGENTS.md](https://cursor.com/docs/rules);
 
 ## Como usar
 
-1. Antes de uma feature: `@prompt-task-planner` ou `@.github/prompts/task-planner.prompt.md`
-2. Após o diff: `@prompt-code-reviewer` ou `@.github/prompts/code-reviewer.prompt.md`
-3. Antes do PR: `@prompt-docs-writer` ou `@.github/prompts/docs-writer.prompt.md`
+1. Antes de uma feature: `@prompt-task-planner` ou agente **task-planner** na [aba Agents](https://github.com/KleilsonSantos/kleilson-portfolio/agents)
+2. Após o diff: `@prompt-code-reviewer` ou agente **code-reviewer**
+3. Antes do PR: `@prompt-docs-writer` ou agente **docs-writer**
 4. Em qualquer IDE: referencie `AGENTS.md`
+
+Custom agents no GitHub: `.github/agents/{task-planner,code-reviewer,docs-writer}.agent.md` (após merge em `main`).
 
 ## O que não fazer
 
