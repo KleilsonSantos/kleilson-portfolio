@@ -20,7 +20,7 @@
 | Produção | `main` + tags SemVer |
 | Última release | `v0.4.0` |
 | Qualidade | TypeScript strict + oxlint + Vitest + Playwright + Lighthouse CI |
-| Docs | ADRs + guides + CHANGELOG (Keep a Changelog) |
+| Docs | ADRs + guides + [system-guide](./docs/architecture/system-guide.md) + CHANGELOG (Keep a Changelog) |
 | AI agents | `AGENTS.md` + `.github/copilot-instructions.md` (IDE-agnóstico) |
 | Monorepo | pnpm workspaces + Turborepo — [ADR-0011](./docs/adr/0011-turborepo-pnpm.md) (#10) |
 | API | Prod: Workers Free (`kleilson-portfolio-api.kleilsonsantos.workers.dev`) · Local: Fastify `apps/api` — ADR-0005/0008 |

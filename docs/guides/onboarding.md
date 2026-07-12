@@ -49,6 +49,7 @@ pnpm --filter @kleilson/api dev
 
 ## Relacionados
 
+- [system-guide.md](../architecture/system-guide.md) — arquitetura e fluxos (estudo)
 - [task-kickoff.md](./task-kickoff.md) — iniciar tarefa
 - [git-workflow.md](./git-workflow.md) — branches / PRs
 - [api.md](./api.md) — API local + Worker
