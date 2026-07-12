@@ -44,10 +44,14 @@ pnpm --filter @kleilson/api dev
 ## 4. Atualizar conteúdo profissional
 
 1. Confira CV / GitHub / LinkedIn
-2. Edite `apps/web/content/*.json` (ou Decap `/admin` → branch `sandbox`)
-3. Não invente fatos — ver [content.md](./content.md)
+2. Edite `apps/web/content/*.json` (ou Decap `/admin` → branch `sandbox`) — [content.md](./content.md)
+3. Não invente fatos
 
-## 5. Referências
+## Relacionados
 
-- API: Fastify em `apps/api/` + Worker em `apps/worker-api/` — ADR-0005/0006/0008
-- Deploy: [deploy.md](./deploy.md)
+- [task-kickoff.md](./task-kickoff.md) — iniciar tarefa
+- [git-workflow.md](./git-workflow.md) — branches / PRs
+- [api.md](./api.md) — API local + Worker
+- [content.md](./content.md) — editar conteúdo
+- [deploy.md](./deploy.md) — publicar
+- [SUPPORT.md](../../SUPPORT.md) — ajuda / issues

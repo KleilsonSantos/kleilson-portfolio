@@ -24,7 +24,7 @@ O script de E2E faz o build do package web (`tsc` + `vite`) e sobe o preview; mo
 
 ## Lighthouse CI
 
-Config: `apps/web/lighthouserc.cjs`
+Config: `apps/web/lighthouserc.cjs` (coleta via `staticDistDir` — Home).
 
 ```bash
 pnpm lighthouse
@@ -35,3 +35,10 @@ Asserts iniciais conservadores (a11y; performance/SEO em warn).
 ## CI
 
 `.github/workflows/ci.yml`: `quality` (typecheck + lint + unit + build) → `e2e` + `lighthouse` em paralelo.
+
+## Relacionados
+
+- [onboarding.md](./onboarding.md) — setup
+- [api.md](./api.md) — health / contact sob teste
+- [deploy.md](./deploy.md) — o que o Lighthouse mede em produção
+- [git-workflow.md](./git-workflow.md) — CI no PR

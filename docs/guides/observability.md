@@ -55,6 +55,7 @@ Sem `VITE_UMAMI_SCRIPT_URL` + `VITE_UMAMI_WEBSITE_ID` o script **não carrega**.
 
 ## Relacionados
 
-- ROADMAP Fase 4 · releases `v0.4.0+`
-- ADR-0005 (API) · ADR-0006 (Postgres) · ADR-0008 (deploy) · ADR-0009 (Sentry/health) · ADR-0010 (Umami)
-- Guia API: [api.md](./api.md)
+- [api.md](./api.md) — `/health`, logs, `requestId`
+- [deploy.md](./deploy.md) — Pages + Workers
+- [mcp-tooling.md](./mcp-tooling.md) — MCP ops (Supabase / Grafana opcional)
+- [ADR-0009](../adr/0009-sentry-health.md) · [ADR-0010](../adr/0010-analytics-umami.md)
