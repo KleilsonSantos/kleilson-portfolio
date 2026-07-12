@@ -39,3 +39,8 @@ Evidências: [Cursor Docs — Rules / AGENTS.md](https://cursor.com/docs/rules);
 - Duplicar o corpo dos prompts/instructions no `.cursor/rules`
 - Manter políticas só no Cursor sem espelhar em `AGENTS.md`
 - Inventar fatos do CV ou trocar visual sem ADR-0004
+- Ativar MCP fora da matriz (`docs/guides/mcp-tooling.md`) ou empilhar APM redundante
+
+## MCP
+
+Matriz canônica: [`mcp-tooling.md`](./mcp-tooling.md). Preferir Supabase / Postman / Grafana opcional; **não** Vercel deploy, Datadog ou GitLab neste repo.

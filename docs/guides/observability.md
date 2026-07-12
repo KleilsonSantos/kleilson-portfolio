@@ -15,14 +15,14 @@ Portfólio de baixo tráfego: **um caminho por preocupação**, sem APM enterpri
 | Métricas / dashboards infra | Grafana Cloud (opcional) | 📋 | #62 (MCP) — só com tráfego real |
 | Logs de banco / advisors | Supabase MCP / Dashboard | ✅ ops | #7 feito; uso contínuo |
 | Qualidade / CVE no CI | CodeQL + Dependabot | ✅ | — |
-| Agentes / MCP | Matriz oficial | 📋 | **#62** |
+| Agentes / MCP | Matriz oficial | ✅ | **#62** · [mcp-tooling.md](./mcp-tooling.md) |
 
 ## Ordem recomendada
 
 ```text
 #8 Deploy Cloudflare ✅  →  #9 Sentry + logs + readiness ✅  →  #65 Analytics ✅
          ↓
-   (#62 docs MCP quando útil)
+   (#62 docs MCP ✅)
          ↓
    Grafana só se métricas de API/CDN justificarem custo
 ```

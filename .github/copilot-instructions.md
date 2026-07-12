@@ -6,7 +6,7 @@ Espelham `AGENTS.md` (fonte canônica IDE-agnóstica).
 ## Projeto
 
 Portfólio React 19 + Vite 8 + TypeScript strict + React Router 7.
-Deploy: GitHub Pages. Conteúdo: apenas fatos verificáveis (CV, GitHub, LinkedIn).
+Deploy: Cloudflare Pages + Workers Free (ADR-0008). Conteúdo: apenas fatos verificáveis (CV, GitHub, LinkedIn).
 
 ## Sempre
 
@@ -33,6 +33,7 @@ Deploy: GitHub Pages. Conteúdo: apenas fatos verificáveis (CV, GitHub, LinkedI
 | Estilos | `src/index.css` |
 | Rotas | `src/App.tsx` |
 | Agentes | `AGENTS.md`, `.github/instructions/`, `.github/prompts/` |
+| MCP (Cursor) | `docs/guides/mcp-tooling.md` — matriz canônica |
 
 ## Idioma
 

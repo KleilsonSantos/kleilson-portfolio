@@ -65,5 +65,6 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 - Docs: `docs/adr/0003-documentation-strategy.md`
 - Visual: `docs/adr/0004-visual-direction.md`
 - Observabilidade (Fase 4): `docs/guides/observability.md`
+- **MCP (Cursor):** `docs/guides/mcp-tooling.md` — só matriz canônica; write ops só com pedido explícito
 - AI detalhado: `docs/guides/ai-agentic.md`
 - Copilot: `.github/copilot-instructions.md`
