@@ -41,7 +41,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Deploy: Cloudflare Pages + API Workers Free — issue #8 · [ADR-0008](./adr/0008-cloudflare-deploy.md) · [`guides/deploy.md`](./guides/deploy.md)
 - [ ] Substituição gradual de `kleilsonsantos.github.io`
 - [x] Sentry (errors, no-op sem DSN) + logs + readiness — issue #9 · [ADR-0009](./adr/0009-sentry-health.md)
-- [ ] Analytics privacy-first (Umami/Plausible) — issue #65
+- [x] Analytics privacy-first (Umami opt-in) — issue #65 · [ADR-0010](./adr/0010-analytics-umami.md)
 - [x] Health check HTTP (`GET /health` na API)
 - [ ] Matriz MCP (Cursor) — issue #62
 - [ ] Grafana Cloud (métricas) — opcional, só com tráfego real (#62)
@@ -50,7 +50,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 
 - [ ] Turborepo + pnpm workspaces — issue #10
 - [x] CodeQL + Dependabot (básico já ativo)
-- [x] ADRs (0001–0009)
+- [x] ADRs (0001–0010)
 - [x] GitHub Projects + milestones
 - [x] Política canônica de sync documental (ADR-0003)
 - [x] Fundação visual V1–V5 (ADR-0004)
