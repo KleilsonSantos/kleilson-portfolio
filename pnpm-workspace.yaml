@@ -9,3 +9,8 @@ allowBuilds:
   esbuild: true
   sharp: true
   workerd: true
+
+# Cloudflare publica workers-types quase diário; o default de minimumReleaseAge
+# do pnpm 11 rejeita bumps recentes no CI (ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION).
+minimumReleaseAgeExclude:
+  - '@cloudflare/workers-types'

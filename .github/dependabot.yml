@@ -1,3 +1,6 @@
+# pnpm workspaces: um único lockfile na raiz.
+# Mirar subpastas gera PRs sem pnpm-lock.yaml coerente → CI frozen-lockfile falha.
+# Ref: https://github.com/dependabot/dependabot-core/issues/10758
 version: 2
 updates:
   - package-ecosystem: npm
@@ -8,43 +11,7 @@ updates:
     labels:
       - dependencies
       - chore
-  - package-ecosystem: npm
-    directory: /apps/web
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 3
-    labels:
-      - dependencies
-      - chore
-  - package-ecosystem: npm
-    directory: /apps/api
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 3
-    labels:
-      - dependencies
-      - chore
-  - package-ecosystem: npm
-    directory: /apps/worker-api
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 3
-    labels:
-      - dependencies
-      - chore
-  - package-ecosystem: npm
-    directory: /apps/decap-oauth
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 2
-    labels:
-      - dependencies
-      - chore
-  - package-ecosystem: npm
-    directory: /packages/shared
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 2
-    labels:
-      - dependencies
-      - chore
+    groups:
+      cloudflare-types:
+        patterns:
+          - "@cloudflare/workers-types"
