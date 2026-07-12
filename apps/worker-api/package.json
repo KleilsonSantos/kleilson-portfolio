@@ -1,0 +1,20 @@
+{
+  "name": "@kleilson/worker-api",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "oxlint src",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@kleilson/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260711.1",
+    "oxlint": "^1.71.0",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.110.0"
+  }
+}

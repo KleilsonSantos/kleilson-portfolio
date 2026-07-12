@@ -21,13 +21,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.2
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @kleilson/web build
+        env:
+          VITE_API_BASE_URL: https://kleilson-portfolio-api.kleilsonsantos.workers.dev
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -35,4 +41,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: '4.110.0'
-          command: pages deploy dist --project-name=kleilson-portfolio --branch=main
+          command: pages deploy apps/web/dist --project-name=kleilson-portfolio --branch=main

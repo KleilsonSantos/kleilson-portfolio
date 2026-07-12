@@ -25,17 +25,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.2
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run typecheck:server
-      - run: npm run lint
-      - run: npm run test
-      - run: npm run build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
 
   e2e:
     runs-on: ubuntu-latest
@@ -43,15 +46,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.2
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run build
-      - run: npx playwright install chromium --with-deps
-      - run: npm run test:e2e
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm --filter @kleilson/web exec playwright install chromium --with-deps
+      - run: pnpm test:e2e
         env:
           CI: true
 
@@ -61,13 +68,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.2
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run build
-      - run: npm run lighthouse
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm lighthouse
         env:
           CI: true

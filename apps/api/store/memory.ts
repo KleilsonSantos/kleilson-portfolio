@@ -1,4 +1,4 @@
-import type { ContactPayload, StoredContact } from '../schemas/contact'
+import type { ContactPayload, StoredContact } from '@kleilson/shared'
 
 const messages: StoredContact[] = []
 

@@ -3,7 +3,7 @@ import {
   assertContactBusinessRules,
   contactBodySchema,
   type ContactPayload,
-} from '../schemas/contact'
+} from '@kleilson/shared'
 import { saveContact } from '../store/index'
 
 function sanitize(value: string): string {

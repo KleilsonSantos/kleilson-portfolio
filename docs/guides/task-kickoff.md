@@ -75,8 +75,8 @@ gh pr create --base sandbox --head feature/<slug> \
 ...
 
 ## Test plan
-- [ ] npm run lint
-- [ ] npm run build"
+- [ ] pnpm lint
+- [ ] pnpm build"
 ```
 
 ### Passo 7 — Integração e promoção
