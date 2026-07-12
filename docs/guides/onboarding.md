@@ -6,23 +6,26 @@
 git clone https://github.com/KleilsonSantos/kleilson-portfolio.git
 cd kleilson-portfolio
 git checkout sandbox
-npm ci
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 API local (opcional):
 
 ```bash
-npm run server:dev
-# ou frontend + API: npm run dev:full
+pnpm --filter @kleilson/api dev
+# ou frontend + API: pnpm dev:full
 ```
 
 ## 2. Estrutura mental
 
-- **Páginas** em `src/pages/` — uma rota por arquivo (`.tsx`)
-- **Dados** em `src/data/` — única fonte de conteúdo estático (`.ts`)
-- **Tipos** em `src/types/` — contratos TypeScript compartilhados
-- **API** em `server/` — Fastify (`/health`, `/api/contact`) — [api.md](./api.md)
+- **Monorepo** — pnpm + Turborepo ([ADR-0011](../adr/0011-turborepo-pnpm.md))
+- **Páginas** em `apps/web/src/pages/` — uma rota por arquivo (`.tsx`)
+- **Dados** em `apps/web/src/data/` — única fonte de conteúdo estático (`.ts`)
+- **Tipos** em `apps/web/src/types/` — contratos TypeScript do SPA
+- **API local** em `apps/api/` — Fastify (`/health`, `/api/contact`) — [api.md](./api.md)
+- **API prod** em `apps/worker-api/` — Cloudflare Workers Free
+- **Shared** em `packages/shared/` — schema de contato
 - **Decisões** em `docs/adr/` — leia antes de mudanças grandes
 - **IA** em [`AGENTS.md`](../../AGENTS.md) + [`.cursor/rules/`](../../.cursor/rules/) — ver [`ai-agentic.md`](./ai-agentic.md)
 - **Kickoff** em [`task-kickoff.md`](./task-kickoff.md) — procedimento obrigatório
@@ -33,23 +36,17 @@ npm run server:dev
 1. Mover issue para **In Progress** no GitHub Project
 2. Branch a partir de **`sandbox`** (nunca de `main`)
 3. Implementar com escopo mínimo
-4. `npm run typecheck && npm run typecheck:server && npm run lint && npm run test && npm run build`
+4. `pnpm typecheck && pnpm lint && pnpm test && pnpm build`
 5. PR para `sandbox` → após merge, PR `sandbox` → `main`
 6. CI deve passar
 
 ## 4. Atualizar conteúdo profissional
 
-1. Edite o CV fonte (`cv-kleilson-2026-ats.md`)
-2. Propague mudanças para `src/data/profileData.ts` e `projectsData.ts`
-3. **Nunca invente** experiências ou métricas
+1. Confira CV / GitHub / LinkedIn
+2. Propague mudanças para `apps/web/src/data/profileData.ts` e `projectsData.ts`
+3. Não invente fatos
 
-## 5. Status atual
+## 5. Referências
 
-- Release: **`v0.4.0`**
-- Frontend: React 19 + Vite 8 + TypeScript strict + visual ADR-0004
-- Qualidade: oxlint + Vitest + Playwright + Lighthouse CI
-- API: Fastify em `server/` + Postgres (Supabase/Drizzle) quando `DATABASE_URL` — ADR-0005/0006
-- Observabilidade: ver [`observability.md`](./observability.md) · próximo foco **#8** Cloudflare
-- Project: [kleilson-portfolio #6](https://github.com/users/KleilsonSantos/projects/6)
-
-Consulte [ROADMAP.md](../ROADMAP.md).
+- API: Fastify em `apps/api/` + Postgres (Supabase/Drizzle) quando `DATABASE_URL` — ADR-0005/0006
+- Deploy: [deploy.md](./deploy.md)

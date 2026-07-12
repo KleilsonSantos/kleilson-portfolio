@@ -5,12 +5,12 @@ How-to do [ADR-0008](../adr/0008-cloudflare-deploy.md). Issue: [#8](https://gith
 ## Visão
 
 ```text
-Browser  →  Cloudflare Pages (SPA dist/)
-         →  /api/*  e  /health  →  Container (Fastify + Drizzle)
-                                      →  Supabase Postgres
+Browser  →  Cloudflare Pages (SPA apps/web/dist)
+         →  API Workers Free (apps/worker-api) → Supabase
+         →  (pago futuro) Container Fastify (apps/api)
 ```
 
-Conteúdo do site continua em Git (`src/data/*`, ADR-0007). Só mensagens de contato vão ao banco.
+Conteúdo do site continua em Git (`apps/web/src/data/*`, ADR-0007). Só mensagens de contato vão ao banco.
 
 **Ordem recomendada:** conta → Pages (site) → API Container → ligar origins/CORS → smoke → cutover.
 
@@ -38,7 +38,7 @@ Docs: [Git integration](https://developers.cloudflare.com/pages/get-started/git-
 
 1. Dashboard → **Workers & Pages** → projeto **`kleilson-portfolio`** (ou Create → Pages → **Connect to Git**).
 2. Autorize o Cloudflare no GitHub (`KleilsonSantos` / repo **`kleilson-portfolio`**).
-3. Production branch: **`main`** · Build: `npm run build` · Output: `dist` · `NODE_VERSION=22`.
+3. Production branch: **`main`** · Build: `pnpm --filter @kleilson/web build` · Output: `apps/web/dist` · `NODE_VERSION=22` · env `VITE_API_BASE_URL` = URL do Worker.
 4. **Save and Deploy**.
 
 Se o projeto já existia via upload manual, use **Settings → Builds → Connect to Git** (ou migre para um projeto novo e aponte o domínio).
@@ -75,7 +75,7 @@ Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/dep
 | Project name | `kleilson-portfolio` (gera `*.pages.dev`) |
 | Production branch | `main` |
 | Framework preset | **None** (ou Vite, se aparecer) |
-| Build command | `npm run build` |
+| Build command | `pnpm --filter @kleilson/web build` |
 | Build output directory | `dist` |
 | Root directory | `/` (vazio / raiz do repo) |
 
@@ -103,15 +103,15 @@ Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/dep
 
 ## Passo 3 — API em Cloudflare Workers (plano Free)
 
-Containers exige **Workers Paid**. Enquanto não houver plano pago, a API de produção é um **Worker** (`workers/api`) que grava em `contact_messages` via Supabase PostgREST. **Sem Docker.**
+Containers exige **Workers Paid**. Enquanto não houver plano pago, a API de produção é um **Worker** (`apps/worker-api`) que grava em `contact_messages` via Supabase PostgREST. **Sem Docker.**
 
-Fastify (`server/`) continua para desenvolvimento local (`npm run server:dev` / `dev:full`).
+Fastify (`apps/api`) continua para desenvolvimento local (`pnpm --filter @kleilson/api dev` / `pnpm dev:full`).
 
 ### 3.1 Deploy
 
 ```bash
 npx wrangler login          # se ainda não autenticado
-npm run deploy:api          # wrangler deploy — sem Docker
+pnpm deploy:api          # wrangler deploy — sem Docker
 ```
 
 URL esperada: `https://kleilson-portfolio-api.kleilsonsantos.workers.dev`

@@ -1,4 +1,4 @@
-import type { ContactPayload, StoredContact } from '../schemas/contact'
+import type { ContactPayload, StoredContact } from '@kleilson/shared'
 import { hasDatabaseUrl } from '../db/client'
 import * as memory from './memory'
 import * as drizzleStore from './drizzle'

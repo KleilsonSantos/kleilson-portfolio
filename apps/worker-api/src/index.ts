@@ -6,7 +6,7 @@
 import {
   assertContactBusinessRules,
   type ContactPayload,
-} from '../../../server/schemas/contact'
+} from '@kleilson/shared'
 
 export interface Env {
   SUPABASE_URL: string

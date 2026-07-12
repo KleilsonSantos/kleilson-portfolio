@@ -48,7 +48,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 
 ## Fase 5 — Monorepo & Enterprise
 
-- [ ] Turborepo + pnpm workspaces — issue #10
+- [x] Turborepo + pnpm workspaces — issue #10 · [ADR-0011](./adr/0011-turborepo-pnpm.md)
 - [x] CodeQL + Dependabot (básico já ativo)
 - [x] ADRs (0001–0010)
 - [x] GitHub Projects + milestones
