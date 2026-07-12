@@ -139,6 +139,7 @@ Referência: [Supabase RLS](https://supabase.com/docs/guides/database/postgres/r
 | --- | --- | --- |
 | [#119](https://github.com/KleilsonSantos/kleilson-portfolio/issues/119) | Validação Zod + Vitest nos JSON | ✅ `src/schemas/content.ts` |
 | [#120](https://github.com/KleilsonSantos/kleilson-portfolio/issues/120) | Este runbook | ✅ `docs/guides/admin-operations.md` |
+| [#121](https://github.com/KleilsonSantos/kleilson-portfolio/issues/121) | Cloudflare Access em `/admin` | Ainda não implementado |
 | [#122](https://github.com/KleilsonSantos/kleilson-portfolio/issues/122) | Notificação e-mail/webhook | Ainda não implementado |
 | [#123](https://github.com/KleilsonSantos/kleilson-portfolio/issues/123) | E2E smoke `/admin` | Ainda não implementado |
 
