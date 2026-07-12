@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
 import Footer from './Footer'
 import { PROFILE } from '../data/profileData'
 import { useTheme } from '../hooks/useTheme'
+import { useAnalytics } from '../hooks/useAnalytics'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -17,6 +18,7 @@ function Layout() {
   const { isDark, toggle } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
+  useAnalytics()
 
   useEffect(() => {
     setMenuOpen(false)
