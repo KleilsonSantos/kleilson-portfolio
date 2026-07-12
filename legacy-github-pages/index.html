@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecionando… | Kleilson Portfolio</title>
-    <link rel="canonical" href="https://kleilson-portfolio.pages.dev/" />
-    <meta http-equiv="refresh" content="0;url=https://kleilson-portfolio.pages.dev/" />
+    <link id="canonical" rel="canonical" href="https://kleilson-portfolio.pages.dev/" />
+    <!-- Sem meta refresh para a raiz: content=0 vence o JS e descarta o path. -->
     <style>
       body {
         font-family: system-ui, sans-serif;
@@ -27,19 +27,13 @@
       (Cloudflare Pages).
     </p>
     <p>Se não redirecionar automaticamente, use o link acima.</p>
-    <script>
-      (function () {
-        var base = 'https://kleilson-portfolio.pages.dev'
-        var path = location.pathname.replace(/^\/kleilson-portfolio\/?/, '/') || '/'
-        if (path.charAt(0) !== '/') path = '/' + path
-        var target = base + path + location.search + location.hash
-        var a = document.getElementById('dest')
-        if (a) {
-          a.href = target
-          a.textContent = target.replace(/^https:\/\//, '')
-        }
-        location.replace(target)
-      })()
-    </script>
+    <noscript>
+      <p>
+        JavaScript desativado —
+        <a href="https://kleilson-portfolio.pages.dev/">abrir o site canônico</a>
+        (ajuste o path manualmente se veio de um deep link).
+      </p>
+    </noscript>
+    <script src="/kleilson-portfolio/redirect.js"></script>
   </body>
 </html>
