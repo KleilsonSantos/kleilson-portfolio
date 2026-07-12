@@ -23,6 +23,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
 - 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
 
 ### Changed
