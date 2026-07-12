@@ -73,6 +73,7 @@ flowchart TB
 
 ## Referências
 
+- **[system-guide.md](./system-guide.md)** — guia completo de arquitetura e fluxos (estudo)
 - [ADR-0001](../adr/0001-frontend-vite-react.md) — frontend
 - [ADR-0002](../adr/0002-git-branching-strategy.md) — Git
 - [ADR-0003](../adr/0003-documentation-strategy.md) — docs
