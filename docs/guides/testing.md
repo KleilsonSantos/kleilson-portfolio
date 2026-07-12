@@ -1,40 +1,37 @@
 # Guia — Testes (unit, E2E, Lighthouse)
 
-## Vitest + Testing Library (#3)
+Tudo sob `apps/web` no monorepo. Na raiz use os scripts `pnpm` (orquestram o package).
 
-Config: `vite.config.ts` (`test`) · setup: `src/test/setup.ts`  
-Specs: `src/**/*.{test,spec}.{ts,tsx}`
+## Vitest + Testing Library
 
-```bash
-npm run test
-npm run test:watch
-```
-
-Cobertura inicial: `validation`, `sanitize` e componente `Footer`.
-
-## Playwright (#4)
-
-Config: `playwright.config.ts`  
-Specs: `e2e/`
+Config: `apps/web/vite.config.ts` · setup: `apps/web/src/test/setup.ts`  
+Specs: `apps/web/src/**/*.{test,spec}.{ts,tsx}`
 
 ```bash
-npm run build
-npm run test:e2e
+pnpm test
+pnpm --filter @kleilson/web test:watch
 ```
 
-O preview Vite sobe automaticamente; o mock `/api/contact` também funciona em preview.
+## Playwright
 
-## Lighthouse CI (#5)
-
-Config: `lighthouserc.cjs` (coleta via `staticDistDir` — Home).
+Config: `apps/web/playwright.config.ts` · specs: `apps/web/e2e/`
 
 ```bash
-npm run build
-npm run lighthouse
+pnpm test:e2e
 ```
 
-Asserts iniciais são conservadores (a11y error ≥ 0.9; performance/SEO warn). Rotas SPA profundas podem ser adicionadas depois com server SPA-aware.
+O script de E2E faz o build do package web (`tsc` + `vite`) e sobe o preview; mock `/api/contact` funciona em preview.
+
+## Lighthouse CI
+
+Config: `apps/web/lighthouserc.cjs`
+
+```bash
+pnpm lighthouse
+```
+
+Asserts iniciais conservadores (a11y; performance/SEO em warn).
 
 ## CI
 
-Jobs em `.github/workflows/ci.yml`: `quality` (typecheck + lint + **unit** + build) → `e2e` + `lighthouse` em paralelo.
+`.github/workflows/ci.yml`: `quality` (typecheck + lint + unit + build) → `e2e` + `lighthouse` em paralelo.

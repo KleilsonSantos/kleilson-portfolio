@@ -4,15 +4,17 @@ How-to do [ADR-0008](../adr/0008-cloudflare-deploy.md). Issue: [#8](https://gith
 
 ## Visão
 
-```text
-Browser  →  Cloudflare Pages (SPA apps/web/dist)
-         →  API Workers Free (apps/worker-api) → Supabase
-         →  (pago futuro) Container Fastify (apps/api)
+```mermaid
+flowchart LR
+  B[Browser] --> P["Cloudflare Pages<br/>apps/web/dist"]
+  B --> W["Workers Free<br/>apps/worker-api"]
+  W --> S[(Supabase)]
+  P -.->|pago futuro| C["Container Fastify<br/>apps/api"]
 ```
 
-Conteúdo do site continua em Git (`apps/web/src/data/*`, ADR-0007). Só mensagens de contato vão ao banco.
+Conteúdo do site = Git (`apps/web/content/*.json`, ADR-0007/0012). Só mensagens de contato vão ao banco.
 
-**Ordem recomendada:** conta → Pages (site) → API Container → ligar origins/CORS → smoke → cutover.
+**Ordem recomendada:** conta → Pages (site) → Worker API → `VITE_API_BASE_URL`/CORS → smoke → cutover. Containers = apêndice pago.
 
 ---
 
@@ -76,8 +78,8 @@ Docs: [Deploy Vite](https://developers.cloudflare.com/pages/framework-guides/dep
 | Production branch | `main` |
 | Framework preset | **None** (ou Vite, se aparecer) |
 | Build command | `pnpm --filter @kleilson/web build` |
-| Build output directory | `dist` |
-| Root directory | `/` (vazio / raiz do repo) |
+| Build output directory | `apps/web/dist` |
+| Root directory | `/` (raiz do monorepo) |
 
 **Variáveis de ambiente (Pages) — nesta fase:**
 

@@ -9,13 +9,15 @@ Manter um portfólio profissional **enterprise-ready**, com conteúdo **100% ver
 
 ## Fontes de verdade (nesta ordem)
 
-1. Código e dados em `apps/web/src/` (especialmente `apps/web/src/data/`)
+1. Código e dados: `apps/web/content/*.json` (fonte) + `apps/web/src/data/*` (wrappers)
 2. ADRs em `docs/adr/`
 3. Guias em `docs/guides/`
 4. `CHANGELOG.md` + issues/PRs no GitHub
 5. CV ATS (`cv-kleilson-2026-ats.md`), GitHub e LinkedIn do autor
 
 Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
+
+**Wiki GitHub:** apenas mapa de links (não fonte canônica; não editar conteúdo técnico lá).
 
 ## Regras invioláveis
 

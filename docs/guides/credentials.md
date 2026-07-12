@@ -11,13 +11,14 @@
 
 | Artefato | Caminho |
 |----------|---------|
-| Dados | `src/data/credentialsData.ts` |
-| UI | `src/pages/Sobre.tsx` |
-| Tipos | `src/types/index.ts` |
+| Dados (JSON) | `apps/web/content/credentials.json` |
+| Wrapper | `apps/web/src/data/credentialsData.ts` |
+| UI | `apps/web/src/pages/Sobre.tsx` |
+| Tipos | `apps/web/src/types/index.ts` |
 
 ## Como atualizar
 
 1. Adicione o certificado na pasta local (fora do repo).
-2. Atualize `credentialsData.ts` no mesmo PR da mudança de UI (ADR-0003).
+2. Atualize `apps/web/content/credentials.json` (ou Decap) no mesmo PR da mudança de UI (ADR-0003).
 3. Se for certificação vendor, use `CERTIFICATIONS`; se for curso, use `COURSE_GROUPS`.
 4. Não invente datas, IDs ou URLs de verificação pessoais sem comprovante.

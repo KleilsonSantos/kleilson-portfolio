@@ -4,12 +4,20 @@ How-to operacional do [ADR-0007](../adr/0007-content-as-code.md) + [ADR-0012](..
 
 ## Fonte de verdade
 
+```mermaid
+flowchart LR
+  J["apps/web/content/*.json"] --> W["src/data/* wrappers"]
+  W --> UI["Páginas React"]
+  D["Decap /admin"] -->|commit sandbox| J
+  IDE["IDE + PR"] --> J
+```
+
 | Domínio | Arquivo JSON (editável) | Wrapper TS | Página |
 | --- | --- | --- | --- |
-| Perfil, summary, skills, soft skills, experiência | `apps/web/content/profile.json` | `src/data/profileData.ts` | Home, Sobre |
-| Projetos | `apps/web/content/projects.json` | `src/data/projectsData.ts` | Projetos |
-| Credenciais / educação / cursos | `apps/web/content/credentials.json` | `src/data/credentialsData.ts` | Sobre |
-| Contato / canais / redes | `apps/web/content/contact.json` | `src/data/contactData.ts` | Contatos |
+| Perfil, summary, skills, soft skills, experiência | `apps/web/content/profile.json` | `apps/web/src/data/profileData.ts` | Home, Sobre |
+| Projetos | `apps/web/content/projects.json` | `apps/web/src/data/projectsData.ts` | Projetos |
+| Credenciais / educação / cursos | `apps/web/content/credentials.json` | `apps/web/src/data/credentialsData.ts` | Sobre |
+| Contato / canais / redes | `apps/web/content/contact.json` | `apps/web/src/data/contactData.ts` | Contatos |
 
 Tipos: `apps/web/src/types/index.ts`.
 

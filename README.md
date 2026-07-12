@@ -25,7 +25,7 @@
 | Monorepo | pnpm workspaces + Turborepo — [ADR-0011](./docs/adr/0011-turborepo-pnpm.md) (#10) |
 | API | Prod: Workers Free (`kleilson-portfolio-api.kleilsonsantos.workers.dev`) · Local: Fastify `apps/api` — ADR-0005/0008 |
 | Persistência | Supabase Postgres + Drizzle — ADR-0006 (`DATABASE_URL`) |
-| Conteúdo | Content-as-Code em `apps/web/src/data/*` — [ADR-0007](./docs/adr/0007-content-as-code.md) · [guia](./docs/guides/content.md) |
+| Conteúdo | `apps/web/content/*.json` (+ wrappers `src/data/*`) — [ADR-0007](./docs/adr/0007-content-as-code.md) · [ADR-0012](./docs/adr/0012-decap-cms-git-backed.md) · [guia](./docs/guides/content.md) |
 | Deploy | Cloudflare Pages (`kleilson-portfolio.pages.dev`) + Workers Free — [ADR-0008](./docs/adr/0008-cloudflare-deploy.md) (#8) |
 | Observabilidade | [`docs/guides/observability.md`](./docs/guides/observability.md) |
 
@@ -78,6 +78,7 @@ pnpm dev
 | `pnpm dev:full` | API + Vite com proxy |
 | `pnpm preview` | Preview do build web |
 | `pnpm deploy:api` | Deploy Worker API |
+| `pnpm deploy:decap-oauth` | Deploy OAuth Decap |
 
 ---
 
@@ -85,11 +86,13 @@ pnpm dev
 
 ```text
 apps/
-├── web/                 # SPA Vite/React (+ e2e, Lighthouse)
-│   ├── public/images/profile/
-│   └── src/data/        # Content-as-Code (fonte verificável)
+├── web/                 # SPA Vite/React (+ e2e, Lighthouse, /admin Decap)
+│   ├── content/         # JSON canônico (Content-as-Code)
+│   ├── public/admin/    # Decap CMS
+│   └── src/data/        # Wrappers TypeScript
 ├── api/                 # Fastify + Drizzle (dev/local)
-└── worker-api/          # Cloudflare Workers (API prod Free)
+├── worker-api/          # Cloudflare Workers Free (API prod)
+└── decap-oauth/         # OAuth Worker do Decap
 packages/
 └── shared/              # Schema/regras de contato
 docs/

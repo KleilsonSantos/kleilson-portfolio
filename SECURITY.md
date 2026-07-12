@@ -26,7 +26,7 @@ Responderemos em até 5 dias úteis.
 ## Escopo
 
 - Código deste repositório
-- Formulário de contato e API Fastify (`server/`)
+- Formulário de contato e API (`apps/api` local; `apps/worker-api` em produção)
 - Pipeline CI/CD
 - Dados em Postgres (Supabase) associados ao contato
 

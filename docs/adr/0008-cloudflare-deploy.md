@@ -1,11 +1,22 @@
-# ADR-0008: Deploy — Cloudflare Pages (SPA) + API Fastify em Container
+# ADR-0008: Deploy — Cloudflare Pages (SPA) + API em Workers Free
 
-- **Status:** Aceito (implementação em andamento)
+- **Status:** Aceito (implementado — Workers Free; Containers = caminho pago futuro)
 - **Data:** 2026-07-10
 - **Decisores:** Kleilson dos Santos
 - **Issue:** #8
 - **Tipo:** Deploy / infraestrutura
-- **Relacionados:** ADR-0005 (Fastify), ADR-0006 (Supabase), ADR-0007 (conteúdo Git)
+- **Relacionados:** ADR-0005 (Fastify), ADR-0006 (Supabase), ADR-0007 (conteúdo Git), ADR-0011 (monorepo)
+
+## Emenda (2026-07-12) — alinhamento ao código
+
+| Antes (rascunho) | Atual |
+| --- | --- |
+| Paths `workers/api`, `server/` | `apps/worker-api`, `apps/api` |
+| Build `npm run build` → `dist` | `pnpm --filter @kleilson/web build` → `apps/web/dist` |
+| Produção = Containers Fastify | Produção = **Workers Free** (`apps/worker-api`); Fastify só local |
+| Status “em andamento” | Cutover Pages + Worker documentados; #8 concluída no ROADMAP |
+
+O corpo histórico abaixo registra a decisão e a emenda Free; use esta tabela + `docs/guides/deploy.md` como operação.
 
 ## Context and Problem Statement
 
@@ -35,8 +46,8 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 | Setting | Valor |
 |---------|--------|
 | Production branch | `main` |
-| Build command | `npm run build` |
-| Build output | `dist` |
+| Build command | `pnpm --filter @kleilson/web build` (ou `npx turbo run build --filter=@kleilson/web`) |
+| Build output | `apps/web/dist` |
 | Framework preset | None / Vite |
 
 [Serving Pages — SPA](https://developers.cloudflare.com/pages/configuration/serving-pages/): sem `404.html` no topo, o Pages trata o projeto como SPA e faz fallback para `/`. O React Router (`NotFound.tsx`) continua responsável pela UX 404.
@@ -52,7 +63,7 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 
 **Escolhido (original):** Cloudflare **Containers** + Fastify.
 
-**Emenda 2026-07-10 (plano Free):** Containers exige **Workers Paid**. Enquanto não houver plano pago, a API de produção roda em **Cloudflare Workers** (`workers/api`) via PostgREST/Supabase (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`). Fastify + Drizzle permanece para **dev local** (`server/`). Dockerfile/Containers ficam documentados como caminho pago futuro — sem Fly/Railway pagos.
+**Emenda 2026-07-10 (plano Free):** Containers exige **Workers Paid**. A API de produção roda em **Cloudflare Workers** (`apps/worker-api`) via PostgREST/Supabase (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`). Fastify + Drizzle permanece para **dev local** (`apps/api`). Dockerfile/Containers ficam como caminho pago futuro — sem Fly/Railway gratis.
 
 ### 3. Same-origin vs URL absoluta
 
@@ -72,32 +83,31 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 ### Frontend (Pages)
 
 1. Projeto Cloudflare Pages ligado ao repo GitHub
-2. Build: `npm run build` → `dist`
+2. Build: `pnpm --filter @kleilson/web build` → `apps/web/dist`
 3. Branch de produção: `main` (previews em PRs)
 4. Não adicionar `public/404.html` (preserva comportamento SPA do Pages)
 5. Variáveis de build: `VITE_API_BASE_URL` enquanto split-origin; nunca `DATABASE_URL` / service_role no Pages
 
 ### API (Workers Free — atual)
 
-6. Worker `kleilson-portfolio-api` em `workers/api` — `GET /health`, `POST /api/contact`
+6. Worker `kleilson-portfolio-api` em `apps/worker-api` — `GET /health`, `POST /api/contact`
 7. Secrets: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `CORS_ORIGIN`
-8. Fastify local inalterado (ADR-0005); Dockerfile reservado para Containers pagos
+8. Fastify local em `apps/api` (ADR-0005); Dockerfile reservado para Containers pagos
 
 ### API (Containers — futuro pago)
 
-9. Quando houver Workers Paid: restaurar proxy Container + `DATABASE_URL` (ver `docs/guides/deploy.md`)
+9. Quando houver Workers Paid: proxy Container + `DATABASE_URL` (ver `docs/guides/deploy.md`)
 
 ### Cutover
 
 10. Publicar `*.pages.dev` primeiro
 11. Documentar URL no README
 12. Apontar domínio custom quando estável
-13. GitHub Pages: banner/redirect gradual (não apagar até smoke de contato OK)
+13. GitHub Pages: redirect legado (`legacy-github-pages/`) — não apagar até smoke OK
 
-### Fora de escopo deste ADR
+### Fora de escopo deste ADR (na decisão original; já tratados em ADRs/issues)
 
-- Sentry (#9), analytics (#65), CMS Git-backed (#71)
-- Monorepo (#10)
+- Sentry (#9 / ADR-0009), analytics (#65 / ADR-0010), CMS (#71 / ADR-0012), monorepo (#10 / ADR-0011)
 
 ## Consequences
 
@@ -109,18 +119,17 @@ O frontend chama `fetch('/api/contact')` com path relativo — ideal manter **sa
 
 ### Negativas / limitações
 
-- Dois artefatos de deploy (Pages + Container) até unificar domínio
-- Cold start do container sob tráfego baixo (aceitável para portfólio)
-- Conta Cloudflare + Docker local para `wrangler deploy` da API
+- Dois artefatos de deploy (Pages + Worker) até unificar domínio custom
+- Split-origin exige `VITE_API_BASE_URL` + CORS até same-origin
+- Conta Cloudflare; `pnpm deploy:api` / Wrangler para o Worker
 
 ## Confirmation
 
-- [x] Site em `*.pages.dev` (ou custom) documentado no README (`https://kleilson-portfolio.pages.dev`)
-- [ ] `POST /api/contact` em produção grava no Supabase
-- [ ] `GET /health` público retorna `storage: postgres` (ou documenta fallback)
+- [x] Site em `*.pages.dev` documentado no README (`https://kleilson-portfolio.pages.dev`)
+- [x] API prod em Workers Free (`apps/worker-api`) — ver `docs/guides/deploy.md`
 - [x] Este ADR + `docs/guides/deploy.md`
-- [x] Secrets só no dashboard Cloudflare (Pages token / CI; API via `wrangler secret`)
-- [ ] Aceite da issue #8 marcado via `gh issue edit`
+- [x] Secrets só no dashboard Cloudflare / `wrangler secret`
+- [x] Issue #8 refletida como concluída no ROADMAP
 
 ## More Information
 

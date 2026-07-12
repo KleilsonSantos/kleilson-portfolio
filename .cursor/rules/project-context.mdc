@@ -5,39 +5,35 @@ alwaysApply: true
 
 # Kleilson Portfolio — Contexto
 
-## Stack (Fase 2)
+## Stack
 
-- React 19 + Vite 8 + React Router 7
-- **TypeScript** (strict) — `.ts` / `.tsx`
-- CSS com design tokens (`src/index.css`, `src/App.css`) — dark-first, Sora + IBM Plex Sans, accent teal ([ADR-0004](../../docs/adr/0004-visual-direction.md))
-- oxlint (`npm run lint`) + `tsc -b` (`npm run typecheck`)
+- Monorepo: pnpm + Turborepo (ADR-0011)
+- React 19 + Vite 8 + React Router 7 (`apps/web`)
+- **TypeScript** strict — `.ts` / `.tsx`
+- CSS design tokens (`apps/web/src/index.css`) — dark-first, Sora + IBM Plex Sans, accent teal ([ADR-0004](../../docs/adr/0004-visual-direction.md))
+- Qualidade: `pnpm lint` · `pnpm typecheck` · `pnpm test` · `pnpm test:e2e`
 
-## Estrutura de pastas
+## Estrutura
 
 ```
-src/
-├── api/          → HTTP clients (.ts)
-├── components/   → Layout, Footer (.tsx)
-├── data/         → Conteúdo do CV (.ts)
-├── hooks/        → useDocumentMeta (.ts)
-├── pages/        → Rotas (.tsx)
-├── types/        → Tipos compartilhados
-├── utils/        → validation, sanitize (.ts)
-├── App.tsx
-└── main.tsx
-docs/             → ADRs, architecture, guides
+apps/web/content/     → JSON canônico (ADR-0007/0012)
+apps/web/src/data/    → wrappers TS
+apps/web/src/pages/   → rotas
+apps/api/             → Fastify local
+apps/worker-api/      → Workers Free (prod)
+apps/decap-oauth/     → OAuth Decap
+packages/shared/      → schema contato
+docs/                 → ADRs, architecture, guides
 ```
 
-## Git workflow (canônico)
+## Git
 
 Ver `docs/guides/task-kickoff.md` — issue In Progress → `feature/*` from `sandbox` → PR.
 
 ## Princípios
 
-- Agentes: ver rule `agents-canonical` + `AGENTS.md` (não duplicar políticas)
-- Tipos em `src/types/` para dados compartilhados
-- Escopo mínimo por tarefa
-- Validar: `npm run typecheck`, `npm run lint`, `npm run build`
-- Decisões arquiteturais → `docs/adr/`
+- Agentes: `AGENTS.md` (não duplicar políticas)
+- Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — sem trailer Cursor
+- Escopo mínimo; evidência para fatos profissionais
+- Validar: `pnpm typecheck && pnpm lint && pnpm build`
 - Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](../../docs/adr/0003-documentation-strategy.md))
-- Recomendações técnicas devem citar fonte oficial; se não houver padrão oficial, declarar explicitamente
