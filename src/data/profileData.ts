@@ -14,7 +14,7 @@ export const PROFILE: Profile = {
   phone: '+55 75 99161-0301',
   linkedin: 'https://www.linkedin.com/in/kleilson-dev-full-stack/',
   github: 'https://github.com/KleilsonSantos',
-  siteUrl: 'https://kleilsonsantos.github.io',
+  siteUrl: 'https://kleilson-portfolio.pages.dev',
   yearsOfExperience: '9+',
   currentCompany: 'Capgemini Brasil',
   certification: 'Microsoft Certified: Azure AI Fundamentals (AI-900)',

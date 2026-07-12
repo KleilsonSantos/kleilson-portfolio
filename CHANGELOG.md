@@ -21,6 +21,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
+- 🚚 Cutover GitHub Pages → redirect para Cloudflare Pages (`legacy-github-pages/` + workflow)
 - 📱 Layout responsivo multi-device: containers/tipografia fluidos, hero em grid (tablet→desktop), breakpoints por conteúdo
 - 💄 Avatar: recorte com headroom + anel branco fino no círculo
 - 📱 Nav mobile (hamburger, safe-area, alvos 44pt) alinhada a HIG

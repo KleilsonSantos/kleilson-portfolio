@@ -194,11 +194,15 @@ curl -sS -X POST https://SEU_API_HOST/api/contact \
 
 ## Passo 7 — Cutover do GitHub Pages
 
-Só depois do smoke OK:
+**Feito (gradual):**
 
-1. README com URL Cloudflare canônica.
-2. No GitHub Pages: redirect/banner ou desligar quando estável.
-3. Não apague o Pages antigo no mesmo dia do primeiro deploy.
+1. README / `PROFILE.siteUrl` apontam para `https://kleilson-portfolio.pages.dev`.
+2. Pasta `legacy-github-pages/` + workflow `legacy-github-pages-redirect.yml` publicam meta-refresh + JS redirect no GitHub Pages (project site).
+3. Produção canônica permanece no Cloudflare Pages (`deploy-pages.yml`).
+
+**Uma vez no GitHub (humano):** Settings → Pages → Source = **GitHub Actions** (não branch `gh-pages` antiga), para o workflow de redirect publicar.
+
+Opcional depois de estável: desligar Pages legado por completo.
 
 ---
 
@@ -219,10 +223,11 @@ Só depois do smoke OK:
 ## Checklist (#8)
 
 - [x] Pages auto-deploy verde a partir de `main` — `kleilson-portfolio.pages.dev`
-- [ ] API `/health` com `storage: postgres` (Worker Free + secrets)
-- [ ] Contato grava no Supabase
+- [x] API `/health` com `storage: postgres` (Worker Free + secrets)
+- [x] Contato grava no Supabase
 - [x] README / ROADMAP / ADR-0008 (emenda Free Workers)
 - [x] Secrets só no Cloudflare / GitHub Actions (nunca no Git)
+- [x] Cutover GitHub Pages → redirect legado (`legacy-github-pages/`)
 
 ## Relacionados
 

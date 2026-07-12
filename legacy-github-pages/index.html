@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecionando… | Kleilson Portfolio</title>
+    <link rel="canonical" href="https://kleilson-portfolio.pages.dev/" />
+    <meta http-equiv="refresh" content="0;url=https://kleilson-portfolio.pages.dev/" />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 36rem;
+        margin: 4rem auto;
+        padding: 0 1.25rem;
+        line-height: 1.5;
+        color: #0b1220;
+        background: #f4f7fb;
+      }
+      a { color: #0f766e; }
+    </style>
+  </head>
+  <body>
+    <h1>Site movido</h1>
+    <p>
+      O portfólio canônico está em
+      <a id="dest" href="https://kleilson-portfolio.pages.dev/">kleilson-portfolio.pages.dev</a>
+      (Cloudflare Pages).
+    </p>
+    <p>Se não redirecionar automaticamente, use o link acima.</p>
+    <script>
+      (function () {
+        var base = 'https://kleilson-portfolio.pages.dev'
+        var path = location.pathname.replace(/^\/kleilson-portfolio\/?/, '/') || '/'
+        if (path.charAt(0) !== '/') path = '/' + path
+        var target = base + path + location.search + location.hash
+        var a = document.getElementById('dest')
+        if (a) {
+          a.href = target
+          a.textContent = target.replace(/^https:\/\//, '')
+        }
+        location.replace(target)
+      })()
+    </script>
+  </body>
+</html>
