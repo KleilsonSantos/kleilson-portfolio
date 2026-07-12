@@ -19,6 +19,12 @@
 ## Como atualizar
 
 1. Adicione o certificado na pasta local (fora do repo).
-2. Atualize `apps/web/content/credentials.json` (ou Decap) no mesmo PR da mudança de UI (ADR-0003).
-3. Se for certificação vendor, use `CERTIFICATIONS`; se for curso, use `COURSE_GROUPS`.
+2. Atualize `apps/web/content/credentials.json` (ou Decap; wrapper só se tipos mudarem) no mesmo PR da UI (ADR-0003 · [content.md](./content.md)).
+3. Se for certificação vendor, use `CERTIFICATIONS` (JSON `certifications`); se for curso, `COURSE_GROUPS` (`courseGroups`).
 4. Não invente datas, IDs ou URLs de verificação pessoais sem comprovante.
+
+## Relacionados
+
+- [content.md](./content.md) — Content-as-Code + Decap
+- [onboarding.md](./onboarding.md) — setup
+- [ADR-0007](../adr/0007-content-as-code.md)

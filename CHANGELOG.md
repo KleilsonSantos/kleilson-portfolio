@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 📝 `SUPPORT.md` (community health) + links no README/CONTRIBUTING (#109)
 - 🤖 Custom agents Copilot (`.github/agents/` — task-planner, code-reviewer, docs-writer) para a aba Agents
 - ♻️ Monorepo pnpm + Turborepo (`apps/web`, `apps/api`, `apps/worker-api`, `apps/decap-oauth`, `packages/shared`) #10 / ADR-0011
 - 📝 Decap CMS Git-backed (`/admin` + `content/*.json` + OAuth Worker) #71 / ADR-0012
@@ -20,13 +21,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 ADR-0008 Deploy Cloudflare Pages + Workers Free (#8) + guia `docs/guides/deploy.md`
 - ✨ `VITE_API_BASE_URL` opcional em `apps/web/src/api/contact.ts` (API em origin separado)
 
-### Fixed
-
-- 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
-- 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
-
 ### Changed
 
+- 📝 Guides: seção `## Relacionados` padronizada (links correlacionados; sem chrome da Wiki) #113
 - ♻️ Dockerfile / Containers = caminho **pago futuro** (não path ativo de produção)
 - 🔧 Dependabot monorepo: apenas `directory: "/"`; política de autoria Git sem trailer de IDE
 - 🚚 Cutover GitHub Pages → redirect para Cloudflare Pages (`legacy-github-pages/` + workflow)
@@ -38,6 +35,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 `observability.md` + #9: princípios BP-008/BP-015 (health/logs) sem OTel/Prometheus
 - 📝 Regra canônica: agente marca `[x]` nos Aceites cumpridos da issue (não esperar clique humano)
 - 📝 Docs alinhadas ao monorepo/Decap/Workers Free (overview, ADRs 0007/0008/0011, guides)
+
+### Fixed
+
+- 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
+- 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
 
 ## [0.4.0] - 2026-07-10
 

@@ -57,3 +57,11 @@ pnpm typecheck
 
 - Contato: só `contactId` + `requestId` — **nunca** e-mail/mensagem completos
 - Correlation: header `x-request-id` (ecoado na resposta)
+
+## Relacionados
+
+- [onboarding.md](./onboarding.md) — setup e `.env`
+- [deploy.md](./deploy.md) — publicar API / Pages
+- [observability.md](./observability.md) — health / Sentry / analytics
+- [testing.md](./testing.md) — testes
+- [ADR-0005](../adr/0005-fastify-contact-api.md) · [ADR-0006](../adr/0006-supabase-drizzle-contact.md)
