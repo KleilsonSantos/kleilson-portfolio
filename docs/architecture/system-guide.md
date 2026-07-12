@@ -69,16 +69,17 @@ Cloudflare Pages (SPA apps/web)
 
 ```mermaid
 flowchart TB
-  U[Visitante / Recrutador] --> P[Cloudflare Pages<br/>apps/web]
-  P --> JSON[content/*.json<br/>no bundle]
-  P -->|POST /api/contact| W[Worker API]
-  W --> DB[(contact_messages)]
-  Ed[Editor] --> Admin[/admin Decap]
-  Admin --> OAuth[decap-oauth Worker]
-  OAuth --> GH[GitHub sandbox]
-  GH -->|CI + merge| P
+  U["Visitante / Recrutador"] --> P["Cloudflare Pages<br/>apps/web"]
+  P --> JSON["content/*.json<br/>no bundle"]
+  P --> Contact["POST /api/contact"]
+  Contact --> W["Worker API"]
+  W --> DB[("contact_messages")]
+  Ed["Editor"] --> Admin["/admin Decap"]
+  Admin --> OAuth["decap-oauth Worker"]
+  OAuth --> GH["GitHub sandbox"]
+  GH --> Deploy["CI + merge"]
+  Deploy --> P
 ```
-
 ---
 
 ## 2. Arquitetura geral
@@ -184,7 +185,8 @@ flowchart TD
   L --> P[Projetos]
   L --> C[Contatos]
   L --> N[NotFound]
-  C -->|submit| API[sendContactForm]
+  C --> Submit["submit"]
+  Submit --> API["sendContactForm"]
 ```
 
 ### Contatos (única tela com HTTP)
@@ -604,7 +606,8 @@ Sem Redux/Zustand/Jotai.
 flowchart TB
   web[apps/web] --> shared[packages/shared]
   api[apps/api] --> shared
-  worker[apps/worker-api] -.->|mesmas regras contato| shared
+  worker["apps/worker-api"] --> Rules["mesmas regras contato"]
+  Rules --> shared
   web --> content[content JSON]
   decap[decap-oauth] --> github[GitHub]
   worker --> supabase[(Supabase)]
