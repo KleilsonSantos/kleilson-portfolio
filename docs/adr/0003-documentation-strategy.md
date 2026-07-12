@@ -187,13 +187,15 @@ Manter e formalizar (já parcialmente existente):
 └── docs/
     ├── adr/               # Nygard/MADR — decisões arquiteturais
     ├── architecture/      # Diátaxis: Explanation + Reference de sistema
-    ├── guides/            # Diátaxis: How-to (onboarding, git, releases, kickoff)
-    └── api/               # Diátaxis: Reference (quando houver API — Fase 3)
+    ├── guides/            # Diátaxis: How-to (onboarding, git, api, releases, kickoff)
+    └── architecture/      # Diátaxis: Explanation (overview)
 ```
+
+*(API reference how-to: `docs/guides/api.md` — pasta `docs/api/` não criada de propósito.)*
 
 **Justificativa:** atende MUST OpenSSF na raiz; ADRs seguem Nygard; organização interna de `docs/` segue Diátaxis (how-to vs explanation/reference) — **framework reconhecido, não padrão ISO**.
 
-**Pastas não criar sem necessidade:** wiki GitHub, site docs separado, monorepo de docs — overengineering no estágio atual (Google eng-practices alerta contra over-engineering).
+**Pastas não criar sem necessidade:** site docs separado, monorepo de docs — overengineering no estágio atual. Wiki GitHub, se habilitada, é **somente mapa de links** (não segunda fonte).
 
 ---
 

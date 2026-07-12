@@ -18,6 +18,7 @@ Adotar **pnpm workspaces** + **Turborepo** com:
 | `@kleilson/web` | `apps/web` | SPA Vite/React + E2E + Lighthouse |
 | `@kleilson/api` | `apps/api` | Fastify + Drizzle (dev/local; Dockerfile Containers futuro) |
 | `@kleilson/worker-api` | `apps/worker-api` | API produção Workers Free |
+| `@kleilson/decap-oauth` | `apps/decap-oauth` | OAuth Worker do Decap CMS |
 | `@kleilson/shared` | `packages/shared` | Schema/regras de contato compartilhadas |
 
 - Lockfile: `pnpm-lock.yaml` (substitui `package-lock.json`)
@@ -26,10 +27,11 @@ Adotar **pnpm workspaces** + **Turborepo** com:
 
 ## Consequences
 
-- Comandos canônicos na raiz: `pnpm dev`, `pnpm build`, `pnpm test`, `pnpm deploy:api`
-- Conteúdo Content-as-Code em `apps/web/src/data/*`
-- Dependabot cobre raiz + cada package directory
-- Migração é breaking para quem ainda usa `npm ci` / paths antigos
+- Comandos canônicos na raiz: `pnpm dev`, `pnpm build`, `pnpm test`, `pnpm deploy:api`, `pnpm deploy:decap-oauth`
+- Conteúdo: `apps/web/content/*.json` (+ wrappers `apps/web/src/data/*`)
+- Dependabot: **só** `directory: "/"` (um `pnpm-lock.yaml`; subpastas quebram frozen-lockfile)
+- Pacote adicional: `@kleilson/decap-oauth` em `apps/decap-oauth` (OAuth Decap; ADR-0012)
+- Migração é breaking para quem ainda usa `npm ci` / paths antigos (`server/`, `workers/api`)
 
 ## Alternatives considered
 

@@ -10,7 +10,8 @@ Deploy: Cloudflare Pages + Workers Free (ADR-0008). Conteúdo: apenas fatos veri
 
 ## Sempre
 
-- Preferir TypeScript estrito; tipar props e dados em `apps/web/src/data/`.
+- Preferir TypeScript estrito; tipar props e dados.
+- Conteúdo narrativo: editar `apps/web/content/*.json` (wrappers em `apps/web/src/data/`).
 - Seguir Conventional Commits + Gitmoji e fluxo: Issue → `feature/*` → PR → `sandbox` → PR → `main`.
 - Autoria Git: `Kleilson Santos <kdsddesign1@gmail.com>` — sem co-autoria de IDE/agente.
 - Atualizar `CHANGELOG.md` `[Unreleased]` em mudanças user-facing.
@@ -29,12 +30,14 @@ Deploy: Cloudflare Pages + Workers Free (ADR-0008). Conteúdo: apenas fatos veri
 
 | Necessidade | Arquivo |
 | --- | --- |
-| Perfil / experiência | `apps/web/src/data/profileData.ts` |
-| Projetos | `apps/web/src/data/projectsData.ts` |
-| Credenciais | `apps/web/src/data/credentialsData.ts` |
+| Perfil / experiência | `apps/web/content/profile.json` |
+| Projetos | `apps/web/content/projects.json` |
+| Credenciais | `apps/web/content/credentials.json` |
+| Contato | `apps/web/content/contact.json` |
+| Wrappers TS | `apps/web/src/data/*` |
 | Estilos | `apps/web/src/index.css` |
 | Rotas | `apps/web/src/App.tsx` |
-| Agentes | `AGENTS.md`, `.github/instructions/`, `.github/prompts/` |
+| Agentes | `AGENTS.md`, `.github/agents/`, `.github/instructions/`, `.github/prompts/` |
 | MCP (Cursor) | `docs/guides/mcp-tooling.md` — matriz canônica |
 
 ## Idioma

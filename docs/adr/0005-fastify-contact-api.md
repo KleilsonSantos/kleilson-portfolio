@@ -5,6 +5,7 @@
 - **Decisores:** Kleilson dos Santos
 - **Issue:** #6
 - **Tipo:** Backend / integração
+- **Path atual (2026-07-12):** `apps/api/` · comandos `pnpm --filter @kleilson/api` / `pnpm typecheck` (texto histórico pode citar `server/` / `npm run`)
 
 ## Context and Problem Statement
 

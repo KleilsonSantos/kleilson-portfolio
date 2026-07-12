@@ -22,6 +22,8 @@ A fonte canônica é [`AGENTS.md`](../../AGENTS.md) na raiz.
 
 **Deprecado:** `.cursorrules` na raiz — não usar.
 
+**Wiki GitHub:** hub de links apenas ([Wiki Home](https://github.com/KleilsonSantos/kleilson-portfolio/wiki)). Fonte canônica = `docs/` + README (ADR-0003). Custom agents aparecem no **dropdown** do prompt na [aba Agents](https://github.com/KleilsonSantos/kleilson-portfolio/agents) (não na lista `?author=` de sessões).
+
 ## Origem do padrão
 
 Inspirado no ecossistema `purchase-*` (curso Spring Boot / Kafka), adaptado para React/TypeScript — sem copiar stacks Java.
