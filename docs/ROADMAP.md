@@ -43,7 +43,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Sentry (errors, no-op sem DSN) + logs + readiness — issue #9 · [ADR-0009](./adr/0009-sentry-health.md)
 - [x] Analytics privacy-first (Umami opt-in) — issue #65 · [ADR-0010](./adr/0010-analytics-umami.md)
 - [x] Health check HTTP (`GET /health` na API)
-- [ ] Matriz MCP (Cursor) — issue #62
+- [x] Matriz MCP (Cursor) — issue #62 · [`guides/mcp-tooling.md`](./guides/mcp-tooling.md)
 - [ ] Grafana Cloud (métricas) — opcional, só com tráfego real (#62)
 
 ## Fase 5 — Monorepo & Enterprise

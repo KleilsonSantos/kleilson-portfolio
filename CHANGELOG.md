@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🤖 Matriz MCP canônica (`docs/guides/mcp-tooling.md`) alinhada ao roadmap #62
 - 📊 Analytics Umami privacy-first (opt-in via `VITE_UMAMI_*`, SPA pageviews) #65 / ADR-0010
 - 🔒 Sentry (React/Node/Workers) no-op sem DSN + health liveness/readiness + `requestId` (#9 / ADR-0009)
 - 🚀 API de produção em Cloudflare Workers (Free) via PostgREST — sem Containers pagos #8
