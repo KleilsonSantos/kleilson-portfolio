@@ -2,6 +2,8 @@
 
 Obrigado por considerar contribuir com o portfólio open source de Kleilson dos Santos.
 
+Dúvidas de uso, bugs ou “como pedir ajuda”: [SUPPORT.md](./SUPPORT.md).
+
 ## Fluxo Git (obrigatório)
 
 Leia o guia completo: [`docs/guides/git-workflow.md`](./docs/guides/git-workflow.md)
