@@ -19,6 +19,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 🐳 `Dockerfile` / `.dockerignore` para a API Fastify (Containers)
 - ✨ `VITE_API_BASE_URL` opcional em `src/api/contact.ts` (API em origin separado)
 
+### Fixed
+
+- 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
+
 ### Changed
 
 - 🚚 Cutover GitHub Pages → redirect para Cloudflare Pages (`legacy-github-pages/` + workflow)
