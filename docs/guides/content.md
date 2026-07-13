@@ -44,13 +44,19 @@ UI: [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pag
 1. GitHub → Settings → Developer settings → **OAuth Apps** → New:
    - Homepage: `https://kleilson-portfolio.pages.dev`
    - Callback: `https://kleilson-decap-oauth.kleilsonsantos.workers.dev/callback`
-2. Deploy proxy + secrets (obrigatório — sem isso o popup mostra `Missing GITHUB_CLIENT_ID`):
+2. Deploy proxy + secrets (obrigatório):
    ```bash
    pnpm --filter @kleilson/decap-oauth exec wrangler secret put GITHUB_CLIENT_ID
    pnpm --filter @kleilson/decap-oauth exec wrangler secret put GITHUB_CLIENT_SECRET
+   # Allowlist — só estes logins GitHub recebem token Decap (fail-closed se vazio)
+   pnpm --filter @kleilson/decap-oauth exec wrangler secret put ADMIN_GITHUB_LOGINS
+   # valor exemplo: KleilsonSantos
+   # (vários: KleilsonSantos,outroLogin)
    pnpm deploy:decap-oauth
    ```
-   Em `main`, o workflow `.github/workflows/deploy-decap-oauth.yml` republica o Worker quando `apps/decap-oauth/**` muda; **secrets continuam só no Cloudflare** (não no GitHub Actions).
+   Em `main`, o workflow `.github/workflows/deploy-decap-oauth.yml` republica o código do Worker; **secrets continuam só no Cloudflare**.
+
+> AuthZ: allowlist de login **e** permissão **write** no repo. Qualquer GitHub pode abrir o popup OAuth, mas **não** recebe token Decap fora da allowlist.
 3. Confirme `base_url` em `apps/web/public/admin/config.yml`.
 
 ## Checklist antes do PR

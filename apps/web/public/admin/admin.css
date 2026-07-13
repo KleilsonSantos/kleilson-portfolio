@@ -1,0 +1,160 @@
+/* Editorial Decap — skin alinhada ao ADR-0004 (dark-first, teal).
+   Decap continua sendo o chrome do CMS; não é clone 1:1 do Layout React.
+   Refs: https://decapcms.org/docs/customization/ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap');
+
+:root {
+  --admin-bg: #070b12;
+  --admin-surface: #0e1520;
+  --admin-surface-2: #141c2a;
+  --admin-border: #1e2a3a;
+  --admin-text: #e8eef7;
+  --admin-muted: #7a8fa8;
+  --admin-accent: #2dd4bf;
+  --admin-accent-dim: rgba(45, 212, 191, 0.14);
+  --admin-radius: 12px;
+  --admin-font: 'IBM Plex Sans', system-ui, sans-serif;
+  --admin-display: Sora, 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--admin-bg) !important;
+  color: var(--admin-text);
+  font-family: var(--admin-font);
+}
+
+/* Shell / app frame */
+body,
+#nc-root,
+.css-1gwkwy0,
+[class*='AppContainer'],
+[class*='AppMainContainer'] {
+  background: var(--admin-bg) !important;
+  color: var(--admin-text) !important;
+  font-family: var(--admin-font) !important;
+}
+
+/* Login */
+[class*='AuthenticationPage'],
+[class*='LoginButton'] {
+  background: var(--admin-bg) !important;
+}
+
+[class*='AuthenticationPage'] h1,
+[class*='AuthenticationPage'] h2 {
+  font-family: var(--admin-display) !important;
+  color: var(--admin-text) !important;
+}
+
+[class*='LoginButton'],
+button[class*='github'],
+a[class*='github'] {
+  background: var(--admin-surface-2) !important;
+  color: var(--admin-text) !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: var(--admin-radius) !important;
+  font-family: var(--admin-font) !important;
+  box-shadow: none !important;
+}
+
+[class*='LoginButton']:hover,
+button[class*='github']:hover {
+  border-color: var(--admin-accent) !important;
+  background: var(--admin-accent-dim) !important;
+}
+
+/* Header / chrome */
+header,
+[class*='AppHeader'],
+[class*='HeaderTop'],
+[class*='NavbarTop'] {
+  background: var(--admin-surface) !important;
+  border-bottom: 1px solid var(--admin-border) !important;
+  color: var(--admin-text) !important;
+}
+
+[class*='AppHeaderButton'],
+[class*='NavbarButton'] {
+  color: var(--admin-text) !important;
+}
+
+/* Collection cards / lists */
+[class*='Card'],
+[class*='ListCard'],
+[class*='CollectionCard'],
+[class*='EntryListing'] {
+  background: var(--admin-surface) !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: var(--admin-radius) !important;
+  color: var(--admin-text) !important;
+}
+
+/* Editor panes */
+[class*='ControlPane'],
+[class*='ControlContainer'],
+[class*='EditorContainer'],
+[class*='Toolbar'] {
+  background: var(--admin-surface) !important;
+  color: var(--admin-text) !important;
+  border-color: var(--admin-border) !important;
+}
+
+input,
+textarea,
+select,
+[class*='TextControl'] input,
+[class*='TextArea'] textarea {
+  background: var(--admin-surface-2) !important;
+  color: var(--admin-text) !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: 8px !important;
+  font-family: var(--admin-font) !important;
+}
+
+label,
+[class*='ControlLabel'] {
+  color: var(--admin-muted) !important;
+  font-family: var(--admin-font) !important;
+}
+
+/* Primary actions */
+button[class*='Save'],
+button[class*='Publish'],
+[class*='PublishButton'],
+[class*='SaveButton'] {
+  background: var(--admin-accent) !important;
+  color: #042f2e !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  font-family: var(--admin-font) !important;
+}
+
+h1,
+h2,
+h3,
+[class*='CardHeading'] {
+  font-family: var(--admin-display) !important;
+  color: var(--admin-text) !important;
+}
+
+a {
+  color: var(--admin-accent) !important;
+}
+
+/* Preview chrome tip */
+[class*='PreviewPane'] {
+  background: var(--admin-bg) !important;
+  color: var(--admin-text) !important;
+}
+
+@media (max-width: 768px) {
+  [class*='AppHeader'],
+  [class*='CollectionLabel'] {
+    font-size: 0.95rem !important;
+  }
+}

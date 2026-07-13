@@ -4,6 +4,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- 🔒 Allowlist `ADMIN_GITHUB_LOGINS` no Worker Decap OAuth (fail-closed; só logins autorizados recebem token)
+- 💄 Skin editorial Decap alinhada ao ADR-0004 (`/admin/admin.css` + preview style)
+
 ## [0.5.0] - 2026-07-13
 
 ### Added

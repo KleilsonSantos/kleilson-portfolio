@@ -40,6 +40,18 @@ flowchart LR
 
 ## 1. Admin editorial (Decap CMS)
 
+### AuthZ (camadas — o que importa)
+
+Qualquer pessoa com conta GitHub **pode** clicar em “Login with GitHub”. Isso **não** equivale a acesso admin.
+
+| Camada | O que bloqueia | Estado esperado |
+| --- | --- | --- |
+| **Allowlist Worker** `ADMIN_GITHUB_LOGINS` | Entregar token Decap só a logins listados (CSV). **Fail-closed** se o secret estiver vazio | Obrigatório — ex. `KleilsonSantos` |
+| **ACL GitHub (write no repo)** | Commit / Publish no Decap | Só owner/collaborators |
+| **Cloudflare Access `/admin*`** (#121) | Nem carregar o shell Decap / `config.yml` | Recomendado (defesa em profundidade) |
+
+Sem allowlist, o Worker **não** inicia OAuth (`/auth` bloqueado) e **não** faz `postMessage` do token no callback.
+
 ### Quando usar
 
 - Editar textos, projetos, certificações ou canais **no browser** sem abrir o IDE.
@@ -49,14 +61,14 @@ flowchart LR
 
 1. Abra [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pages.dev/admin/).
 2. Se Cloudflare Access estiver ativo (#121): autentique no **Zero Trust** (e-mail allowlist / IdP). Sem sessão Access, a UI Decap **não** carrega.
-3. **Login with GitHub** (Decap) → popup → Worker `kleilson-decap-oauth` → token via `postMessage`.
+3. **Login with GitHub** (Decap) → popup → Worker `kleilson-decap-oauth` → só entrega token se o login estiver em `ADMIN_GITHUB_LOGINS`.
 4. Edite a collection (Perfil, Projetos, Credenciais, Contato).
 5. **Publish** → commit direto na branch **`sandbox`** (`publish_mode: simple` — [Decap docs](https://decapcms.org/docs/configuration-options/)).
 6. Abra ou atualize PR **`sandbox` → `main`** ([git-workflow.md](./git-workflow.md)).
 7. CI verde → merge → deploy Pages publica o novo conteúdo.
 
 ```text
-Editor → CF Access → Decap → GitHub OAuth → commit sandbox → PR → main → Pages
+Editor → CF Access → Decap → GitHub OAuth + allowlist → commit sandbox → PR → main → Pages
 ```
 
 ### Setup OAuth (uma vez)
@@ -66,8 +78,9 @@ Detalhe em [content.md](./content.md#fluxo-b--decap-cms-opcional). Resumo:
 | Passo | Onde |
 | --- | --- |
 | GitHub OAuth App | Callback: `https://kleilson-decap-oauth.kleilsonsantos.workers.dev/callback` |
-| Secrets Worker | `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` via `wrangler secret put` |
+| Secrets Worker | `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, **`ADMIN_GITHUB_LOGINS`** (CSV de logins) via `wrangler secret put` |
 | Config Decap | `apps/web/public/admin/config.yml` → `base_url` do Worker |
+| Skin editorial | `apps/web/public/admin/admin.css` — tokens ADR-0004 (não clone React do site) |
 
 Evidência: `apps/decap-oauth/src/index.ts`, [Decap OAuth proxy](https://decapcms.org/docs/backends-overview/#using-github-with-an-oauth-proxy).
 
@@ -130,6 +143,7 @@ O job `e2e` sobe o app **local** (`playwright` / preview). Access **não** se ap
 | --- | --- | --- |
 | Login GitHub falha | OAuth App / secrets / callback URL | Conferir [content.md](./content.md) + secrets Wrangler |
 | Popup `Missing GITHUB_CLIENT_ID` | Secrets do Worker vazios ou Worker não redeployado | `wrangler secret put GITHUB_CLIENT_ID` + `GITHUB_CLIENT_SECRET` em `apps/decap-oauth`, depois `pnpm deploy:decap-oauth`. Callback OAuth = `…/callback` |
+| `ADMIN_GITHUB_LOGINS` / Acesso negado | Conta fora da allowlist ou secret ausente | `wrangler secret put ADMIN_GITHUB_LOGINS` com CSV (ex. `KleilsonSantos`). Sem allowlist = **fail-closed** |
 | `There is nothing here yet` no `*.workers.dev` | Worker `kleilson-decap-oauth` não publicado | `pnpm deploy:decap-oauth` (ou workflow Deploy Decap OAuth) |
 | Tela Access / Decap | Access mal configurado ou IdP | Ver § Cloudflare Access acima |
 | Publish sem efeito no site | Commit só em `sandbox` | Merge PR para `main` |
