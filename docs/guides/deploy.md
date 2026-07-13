@@ -60,6 +60,7 @@ Workflow: [`.github/workflows/deploy-pages.yml`](../../.github/workflows/deploy-
 3. Troubleshooting:
    - `Authentication error [code: 10000]` → token inválido ou sem **Pages Edit**
    - `Cannot use the access token from location… [code: 9109]` → remova o filtro de IP do token (ou crie um token só para Actions, sem IP allowlist) → atualize o secret → **Actions** → Deploy Cloudflare Pages → **Run workflow**
+   - `ERR_PNPM_ADDING_TO_ROOT` / `Command "wrangler" not found` no job Deploy → o monorepo precisa de `wrangler` na **raiz** (`package.json` devDependency). O `wrangler-action` não deve usar `wranglerVersion` sozinho (tenta `pnpm add` sem `-w`). Refs: [wrangler-action#181](https://github.com/cloudflare/wrangler-action/issues/181), [#338](https://github.com/cloudflare/wrangler-action/issues/338).
 
 3. Merge em **`main`** (ou **Actions** → Deploy Cloudflare Pages → **Run workflow**).
 4. Cada push em `main` publica `https://kleilson-portfolio.pages.dev`.
