@@ -95,13 +95,20 @@ git config core.hooksPath .githooks
 
 O CI (`commitlint`) rejeita PRs cujos commits no range não tenham gitmoji.
 
-### 3. Push e PR para sandbox
+### 3. QA local → Push e PR para sandbox
+
+**Antes do push:** gate QA local (funcional + visual das áreas tocadas) — ver [`task-kickoff.md`](./task-kickoff.md) Passo 5b.  
+Não usar o CI/Pages como primeiro ambiente de validação de UI.
 
 ```bash
+# Exemplo mínimo
+pnpm typecheck && pnpm lint
+# + testes / preview das telas que a branch alterou
+
 git push -u origin feature/minha-tarefa
 gh pr create --base sandbox --head feature/minha-tarefa \
   --title "feat: ✨ título semântico" \
-  --body "Resumo, contexto técnico e test plan."
+  --body "Resumo, contexto técnico e test plan (incluir evidência de QA local)."
 ```
 
 Aguarde CI passar → revise → **merge com subject gitmoji** → delete a branch:

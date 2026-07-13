@@ -59,7 +59,8 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 ## Checklist antes de concluir uma tarefa
 
 - [ ] Conteúdo profissional tem fonte verificável?
-- [ ] Lint / typecheck / testes relevantes passam?
+- [ ] **QA local (funcional + visual das áreas tocadas) antes do push** — `docs/guides/task-kickoff.md` Passo 5b?
+- [ ] Lint / typecheck / testes relevantes passam **localmente**?
 - [ ] CHANGELOG `[Unreleased]` atualizado se houver mudança user-facing?
 - [ ] Docs/ADR atualizados se houve decisão arquitetural?
 - [ ] PR segue o fluxo `feature → sandbox → main`?
