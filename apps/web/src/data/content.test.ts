@@ -1,11 +1,44 @@
 import { describe, expect, it } from 'vitest'
-import { PROFILE, SUMMARY, EXPERIENCE } from '../data/profileData'
-import { PROJECTS } from '../data/projectsData'
-import { CERTIFICATIONS, COURSE_GROUPS } from '../data/credentialsData'
-import { CATEGORIES, CONTACT_INFO } from '../data/contactData'
+import contactJson from '../../content/contact.json'
+import credentialsJson from '../../content/credentials.json'
+import profileJson from '../../content/profile.json'
+import projectsJson from '../../content/projects.json'
+import {
+  contactContentSchema,
+  credentialsContentSchema,
+  profileContentSchema,
+  projectsContentSchema,
+} from '../schemas/content'
+import { CATEGORIES, CONTACT_INFO } from './contactData'
+import { CERTIFICATIONS, COURSE_GROUPS } from './credentialsData'
+import { PROJECTS } from './projectsData'
+import { EXPERIENCE, PROFILE, SUMMARY } from './profileData'
+
+const contentEntries = [
+  ['profile.json', profileContentSchema, profileJson],
+  ['projects.json', projectsContentSchema, projectsJson],
+  ['credentials.json', credentialsContentSchema, credentialsJson],
+  ['contact.json', contactContentSchema, contactJson],
+] as const
 
 describe('content JSON (Decap source)', () => {
-  it('carrega profile mínimo', () => {
+  it('valida todos os JSON com Zod (erros agregados)', () => {
+    const failures: string[] = []
+
+    for (const [filename, schema, data] of contentEntries) {
+      const result = schema.safeParse(data)
+      if (!result.success) {
+        const details = result.error.issues
+          .map((issue) => `  - ${issue.path.join('.') || '(root)'}: ${issue.message}`)
+          .join('\n')
+        failures.push(`${filename}:\n${details}`)
+      }
+    }
+
+    expect(failures, failures.join('\n\n')).toEqual([])
+  })
+
+  it('carrega profile mínimo via wrappers', () => {
     expect(PROFILE.name.length).toBeGreaterThan(3)
     expect(PROFILE.siteUrl).toMatch(/^https:\/\//)
     expect(SUMMARY.length).toBeGreaterThan(40)

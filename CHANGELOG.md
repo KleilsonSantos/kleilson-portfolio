@@ -6,6 +6,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 📝 Runbook admin editorial + operacional (`docs/guides/admin-operations.md`) #120
+- ✅ Validação Zod + Vitest para `apps/web/content/*.json` (#119)
 - 📝 Guia completo de arquitetura/fluxos (`docs/architecture/system-guide.md`)
 - 📝 `SUPPORT.md` (community health) + links no README/CONTRIBUTING (#109)
 - 🤖 Custom agents Copilot (`.github/agents/` — task-planner, code-reviewer, docs-writer) para a aba Agents
