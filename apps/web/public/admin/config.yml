@@ -11,7 +11,6 @@ backend:
 
 site_url: https://kleilson-portfolio.pages.dev
 display_url: https://kleilson-portfolio.pages.dev
-logo_url: /favicon.svg
 logo:
   src: /favicon.svg
   show_in_header: true
