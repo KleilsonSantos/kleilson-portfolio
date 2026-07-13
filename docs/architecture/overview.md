@@ -76,6 +76,7 @@ flowchart TB
 - **[system-guide.md](./system-guide.md)** — guia completo de arquitetura e fluxos (estudo)
 - **[audits/production-readiness-audit-2026-07.md](../audits/production-readiness-audit-2026-07.md)** — auditoria production-ready (2026-07)
 - **[audits/usability-functional-quality-audit-2026-07.md](../audits/usability-functional-quality-audit-2026-07.md)** — auditoria usabilidade/funcionalidade (runtime 2026-07)
+- **[audits/ai-agents-governance-audit-2026-07.md](../audits/ai-agents-governance-audit-2026-07.md)** — arquitetura de agentes, contexto e governança de IA (2026-07)
 - [ADR-0001](../adr/0001-frontend-vite-react.md) — frontend
 - [ADR-0002](../adr/0002-git-branching-strategy.md) — Git
 - [ADR-0003](../adr/0003-documentation-strategy.md) — docs

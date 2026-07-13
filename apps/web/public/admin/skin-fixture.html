@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Admin skin fixture | Kleilson Santos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+    />
+    <!--
+      Fixture estática para QA local (Passo 5b) SEM OAuth.
+      Simula labels Emotion do Decap + shell classNameWrapper (div branco).
+      CSS Decap-like DEPOIS da skin — !important branco; skin #nc-root deve vencer.
+    -->
+    <link rel="stylesheet" href="/design-tokens.css?v=4" />
+    <link rel="stylesheet" href="/admin/admin.css?v=4" />
+    <style>
+      .css-mock-widget {
+        display: block;
+        width: 100%;
+        max-width: 48rem;
+        margin: 2rem auto;
+        padding: 16px 20px;
+        border: 2px solid #dfdfe3;
+        border-radius: 5px;
+        border-top-left-radius: 0;
+        background-color: #fff !important;
+        color: #444a57 !important;
+      }
+      .css-mock-EditorContainer {
+        min-height: 100vh;
+        padding: 2rem;
+        background-color: #fff !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="admin-brandbar" role="banner">
+      <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
+      <span class="admin-brandbar__meta">Skin fixture</span>
+      <a class="admin-brandbar__link" href="/admin/">← Admin</a>
+    </header>
+
+    <div id="nc-root">
+      <div class="css-mock-EditorContainer EditorContainer">
+        <div class="css-mock-ControlPaneContainer ControlPaneContainer">
+          <div class="css-mock-ControlContainer ControlContainer">
+            <div class="css-mock-widget" data-testid="object-shell">
+              <div class="css-mock-TopBarContainer TopBarContainer" data-testid="object-topbar">
+                ↓
+              </div>
+              <div class="css-mock-NestedObjectLabel NestedObjectLabel" data-testid="object-label">
+                PROFILE
+              </div>
+              <div class="css-mock-ControlContainer ControlContainer">
+                <label class="css-mock-FieldLabel FieldLabel">NOME</label>
+                <input type="text" value="Kleilson dos Santos" readonly />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -61,6 +61,32 @@ feature/* (código + docs + Unreleased)
 
 Fonte: [Diátaxis](https://diataxis.fr/start-here/) — framework, **não** especificação ISO.
 
+## Duas cadências de sincronização documental (evidência)
+
+A documentação **acompanha o projeto** em duas escalas — não “só no release” e não “em todo commit pontual”.
+
+| Cadência | O quê | Quando | Evidência |
+| --- | --- | --- | --- |
+| **A — Mesmo PR** | Guides / README / ADR / `CHANGELOG` `[Unreleased]` para mudança **notável** (build, test, uso, contribuição, arquitetura) | No PR do código (Definition of Done) | [Google eng-practices — Documentation](https://google.github.io/eng-practices/review/reviewer/looking-for.html) · [Microsoft DoD](https://microsoft.github.io/code-with-engineering-playbook/agile-development/team-agreements/definition-of-done/) · ADR-0003 |
+| **B — Release SemVer** | Promover `[Unreleased]` → `## [X.Y.Z]`; alinhar `package.json`; tag anotada + GitHub Release | Após merge releaseable `sandbox` → `main` | [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) · [OpenSSF release_notes](https://www.bestpractices.dev/en/criteria/0) · [`releases.md`](./releases.md) |
+
+```text
+PR (cadência A)          Release (cadência B)
+───────────────          ────────────────────
+código + docs gatilho    Unreleased → [X.Y.Z]
+CHANGELOG [Unreleased]   package.json = X.Y.Z
+                         tag vX.Y.Z + GitHub Release
+```
+
+**Checklist “docs acompanham o projeto?”** (agents / revisor):
+
+1. O diff tem gatilho ADR-0003? → docs do **mesmo PR** atualizados?
+2. Há itens antigos só em `[Unreleased]` com código **já** em `main` sem tag? → drift de **release** (cadência B) — ver última tag vs `package.json` / CHANGELOG.
+3. `ROADMAP.md` / `releases.md` histórico desatualizados após marco? → sync na release (não a cada fix pontual).
+4. Deprecações / remoções: constam no CHANGELOG (`Deprecated` / `Removed`) — Keep a Changelog.
+
+Anti-padrões relacionados: tabela abaixo (`Docs só no release final` / `Docs em todo commit`).
+
 ## Links correlacionados (`## Relacionados`)
 
 How-tos e hubs leves devem terminar (ou quase) com **`## Relacionados`**: 3–6 links para o próximo passo do leitor (guides/ADRs/raiz). Não duplicar o corpo do outro doc.

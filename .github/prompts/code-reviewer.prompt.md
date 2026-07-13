@@ -11,7 +11,8 @@ Checklist:
 - [ ] Conteúdo profissional verificável? (sem invenção)
 - [ ] TypeScript strict / sem `any` injustificado?
 - [ ] Visual alinhado ao ADR-0004?
-- [ ] Docs/CHANGELOG atualizados se necessário?
+- [ ] Docs/CHANGELOG atualizados se necessário (cadências A/B — documentation-sync)?
+- [ ] MCP usado (se houver) está na matriz `docs/guides/mcp-tooling.md`?
 - [ ] Fluxo Git respeitado (sem push direto em main/sandbox)?
 - [ ] Escopo focado (sem drive-by refactor)?
 
