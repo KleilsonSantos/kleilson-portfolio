@@ -26,7 +26,12 @@ while IFS= read -r line; do
   if ! python3 -c '
 import re, sys
 s = sys.argv[1]
-m = re.match(r"^(feat|fix|docs|chore|ci|refactor|test|style|perf|build|merge):\s+(\S+)\s+.+", s)
+# ui = alias legítimo de mudanças visuais (espelha Conventional "style")
+# release = preparo SemVer anotado (docs/guides/releases.md)
+m = re.match(
+    r"^(feat|fix|docs|chore|ci|refactor|test|style|ui|perf|build|merge|release):\s+(\S+)\s+.+",
+    s,
+)
 if not m:
     sys.exit(1)
 emoji = m.group(2)
