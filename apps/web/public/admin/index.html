@@ -2,12 +2,24 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#2dd4bf" />
     <title>Editorial | Kleilson Portfolio</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
   </head>
   <body>
-    <!-- Decap CMS — GitHub OAuth via Worker Free (ADR-0012). Sem JWT / Firebase / Netlify Identity. -->
+    <!--
+      Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
+      AuthZ: allowlist ADMIN_GITHUB_LOGINS no Worker + ACL write do repo.
+      Sem JWT / Firebase / Netlify Identity.
+    -->
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+    <script>
+      // Preview pane usa a mesma skin (não é o Layout React do site público).
+      if (window.CMS) {
+        CMS.registerPreviewStyle('/admin/admin.css')
+      }
+    </script>
   </body>
 </html>
