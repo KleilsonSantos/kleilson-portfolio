@@ -1,8 +1,8 @@
 /* =============================================================================
- * Editorial Decap — mesma linguagem visual do site (ADR-0004 / App.css)
- * Tokens: /design-tokens.css (fonte única)
- * Scope: chrome Decap (login, header, lists, editor). Não reimplementa Layout React.
- * Docs: https://decapcms.org/docs/customization/
+ * Editorial Decap — chrome alinhado ao profile (ADR-0004)
+ * Tokens: /design-tokens.css
+ * Seletores: labels Emotion do Decap 3.8 (estáveis) — docs: custom-mounting
+ * Carregar este arquivo DEPOIS do decap-cms.js (ver index.html)
  * ============================================================================= */
 
 @import url('/design-tokens.css');
@@ -14,15 +14,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
@@ -38,20 +30,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   min-height: 100dvh;
-  font-family: var(--font-family);
+  font-family: var(--font-family) !important;
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  background-image: var(--hero-glow);
-  background-attachment: scroll;
+  color: var(--color-text) !important;
+  background-color: var(--color-bg) !important;
+  background-image: var(--hero-glow) !important;
   -webkit-font-smoothing: antialiased;
-}
-
-@media (min-width: 768px) {
-  body {
-    background-attachment: fixed;
-  }
 }
 
 :focus-visible {
@@ -59,26 +44,31 @@ body {
   box-shadow: var(--focus-ring);
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
+a {
+  color: var(--color-primary) !important;
 }
 
-a {
-  color: var(--color-primary);
+h1,
+h2,
+h3,
+[class*='CardHeading'],
+[class*='CardTitle'],
+[class*='CollectionLabel'],
+[class*='CollectionTopHeading'],
+[class*='SidebarHeading'] {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  color: var(--color-text) !important;
 }
 
 /* ---------------------------------------------------------------------------
- * Brand strip (site logo pattern) — visível no login e no shell
+ * Brand strip (mesmo padrão .navbar / .logo do site)
  * --------------------------------------------------------------------------- */
 .admin-brandbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,10 +104,10 @@ a {
 }
 
 .admin-brandbar__link {
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary) !important;
   font-size: var(--font-size-sm);
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: none !important;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -132,273 +122,283 @@ a {
 }
 
 .admin-brandbar__link:hover {
-  color: var(--color-text);
+  color: var(--color-text) !important;
   border-color: var(--color-primary);
   background: var(--color-primary-subtle);
 }
 
-/* ---------------------------------------------------------------------------
- * Decap root / shell
- * --------------------------------------------------------------------------- */
-#nc-root,
-[class*='AppContainer'],
-[class*='AppMainContainer'],
-[class*='AppLayout'] {
+/* Mount Decap (custom mounting) */
+#nc-root {
+  min-height: calc(100vh - var(--nav-height));
   background: transparent !important;
   color: var(--color-text) !important;
   font-family: var(--font-family) !important;
-  min-height: calc(100vh - var(--nav-height));
 }
 
 /* ---------------------------------------------------------------------------
- * Login (AuthenticationPage) — composição tipo hero do profile
+ * Shell / main
  * --------------------------------------------------------------------------- */
+[class*='AppMainContainer'] {
+  background: var(--color-bg) !important;
+  background-image: var(--hero-glow) !important;
+  color: var(--color-text) !important;
+  min-height: calc(100vh - var(--nav-height)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Header (Contents / Media) ≈ navbar
+ * --------------------------------------------------------------------------- */
+[class*='AppHeaderContent'],
+[class*='AppHeader'] {
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(12px);
+}
+
+[class*='AppHeaderNavLink'],
+[class*='AppHeaderButton'],
+[class*='AppHeaderSiteLink'],
+[class*='AppHeaderQuickNewButton'] {
+  color: var(--color-text-secondary) !important;
+  font-family: var(--font-family) !important;
+  font-weight: 500 !important;
+  border-radius: var(--radius-md) !important;
+}
+
+[class*='AppHeaderNavLink']:hover,
+[class*='AppHeaderButton']:hover,
+[class*='AppHeaderSiteLink']:hover {
+  color: var(--color-primary) !important;
+  background: var(--color-primary-subtle) !important;
+}
+
+/* Active tab underline teal (not Decap blue) */
+[class*='AppHeaderNavLink'][class*='active'],
+[class*='AppHeaderNavLink'][aria-current='page'],
+a[class*='AppHeaderNavLink'][href].active {
+  color: var(--color-primary) !important;
+  box-shadow: inset 0 -2px 0 var(--color-primary) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Sidebar collections
+ * --------------------------------------------------------------------------- */
+[class*='SidebarContainer'],
+[class*='SearchContainer'] {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+[class*='SidebarHeading'] {
+  color: var(--color-text-muted) !important;
+  font-size: var(--font-size-sm) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[class*='SidebarNavLink'],
+[class*='TreeNavLink'] {
+  color: var(--color-text-secondary) !important;
+  border-left: 2px solid transparent !important;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+  font-family: var(--font-family) !important;
+}
+
+[class*='SidebarNavLink']:hover,
+[class*='TreeNavLink']:hover {
+  color: var(--color-text) !important;
+  background: var(--color-bg-subtle) !important;
+}
+
+/* Active collection — teal instead of Decap #157cfc */
+[class*='SidebarNavLink'][class*='active'],
+[class*='SidebarNavLink'][aria-current='page'],
+[class*='TreeNavLink'][class*='active'] {
+  color: var(--color-primary) !important;
+  background: var(--color-primary-subtle) !important;
+  border-left-color: var(--color-primary) !important;
+}
+
+[class*='SearchInput'] {
+  background: var(--color-bg-subtle) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: var(--font-family) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Collection top + entry cards
+ * --------------------------------------------------------------------------- */
+[class*='CollectionTopContainer'],
+[class*='CollectionMain'],
+[class*='CollectionContainer'],
+[class*='CollectionControlsContainer'] {
+  background: transparent !important;
+  color: var(--color-text) !important;
+}
+
+[class*='CollectionTopContainer'],
+[class*='Card'],
+[class*='CardCollection'],
+[class*='ListCard'],
+[class*='GridCard'],
+[class*='EntryCard'],
+[class*='WorkflowCardContainer'] {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+[class*='ListCard']:hover,
+[class*='GridCard']:hover,
+[class*='Card']:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border)) !important;
+  background: var(--color-bg-subtle) !important;
+}
+
+[class*='ListCardLink'],
+[class*='GridCardLink'],
+[class*='CardText'],
+[class*='CardBody'] {
+  color: var(--color-text) !important;
+}
+
+[class*='ViewControlsButton'],
+[class*='DropdownButton'],
+[class*='StyledDropdownButton'] {
+  color: var(--color-text-secondary) !important;
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Login
+ * --------------------------------------------------------------------------- */
+[class*='StyledAuthenticationPage'],
 [class*='AuthenticationPage'] {
   min-height: calc(100vh - var(--nav-height)) !important;
   display: grid !important;
   place-items: center !important;
-  padding: var(--page-pad-block) var(--page-pad-inline) !important;
   background: transparent !important;
   color: var(--color-text) !important;
+  padding: var(--page-pad-block) var(--page-pad-inline) !important;
 }
 
-[class*='AuthenticationPage'] > * {
-  width: min(28rem, 100%);
-  padding: var(--space-8);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-elevated);
-  box-shadow: var(--shadow-md);
-}
-
-[class*='AuthenticationPage'] h1,
-[class*='AuthenticationPage'] h2 {
-  font-family: var(--font-display) !important;
-  font-size: var(--font-size-2xl) !important;
-  color: var(--color-text) !important;
-  margin: 0 0 var(--space-3) !important;
-}
-
-[class*='AuthenticationPage'] p {
-  color: var(--color-text-secondary) !important;
-  line-height: var(--line-height-relaxed) !important;
-}
-
-/* CTA login ≈ .btn do site */
 [class*='LoginButton'],
-[class*='AuthenticationPage'] button {
+[class*='StyledAuthenticationPage'] button {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: var(--space-2) !important;
   min-height: 2.75rem !important;
-  width: 100% !important;
-  margin-top: var(--space-6) !important;
   padding: 0.75rem 1.25rem !important;
   border-radius: var(--radius-md) !important;
   border: 1px solid transparent !important;
   background: var(--color-primary) !important;
   color: var(--color-text-inverse) !important;
   font-family: var(--font-family) !important;
-  font-size: var(--font-size-base) !important;
   font-weight: 600 !important;
   box-shadow: none !important;
-  cursor: pointer !important;
-  transition:
-    background-color var(--duration-fast) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out) !important;
 }
 
-[class*='LoginButton']:hover,
-[class*='AuthenticationPage'] button:hover {
+[class*='LoginButton']:hover {
   background: var(--color-primary-hover) !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  [class*='LoginButton']:hover,
-  [class*='AuthenticationPage'] button:hover {
-    transform: translateY(-1px) !important;
-  }
-}
-
 /* ---------------------------------------------------------------------------
- * Header Decap ≈ navbar sticky do site
- * --------------------------------------------------------------------------- */
-[class*='AppHeader'],
-[class*='HeaderTop'],
-header[class*='Header'] {
-  min-height: var(--nav-height) !important;
-  border-bottom: 1px solid var(--color-border) !important;
-  background: color-mix(in srgb, var(--color-bg) 88%, transparent) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  color: var(--color-text) !important;
-  box-shadow: none !important;
-}
-
-[class*='AppHeaderContent'],
-[class*='AppHeader'] > div {
-  width: min(var(--container-wide), 100%) !important;
-  margin-inline: auto !important;
-  padding-inline: var(--page-pad-inline) !important;
-}
-
-[class*='AppHeaderButton'],
-[class*='AppHeaderNavLink'],
-[class*='NavbarButton'] {
-  color: var(--color-text-secondary) !important;
-  font-family: var(--font-family) !important;
-  font-weight: 500 !important;
-  border-radius: var(--radius-md) !important;
-  transition: color var(--duration-fast) var(--ease-out) !important;
-}
-
-[class*='AppHeaderButton']:hover,
-[class*='AppHeaderNavLink']:hover {
-  color: var(--color-primary) !important;
-  background: var(--color-primary-subtle) !important;
-}
-
-/* ---------------------------------------------------------------------------
- * Collection hub / cards
- * --------------------------------------------------------------------------- */
-[class*='CollectionTop'],
-[class*='CollectionMain'],
-[class*='Entries'],
-[class*='Workflow'] {
-  background: transparent !important;
-  color: var(--color-text) !important;
-  padding-inline: var(--page-pad-inline) !important;
-  max-width: var(--container-wide) !important;
-  margin-inline: auto !important;
-}
-
-[class*='Card'],
-[class*='ListCard'],
-[class*='CollectionTopCard'],
-[class*='EntryCard'],
-[class*='WizardCard'] {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--radius-lg) !important;
-  color: var(--color-text) !important;
-  box-shadow: none !important;
-  transition:
-    border-color var(--duration-fast) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out) !important;
-}
-
-[class*='Card']:hover,
-[class*='EntryCard']:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border)) !important;
-  background: var(--color-bg-subtle) !important;
-}
-
-[class*='CardHeading'],
-[class*='CardTitle'],
-[class*='CollectionLabel'] {
-  font-family: var(--font-display) !important;
-  color: var(--color-text) !important;
-}
-
-/* ---------------------------------------------------------------------------
- * Editor
+ * Editor + forms
  * --------------------------------------------------------------------------- */
 [class*='EditorContainer'],
-[class*='ControlPane'],
+[class*='ControlPaneContainer'],
 [class*='ControlContainer'],
 [class*='EditorControlBar'],
-[class*='Toolbar'],
-[class*='SplitPane'] {
+[class*='ToolbarContainer'],
+[class*='RawEditorContainer'] {
   background: var(--color-bg-elevated) !important;
   color: var(--color-text) !important;
   border-color: var(--color-border) !important;
 }
 
+[class*='ControlHint'],
 [class*='ControlLabel'],
 label {
   color: var(--color-text-muted) !important;
   font-family: var(--font-family) !important;
-  font-size: var(--font-size-sm) !important;
-  font-weight: 500 !important;
 }
 
 input,
 textarea,
 select,
 [class*='TextControl'] input,
-[class*='TextArea'] textarea,
-[class*='SelectControl'] select {
+[class*='AuthInput'] {
   background: var(--color-bg-subtle) !important;
   color: var(--color-text) !important;
   border: 1px solid var(--color-border) !important;
   border-radius: var(--radius-md) !important;
   font-family: var(--font-family) !important;
-  font-size: var(--font-size-base) !important;
-  line-height: var(--line-height-normal) !important;
   min-height: 2.75rem !important;
-  padding: var(--space-3) var(--space-4) !important;
-  transition: border-color var(--duration-fast) var(--ease-out) !important;
-}
-
-textarea,
-[class*='TextArea'] textarea {
-  min-height: 8rem !important;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--color-primary) !important;
-  outline: none !important;
   box-shadow: var(--focus-ring) !important;
+  outline: none !important;
 }
 
-/* Primary actions ≈ .btn */
+/* Primary CTAs ≈ .btn */
 [class*='SaveButton'],
 [class*='PublishButton'],
-button[class*='Save'],
-button[class*='Publish'] {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 2.75rem !important;
-  padding: 0.75rem 1.25rem !important;
-  border-radius: var(--radius-md) !important;
-  border: 1px solid transparent !important;
+[class*='PublishedButton'],
+[class*='CollectionTopNewButton'],
+[class*='ActionButton'] {
   background: var(--color-primary) !important;
   color: var(--color-text-inverse) !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--radius-md) !important;
   font-family: var(--font-family) !important;
   font-weight: 600 !important;
+  min-height: 2.75rem !important;
   box-shadow: none !important;
-  transition: background-color var(--duration-fast) var(--ease-out) !important;
 }
 
 [class*='SaveButton']:hover,
-[class*='PublishButton']:hover {
+[class*='PublishButton']:hover,
+[class*='CollectionTopNewButton']:hover {
   background: var(--color-primary-hover) !important;
 }
 
 /* Secondary ≈ .btn--secondary */
+[class*='BackCollection'],
+[class*='GoBackButtonStyle'],
 [class*='CancelButton'],
-[class*='BackButton'],
-button[class*='Cancel'] {
+[class*='TextButton'],
+[class*='DeleteButton'] {
   background: transparent !important;
   color: var(--color-primary) !important;
   border: 1px solid color-mix(in srgb, var(--color-primary) 55%, var(--color-border)) !important;
   border-radius: var(--radius-md) !important;
-  min-height: 2.75rem !important;
 }
 
-[class*='CancelButton']:hover,
-[class*='BackButton']:hover {
-  background: var(--color-primary-subtle) !important;
-  border-color: var(--color-primary) !important;
+/* Kill Decap default blue accents (#157cfc / #0969ee) where they leak as SVG/fill */
+[class*='SidebarNavLink'] svg,
+[class*='AppHeaderNavLink'] svg,
+[class*='ViewControlsButton'] svg,
+[class*='CardFileIcon'] svg {
+  color: currentColor !important;
+  fill: currentColor !important;
 }
 
-/* ---------------------------------------------------------------------------
- * Preview pane — tipografia do profile
- * --------------------------------------------------------------------------- */
+/* Preview */
 [class*='PreviewPane'],
 [class*='PreviewContent'],
 .frame-content {
@@ -406,56 +406,11 @@ button[class*='Cancel'] {
   background-image: var(--hero-glow) !important;
   color: var(--color-text) !important;
   font-family: var(--font-family) !important;
-  font-size: var(--font-size-base) !important;
-  line-height: var(--line-height-relaxed) !important;
   padding: var(--page-pad-block) var(--page-pad-inline) !important;
 }
 
-[class*='PreviewPane'] h1,
-[class*='PreviewContent'] h1,
-.frame-content h1 {
-  font-family: var(--font-display) !important;
-  font-size: var(--font-size-3xl) !important;
-  letter-spacing: -0.02em !important;
-}
-
-[class*='PreviewPane'] h2,
-[class*='PreviewContent'] h2 {
-  font-family: var(--font-display) !important;
-  font-size: var(--font-size-2xl) !important;
-}
-
-/* ---------------------------------------------------------------------------
- * Toast / status
- * --------------------------------------------------------------------------- */
-[class*='Toast'],
-[class*='Notification'] {
-  border-radius: var(--radius-md) !important;
-  font-family: var(--font-family) !important;
-  border: 1px solid var(--color-border) !important;
-  background: var(--color-bg-elevated) !important;
-  color: var(--color-text) !important;
-}
-
-/* ---------------------------------------------------------------------------
- * Responsividade (mesmos breakpoints do site)
- * --------------------------------------------------------------------------- */
 @media (max-width: 767px) {
-  .admin-brandbar {
-    padding-inline: var(--page-pad-inline);
-  }
-
   .admin-brandbar__meta {
     display: none;
-  }
-
-  [class*='AuthenticationPage'] > * {
-    padding: var(--space-6);
-  }
-
-  [class*='AppHeaderContent'],
-  [class*='CollectionTop'],
-  [class*='Entries'] {
-    padding-inline: var(--page-pad-inline) !important;
   }
 }

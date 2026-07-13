@@ -13,6 +13,7 @@ test.describe('Admin Decap smoke', () => {
     await expect(page.locator('link[href="/design-tokens.css"]')).toHaveCount(1)
     await expect(page.locator('link[href="/admin/admin.css"]')).toHaveCount(1)
     await expect(page.locator('.admin-brandbar__logo')).toHaveText('Kleilson Santos')
+    await expect(page.locator('#nc-root')).toHaveCount(1)
     await expect(page.locator('script[src*="decap-cms"]')).toHaveCount(1)
 
     const tokens = await page.request.get('/design-tokens.css')
