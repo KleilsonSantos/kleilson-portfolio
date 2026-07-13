@@ -44,12 +44,13 @@ UI: [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pag
 1. GitHub → Settings → Developer settings → **OAuth Apps** → New:
    - Homepage: `https://kleilson-portfolio.pages.dev`
    - Callback: `https://kleilson-decap-oauth.kleilsonsantos.workers.dev/callback`
-2. Deploy proxy:
+2. Deploy proxy + secrets (obrigatório — sem isso o popup mostra `Missing GITHUB_CLIENT_ID`):
    ```bash
    pnpm --filter @kleilson/decap-oauth exec wrangler secret put GITHUB_CLIENT_ID
    pnpm --filter @kleilson/decap-oauth exec wrangler secret put GITHUB_CLIENT_SECRET
-   pnpm --filter @kleilson/decap-oauth deploy
+   pnpm deploy:decap-oauth
    ```
+   Em `main`, o workflow `.github/workflows/deploy-decap-oauth.yml` republica o Worker quando `apps/decap-oauth/**` muda; **secrets continuam só no Cloudflare** (não no GitHub Actions).
 3. Confirme `base_url` em `apps/web/public/admin/config.yml`.
 
 ## Checklist antes do PR

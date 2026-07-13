@@ -4,8 +4,13 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-07-13
+
 ### Added
 
+- 📝 Auditoria production-ready (`docs/audits/production-readiness-audit-2026-07.md`)
+- 👷 Workflow Deploy Decap OAuth Worker (evita worker órfão em production)
+- 📝 Auditoria usabilidade/funcionalidade runtime (`docs/audits/usability-functional-quality-audit-2026-07.md`)
 - 🔒 Runbook Cloudflare Access para `/admin*` (Zero Trust self-hosted) — #121
 - 🧪 E2E smoke Decap `/admin` + `config.yml` (`apps/web/e2e/admin.spec.ts`) #123
 - 📝 Runbook admin editorial + operacional (`docs/guides/admin-operations.md`) #120
@@ -44,6 +49,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 🗺️ `robots.txt` + `sitemap.xml` estáticos (deixam de cair no fallback SPA HTML)
+- 📞 `tel:` href RFC 3966 sem hífen (`contact.json`)
+- 🎨 `theme-color` alinhado ao teal ADR-0004 (`#2dd4bf`)
 - 🔗 Removidos projetos featured com GitHub 404 (`purchase-ecosystem`, `copilot-java21-springboot`); destaques públicos: `banking`, `infra-devtools`, `VaultSpring` (#130)
 - 🐛 Deploy Pages: `wrangler` na raiz do monorepo para `wrangler-action` + pnpm (evita `ERR_PNPM_ADDING_TO_ROOT`)
 - 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
@@ -163,3 +171,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - ✨ SEO (meta + JSON-LD) e mock de API de contato
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
+
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.3.0...v0.4.0

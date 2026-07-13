@@ -129,6 +129,8 @@ O job `e2e` sobe o app **local** (`playwright` / preview). Access **não** se ap
 | Sintoma | Causa provável | Ação |
 | --- | --- | --- |
 | Login GitHub falha | OAuth App / secrets / callback URL | Conferir [content.md](./content.md) + secrets Wrangler |
+| Popup `Missing GITHUB_CLIENT_ID` | Secrets do Worker vazios ou Worker não redeployado | `wrangler secret put GITHUB_CLIENT_ID` + `GITHUB_CLIENT_SECRET` em `apps/decap-oauth`, depois `pnpm deploy:decap-oauth`. Callback OAuth = `…/callback` |
+| `There is nothing here yet` no `*.workers.dev` | Worker `kleilson-decap-oauth` não publicado | `pnpm deploy:decap-oauth` (ou workflow Deploy Decap OAuth) |
 | Tela Access / Decap | Access mal configurado ou IdP | Ver § Cloudflare Access acima |
 | Publish sem efeito no site | Commit só em `sandbox` | Merge PR para `main` |
 | CI vermelho após Decap | JSON inválido | Ver erros do teste `content` (Zod) no job `quality` |

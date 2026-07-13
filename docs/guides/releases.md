@@ -19,6 +19,7 @@ vMAJOR.MINOR.PATCH
 | `v0.2.2` | 2026-07-09 | ADR-0003 — estratégia canônica de documentação (evidence-based) |
 | `v0.3.0` | 2026-07-10 | Qualidade (Vitest/Playwright/Lighthouse), visual ADR-0004 V1–V5, AI agents, Fastify API (#6) |
 | `v0.4.0` | 2026-07-10 | Fase 3 — Persistência Supabase Postgres + Drizzle (#7 / ADR-0006) |
+| `v0.5.0` | 2026-07-13 | Fase 4+5 — Pages/Workers Free, observabilidade, monorepo, Decap, hardening conteúdo |
 
 ## Criar uma nova release (canônico)
 
@@ -58,8 +59,8 @@ gh release create vX.Y.Z \
 | Docs strategy (ADR-0003) | `v0.2.2` | ✅ |
 | Fase 2 — Qualidade + visual + AI; início Fase 3 (Fastify) | `v0.3.0` | ✅ |
 | Fase 3 — Persistência (Supabase) | `v0.4.0` | ✅ #7 |
-| Fase 4 — Deploy + observabilidade | próximo SemVer (sugerido `v0.5.0` / `v1.0.0`) | ✅ no `main` (#8/#9/#65) — tag pendente |
-| Fase 5 — Monorepo + Decap | (mesmo Unreleased) | ✅ no `main` (#10/#71) — tag pendente |
+| Fase 4 — Deploy + observabilidade | `v0.5.0` | ✅ |
+| Fase 5 — Monorepo + Decap | `v0.5.0` | ✅ |
 
 ## Relacionados
 

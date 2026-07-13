@@ -56,7 +56,7 @@ export function useDocumentMeta({
 
     setMetaTag('name', 'description', description)
     setMetaTag('name', 'robots', 'index, follow')
-    setMetaTag('name', 'theme-color', '#4f46e5')
+    setMetaTag('name', 'theme-color', '#2dd4bf')
     setLinkTag('canonical', canonical)
 
     setMetaTag('property', 'og:title', title)
