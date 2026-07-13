@@ -12,12 +12,13 @@ Base: ADR-0006 · ADR-0007 · ADR-0012 · `docs/architecture/system-guide.md` §
 ```mermaid
 flowchart LR
   subgraph Editorial["1 — Editorial"]
+    A["CF Access /admin*"]
     D["Decap /admin"]
     O["decap-oauth Worker"]
     G["GitHub branch sandbox"]
     PR["PR sandbox → main"]
     P["Cloudflare Pages"]
-    D --> O --> G --> PR --> P
+    A --> D --> O --> G --> PR --> P
   end
 
   subgraph Operacional["2 — Operacional"]
@@ -47,14 +48,15 @@ flowchart LR
 ### Fluxo passo a passo
 
 1. Abra [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pages.dev/admin/).
-2. **Login with GitHub** → popup → Worker `kleilson-decap-oauth` → token via `postMessage`.
-3. Edite a collection (Perfil, Projetos, Credenciais, Contato).
-4. **Publish** → commit direto na branch **`sandbox`** (`publish_mode: simple` — [Decap docs](https://decapcms.org/docs/configuration-options/)).
-5. Abra ou atualize PR **`sandbox` → `main`** ([git-workflow.md](./git-workflow.md)).
-6. CI verde → merge → deploy Pages publica o novo conteúdo.
+2. Se Cloudflare Access estiver ativo (#121): autentique no **Zero Trust** (e-mail allowlist / IdP). Sem sessão Access, a UI Decap **não** carrega.
+3. **Login with GitHub** (Decap) → popup → Worker `kleilson-decap-oauth` → token via `postMessage`.
+4. Edite a collection (Perfil, Projetos, Credenciais, Contato).
+5. **Publish** → commit direto na branch **`sandbox`** (`publish_mode: simple` — [Decap docs](https://decapcms.org/docs/configuration-options/)).
+6. Abra ou atualize PR **`sandbox` → `main`** ([git-workflow.md](./git-workflow.md)).
+7. CI verde → merge → deploy Pages publica o novo conteúdo.
 
 ```text
-Editor → Decap → commit sandbox → PR → main → CI → Pages
+Editor → CF Access → Decap → GitHub OAuth → commit sandbox → PR → main → Pages
 ```
 
 ### Setup OAuth (uma vez)
@@ -69,6 +71,52 @@ Detalhe em [content.md](./content.md#fluxo-b--decap-cms-opcional). Resumo:
 
 Evidência: `apps/decap-oauth/src/index.ts`, [Decap OAuth proxy](https://decapcms.org/docs/backends-overview/#using-github-with-an-oauth-proxy).
 
+### Cloudflare Access em `/admin*` (#121)
+
+**Objetivo:** defesa em profundidade — qualquer visitante sem Access **não** vê o shell Decap. AuthZ de *publish* continua sendo o ACL GitHub (ADR-0012); Access só reduz exposição da UI e do `config.yml`.
+
+**Escolha canônica:** aplicação **self-hosted** no Cloudflare Zero Trust (edge), **não** o Pages Plugin JWT (`@cloudflare/pages-plugin-cloudflare-access`). O Plugin valida JWT em Pages Functions; o site editorial é estático em `public/admin/`. O gate edge cobre o aceite sem runtime Functions ([Application paths](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/)).
+
+#### Setup (uma vez — dashboard Zero Trust)
+
+1. Cloudflaredashboard → **Zero Trust** → **Access** → **Applications** → **Add an application** → **Self-hosted**.
+2. **Application name:** `kleilson-portfolio-admin` (ou similar).
+3. **Public hostname:** `kleilson-portfolio.pages.dev`  
+   **Paths (obrigatório cobrir raiz e filhos)** — wildcard `admin/*` **não** cobre `/admin` ([docs](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#match-multi-level-paths)):
+
+   | Path | Cobre |
+   | --- | --- |
+   | `admin` | `/admin` e `/admin/` |
+   | `admin/*` | `/admin/index.html`, `/admin/config.yml`, assets |
+
+4. **Policy:** *Allow* → incluir somente o maintainer (ex.: e-mail OTP / IdP GitHub com o login do owner). Sem “Allow everyone”.
+5. Salvar. Propagação costuma ser imediata no edge.
+6. Se houver **custom domain** do site no futuro: repetir Application paths nesse hostname (ou estender a mesma app).
+
+> A criação da Application **não** vive no Git — é estado Cloudflare. Este guia + smoke abaixo cumprem o aceite “setup documentado”.
+
+#### Smoke pós-Access (manual)
+
+| Passo | Esperado |
+| --- | --- |
+| Janela anônima → `…/admin/` | Tela Cloudflare Access (login), **não** Decap |
+| Após Access com identidade allowlist | Shell Decap (`decap-cms`) carrega |
+| Login GitHub no Decap | OAuth Worker + publish em `sandbox` como antes |
+| `curl -I https://kleilson-portfolio.pages.dev/admin/` sem cookie Access | Redirect/`401`/`302` para Access — não `200` com HTML Decap puro |
+
+#### CI / Playwright
+
+O job `e2e` sobe o app **local** (`playwright` / preview). Access **não** se aplica ao localhost — `admin.spec.ts` continua válido. Não automatizar smoke Access em CI sem service token.
+
+#### Troubleshooting Access
+
+| Sintoma | Ação |
+| --- | --- |
+| `/admin` ainda público | Conferir paths `admin` **e** `admin/*`; hostname Pages correto |
+| Allowed user não entra | Policy e IdP; e-mail exato |
+| Decap quebra após Access | Popup OAuth bloqueado? Permitir terceiro; Access não deve cobrir o Worker `kleilson-decap-oauth.*.workers.dev` |
+| E2E local falha “por Access” | Access não atua no local — outra causa |
+
 ### Checklist pós-publicação (Decap)
 
 - [ ] Commit apareceu em `sandbox` (não em `main`).
@@ -81,6 +129,7 @@ Evidência: `apps/decap-oauth/src/index.ts`, [Decap OAuth proxy](https://decapcm
 | Sintoma | Causa provável | Ação |
 | --- | --- | --- |
 | Login GitHub falha | OAuth App / secrets / callback URL | Conferir [content.md](./content.md) + secrets Wrangler |
+| Tela Access / Decap | Access mal configurado ou IdP | Ver § Cloudflare Access acima |
 | Publish sem efeito no site | Commit só em `sandbox` | Merge PR para `main` |
 | CI vermelho após Decap | JSON inválido | Ver erros do teste `content` (Zod) no job `quality` |
 | Campo sumiu na UI | `config.yml` ≠ JSON | Alinhar `public/admin/config.yml` e schema Zod |
@@ -139,7 +188,7 @@ Referência: [Supabase RLS](https://supabase.com/docs/guides/database/postgres/r
 | --- | --- | --- |
 | [#119](https://github.com/KleilsonSantos/kleilson-portfolio/issues/119) | Validação Zod + Vitest nos JSON | ✅ `src/schemas/content.ts` |
 | [#120](https://github.com/KleilsonSantos/kleilson-portfolio/issues/120) | Este runbook | ✅ `docs/guides/admin-operations.md` |
-| [#121](https://github.com/KleilsonSantos/kleilson-portfolio/issues/121) | Cloudflare Access em `/admin` | Ainda não implementado |
+| [#121](https://github.com/KleilsonSantos/kleilson-portfolio/issues/121) | Cloudflare Access em `/admin` | 📝 Runbook neste guia — **ativar Application no Zero Trust** (owner) |
 | [#122](https://github.com/KleilsonSantos/kleilson-portfolio/issues/122) | Notificação e-mail/webhook | Ainda não implementado |
 | [#123](https://github.com/KleilsonSantos/kleilson-portfolio/issues/123) | E2E smoke `/admin` | ✅ `apps/web/e2e/admin.spec.ts` |
 
