@@ -1,0 +1,10 @@
+---
+description: Prompt ai-governance-audit (manual @) — não duplica .github/prompts
+alwaysApply: false
+---
+
+# AI governance audit
+
+Usar o prompt canônico:
+
+@.github/prompts/ai-governance-audit.prompt.md

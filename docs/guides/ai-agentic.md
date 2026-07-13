@@ -24,6 +24,21 @@ A fonte canônica é [`AGENTS.md`](../../AGENTS.md) na raiz.
 
 **Wiki GitHub:** hub de links apenas ([Wiki Home](https://github.com/KleilsonSantos/kleilson-portfolio/wiki)). Fonte canônica = `docs/` + README (ADR-0003). Custom agents aparecem no **dropdown** do prompt na [aba Agents](https://github.com/KleilsonSantos/kleilson-portfolio/agents) (não na lista `?author=` de sessões).
 
+## Precedência multi-tool (Context Engineering)
+
+Ordem quando várias superfícies de IA coexistirem (Cursor, Copilot, Claude Code, Gemini CLI, etc.):
+
+1. **Código + ADRs + `apps/web/content`** (fatos)
+2. **`AGENTS.md`** (contrato)
+3. Guia **lazy** relevante (`docs/guides/…` só o necessário)
+4. Prompt/agent **invocado** (planner / reviewer / docs-writer / governance-audit)
+5. Espelhos curtos (`.github/copilot-instructions.md`, rules `alwaysApply`)
+6. Resultados **MCP** — filtrados pela matriz [`mcp-tooling.md`](./mcp-tooling.md) (MCP instalado no IDE ≠ permissão neste repo)
+
+**Não** criar `CLAUDE.md` / `GEMINI.md` com cópia de políticas: se um stub for útil, 5 linhas + link para `AGENTS.md`.
+
+Auditoria periódica: [`docs/audits/ai-agents-governance-audit-2026-07.md`](../audits/ai-agents-governance-audit-2026-07.md) · prompt `@.github/prompts/ai-governance-audit.prompt.md`.
+
 ## Origem do padrão
 
 Inspirado no ecossistema `purchase-*` (curso Spring Boot / Kafka), adaptado para React/TypeScript — sem copiar stacks Java.
@@ -34,8 +49,9 @@ Evidências: [Cursor Docs — Rules / AGENTS.md](https://cursor.com/docs/rules);
 
 1. Antes de uma feature: `@prompt-task-planner` ou agente **task-planner** na [aba Agents](https://github.com/KleilsonSantos/kleilson-portfolio/agents)
 2. Após o diff: `@prompt-code-reviewer` ou agente **code-reviewer**
-3. Antes do PR: `@prompt-docs-writer` ou agente **docs-writer**
-4. Em qualquer IDE: referencie `AGENTS.md`
+3. Antes do PR (se gatilho ADR-0003): `@prompt-docs-writer` ou agente **docs-writer**
+4. Periodicamente / ao mudar agents-prompts: `@prompt-ai-governance-audit` (inventário — **não** inventa agentes)
+5. Em qualquer IDE: referencie `AGENTS.md`
 
 Custom agents no GitHub: `.github/agents/{task-planner,code-reviewer,docs-writer}.agent.md` (após merge em `main`).
 
