@@ -12,6 +12,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 💄 Editorial Decap: shell object/list (`classNameWrapper` / `inputBackground #fff`) no editor PROFILE — `:has(TopBar/FieldLabel)` + fixture local `/admin/skin-fixture.html`
 - 💄 Editorial Decap: contraste (modal Mídia / lists / FieldLabel) e espaçamento (ListCard, ListItem) — fim do texto claro em fundo branco
 - 📋 Gate QA local obrigatório antes do push (`task-kickoff` Passo 5b) — funcional + visual
 - 👷 commitlint: aceitar tipos `ui` e `release` (bloqueava promote sandbox→main)

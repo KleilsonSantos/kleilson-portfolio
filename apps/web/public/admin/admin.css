@@ -3,10 +3,10 @@
  * Tokens: /design-tokens.css
  * Seletores: labels Emotion do Decap 3.8 (estáveis) — docs: custom-mounting
  * Carregar este arquivo DEPOIS do decap-cms.js (ver index.html)
+ * Fontes: link no HTML (não @import aqui — bloqueia a skin se a CDN falhar)
  * ============================================================================= */
 
 @import url('/design-tokens.css');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap');
 
 *,
 *::before,
@@ -133,6 +133,18 @@ h3,
   background: transparent !important;
   color: var(--color-text) !important;
   font-family: var(--font-family) !important;
+}
+
+/* Editor chrome — #nc-root sobe specificity sobre Emotion (#fff / Kn.background) */
+#nc-root [class*='EditorContainer'],
+#nc-root [class*='ControlPaneContainer'],
+#nc-root [class*='SettingsPaneContainer'],
+#nc-root [class*='AppMainContainer'],
+#nc-root [class*='StyledSplitPane'],
+#nc-root [class*='StyledSplitPane'] > div {
+  background: var(--color-bg) !important;
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
 }
 
 /* ---------------------------------------------------------------------------
@@ -576,16 +588,47 @@ select:focus {
 /* Campos do editor — surface escura coerente (sem placas brancas) */
 [class*='ControlPaneContainer'],
 [class*='ControlContainer'],
-[class*='EditorContainer'] {
+[class*='EditorContainer'],
+[class*='Editor']:not([class*='EditorControl']):not([class*='EditorToggle']),
+[class*='SettingsPaneContainer'],
+[class*='AppMainContainer'] {
   background: var(--color-bg) !important;
+  background-color: var(--color-bg) !important;
   color: var(--color-text) !important;
   gap: var(--space-4) !important;
+}
+
+[class*='ControlPaneContainer'],
+[class*='ControlContainer'] {
   padding: var(--space-4) !important;
 }
 
-[class*='ControlContainer'] > div,
-[class*='ControlPaneContainer'] > div {
-  background: transparent !important;
+/*
+ * classNameWrapper do Decap (lO.widget): Kn.inputBackground = #fff,
+ * Emotion SEM label estável — :has() pinta o shell object/list/PROFILE.
+ * #nc-root + !important: vence Emotion e estilos de fixture/local.
+ */
+#nc-root [class*='ControlContainer'] > div:has(> [class*='TopBar']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='TopBarContainer']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='StyledListItemTopBar']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='NestedObjectLabel']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='FieldLabel']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='ExpandButtonContainer']),
+#nc-root [class*='ControlPaneContainer'] div:has(> [class*='TopBar']),
+#nc-root [class*='ControlPaneContainer'] div:has(> [class*='TopBarContainer']),
+#nc-root [class*='ControlPaneContainer'] div:has(> [class*='StyledListItemTopBar']),
+#nc-root [class*='ControlPaneContainer'] div:has(> [class*='NestedObjectLabel']),
+#nc-root [class*='ControlPaneContainer'] div:has(> [class*='FieldLabel']),
+#nc-root [class*='ControlPaneContainer'] div:has(> [class*='ExpandButtonContainer']),
+#nc-root [class*='ListItem'] div:has(> [class*='FieldLabel']),
+#nc-root [class*='ListItem'] div:has(> [class*='TopBar']),
+#nc-root [class*='ListItem'] div:has(> [class*='TopBarContainer']),
+#nc-root [class*='listControlItem'] div:has(> [class*='FieldLabel']) {
+  background: var(--color-bg-subtle) !important;
+  background-color: var(--color-bg-subtle) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
 }
 
 /* Chips / labels Decap que eram brancos com texto muted */
@@ -597,8 +640,11 @@ select:focus {
 
 /* Split pane — ambos os lados no mesmo tema */
 [class*='StyledSplitPane'],
-[class*='PreviewPaneFrame'] {
+[class*='StyledSplitPane'] > div,
+[class*='PreviewPaneFrame'],
+[class*='PreviewPaneContainer'] {
   background: var(--color-bg) !important;
+  background-color: var(--color-bg) !important;
   border-color: var(--color-border) !important;
 }
 

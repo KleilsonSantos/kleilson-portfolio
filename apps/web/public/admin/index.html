@@ -8,12 +8,19 @@
     <meta name="color-scheme" content="dark light" />
     <title>Editorial | Kleilson Santos</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+    />
   </head>
   <body>
     <!--
       Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
       Visual: ADR-0004 tokens; CSS carrega DEPOIS do bundle (vence Emotion).
       Mount: #nc-root sob a brand bar (docs/custom-mounting).
+      Cache-bust ?v=4 — bump ao mudar skin (Emotion/CDN + Pages).
     -->
     <header class="admin-brandbar" role="banner">
       <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
@@ -25,12 +32,14 @@
 
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
     <!-- Skin após o CMS para ganhar a cascata do Emotion -->
-    <link rel="stylesheet" href="/design-tokens.css?v=3" />
-    <link rel="stylesheet" href="/admin/admin.css?v=3" />
+    <link rel="stylesheet" href="/design-tokens.css?v=4" />
+    <link rel="stylesheet" href="/admin/admin.css?v=4" />
     <script>
       ;(function () {
+        var SKIN = ['/design-tokens.css?v=4', '/admin/admin.css?v=4']
+
         function bringSkinToTop() {
-          ;['/design-tokens.css?v=3', '/admin/admin.css?v=3'].forEach(function (href) {
+          SKIN.forEach(function (href) {
             var existing = document.querySelector('link[href="' + href + '"]')
             if (existing) {
               document.head.appendChild(existing)
@@ -42,13 +51,23 @@
             document.head.appendChild(link)
           })
         }
+
         bringSkinToTop()
         ;[400, 1200, 3000].forEach(function (ms) {
           setTimeout(bringSkinToTop, ms)
         })
+
+        /* Emotion injeta <style> ao abrir o editor — reempilha a skin */
+        if (typeof MutationObserver !== 'undefined') {
+          var obs = new MutationObserver(function () {
+            bringSkinToTop()
+          })
+          obs.observe(document.documentElement, { childList: true, subtree: true })
+        }
+
         if (window.CMS) {
-          CMS.registerPreviewStyle('/design-tokens.css?v=3')
-          CMS.registerPreviewStyle('/admin/admin.css?v=3')
+          CMS.registerPreviewStyle('/design-tokens.css?v=4')
+          CMS.registerPreviewStyle('/admin/admin.css?v=4')
         }
       })()
     </script>
