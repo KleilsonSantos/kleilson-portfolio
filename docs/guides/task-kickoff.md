@@ -56,7 +56,47 @@ gh issue comment <NUMERO> --repo KleilsonSantos/kleilson-portfolio \
   --body "🚀 Kickoff: branch \`feature/<slug>\` criada a partir de \`sandbox\`."
 ```
 
-### Passo 5 — Desenvolver e commitar
+### Passo 5 — Desenvolver
+
+Implemente na branch. **Ainda não faça push.**
+
+### Passo 5b — Gate QA local (obrigatório antes do push)
+
+Validar **localmente** o que a tarefa mudou — funcional **e** visual — **antes** de `git push` / `gh pr create`.
+
+```text
+código pronto
+    │
+    ▼
+QA local (typecheck · lint · testes da área · smoke visual das telas tocadas)
+    │
+    ▼ OK → commit + push + PR
+    │
+    ▼ FAIL → corrigir na branch (não “subir para ver no CI/Pages”)
+```
+
+| Tipo de mudança | Mínimo local |
+| --- | --- |
+| App / UI | `pnpm typecheck` · `pnpm lint` · smoke no browser (`pnpm --filter @kleilson/web dev` ou `preview`) nas rotas tocadas |
+| Visual / CSS / admin | Conferir contraste, spacing, tokens ADR-0004; hard refresh; screenshots se a UI for o aceite |
+| API / Worker | Hit local/`wrangler` health + fluxo crítico (ex. OAuth allowlist) |
+| Conteúdo JSON | Build + página que consome o conteúdo |
+| Só docs | Review do markdown; sem inventar comandos |
+
+Comandos de referência (monorepo):
+
+```bash
+pnpm typecheck && pnpm lint
+# testes da área tocada, ex.:
+pnpm --filter @kleilson/web exec playwright test e2e/admin.spec.ts
+# Após rebuild: encerrar preview antigo antes do smoke (Playwright reuseExistingServer)
+pkill -f 'vite preview' || true
+pnpm --filter @kleilson/web build && pnpm --filter @kleilson/web preview
+```
+
+**Agentes:** não abrir PR / não pedir merge com “CI vai validar” no lugar deste gate. Evidência local first; CI é rede de segurança, não substituo de QA local.
+
+### Passo 5c — Commitar e push
 
 ```bash
 git add .
@@ -75,8 +115,10 @@ gh pr create --base sandbox --head feature/<slug> \
 ...
 
 ## Test plan
-- [ ] pnpm lint
-- [ ] pnpm build"
+- [ ] QA local (Passo 5b) executado — funcional + visual das áreas tocadas
+- [ ] pnpm typecheck && pnpm lint
+- [ ] testes / preview relevantes
+- [ ] CI verde"
 ```
 
 ### Passo 7 — Integração e promoção
@@ -139,6 +181,7 @@ git push -u origin feature/typescript-migration
 - ❌ Iniciar código sem mover a issue para **In Progress**
 - ❌ Branch sem prefixo semântico (`feature/`, `fix/`, etc.)
 - ❌ PR direto para `main`
+- ❌ Push/PR sem QA local do que foi implementado (funcional + visual) — Passo 5b
 
 ## Relacionados
 

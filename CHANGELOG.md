@@ -12,6 +12,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 💄 Editorial Decap: contraste (modal Mídia / lists / FieldLabel) e espaçamento (ListCard, ListItem) — fim do texto claro em fundo branco
+- 📋 Gate QA local obrigatório antes do push (`task-kickoff` Passo 5b) — funcional + visual
 - 👷 commitlint: aceitar tipos `ui` e `release` (bloqueava promote sandbox→main)
 - 🐛 Skin editorial só existia em `sandbox` — Pages (main) ainda servia `/admin` default; CSS agora carrega após Decap + seletores Emotion (`SidebarNavLink`, etc.) + mount `#nc-root`
 
