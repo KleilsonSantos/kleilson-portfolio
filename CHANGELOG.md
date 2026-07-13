@@ -4,6 +4,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Changed
+
+- 💄 Editorial `/admin` alinhado ao profile: tokens únicos (`design-tokens.css`), brand bar, CTAs/nav do App.css; remoção de `logo_url` depreciado
+
 ### Added
 
 - 🔒 Allowlist `ADMIN_GITHUB_LOGINS` no Worker Decap OAuth (fail-closed; só logins autorizados recebem token)

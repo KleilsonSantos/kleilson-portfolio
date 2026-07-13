@@ -225,7 +225,7 @@ main.tsx
 | `Footer` | `Layout` | links sociais / copy |
 | `ProfilePhoto` | `Home` (e possivelmente Sobre) | avatar WebP |
 
-> **Atomic Design / Design System package:** Ainda não implementado. CSS tokens em `apps/web/src/index.css` (ADR-0004).
+> **Atomic Design / Design System package:** Ainda não implementado. Tokens CSS em `apps/web/public/design-tokens.css` (ADR-0004) — fonte única para o site (`src/index.css`) e o editorial Decap (`public/admin/admin.css`).
 
 ---
 

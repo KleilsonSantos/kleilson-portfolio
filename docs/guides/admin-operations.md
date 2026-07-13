@@ -80,7 +80,8 @@ Detalhe em [content.md](./content.md#fluxo-b--decap-cms-opcional). Resumo:
 | GitHub OAuth App | Callback: `https://kleilson-decap-oauth.kleilsonsantos.workers.dev/callback` |
 | Secrets Worker | `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, **`ADMIN_GITHUB_LOGINS`** (CSV de logins) via `wrangler secret put` |
 | Config Decap | `apps/web/public/admin/config.yml` → `base_url` do Worker |
-| Skin editorial | `apps/web/public/admin/admin.css` — tokens ADR-0004 (não clone React do site) |
+| Skin editorial | `design-tokens.css` (fonte única ADR-0004) + `admin/admin.css` (chrome Decap: nav sticky, botões `.btn`, hero glow). **Não** é o Layout React do site. |
+| Config | `logo.src` (não usar `logo_url` — depreciado no Decap) |
 
 Evidência: `apps/decap-oauth/src/index.ts`, [Decap OAuth proxy](https://decapcms.org/docs/backends-overview/#using-github-with-an-oauth-proxy).
 
