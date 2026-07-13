@@ -167,7 +167,7 @@ Detalhes e histórico: [`releases.md`](./releases.md)
 | `v0.2.2` | ADR-0003 documentação | ✅ Publicada |
 | `v0.3.0` | Qualidade + visual + AI + Fastify | ✅ Publicada |
 | `v0.4.0` | Fase 3 — Supabase + Drizzle (#7) | ✅ Publicada |
-| `v0.4.0+` / próximo SemVer | Deploy Pages + Workers Free (#8), Sentry (#9), Umami (#65), monorepo (#10), Decap (#71) | ✅ No `main` (CHANGELOG Unreleased — tag SemVer pendente) |
+| `v0.5.0` | Fase 4+5 — Pages/Workers, observabilidade, monorepo, Decap | ✅ Publicada |
 
 ## Fluxo (resumo)
 

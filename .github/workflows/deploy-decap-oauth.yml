@@ -1,0 +1,47 @@
+name: Deploy Decap OAuth Worker
+
+# Mantém o proxy OAuth do Decap (`kleilson-decap-oauth`) alinhado ao `main`.
+# Secrets Worker (Wrangler / CF Dashboard — NÃO em GitHub Actions Secrets do app):
+#   GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+# Secrets Actions: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID (os mesmos do Pages)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/decap-oauth/**'
+      - '.github/workflows/deploy-decap-oauth.yml'
+      - 'pnpm-lock.yaml'
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare-decap-oauth-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Deploy kleilson-decap-oauth
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/decap-oauth
+          packageManager: pnpm
+          command: deploy
