@@ -21,7 +21,8 @@ Revisar o diff atual ou o PR indicado. Preferir comentários acionáveis; não r
 - [ ] Conteúdo profissional verificável? (sem invenção)
 - [ ] TypeScript strict / sem `any` injustificado?
 - [ ] Visual alinhado ao ADR-0004 (dark-first, teal, Sora + IBM Plex Sans)?
-- [ ] Docs/CHANGELOG atualizados se necessário (ADR-0003)?
+- [ ] Docs/CHANGELOG atualizados se necessário (ADR-0003)? Cadências A/B em documentation-sync?
+- [ ] MCP usado (se houver) está na matriz [`mcp-tooling.md`](../../docs/guides/mcp-tooling.md)?
 - [ ] Fluxo Git respeitado (sem push direto em main/sandbox)?
 - [ ] Escopo focado (sem drive-by refactor)?
 - [ ] Autoria/commits: gitmoji `type: <emoji> …`; sem `Co-authored-by: Cursor` / `cursoragent@…`?
