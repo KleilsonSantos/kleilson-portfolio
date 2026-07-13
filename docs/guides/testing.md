@@ -19,7 +19,8 @@ Config: `apps/web/playwright.config.ts` · specs: `apps/web/e2e/`
 | Spec | Cobertura |
 | --- | --- |
 | `smoke.spec.ts` | Home, rotas, 404, projetos, formulário contato (mock) |
-| `admin.spec.ts` | `/admin/` shell Decap + `config.yml` (branch `sandbox`) — **sem** OAuth |
+| `admin.spec.ts` | `/admin/` shell Decap + `config.yml` (branch `sandbox`) — **sem** OAuth; Access Zero Trust **não** se aplica ao preview local |
+
 
 ```bash
 pnpm test:e2e

@@ -185,6 +185,17 @@ curl -sS -X POST https://SEU_API_HOST/api/contact \
 1. Abra o site no Pages → Contatos → envie uma mensagem real.
 2. No Supabase → Table Editor → `contact_messages` → confirme a linha.
 
+### Admin `/admin` + Cloudflare Access (#121)
+
+Após ativar a Application Zero Trust ([admin-operations.md](./admin-operations.md#cloudflare-access-em-admin-121)):
+
+```bash
+# Sem cookie Access: não deve servir o shell Decap “aberto”
+curl -sI https://kleilson-portfolio.pages.dev/admin/ | head -n 20
+```
+
+Smoke manual (janela anônima → Access → Decap → GitHub OAuth) está no mesmo guia.
+
 ---
 
 ## Passo 6 — Domínio custom (opcional neste #8)
