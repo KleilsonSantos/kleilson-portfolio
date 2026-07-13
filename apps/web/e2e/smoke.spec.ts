@@ -20,7 +20,7 @@ test.describe('Portfolio smoke', () => {
     await nav.getByRole('link', { name: 'Projetos' }).click()
     await expect(page).toHaveURL(/\/projetos$/)
     await expect(page.getByRole('heading', { name: 'Projetos', exact: true })).toBeVisible()
-    await expect(page.getByRole('link', { name: 'purchase-ecosystem' }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: 'banking' }).first()).toBeVisible()
 
     await nav.getByRole('link', { name: 'Contatos' }).click()
     await expect(page).toHaveURL(/\/contatos$/)

@@ -1,23 +1,6 @@
 {
   "projects": [
     {
-      "id": "purchase-ecosystem",
-      "name": "purchase-ecosystem",
-      "tagline": "Microsserviços event-driven com GitOps e Spec-Driven Development",
-      "description": "Ecossistema de quatro microsserviços event-driven (clients, orders, products e purchase-service) com Saga distribuída, DLQ, idempotência e deploy GitOps com ArgoCD, Gitea e Kubernetes (k3d). Observabilidade com Prometheus, Grafana e Spring Actuator.",
-      "impact": "Camada SDD com 10 agentes Copilot, 7 prompts reutilizáveis e 6 arquivos de instruções (applyTo) codificando arquitetura, testes e segurança.",
-      "stack": [
-        "Java 21",
-        "Spring Boot 4.x",
-        "Kafka",
-        "PostgreSQL 16",
-        "k3d",
-        "ArgoCD"
-      ],
-      "url": "https://github.com/KleilsonSantos/purchase-ecosystem",
-      "featured": true
-    },
-    {
       "id": "banking",
       "name": "banking",
       "tagline": "Monorepo full stack com observabilidade e CI/CD",
@@ -34,21 +17,6 @@
       "featured": true
     },
     {
-      "id": "copilot-java21-springboot",
-      "name": "copilot-java21-springboot",
-      "tagline": "Spec-Driven Development com GitHub Copilot em Spring Boot",
-      "description": "Projeto de referência demonstrando Spec-Driven Development com GitHub Copilot, agentes customizados e prompt engineering aplicados a uma base Spring Boot.",
-      "impact": "Demonstra AI Agentic Engineering aplicada a código Java de produção.",
-      "stack": [
-        "Java 21",
-        "Spring Boot",
-        "GitHub Copilot",
-        "SDD"
-      ],
-      "url": "https://github.com/KleilsonSantos/copilot-java21-springboot",
-      "featured": true
-    },
-    {
       "id": "infra-devtools",
       "name": "infra-devtools",
       "tagline": "Stack DevSecOps para times de desenvolvimento",
@@ -62,7 +30,7 @@
         "Makefile"
       ],
       "url": "https://github.com/KleilsonSantos/infra-devtools",
-      "featured": false
+      "featured": true
     },
     {
       "id": "vaultspring",
@@ -76,7 +44,7 @@
         "Testcontainers"
       ],
       "url": "https://github.com/KleilsonSantos/VaultSpring",
-      "featured": false
+      "featured": true
     },
     {
       "id": "mongo-restfull-api",
