@@ -11,7 +11,12 @@ backend:
 
 site_url: https://kleilson-portfolio.pages.dev
 display_url: https://kleilson-portfolio.pages.dev
-logo_url: /favicon.svg
+logo:
+  src: /favicon.svg
+  show_in_header: true
+
+# Locale / branding
+locale: pt
 
 # Commits do CMS → sandbox; CI + PR humano antes de main.
 publish_mode: simple

@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Editorial | Kleilson Portfolio</title>
+    <meta name="theme-color" content="#2dd4bf" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Editorial | Kleilson Santos</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <!-- Decap CMS — GitHub OAuth via Worker Free (ADR-0012). Sem JWT / Firebase / Netlify Identity. -->
+    <!--
+      Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
+      Visual: ADR-0004 tokens; CSS carrega DEPOIS do bundle (vence Emotion).
+      Mount: #nc-root sob a brand bar (docs/custom-mounting).
+    -->
+    <header class="admin-brandbar" role="banner">
+      <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
+      <span class="admin-brandbar__meta">Editorial</span>
+      <a class="admin-brandbar__link" href="/">← Site</a>
+    </header>
+
+    <div id="nc-root"></div>
+
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+    <!-- Skin após o CMS para ganhar a cascata do Emotion -->
+    <link rel="stylesheet" href="/design-tokens.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <script>
+      ;(function () {
+        function bringSkinToTop() {
+          ;['/design-tokens.css', '/admin/admin.css'].forEach(function (href) {
+            var existing = document.querySelector('link[href="' + href + '"]')
+            if (existing) {
+              document.head.appendChild(existing)
+              return
+            }
+            var link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = href
+            document.head.appendChild(link)
+          })
+        }
+        bringSkinToTop()
+        // Emotion injeta <style> no boot — reposiciona a skin depois.
+        ;[400, 1200, 3000].forEach(function (ms) {
+          setTimeout(bringSkinToTop, ms)
+        })
+        if (window.CMS) {
+          CMS.registerPreviewStyle('/design-tokens.css')
+          CMS.registerPreviewStyle('/admin/admin.css')
+        }
+      })()
+    </script>
   </body>
 </html>

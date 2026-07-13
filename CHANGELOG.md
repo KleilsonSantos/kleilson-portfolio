@@ -4,6 +4,20 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Fixed
+
+- 👷 commitlint: aceitar tipos `ui` e `release` (bloqueava promote sandbox→main)
+- 🐛 Skin editorial só existia em `sandbox` — Pages (main) ainda servia `/admin` default; CSS agora carrega após Decap + seletores Emotion (`SidebarNavLink`, etc.) + mount `#nc-root`
+
+### Changed
+
+- 💄 Editorial `/admin` alinhado ao profile: tokens únicos (`design-tokens.css`), brand bar, CTAs/nav do App.css; remoção de `logo_url` depreciado
+
+### Added
+
+- 🔒 Allowlist `ADMIN_GITHUB_LOGINS` no Worker Decap OAuth (fail-closed; só logins autorizados recebem token)
+- 💄 Skin editorial Decap alinhada ao ADR-0004 (`/admin/admin.css` + preview style)
+
 ## [0.5.0] - 2026-07-13
 
 ### Added
