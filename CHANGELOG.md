@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🔒 Runbook Cloudflare Access para `/admin*` (Zero Trust self-hosted) — #121
 - 🧪 E2E smoke Decap `/admin` + `config.yml` (`apps/web/e2e/admin.spec.ts`) #123
 - 📝 Runbook admin editorial + operacional (`docs/guides/admin-operations.md`) #120
 - ✅ Validação Zod + Vitest para `apps/web/content/*.json` (#119)
