@@ -41,6 +41,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 🔗 Removidos projetos featured com GitHub 404 (`purchase-ecosystem`, `copilot-java21-springboot`); destaques públicos: `banking`, `infra-devtools`, `VaultSpring` (#130)
 - 🐛 Deploy Pages: `wrangler` na raiz do monorepo para `wrangler-action` + pnpm (evita `ERR_PNPM_ADDING_TO_ROOT`)
 - 🐛 `test:e2e` / `lighthouse` usam `pnpm --filter @kleilson/web build` (`tsc -b` + vite), não `vite build` direto
 - 🐛 Redirect legado GitHub Pages: preservar `pathname` no `404.html` e remover `meta refresh` para a raiz (deep links)
