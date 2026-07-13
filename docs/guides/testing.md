@@ -16,6 +16,11 @@ pnpm --filter @kleilson/web test:watch
 
 Config: `apps/web/playwright.config.ts` · specs: `apps/web/e2e/`
 
+| Spec | Cobertura |
+| --- | --- |
+| `smoke.spec.ts` | Home, rotas, 404, projetos, formulário contato (mock) |
+| `admin.spec.ts` | `/admin/` shell Decap + `config.yml` (branch `sandbox`) — **sem** OAuth |
+
 ```bash
 pnpm test:e2e
 ```
@@ -41,4 +46,5 @@ Asserts iniciais conservadores (a11y; performance/SEO em warn).
 - [onboarding.md](./onboarding.md) — setup
 - [api.md](./api.md) — health / contact sob teste
 - [deploy.md](./deploy.md) — o que o Lighthouse mede em produção
+- [admin-operations.md](./admin-operations.md) — runbook Decap / contato
 - [git-workflow.md](./git-workflow.md) — CI no PR
