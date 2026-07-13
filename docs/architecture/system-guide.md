@@ -681,6 +681,7 @@ Com base em `docs/ROADMAP.md` / issues docs:
 | --- | --- |
 | Decisão “por quê” | `docs/adr/*` |
 | Como fazer | `docs/guides/*` |
+| Admin editorial + operacional | [admin-operations.md](../guides/admin-operations.md) |
 | Contrato agentes | `AGENTS.md` |
 | Overview curto | [overview.md](./overview.md) |
 | Wiki (só links) | https://github.com/KleilsonSantos/kleilson-portfolio/wiki |

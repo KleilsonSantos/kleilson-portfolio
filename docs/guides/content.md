@@ -58,7 +58,21 @@ UI: [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pag
 - [ ] Datas/cargos/clientes não inventados?
 - [ ] Cursos Udemy **não** listados como certificação vendor?
 - [ ] Links abrem e estão atualizados?
-- [ ] `pnpm lint` / `pnpm typecheck` / `pnpm build` OK?
+- [ ] `pnpm lint` / `pnpm typecheck` / `pnpm test` / `pnpm build` OK?
+
+## Validação CI (Zod)
+
+Schemas em `apps/web/src/schemas/content.ts` espelham os JSON editáveis. Teste: `apps/web/src/data/content.test.ts` (job `quality`).
+
+| Decap widget | Zod (resumo) |
+| --- | --- |
+| `string` | `z.string().min(1)` |
+| `text` | `z.string()` (+ `.min(n)` onde aplicável) |
+| `number` | `z.number().int()` |
+| `boolean` | `z.boolean()` |
+| `list` | `z.array(...)` |
+| `object` | `z.object({...})` |
+| `select` (ex. Udemy) | `z.literal('Udemy')` |
 
 ## O que não fazer
 
@@ -78,4 +92,5 @@ UI: [https://kleilson-portfolio.pages.dev/admin/](https://kleilson-portfolio.pag
 - [credentials.md](./credentials.md) — política de certificados
 - [onboarding.md](./onboarding.md) — setup
 - [deploy.md](./deploy.md) — publicar (conteúdo ≠ deploy)
+- [admin-operations.md](./admin-operations.md) — runbook editorial + operacional
 - [git-workflow.md](./git-workflow.md) — PR com evidência
