@@ -4,6 +4,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Fixed
+
+- 🐛 Skin editorial só existia em `sandbox` — Pages (main) ainda servia `/admin` default; CSS agora carrega após Decap + seletores Emotion (`SidebarNavLink`, etc.) + mount `#nc-root`
+
 ### Changed
 
 - 💄 Editorial `/admin` alinhado ao profile: tokens únicos (`design-tokens.css`), brand bar, CTAs/nav do App.css; remoção de `logo_url` depreciado
