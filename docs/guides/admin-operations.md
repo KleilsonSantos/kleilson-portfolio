@@ -141,7 +141,7 @@ Referência: [Supabase RLS](https://supabase.com/docs/guides/database/postgres/r
 | [#120](https://github.com/KleilsonSantos/kleilson-portfolio/issues/120) | Este runbook | ✅ `docs/guides/admin-operations.md` |
 | [#121](https://github.com/KleilsonSantos/kleilson-portfolio/issues/121) | Cloudflare Access em `/admin` | Ainda não implementado |
 | [#122](https://github.com/KleilsonSantos/kleilson-portfolio/issues/122) | Notificação e-mail/webhook | Ainda não implementado |
-| [#123](https://github.com/KleilsonSantos/kleilson-portfolio/issues/123) | E2E smoke `/admin` | Ainda não implementado |
+| [#123](https://github.com/KleilsonSantos/kleilson-portfolio/issues/123) | E2E smoke `/admin` | ✅ `apps/web/e2e/admin.spec.ts` |
 
 ### Por que manter `publish_mode: simple`
 

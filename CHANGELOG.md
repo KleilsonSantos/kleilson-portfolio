@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- 🧪 E2E smoke Decap `/admin` + `config.yml` (`apps/web/e2e/admin.spec.ts`) #123
 - 📝 Runbook admin editorial + operacional (`docs/guides/admin-operations.md`) #120
 - ✅ Validação Zod + Vitest para `apps/web/content/*.json` (#119)
 - 📝 Guia completo de arquitetura/fluxos (`docs/architecture/system-guide.md`)
@@ -26,6 +27,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
+- 📝 `.env.example` reorganizado por seções (Supabase → API → observabilidade → MCP)
 - 📝 Guides: seção `## Relacionados` padronizada (links correlacionados; sem chrome da Wiki) #113
 - ♻️ Dockerfile / Containers = caminho **pago futuro** (não path ativo de produção)
 - 🔧 Dependabot monorepo: apenas `directory: "/"`; política de autoria Git sem trailer de IDE
