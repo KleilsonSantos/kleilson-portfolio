@@ -1,8 +1,8 @@
 {
   "name": "kleilson-portfolio",
   "private": true,
-  "version": "0.4.0",
-  "description": "Portfólio profissional open source — Kleilson dos Santos",
+  "version": "0.5.0",
+  "description": "Portf\u00f3lio profissional open source \u2014 Kleilson dos Santos",
   "packageManager": "pnpm@11.5.2",
   "engines": {
     "node": ">=22.13"

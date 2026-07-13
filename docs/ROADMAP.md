@@ -34,7 +34,7 @@
 - [x] PostgreSQL via Supabase + Drizzle ORM — issue #7 / ADR-0006
 - [x] Rate limiting e validação server-side (na API Fastify #6)
 
-## Fase 4 — Observabilidade & Deploy
+## Fase 4 — Observabilidade & Deploy ✅ (`v0.5.0`)
 
 Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`guides/observability.md`](./guides/observability.md).
 
@@ -46,7 +46,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Matriz MCP (Cursor) — issue #62 · [`guides/mcp-tooling.md`](./guides/mcp-tooling.md)
 - [ ] Grafana Cloud (métricas) — opcional, só com tráfego real (#62)
 
-## Fase 5 — Monorepo & Enterprise
+## Fase 5 — Monorepo & Enterprise ✅ (`v0.5.0`)
 
 - [x] Turborepo + pnpm workspaces — issue #10 · [ADR-0011](./adr/0011-turborepo-pnpm.md)
 - [x] CodeQL + Dependabot (básico já ativo)

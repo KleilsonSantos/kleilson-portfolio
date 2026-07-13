@@ -8,7 +8,7 @@
 | --- | --- |
 | **Versão do guia** | 2026-07-12 |
 | **Baseline de código** | monorepo pnpm + Turborepo; Pages + Workers Free; Decap |
-| **Última release tag** | `v0.4.0` (trabalho posterior ainda em `CHANGELOG` `[Unreleased]`) |
+| **Última release tag** | `v0.5.0` |
 | **Site** | https://kleilson-portfolio.pages.dev |
 
 ---
@@ -628,7 +628,7 @@ timeline
   v0.2.x : TypeScript + docs ADRs
   v0.3.0 : Qualidade + visual + Fastify
   v0.4.0 : Supabase contato
-  Unreleased : Pages + Workers + monorepo + Decap + agents
+  v0.5.0 : Pages + Workers + monorepo + Decap + agents
 ```
 
 ---
@@ -648,7 +648,7 @@ timeline
 | Auth visitantes | ⚪ Ainda não |
 | Grafana | ⚪ ROADMAP opcional |
 | Containers Fastify prod | ⚪ futuro pago |
-| Tag SemVer pós-v0.4.0 | ⚪ pendente (código já em main) |
+| Tag SemVer `v0.5.0` | ✅ |
 
 ---
 
@@ -657,7 +657,7 @@ timeline
 - Schema Supabase / RLS **não** versionados como migrations no Git.
 - `listContacts` sem API HTTP.
 - Dois paths de API (Worker vs Fastify) para manter até same-origin/domínio custom.
-- CHANGELOG Unreleased acumulado sem tag SemVer recente.
+- CHANGELOG alinhado à tag `v0.5.0` (Fase 4+5).
 - Sentry ausente no Worker.
 
 ---
@@ -667,7 +667,7 @@ timeline
 Com base em `docs/ROADMAP.md` / issues docs:
 
 - [ ] Grafana Cloud — opcional (#62), só com tráfego real
-- [ ] Tag SemVer promovendo Unreleased (`docs/guides/releases.md`)
+- [x] Tag SemVer promovendo Unreleased (`docs/guides/releases.md`) — `v0.5.0`
 - [ ] Domínio custom / same-origin API (`docs/guides/deploy.md`)
 - [ ] Containers pagos se/quando Workers Paid (ADR-0008)
 
