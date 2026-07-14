@@ -18,10 +18,10 @@
   <body>
     <!--
       Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
-      Visual: ADR-0004 tokens (token-only chrome; sem reinventar layout Decap).
-      Mount: #nc-root (docs/custom-mounting). Preview: registerPreviewStyle only.
-      Cache-bust ?v=8 — split chrome/preview; community dark pattern + tokens.
-      Refs: decapcms.org/docs/customization · Nats-ji dark-mode · Decap #7084
+      Visual: ADR-0004 tokens; chrome token-only; preview templates (não dump default).
+      Mount: #nc-root (docs/custom-mounting).
+      Cache-bust ?v=9 — registerPreviewTemplate projects/profile/… + preview-fixture.
+      Refs: decapcms.org/docs/customization · Passo 5b (fixture ≠ OAuth, mas preview QA local)
     -->
     <header class="admin-brandbar" role="banner">
       <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
@@ -32,12 +32,13 @@
     <div id="nc-root"></div>
 
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+    <script src="/admin/previews.js?v=9"></script>
     <!-- Chrome APÓS o CMS (vence Emotion). Preview NÃO vai no <link>. -->
-    <link rel="stylesheet" href="/design-tokens.css?v=8" />
-    <link rel="stylesheet" href="/admin/admin-chrome.css?v=8" />
+    <link rel="stylesheet" href="/design-tokens.css?v=9" />
+    <link rel="stylesheet" href="/admin/admin-chrome.css?v=9" />
     <script>
       ;(function () {
-        var SKIN = ['/design-tokens.css?v=8', '/admin/admin-chrome.css?v=8']
+        var SKIN = ['/design-tokens.css?v=9', '/admin/admin-chrome.css?v=9']
 
         function skinsAlreadyOnTop() {
           var a = document.querySelector('link[href="' + SKIN[0] + '"]')
@@ -66,10 +67,6 @@
           setTimeout(bringSkinToTop, ms)
         })
 
-        /*
-          NÃO observe documentElement + appendChild em loop (freeze).
-          Reempilha só quando Emotion injeta <style> no <head>.
-        */
         if (typeof MutationObserver !== 'undefined') {
           var scheduled = null
           var obs = new MutationObserver(function (mutations) {
@@ -96,9 +93,8 @@
         }
 
         if (window.CMS) {
-          /* Oficial: só preview pane — não o chrome admin */
-          CMS.registerPreviewStyle('/design-tokens.css?v=8')
-          CMS.registerPreviewStyle('/admin/admin-preview.css?v=8')
+          CMS.registerPreviewStyle('/design-tokens.css?v=9')
+          CMS.registerPreviewStyle('/admin/admin-preview.css?v=9')
         }
       })()
     </script>
