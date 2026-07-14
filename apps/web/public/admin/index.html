@@ -20,7 +20,7 @@
       Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
       Visual: ADR-0004 tokens; CSS carrega DEPOIS do bundle (vence Emotion).
       Mount: #nc-root sob a brand bar (docs/custom-mounting).
-      Cache-bust ?v=4 — bump ao mudar skin (Emotion/CDN + Pages).
+      Cache-bust ?v=5 — hotfix: MutationObserver + appendChild = loop infinito (freeze).
     -->
     <header class="admin-brandbar" role="banner">
       <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
@@ -32,13 +32,21 @@
 
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
     <!-- Skin após o CMS para ganhar a cascata do Emotion -->
-    <link rel="stylesheet" href="/design-tokens.css?v=4" />
-    <link rel="stylesheet" href="/admin/admin.css?v=4" />
+    <link rel="stylesheet" href="/design-tokens.css?v=5" />
+    <link rel="stylesheet" href="/admin/admin.css?v=5" />
     <script>
       ;(function () {
-        var SKIN = ['/design-tokens.css?v=4', '/admin/admin.css?v=4']
+        var SKIN = ['/design-tokens.css?v=5', '/admin/admin.css?v=5']
+
+        function skinsAlreadyOnTop() {
+          var a = document.querySelector('link[href="' + SKIN[0] + '"]')
+          var b = document.querySelector('link[href="' + SKIN[1] + '"]')
+          if (!a || !b) return false
+          return b === document.head.lastElementChild && a.nextElementSibling === b
+        }
 
         function bringSkinToTop() {
+          if (skinsAlreadyOnTop()) return
           SKIN.forEach(function (href) {
             var existing = document.querySelector('link[href="' + href + '"]')
             if (existing) {
@@ -53,21 +61,43 @@
         }
 
         bringSkinToTop()
-        ;[400, 1200, 3000].forEach(function (ms) {
+        ;[400, 1200, 3000, 8000].forEach(function (ms) {
           setTimeout(bringSkinToTop, ms)
         })
 
-        /* Emotion injeta <style> ao abrir o editor — reempilha a skin */
+        /*
+          NÃO usar MutationObserver continuamente: appendChild da skin
+          dispara mutation → reempilha → freeze (Safari "Entrando...", Chrome hung).
+          Reempilha só quando Emotion injeta <style> no <head>.
+        */
         if (typeof MutationObserver !== 'undefined') {
-          var obs = new MutationObserver(function () {
-            bringSkinToTop()
+          var scheduled = null
+          var obs = new MutationObserver(function (mutations) {
+            var emotionStyle = false
+            for (var i = 0; i < mutations.length; i++) {
+              var nodes = mutations[i].addedNodes
+              for (var j = 0; j < nodes.length; j++) {
+                var n = nodes[j]
+                if (n && n.nodeName === 'STYLE') {
+                  emotionStyle = true
+                  break
+                }
+              }
+              if (emotionStyle) break
+            }
+            if (!emotionStyle || skinsAlreadyOnTop()) return
+            if (scheduled) return
+            scheduled = setTimeout(function () {
+              scheduled = null
+              bringSkinToTop()
+            }, 50)
           })
-          obs.observe(document.documentElement, { childList: true, subtree: true })
+          obs.observe(document.head, { childList: true })
         }
 
         if (window.CMS) {
-          CMS.registerPreviewStyle('/design-tokens.css?v=4')
-          CMS.registerPreviewStyle('/admin/admin.css?v=4')
+          CMS.registerPreviewStyle('/design-tokens.css?v=5')
+          CMS.registerPreviewStyle('/admin/admin.css?v=5')
         }
       })()
     </script>
