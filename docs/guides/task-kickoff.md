@@ -78,7 +78,7 @@ QA local (typecheck · lint · testes da área · smoke visual das telas tocadas
 | Tipo de mudança | Mínimo local |
 | --- | --- |
 | App / UI | `pnpm typecheck` · `pnpm lint` · smoke no browser (`pnpm --filter @kleilson/web dev` ou `preview`) nas rotas tocadas |
-| Visual / CSS / admin | Conferir contraste, spacing, tokens ADR-0004; hard refresh; screenshots se a UI for o aceite |
+| Visual / CSS / admin | **Não basta CI.** Abrir localmente: `/admin/skin-fixture.html` (chrome) **e** `/admin/preview-fixture.html` (painel direito). Contraste, spacing, cards ADR-0004. Fixture ≠ OAuth, mas prova o HTML/CSS que sobe para Pages. Hard refresh após rebuild. |
 | API / Worker | Hit local/`wrangler` health + fluxo crítico (ex. OAuth allowlist) |
 | Conteúdo JSON | Build + página que consome o conteúdo |
 | Só docs | Review do markdown; sem inventar comandos |
@@ -92,9 +92,12 @@ pnpm --filter @kleilson/web exec playwright test e2e/admin.spec.ts
 # Após rebuild: encerrar preview antigo antes do smoke (Playwright reuseExistingServer)
 pkill -f 'vite preview' || true
 pnpm --filter @kleilson/web build && pnpm --filter @kleilson/web preview
+# Admin visual (obrigatório se tocou apps/web/public/admin/**):
+#   http://127.0.0.1:4173/admin/skin-fixture.html
+#   http://127.0.0.1:4173/admin/preview-fixture.html
 ```
 
-**Agentes:** não abrir PR / não pedir merge com “CI vai validar” no lugar deste gate. Evidência local first; CI é rede de segurança, não substituo de QA local.
+**Agentes:** não abrir PR / não pedir merge com “CI vai validar” ou “e2e fixture passou” **sem** smoke visual das fixtures acima quando a mudança for admin. CI é rede de segurança, não substituo de QA local.
 
 ### Passo 5c — Commitar e push
 

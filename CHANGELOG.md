@@ -4,6 +4,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Fixed
+
+- 💄 Editorial `/admin`: preview Decap de Projetos era dump cru (`bankingbanking…`) — `registerPreviewTemplate` + `preview-fixture.html`; lists `collapsed`; `?v=9`
+- 📋 Passo 5b: admin exige smoke local de `skin-fixture` **e** `preview-fixture` (fixture ≠ OAuth; CI não substitui)
+
 ## [0.6.0] - 2026-07-14
 
 ### Added

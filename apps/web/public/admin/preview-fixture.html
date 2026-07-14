@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Admin preview fixture | Kleilson Santos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+    />
+    <!--
+      Fixture do PAINEL DE PREVIEW (Passo 5b) — sem OAuth.
+      Simula markup de previews.js para validar layout ADR-0004 localmente.
+    -->
+    <link rel="stylesheet" href="/design-tokens.css?v=9" />
+    <link rel="stylesheet" href="/admin/admin-preview.css?v=9" />
+  </head>
+  <body>
+    <div class="preview-root" data-testid="preview-projects">
+      <p class="preview-eyebrow">Pré-visualização · Projetos</p>
+      <div class="preview-grid">
+        <article class="preview-card">
+          <header class="preview-card__head">
+            <h2 class="preview-card__title">banking</h2>
+            <span class="preview-badge">Featured</span>
+          </header>
+          <p class="preview-card__tagline">Monorepo full stack com observabilidade e CI/CD</p>
+          <p class="preview-card__body">
+            Banking Platform — workspace monorepo com Java 21, Spring Boot, Angular 18,
+            observabilidade e pipelines CI/CD.
+          </p>
+          <p class="preview-card__impact">
+            Referência de organização monorepo alinhada a práticas de plataforma bancária.
+          </p>
+          <ul class="preview-stack">
+            <li class="preview-chip">Java 21</li>
+            <li class="preview-chip">Spring Boot</li>
+            <li class="preview-chip">Angular 18</li>
+            <li class="preview-chip">Kubernetes</li>
+          </ul>
+          <a class="preview-card__link" href="https://github.com/KleilsonSantos/banking"
+            >GitHub →</a
+          >
+        </article>
+        <article class="preview-card">
+          <header class="preview-card__head">
+            <h2 class="preview-card__title">infra-devtools</h2>
+            <span class="preview-badge">Featured</span>
+          </header>
+          <p class="preview-card__tagline">Stack DevSecOps para times de desenvolvimento</p>
+          <p class="preview-card__body">
+            Stack DevSecOps pronta para times, com SonarQube, Portainer, Prometheus, Grafana.
+          </p>
+          <ul class="preview-stack">
+            <li class="preview-chip">Docker</li>
+            <li class="preview-chip">SonarQube</li>
+            <li class="preview-chip">Grafana</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
