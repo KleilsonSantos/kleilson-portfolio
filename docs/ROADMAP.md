@@ -59,3 +59,14 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Playwright E2E smoke (#4)
 - [x] Lighthouse CI scaffold (#5)
 - [x] Camada AI portável (`AGENTS.md` / Copilot / Cursor pointers)
+- [x] Editorial Decap skin token-only + OAuth allowlist — `v0.6.0`
+
+## Pós-fecho — backlog opcional (não bloqueia o portfólio)
+
+- [ ] Cloudflare Access em `/admin` — [#121](https://github.com/KleilsonSantos/kleilson-portfolio/issues/121)
+- [ ] Notificação operacional de contacto — [#122](https://github.com/KleilsonSantos/kleilson-portfolio/issues/122)
+- [ ] Grafana Cloud (métricas) — opcional, só com tráfego real (#62)
+
+## Próximo produto (repo separado)
+
+Kit de governança AI para SDLC (multi-contexto) — **fora** deste monorepo; kickoff após `v0.6.0` estável.
