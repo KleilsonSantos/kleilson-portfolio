@@ -20,7 +20,7 @@
       Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
       Visual: ADR-0004 tokens; CSS carrega DEPOIS do bundle (vence Emotion).
       Mount: #nc-root sob a brand bar (docs/custom-mounting).
-      Cache-bust ?v=5 — hotfix: MutationObserver + appendChild = loop infinito (freeze).
+      Cache-bust ?v=7 — modal mídia + list widget compactos (sem caixas duplicadas).
     -->
     <header class="admin-brandbar" role="banner">
       <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
@@ -32,11 +32,11 @@
 
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
     <!-- Skin após o CMS para ganhar a cascata do Emotion -->
-    <link rel="stylesheet" href="/design-tokens.css?v=5" />
-    <link rel="stylesheet" href="/admin/admin.css?v=5" />
+    <link rel="stylesheet" href="/design-tokens.css?v=7" />
+    <link rel="stylesheet" href="/admin/admin.css?v=7" />
     <script>
       ;(function () {
-        var SKIN = ['/design-tokens.css?v=5', '/admin/admin.css?v=5']
+        var SKIN = ['/design-tokens.css?v=7', '/admin/admin.css?v=7']
 
         function skinsAlreadyOnTop() {
           var a = document.querySelector('link[href="' + SKIN[0] + '"]')
@@ -96,8 +96,8 @@
         }
 
         if (window.CMS) {
-          CMS.registerPreviewStyle('/design-tokens.css?v=5')
-          CMS.registerPreviewStyle('/admin/admin.css?v=5')
+          CMS.registerPreviewStyle('/design-tokens.css?v=7')
+          CMS.registerPreviewStyle('/admin/admin.css?v=7')
         }
       })()
     </script>
