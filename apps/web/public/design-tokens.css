@@ -1,6 +1,7 @@
 /* =============================================================================
  * Design tokens — fonte única (ADR-0004)
- * Consumidores: apps/web/src/index.css (site) · public/admin/admin.css (Decap)
+ * Consumidores: apps/web/src/index.css (site) · public/admin/admin-chrome.css (Decap chrome)
+ * · public/admin/admin-preview.css (Decap preview pane via registerPreviewStyle)
  * Não duplicar valores de cor/tipo aqui em outro arquivo.
  * ============================================================================= */
 
