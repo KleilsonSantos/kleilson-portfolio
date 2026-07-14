@@ -4,29 +4,26 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-07-14
+
 ### Added
 
 - 📋 Auditoria de governança de agentes/contexto IA + prompt `ai-governance-audit` (cadências docs PR + release)
 - 🔒 Allowlist `ADMIN_GITHUB_LOGINS` no Worker Decap OAuth (fail-closed; só logins autorizados recebem token)
-- 💄 Skin editorial Decap alinhada ao ADR-0004 (`/admin/admin.css` + preview style)
+- 💄 Skin editorial Decap: `design-tokens.css` + `admin-chrome.css` / `admin-preview.css` (ADR-0004); fixture `/admin/skin-fixture.html`
 
 ### Fixed
 
-- 💄 Editorial `/admin`: skin token-only (ADR-0004) — `admin-chrome.css` + `admin-preview.css`; `registerPreviewStyle` só no preview; `?v=8`
-- 💄 Editorial `/admin`: layout Decap — modal mídia sem caixas filhas duplicadas; list widget compacto (toolbar no card); `?v=7`; logo Decap fora do header
-- 💄 Editorial `/admin`: ListCard “Profile” com moldura dupla e título colado — um surface, padding no link, cache-bust `?v=6`
-- 🐛 Editorial `/admin`: MutationObserver + `appendChild` da skin causava loop infinito (Safari “Entrando…”, Chrome hang) — observe só `<style>` no `head`, cache-bust `?v=5`
-- 💄 Editorial Decap: shell object/list (`classNameWrapper` / `inputBackground #fff`) no editor PROFILE — `:has(TopBar/FieldLabel)` + fixture local `/admin/skin-fixture.html`
-- 💄 Editorial Decap: contraste (modal Mídia / lists / FieldLabel) e espaçamento (ListCard, ListItem) — fim do texto claro em fundo branco
-- 📋 Gate QA local obrigatório antes do push (`task-kickoff` Passo 5b) — funcional + visual
-- 👷 commitlint: aceitar tipos `ui` e `release` (bloqueava promote sandbox→main)
-- 🐛 Skin editorial só existia em `sandbox` — Pages (main) ainda servia `/admin` default; CSS agora carrega após Decap + seletores Emotion (`SidebarNavLink`, etc.) + mount `#nc-root`
+- 💄 Editorial `/admin`: skin token-only — chrome vs preview separado; `registerPreviewStyle` só no preview; cache-bust `?v=8`
+- 🐛 Editorial `/admin`: MutationObserver + `appendChild` da skin causava freeze — observe só `<style>` no `head`
+- 💄 Editorial Decap: shells object/list brancos, contraste modal/lista, ListCard Profile
+- 📋 Gate QA local obrigatório antes do push (`task-kickoff` Passo 5b)
+- 👷 commitlint: aceitar tipos `ui` e `release`
 
 ### Changed
 
-- 💄 Editorial `/admin` alinhado ao profile: tokens únicos (`design-tokens.css`), brand bar, CTAs/nav do App.css; remoção de `logo_url` depreciado
-- 📋 `ai-agentic.md` + `docs-writer`: precedência multi-tool e sync docs↔projeto (cadências A/B)
-- 📋 `documentation-sync.md`: seção explícita “duas cadências” (Google/DoD + Keep a Changelog / OpenSSF)
+- 💄 Editorial `/admin` alinhado ao profile; `logo.show_in_header: false` (sem `logo_url` depreciado)
+- 📋 `ai-agentic.md` + `docs-writer` + `documentation-sync`: precedência multi-tool e cadências A/B
 
 ## [0.5.0] - 2026-07-13
 

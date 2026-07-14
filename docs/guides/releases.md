@@ -20,6 +20,7 @@ vMAJOR.MINOR.PATCH
 | `v0.3.0` | 2026-07-10 | Qualidade (Vitest/Playwright/Lighthouse), visual ADR-0004 V1–V5, AI agents, Fastify API (#6) |
 | `v0.4.0` | 2026-07-10 | Fase 3 — Persistência Supabase Postgres + Drizzle (#7 / ADR-0006) |
 | `v0.5.0` | 2026-07-13 | Fase 4+5 — Pages/Workers Free, observabilidade, monorepo, Decap, hardening conteúdo |
+| `v0.6.0` | 2026-07-14 | Editorial Decap token-only (`?v=8`), OAuth allowlist, AI governance audit |
 
 ## Criar uma nova release (canônico)
 
@@ -61,6 +62,7 @@ gh release create vX.Y.Z \
 | Fase 3 — Persistência (Supabase) | `v0.4.0` | ✅ #7 |
 | Fase 4 — Deploy + observabilidade | `v0.5.0` | ✅ |
 | Fase 5 — Monorepo + Decap | `v0.5.0` | ✅ |
+| Editorial Decap estável + governança AI (audit) | `v0.6.0` | ✅ |
 
 ## Relacionados
 
