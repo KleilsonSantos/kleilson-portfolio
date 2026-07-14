@@ -3,6 +3,7 @@
  * https://decapcms.org/docs/customization/
  *
  * NÃO carregar este ficheiro no <link> do chrome admin.
+ * Templates: /admin/previews.js (registerPreviewTemplate).
  * Tokens: /design-tokens.css (também registado no preview).
  * ============================================================================= */
 
@@ -18,52 +19,144 @@ body {
   background-image: var(--hero-glow);
 }
 
-h1,
-h2,
-h3 {
+.preview-root {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+}
+
+.preview-eyebrow {
+  margin: 0 0 var(--space-5);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.preview-hero-name {
+  margin: 0 0 var(--space-2);
   font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.preview-hero-title {
+  margin: 0 0 var(--space-4);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.preview-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.preview-card {
+  margin: 0;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-elevated);
+}
+
+.preview-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.preview-card__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
-a {
+.preview-badge {
+  flex-shrink: 0;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-subtle);
   color: var(--color-primary);
-}
-
-p,
-li,
-dd,
-dt {
-  color: var(--color-text-secondary);
-}
-
-strong,
-b {
-  color: var(--color-text);
+  font-size: var(--font-size-xs);
   font-weight: 600;
 }
 
-code,
-pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  background-color: var(--color-bg-subtle);
+.preview-card__tagline {
+  margin: 0 0 var(--space-3);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.preview-card__body,
+.preview-card__impact {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-secondary);
+}
+
+.preview-card__impact {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.preview-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.preview-chip {
+  padding: var(--space-1) var(--space-3);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
 }
 
-pre {
-  padding: var(--space-3) var(--space-4);
-  overflow-x: auto;
+.preview-card__link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-code {
-  padding: 0.1em 0.35em;
+.preview-card__link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius-md);
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview-muted {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Fallback se template não carregar — não deixar labels colados */
+.frame-content label,
+.frame-content [class*='FieldLabel'] {
+  display: block;
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }

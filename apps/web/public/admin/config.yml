@@ -95,6 +95,8 @@ collections:
             name: projects
             widget: list
             summary: '{{fields.name}}'
+            collapsed: true
+            minimize_collapsed: true
             fields:
               - { label: ID, name: id, widget: string }
               - { label: Nome, name: name, widget: string }
