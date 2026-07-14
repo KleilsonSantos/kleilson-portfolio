@@ -13,7 +13,8 @@ site_url: https://kleilson-portfolio.pages.dev
 display_url: https://kleilson-portfolio.pages.dev
 logo:
   src: /favicon.svg
-  show_in_header: true
+  # Brand bar custom + AppHeader Decap — logo Decap no header = chrome duplicado
+  show_in_header: false
 
 # Locale / branding
 locale: pt

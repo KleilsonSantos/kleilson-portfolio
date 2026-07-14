@@ -1,0 +1,408 @@
+/* =============================================================================
+ * Decap CMS — chrome admin (ADR-0004 + ADR-0012)
+ *
+ * Fontes:
+ * - Official: custom mounting (#nc-root); logo object (não logo_url);
+ *   registerPreviewStyle = PREVIEW only → ver admin-preview.css
+ * - Community: Nats-ji / Decap #7084 — <link> DEPOIS do CMS; CSS vars; cor, não layout
+ *
+ * Regras:
+ * - Preferir color / background / border-color (!important vs Emotion)
+ * - NÃO reinventar display/flex/min-height/padding em widgets Decap
+ * - Tokens: /design-tokens.css (carregado no HTML; sem @import aqui)
+ * ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text) !important;
+  background-color: var(--color-bg) !important;
+  background-image: var(--hero-glow) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+a {
+  color: var(--color-primary) !important;
+}
+
+h1,
+h2,
+h3,
+[class*='CardHeading'],
+[class*='CardTitle'],
+[class*='CollectionLabel'],
+[class*='CollectionTopHeading'],
+[class*='SidebarHeading'],
+[class*='LibraryTitle'] {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  color: var(--color-text) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Brand strip (nosso markup — custom mounting oficial)
+ * --------------------------------------------------------------------------- */
+.admin-brandbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--nav-height);
+  padding: var(--space-3) var(--page-pad-inline);
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.admin-brandbar__logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--color-text) !important;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.admin-brandbar__logo:hover {
+  color: var(--color-primary) !important;
+}
+
+.admin-brandbar__meta {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.admin-brandbar__link {
+  color: var(--color-text-secondary) !important;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none !important;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-elevated);
+}
+
+.admin-brandbar__link:hover {
+  color: var(--color-text) !important;
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+@media (max-width: 767px) {
+  .admin-brandbar__meta {
+    display: none;
+  }
+}
+
+#nc-root {
+  min-height: calc(100vh - var(--nav-height));
+  background: transparent !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-family) !important;
+}
+
+/* Um chrome: brand bar nossa; esconder logo Decap no AppHeader */
+#nc-root [class*='AppHeaderLogo'] {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Surfaces — só cor (padrão community dark-mode)
+ * --------------------------------------------------------------------------- */
+#nc-root [class*='AppMainContainer'],
+#nc-root [class*='AppHeader'],
+#nc-root [class*='AppHeaderContent'],
+#nc-root [class*='EditorContainer'],
+#nc-root [class*='ControlPaneContainer'],
+#nc-root [class*='SettingsPaneContainer'],
+#nc-root [class*='StyledSplitPane'],
+#nc-root [class*='StyledSplitPane'] > div,
+#nc-root [class*='PreviewPane'],
+#nc-root [class*='PreviewPaneContainer'],
+#nc-root [class*='PreviewPaneFrame'],
+#nc-root [class*='CollectionMain'],
+#nc-root [class*='CollectionContainer'] {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+#nc-root [class*='AppMainContainer'] {
+  background-image: var(--hero-glow) !important;
+}
+
+#nc-root [class*='AppHeader'],
+#nc-root [class*='AppHeaderContent'] {
+  background-color: color-mix(in srgb, var(--color-bg) 88%, transparent) !important;
+  border-bottom-color: var(--color-border) !important;
+  box-shadow: none !important;
+}
+
+#nc-root [class*='AppHeaderNavLink'],
+#nc-root [class*='AppHeaderButton'],
+#nc-root [class*='AppHeaderSiteLink'],
+#nc-root [class*='AppHeaderQuickNewButton'] {
+  color: var(--color-text-secondary) !important;
+  font-family: var(--font-family) !important;
+}
+
+#nc-root [class*='AppHeaderNavLink']:hover,
+#nc-root [class*='AppHeaderButton']:hover,
+#nc-root [class*='AppHeaderSiteLink']:hover {
+  color: var(--color-primary) !important;
+  background-color: var(--color-primary-subtle) !important;
+}
+
+#nc-root [class*='AppHeaderNavLink'][class*='active'],
+#nc-root [class*='AppHeaderNavLink'][aria-current='page'] {
+  color: var(--color-primary) !important;
+  box-shadow: inset 0 -2px 0 var(--color-primary) !important;
+}
+
+#nc-root [class*='SidebarContainer'],
+#nc-root [class*='SearchContainer'],
+#nc-root [class*='CollectionTopContainer'],
+#nc-root [class*='CardCollection'],
+#nc-root [class*='EntryCard'],
+#nc-root [class*='WorkflowCardContainer'],
+#nc-root [class*='ListCard'],
+#nc-root [class*='GridCard'],
+#nc-root [class*='ListItem'],
+#nc-root [class*='StyledModal'] {
+  background-color: var(--color-bg-elevated) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+  box-shadow: none !important;
+}
+
+#nc-root [class*='ListCard']:hover,
+#nc-root [class*='GridCard']:hover,
+#nc-root [class*='EntryCard']:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border)) !important;
+  background-color: var(--color-bg-subtle) !important;
+}
+
+#nc-root [class*='ListCardLink'],
+#nc-root [class*='GridCardLink'],
+#nc-root [class*='CardText'],
+#nc-root [class*='CardBody'],
+#nc-root [class*='ListCardTitle'],
+#nc-root [class*='CardTitle'] {
+  color: var(--color-text) !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+#nc-root [class*='ListCardLink']:hover,
+#nc-root [class*='GridCardLink']:hover {
+  color: var(--color-primary) !important;
+}
+
+#nc-root [class*='SidebarHeading'] {
+  color: var(--color-text-muted) !important;
+}
+
+#nc-root [class*='SidebarNavLink'],
+#nc-root [class*='TreeNavLink'] {
+  color: var(--color-text-secondary) !important;
+}
+
+#nc-root [class*='SidebarNavLink']:hover,
+#nc-root [class*='TreeNavLink']:hover {
+  color: var(--color-text) !important;
+  background-color: var(--color-bg-subtle) !important;
+}
+
+#nc-root [class*='SidebarNavLink'][class*='active'],
+#nc-root [class*='SidebarNavLink'][aria-current='page'],
+#nc-root [class*='TreeNavLink'][class*='active'] {
+  color: var(--color-primary) !important;
+  background-color: var(--color-primary-subtle) !important;
+  border-left-color: var(--color-primary) !important;
+}
+
+#nc-root [class*='SearchInput'],
+#nc-root input,
+#nc-root textarea,
+#nc-root select,
+#nc-root [class*='TextControl'] input {
+  background-color: var(--color-bg-subtle) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+  font-family: var(--font-family) !important;
+}
+
+#nc-root input:focus,
+#nc-root textarea:focus,
+#nc-root select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: var(--focus-ring) !important;
+  outline: none !important;
+}
+
+#nc-root [class*='ControlHint'],
+#nc-root [class*='ControlLabel'],
+#nc-root [class*='FieldLabel'],
+#nc-root [class*='SettingsFieldLabel'],
+#nc-root [class*='NestedObjectLabel'],
+#nc-root [class*='ControlContainer'] label {
+  color: var(--color-text-secondary) !important;
+  background-color: var(--color-bg-elevated) !important;
+  border-color: var(--color-border) !important;
+  font-family: var(--font-family) !important;
+}
+
+#nc-root [class*='NestedObjectLabel'] {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-display) !important;
+}
+
+#nc-root [class*='StyledListItemTopBar'],
+#nc-root [class*='TopBar'],
+#nc-root [class*='TopBarContainer'],
+#nc-root [class*='ControlTopbar'] {
+  background-color: var(--color-bg-subtle) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+#nc-root [class*='TopBarButton'],
+#nc-root [class*='ExpandButton'],
+#nc-root [class*='AddButton'],
+#nc-root [class*='CloseButton'],
+#nc-root [class*='ViewControlsButton'],
+#nc-root [class*='DropdownButton'],
+#nc-root [class*='StyledDropdownButton'] {
+  color: var(--color-text-secondary) !important;
+  background-color: var(--color-bg-elevated) !important;
+  border-color: var(--color-border) !important;
+}
+
+#nc-root [class*='AddButton']:hover,
+#nc-root [class*='TopBarButton']:hover,
+#nc-root [class*='ExpandButton']:hover,
+#nc-root [class*='ViewControlsButton']:hover {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary-subtle) !important;
+}
+
+#nc-root [class*='SaveButton'],
+#nc-root [class*='PublishButton'],
+#nc-root [class*='PublishedButton'],
+#nc-root [class*='CollectionTopNewButton'],
+#nc-root [class*='ActionButton'],
+#nc-root [class*='LoginButton'],
+#nc-root [class*='StyledAuthenticationPage'] button {
+  background-color: var(--color-primary) !important;
+  color: var(--color-text-inverse) !important;
+  border-color: transparent !important;
+  font-family: var(--font-family) !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+#nc-root [class*='SaveButton']:hover,
+#nc-root [class*='PublishButton']:hover,
+#nc-root [class*='CollectionTopNewButton']:hover,
+#nc-root [class*='LoginButton']:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+#nc-root [class*='BackCollection'],
+#nc-root [class*='GoBackButtonStyle'],
+#nc-root [class*='CancelButton'],
+#nc-root [class*='TextButton'] {
+  background-color: transparent !important;
+  color: var(--color-primary) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border)) !important;
+}
+
+#nc-root [class*='DeleteButton'] {
+  color: var(--color-error) !important;
+  background-color: var(--color-error-subtle) !important;
+  border-color: var(--color-border) !important;
+}
+
+#nc-root [class*='StyledAuthenticationPage'],
+#nc-root [class*='AuthenticationPage'] {
+  background-color: transparent !important;
+  color: var(--color-text) !important;
+}
+
+#nc-root [class*='EmptyMessageContainer'],
+#nc-root [class*='EmptyMessageContainer'] *,
+#nc-root [class*='CardGrid'],
+#nc-root [class*='MediaLibraryCardGrid'],
+#nc-root [class*='LibraryTop'] {
+  color: var(--color-text) !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+#nc-root [class*='SidebarNavLink'] svg,
+#nc-root [class*='AppHeaderNavLink'] svg,
+#nc-root [class*='ViewControlsButton'] svg,
+#nc-root [class*='CardFileIcon'] svg {
+  color: currentColor !important;
+  fill: currentColor !important;
+}
+
+/*
+ * Object/list classNameWrapper Decap (Emotion #fff) — só pintar fundo.
+ * Sem padding/overflow/min-height (evita caixas fantasma / layout partido).
+ */
+#nc-root [class*='ControlContainer'] > div:has(> [class*='TopBar']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='TopBarContainer']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='StyledListItemTopBar']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='NestedObjectLabel']),
+#nc-root [class*='ControlContainer'] > div:has(> [class*='ExpandButtonContainer']),
+#nc-root [class*='ControlPaneContainer'] > div > div:has(> [class*='TopBar']),
+#nc-root [class*='ControlPaneContainer'] > div > div:has(> [class*='TopBarContainer']),
+#nc-root [class*='ControlPaneContainer'] > div > div:has(> [class*='NestedObjectLabel']) {
+  background-color: var(--color-bg-subtle) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}

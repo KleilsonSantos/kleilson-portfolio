@@ -12,12 +12,11 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
     />
     <!--
-      Fixture estática para QA local (Passo 5b) SEM OAuth.
-      Simula labels Emotion do Decap + shell classNameWrapper (div branco).
-      CSS Decap-like DEPOIS da skin — !important branco; skin #nc-root deve vencer.
+      Fixture QA (Passo 5b) SEM OAuth — chrome token-only + shells Emotion #fff.
+      Não inclui admin-preview.css (só iframe via registerPreviewStyle).
     -->
-    <link rel="stylesheet" href="/design-tokens.css?v=5" />
-    <link rel="stylesheet" href="/admin/admin.css?v=5" />
+    <link rel="stylesheet" href="/design-tokens.css?v=8" />
+    <link rel="stylesheet" href="/admin/admin-chrome.css?v=8" />
     <style>
       .css-mock-widget {
         display: block;
@@ -27,7 +26,6 @@
         padding: 16px 20px;
         border: 2px solid #dfdfe3;
         border-radius: 5px;
-        border-top-left-radius: 0;
         background-color: #fff !important;
         color: #444a57 !important;
       }
@@ -35,6 +33,50 @@
         min-height: 100vh;
         padding: 2rem;
         background-color: #fff !important;
+      }
+      .css-mock-ListCard {
+        display: block;
+        max-width: 48rem;
+        margin: 2rem auto;
+        padding: 16px 20px;
+        border: 2px solid #dfdfe3;
+        border-radius: 5px;
+        background: #fff !important;
+      }
+      .css-mock-ListCardLink {
+        display: block;
+        padding: 8px 12px;
+        background: #f1f1f1 !important;
+        color: #333 !important;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .css-mock-ListItem {
+        max-width: 48rem;
+        margin: 1rem auto;
+        padding: 16px;
+        border: 2px solid #dfdfe3;
+        background: #fff !important;
+      }
+      .css-mock-TopBar {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        margin-bottom: 8px;
+        border: 1px solid #ccc;
+        background: #eee !important;
+      }
+      .css-mock-StyledModal {
+        max-width: 48rem;
+        margin: 2rem auto;
+        padding: 16px;
+        border: 2px solid #dfdfe3;
+        background: #fff !important;
+      }
+      .css-mock-EmptyMessage {
+        padding: 16px;
+        border: 2px solid #ccc;
+        background: #fafafa !important;
       }
     </style>
   </head>
@@ -47,17 +89,35 @@
 
     <div id="nc-root">
       <div class="css-mock-EditorContainer EditorContainer">
-        <div class="css-mock-ControlPaneContainer ControlPaneContainer">
-          <div class="css-mock-ControlContainer ControlContainer">
+        <div class="css-mock-ListCard ListCard" data-testid="list-card">
+          <a class="css-mock-ListCardLink ListCardLink" href="#" data-testid="list-card-link">
+            <span class="ListCardTitle" data-testid="list-card-title">Profile</span>
+          </a>
+        </div>
+
+        <div class="css-mock-ListItem ListItem" data-testid="list-item">
+          <div class="css-mock-TopBar StyledListItemTopBar TopBar" data-testid="list-item-topbar">
+            <span>›</span><span>=</span><span>×</span>
+          </div>
+          <input type="text" value="banking" readonly data-testid="list-item-input" />
+        </div>
+
+        <div class="css-mock-StyledModal StyledModal" data-testid="media-modal">
+          <div class="LibraryTop" data-testid="media-library-top">
+            <h2 class="LibraryTitle">Recursos de mídia</h2>
+          </div>
+          <div class="css-mock-EmptyMessage EmptyMessageContainer" data-testid="media-empty">
+            Nenhum recurso encontrado
+          </div>
+        </div>
+
+        <div class="ControlPaneContainer">
+          <div class="ControlContainer">
             <div class="css-mock-widget" data-testid="object-shell">
-              <div class="css-mock-TopBarContainer TopBarContainer" data-testid="object-topbar">
-                ↓
-              </div>
-              <div class="css-mock-NestedObjectLabel NestedObjectLabel" data-testid="object-label">
-                PROFILE
-              </div>
-              <div class="css-mock-ControlContainer ControlContainer">
-                <label class="css-mock-FieldLabel FieldLabel">NOME</label>
+              <div class="TopBarContainer" data-testid="object-topbar">↓</div>
+              <div class="NestedObjectLabel" data-testid="object-label">PROFILE</div>
+              <div class="ControlContainer">
+                <label class="FieldLabel">NOME</label>
                 <input type="text" value="Kleilson dos Santos" readonly />
               </div>
             </div>

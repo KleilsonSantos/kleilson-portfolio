@@ -1,0 +1,69 @@
+/* =============================================================================
+ * Decap CMS — preview pane ONLY (oficial: CMS.registerPreviewStyle)
+ * https://decapcms.org/docs/customization/
+ *
+ * NÃO carregar este ficheiro no <link> do chrome admin.
+ * Tokens: /design-tokens.css (também registado no preview).
+ * ============================================================================= */
+
+html,
+body {
+  margin: 0;
+  padding: var(--page-pad-block) var(--page-pad-inline);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image: var(--hero-glow);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+p,
+li,
+dd,
+dt {
+  color: var(--color-text-secondary);
+}
+
+strong,
+b {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+code,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+pre {
+  padding: var(--space-3) var(--space-4);
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.1em 0.35em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
