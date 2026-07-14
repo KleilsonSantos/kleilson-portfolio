@@ -18,9 +18,10 @@
   <body>
     <!--
       Decap CMS — GitHub OAuth via Worker Free (ADR-0012).
-      Visual: ADR-0004 tokens; CSS carrega DEPOIS do bundle (vence Emotion).
-      Mount: #nc-root sob a brand bar (docs/custom-mounting).
-      Cache-bust ?v=7 — modal mídia + list widget compactos (sem caixas duplicadas).
+      Visual: ADR-0004 tokens (token-only chrome; sem reinventar layout Decap).
+      Mount: #nc-root (docs/custom-mounting). Preview: registerPreviewStyle only.
+      Cache-bust ?v=8 — split chrome/preview; community dark pattern + tokens.
+      Refs: decapcms.org/docs/customization · Nats-ji dark-mode · Decap #7084
     -->
     <header class="admin-brandbar" role="banner">
       <a class="admin-brandbar__logo" href="/">Kleilson Santos</a>
@@ -31,12 +32,12 @@
     <div id="nc-root"></div>
 
     <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
-    <!-- Skin após o CMS para ganhar a cascata do Emotion -->
-    <link rel="stylesheet" href="/design-tokens.css?v=7" />
-    <link rel="stylesheet" href="/admin/admin.css?v=7" />
+    <!-- Chrome APÓS o CMS (vence Emotion). Preview NÃO vai no <link>. -->
+    <link rel="stylesheet" href="/design-tokens.css?v=8" />
+    <link rel="stylesheet" href="/admin/admin-chrome.css?v=8" />
     <script>
       ;(function () {
-        var SKIN = ['/design-tokens.css?v=7', '/admin/admin.css?v=7']
+        var SKIN = ['/design-tokens.css?v=8', '/admin/admin-chrome.css?v=8']
 
         function skinsAlreadyOnTop() {
           var a = document.querySelector('link[href="' + SKIN[0] + '"]')
@@ -66,8 +67,7 @@
         })
 
         /*
-          NÃO usar MutationObserver continuamente: appendChild da skin
-          dispara mutation → reempilha → freeze (Safari "Entrando...", Chrome hung).
+          NÃO observe documentElement + appendChild em loop (freeze).
           Reempilha só quando Emotion injeta <style> no <head>.
         */
         if (typeof MutationObserver !== 'undefined') {
@@ -96,8 +96,9 @@
         }
 
         if (window.CMS) {
-          CMS.registerPreviewStyle('/design-tokens.css?v=7')
-          CMS.registerPreviewStyle('/admin/admin.css?v=7')
+          /* Oficial: só preview pane — não o chrome admin */
+          CMS.registerPreviewStyle('/design-tokens.css?v=8')
+          CMS.registerPreviewStyle('/admin/admin-preview.css?v=8')
         }
       })()
     </script>

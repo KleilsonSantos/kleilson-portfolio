@@ -12,6 +12,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 💄 Editorial `/admin`: skin token-only (ADR-0004) — `admin-chrome.css` + `admin-preview.css`; `registerPreviewStyle` só no preview; `?v=8`
 - 💄 Editorial `/admin`: layout Decap — modal mídia sem caixas filhas duplicadas; list widget compacto (toolbar no card); `?v=7`; logo Decap fora do header
 - 💄 Editorial `/admin`: ListCard “Profile” com moldura dupla e título colado — um surface, padding no link, cache-bust `?v=6`
 - 🐛 Editorial `/admin`: MutationObserver + `appendChild` da skin causava loop infinito (Safari “Entrando…”, Chrome hang) — observe só `<style>` no `head`, cache-bust `?v=5`
