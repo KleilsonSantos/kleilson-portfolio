@@ -7,24 +7,25 @@ import { test, expect } from '@playwright/test'
  * /admin/ real não é página.goto — CDN Decap/fonts bloqueiam DCL offline.
  */
 test.describe('Admin Decap smoke', () => {
-  test('/admin HTML serve skin ADR-0004 (cache-bust v=4)', async ({ request }) => {
+  test('/admin HTML serve skin ADR-0004 (cache-bust v=5)', async ({ request }) => {
     const response = await request.get('/admin/')
     expect(response.ok()).toBeTruthy()
     const html = await response.text()
     expect(html).toMatch(/Editorial/i)
     expect(html).toContain('Kleilson Santos')
     expect(html).toContain('id="nc-root"')
-    expect(html).toContain('/design-tokens.css?v=4')
-    expect(html).toContain('/admin/admin.css?v=4')
+    expect(html).toContain('/design-tokens.css?v=5')
+    expect(html).toContain('/admin/admin.css?v=5')
+    expect(html).not.toContain('obs.observe(document.documentElement')
     expect(html).toContain('decap-cms')
 
-    const tokens = await request.get('/design-tokens.css?v=4')
+    const tokens = await request.get('/design-tokens.css?v=5')
     expect(tokens.ok()).toBeTruthy()
     const tokenCss = await tokens.text()
     expect(tokenCss).toContain('--color-primary: #2dd4bf')
     expect(tokenCss).toContain("--font-display: 'Sora'")
 
-    const skin = await request.get('/admin/admin.css?v=4')
+    const skin = await request.get('/admin/admin.css?v=5')
     expect(skin.ok()).toBeTruthy()
     const skinCss = await skin.text()
     expect(skinCss).toContain('StyledModal')
