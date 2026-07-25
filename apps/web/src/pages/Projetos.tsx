@@ -64,7 +64,7 @@ function Projetos() {
   useDocumentMeta({
     title: `Projetos | ${PROFILE.shortName}`,
     description:
-      'Projetos open source e referências técnicas em microsserviços, DevSecOps, Spring Boot, Kafka e AI Engineering.',
+      'Projetos open source: AIOS (governança de IA no SDLC), Companion, microsserviços, DevSecOps, Spring Boot e Kafka.',
     canonical: `${PROFILE.siteUrl}/projetos`,
   })
 

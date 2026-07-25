@@ -1,6 +1,41 @@
 {
   "projects": [
     {
+      "id": "ai-operating-system",
+      "name": "AI Operating System (AIOS)",
+      "tagline": "Governança de IA aplicada ao desenvolvimento de software",
+      "description": "Plataforma open source de governança para IA no SDLC: intent → políticas → contexto → agents-as-plugins → quality gates. Monorepo (pnpm/Turborepo) com engines, pipeline, MCP (Cursor/Companion), console de governança e ADRs — control plane separado da experiência de conversa (ADR-0014). Em evolução ativa (SemVer).",
+      "impact": "Arquitetura de produto, não demo de chat: políticas e gates no núcleo; agentes como plugins sob um contrato versionado.",
+      "stack": [
+        "TypeScript",
+        "Node.js",
+        "pnpm",
+        "Turborepo",
+        "MCP",
+        "React",
+        "Vite",
+        "Vitest"
+      ],
+      "url": "https://github.com/KleilsonSantos/ai-operating-system",
+      "featured": true
+    },
+    {
+      "id": "aios-companion",
+      "name": "AIOS Companion",
+      "tagline": "Camada de experiência que consome o control plane AIOS",
+      "description": "Cliente de experiência (CLI + surface UI) sobre o AIOS: conversa, doctor, auditoria de governança e adapters finos (git/GitHub) via MCP/CLI — sem duplicar engines. AIOS governa; o Companion conversa (ADR-0014). Em evolução ativa (SemVer).",
+      "impact": "Fronteira explícita control plane × experiência — mesma disciplina de Git/CI do AIOS, superfície pensada para o fluxo do engenheiro.",
+      "stack": [
+        "TypeScript",
+        "React 19",
+        "Vite",
+        "MCP",
+        "Node.js"
+      ],
+      "url": "https://github.com/KleilsonSantos/aios-companion",
+      "featured": true
+    },
+    {
       "id": "banking",
       "name": "banking",
       "tagline": "Monorepo full stack com observabilidade e CI/CD",
@@ -44,7 +79,7 @@
         "Testcontainers"
       ],
       "url": "https://github.com/KleilsonSantos/VaultSpring",
-      "featured": true
+      "featured": false
     },
     {
       "id": "mongo-restfull-api",
@@ -95,8 +130,8 @@
       "id": "ai-driven",
       "name": "ai-driven",
       "tagline": "Automações AI-driven para produtividade",
-      "description": "Toolkit open-source de automações AI-driven e fluxos de produtividade para desenvolvedores.",
-      "impact": "Scripts e workflows reutilizáveis para engenharia assistida por IA.",
+      "description": "Toolkit open-source de automações AI-driven e fluxos de produtividade para desenvolvedores — linha anterior à plataforma AIOS/Companion.",
+      "impact": "Scripts e workflows reutilizáveis; a direção de produto amadureceu no control plane AIOS.",
       "stack": [
         "Shell Script",
         "AI Workflows",
