@@ -4,6 +4,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- 📝 Projetos em destaque: **AI Operating System (AIOS)** e **AIOS Companion** (control plane × experiência; evidência nos repos públicos)
+- 📝 Perfil: headline, resumo, destaques e skills alinhados à governança de IA no SDLC (sem métricas inventadas)
+
 ### Fixed
 
 - 💄 Editorial `/admin`: preview Decap de Projetos era dump cru (`bankingbanking…`) — `registerPreviewTemplate` + `preview-fixture.html`; lists `collapsed`; `?v=9`
