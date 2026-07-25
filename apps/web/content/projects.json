@@ -3,9 +3,9 @@
     {
       "id": "ai-operating-system",
       "name": "AI Operating System (AIOS)",
-      "tagline": "Governança de IA aplicada ao desenvolvimento de software",
-      "description": "Plataforma open source de governança para IA no SDLC: intent → políticas → contexto → agents-as-plugins → quality gates. Monorepo (pnpm/Turborepo) com engines, pipeline, MCP (Cursor/Companion), console de governança e ADRs — control plane separado da experiência de conversa (ADR-0014). Em evolução ativa (SemVer).",
-      "impact": "Arquitetura de produto, não demo de chat: políticas e gates no núcleo; agentes como plugins sob um contrato versionado.",
+      "tagline": "Control plane de governança de IA no SDLC — não um chat wrapper",
+      "description": "Produto open source independente (ADR-0001): intent curto → Policy Engine → contexto → agents-as-plugins (Architecture, AppSec, Docs, QA…) → quality gate → resposta. Monorepo TypeScript (pnpm/Turborepo) com engines/, contrato @aios/pipeline, servidor MCP (aios_* para Cursor/Companion), CLI thin-client e console de governança (Health + Attention). Fases 1–4 do ROADMAP entregues (core → multi-repo → MCP/console → control plane + Companion); Phase 5 (agent registry) em curso sob SemVer. A experiência de conversa fica no Companion — fronteira ADR-0014, sem monólito “Jarvis + governança”.",
+      "impact": "Direção de arquitetura: políticas e gates no runtime; agentes como plugins sob contrato versionado; ADRs e releases anotadas — perfil de quem desenha plataforma, não prompt solto.",
       "stack": [
         "TypeScript",
         "Node.js",
@@ -22,15 +22,16 @@
     {
       "id": "aios-companion",
       "name": "AIOS Companion",
-      "tagline": "Camada de experiência que consome o control plane AIOS",
-      "description": "Cliente de experiência (CLI + surface UI) sobre o AIOS: conversa, doctor, auditoria de governança e adapters finos (git/GitHub) via MCP/CLI — sem duplicar engines. AIOS governa; o Companion conversa (ADR-0014). Em evolução ativa (SemVer).",
-      "impact": "Fronteira explícita control plane × experiência — mesma disciplina de Git/CI do AIOS, superfície pensada para o fluxo do engenheiro.",
+      "tagline": "AIOS governa; o Companion conversa — Conversation Manager sobre contratos",
+      "description": "Cliente de experiência em repositório separado: CLI + surface UI (Conversation Manager) que consome o control plane via MCP aios_* e CLI — pipeline, memória, providers, doctor da ponte e auditoria de governança. Resource-Aware: estado e caps (git/GitHub) sob demanda, sem polling para “parecer vivo”. Não reimplementa Policy, Memory, Knowledge nem Prompt; adapters finos no host. Mesma disciplina Git (feature → sandbox → main) e SemVer do AIOS — prova a fronteira ADR-0014 na prática.",
+      "impact": "Produto correlacionado ao AIOS: control plane × experience plane com contratos estáveis — escala e release independentes sem drift de verdade entre os dois repos.",
       "stack": [
         "TypeScript",
         "React 19",
         "Vite",
         "MCP",
-        "Node.js"
+        "Node.js",
+        "SSE"
       ],
       "url": "https://github.com/KleilsonSantos/aios-companion",
       "featured": true

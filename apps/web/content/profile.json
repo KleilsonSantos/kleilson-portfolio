@@ -3,7 +3,7 @@
     "name": "Kleilson dos Santos",
     "shortName": "Kleilson Santos",
     "title": "Software Engineer | Full Stack Developer",
-    "headline": "Microsserviços event-driven, AppSec e governança de IA no SDLC — do control plane (AIOS) à experiência (Companion).",
+    "headline": "Microsserviços event-driven, AppSec e arquitetura de governança de IA no SDLC — AIOS (control plane) + Companion (experiência).",
     "location": "Paulo Afonso, Bahia, Brasil",
     "remote": "Disponível para trabalho remoto",
     "email": "kleilson@icloud.com",
@@ -17,10 +17,11 @@
     "photo": "/images/profile/kleilson-avatar-320.webp?v=15",
     "photoFallback": "/images/profile/kleilson-avatar.jpg?v=15"
   },
-  "summary": "Desenvolvedor Full Stack com mais de 9 anos de experiência projetando e operando microsserviços event-driven em Java e Spring Boot, com forte atuação em squads de Application Security (AppSec) no setor financeiro (financial services e banking industry). Em paralelo, arquiteta e evolui o AI Operating System (AIOS) — plataforma open source de governança de IA no SDLC (políticas, contexto, agents-as-plugins, quality gates, MCP) — e o AIOS Companion, camada de experiência (CLI/UI) que consome esse control plane sem duplicar engines. Praticante de AI Agentic Engineering e Spec-Driven Development (SDD): agentes customizados do GitHub Copilot, prompts reutilizáveis e arquivos de instruções (applyTo), com a mesma disciplina de ADRs, SemVer e fluxo Git aplicada aos produtos. Especialista em arquitetura hexagonal, APIs RESTful, Apache Kafka, PostgreSQL, Docker, Kubernetes e GitOps com ArgoCD. Experiência consolidada em frontend com Angular (v2 a v17+), AngularJS, React e TypeScript. Práticas DevSecOps com Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check.",
+  "summary": "Desenvolvedor Full Stack com mais de 9 anos de experiência projetando e operando microsserviços event-driven em Java e Spring Boot, com forte atuação em squads de Application Security (AppSec) no setor financeiro (financial services e banking industry). Em paralelo, arquiteta e evolui um ecossistema correlacionado: o AI Operating System (AIOS) — control plane open source de governança de IA no SDLC (engines de política/contexto/orquestração, agents-as-plugins, quality gates, contrato @aios/pipeline, MCP aios_*, console) — e o AIOS Companion — Conversation Manager (CLI + surface UI) que consome esses contratos sem segundo control plane (ADR-0014). A direção é produto com fronteiras explícitas e roadmap por fases (1–4 entregues; Phase 5 em curso), não “mais um chat com IA”. Praticante de AI Agentic Engineering e Spec-Driven Development (SDD): agentes customizados do GitHub Copilot, prompts reutilizáveis e applyTo, com a mesma disciplina de ADRs, SemVer e fluxo Git aplicada aos dois produtos. Especialista em arquitetura hexagonal, APIs RESTful, Apache Kafka, PostgreSQL, Docker, Kubernetes e GitOps com ArgoCD. Experiência consolidada em frontend com Angular (v2 a v17+), AngularJS, React e TypeScript. Práticas DevSecOps com Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check.",
   "highlights": [
-    "AIOS — control plane de governança de IA no SDLC (policies, MCP, agents-as-plugins; SemVer + ADRs)",
-    "AIOS Companion — experiência (CLI/UI) sobre o AIOS, sem segundo control plane (ADR-0014)",
+    "AIOS — control plane no SDLC: engines + pipeline + MCP + console; agents-as-plugins; ADRs/SemVer",
+    "AIOS Companion — Conversation Manager sobre MCP/CLI; Resource-Aware; sem duplicar engines (ADR-0014)",
+    "Ecossistema AIOS ↔ Companion: fronteira control plane × experiência com releases independentes",
     "Redução de 50% em vulnerabilidades com Mend (SCA) e Fortify (SAST)",
     "Mais de 20 APIs RESTful em Spring Boot com arquitetura hexagonal",
     "Cobertura de testes JaCoCo ≥ 80% com JUnit 5 e Testcontainers",
@@ -80,9 +81,11 @@
     {
       "title": "AI Engineering",
       "skills": [
-        "AIOS (governança no SDLC)",
+        "AIOS (control plane)",
+        "AIOS Companion",
         "MCP",
         "Agents-as-plugins",
+        "Policy / quality gates",
         "GitHub Copilot",
         "Spec-Driven Development",
         "Agentes customizados",
