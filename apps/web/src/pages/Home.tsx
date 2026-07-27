@@ -39,7 +39,8 @@ function Home() {
             <h1>{PROFILE.headline}</h1>
             <p className="hero__lead">{PROFILE.title}</p>
             <p className="hero__meta">
-              {PROFILE.location} · {PROFILE.remote} · {PROFILE.certification}
+              {PROFILE.location} · {PROFILE.remote} · {PROFILE.yearsOfExperience} anos ·{' '}
+              {PROFILE.currentCompany}
             </p>
             <div className="cta-row">
               <Link to="/projetos" className="button-link" viewTransition>

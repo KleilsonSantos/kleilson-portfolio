@@ -4,10 +4,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- 📝 Projetos em destaque: **AI Operating System (AIOS)** e **AIOS Companion** (control plane × experiência; evidência nos repos públicos)
-- 📝 Perfil: headline, resumo, destaques e skills alinhados à governança de IA no SDLC (sem métricas inventadas)
+- 📝 Reposicionamento SWE-first (auditoria branding): headline/title CV-aligned; featured `banking` → VaultSpring → infra; AIOS/Companion como AI Applied (não hero)
+- 📝 Hero meta: localização · remoto · anos · Capgemini (AI-900 sai da primeira linha)
+- 📝 Highlights: AppSec/APIs/GitOps antes de AI Applied; purchase citado como lab privado (sem URL pública)
 
 ### Fixed
 
