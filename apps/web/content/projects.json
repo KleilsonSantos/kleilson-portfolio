@@ -1,54 +1,34 @@
 {
   "projects": [
     {
-      "id": "ai-operating-system",
-      "name": "AI Operating System (AIOS)",
-      "tagline": "Governança de IA aplicada ao desenvolvimento de software",
-      "description": "Plataforma open source de governança para IA no SDLC: intent → políticas → contexto → agents-as-plugins → quality gates. Monorepo (pnpm/Turborepo) com engines, pipeline, MCP (Cursor/Companion), console de governança e ADRs — control plane separado da experiência de conversa (ADR-0014). Em evolução ativa (SemVer).",
-      "impact": "Arquitetura de produto, não demo de chat: políticas e gates no núcleo; agentes como plugins sob um contrato versionado.",
-      "stack": [
-        "TypeScript",
-        "Node.js",
-        "pnpm",
-        "Turborepo",
-        "MCP",
-        "React",
-        "Vite",
-        "Vitest"
-      ],
-      "url": "https://github.com/KleilsonSantos/ai-operating-system",
-      "featured": true
-    },
-    {
-      "id": "aios-companion",
-      "name": "AIOS Companion",
-      "tagline": "Camada de experiência que consome o control plane AIOS",
-      "description": "Cliente de experiência (CLI + surface UI) sobre o AIOS: conversa, doctor, auditoria de governança e adapters finos (git/GitHub) via MCP/CLI — sem duplicar engines. AIOS governa; o Companion conversa (ADR-0014). Em evolução ativa (SemVer).",
-      "impact": "Fronteira explícita control plane × experiência — mesma disciplina de Git/CI do AIOS, superfície pensada para o fluxo do engenheiro.",
-      "stack": [
-        "TypeScript",
-        "React 19",
-        "Vite",
-        "MCP",
-        "Node.js"
-      ],
-      "url": "https://github.com/KleilsonSantos/aios-companion",
-      "featured": true
-    },
-    {
       "id": "banking",
       "name": "banking",
-      "tagline": "Monorepo full stack com observabilidade e CI/CD",
-      "description": "Banking Platform — workspace monorepo com Java 21, Spring Boot, Angular 18, observabilidade e pipelines CI/CD.",
-      "impact": "Referência de organização monorepo alinhada a práticas de plataforma bancária.",
+      "tagline": "Plataforma full stack bancária — Java, Angular, obs e GitOps",
+      "description": "Banking Platform — monorepo / ecossistema open source com Java 21, Spring Boot, Angular 18, observabilidade (Prometheus/Grafana), segurança e pipelines CI/CD alinhados a práticas de plataforma bancária. Referência pública de organização full stack com microsserviços e entrega contínua.",
+      "impact": "Vitrine de engenharia de software: backend, frontend, DevSecOps e observabilidade no mesmo sistema — não um demo isolado.",
       "stack": [
         "Java 21",
         "Spring Boot",
         "Angular 18",
         "Kubernetes",
-        "Prometheus"
+        "Prometheus",
+        "GitOps"
       ],
       "url": "https://github.com/KleilsonSantos/banking",
+      "featured": true
+    },
+    {
+      "id": "vaultspring",
+      "name": "VaultSpring",
+      "tagline": "Segredos com HashiCorp Vault e Testcontainers",
+      "description": "Aplicação Spring Boot para gestão segura de segredos em ambientes escaláveis, com autenticação robusta e testes de integração.",
+      "impact": "AppSec operacional: segredos fora do código e testes de integração reproduzíveis.",
+      "stack": [
+        "Spring Boot",
+        "HashiCorp Vault",
+        "Testcontainers"
+      ],
+      "url": "https://github.com/KleilsonSantos/VaultSpring",
       "featured": true
     },
     {
@@ -68,17 +48,38 @@
       "featured": true
     },
     {
-      "id": "vaultspring",
-      "name": "VaultSpring",
-      "tagline": "Segredos com HashiCorp Vault e Testcontainers",
-      "description": "Aplicação Spring Boot para gestão segura de segredos em ambientes escaláveis, com autenticação robusta e testes de integração.",
-      "impact": "Foco em AppSec operacional: segredos fora do código e testes de integração.",
+      "id": "ai-operating-system",
+      "name": "AI Operating System (AIOS)",
+      "tagline": "AI Applied — control plane de governança de IA no SDLC (open source)",
+      "description": "Extensão da disciplina de engenharia: plataforma open source de governança para IA no desenvolvimento (intent → políticas → agents-as-plugins → quality gates). Monorepo TypeScript com pipeline, MCP e console — separado da experiência de conversa (ADR-0014). Acelerador e laboratório de produtividade, não o eixo da carreira.",
+      "impact": "Mostra maturidade de produto/ADRs/SemVer aplicada a tooling de IA — complementar a Java/AppSec/microsserviços.",
       "stack": [
-        "Spring Boot",
-        "HashiCorp Vault",
-        "Testcontainers"
+        "TypeScript",
+        "Node.js",
+        "pnpm",
+        "Turborepo",
+        "MCP",
+        "React",
+        "Vite",
+        "Vitest"
       ],
-      "url": "https://github.com/KleilsonSantos/VaultSpring",
+      "url": "https://github.com/KleilsonSantos/ai-operating-system",
+      "featured": false
+    },
+    {
+      "id": "aios-companion",
+      "name": "AIOS Companion",
+      "tagline": "AI Applied — experiência (CLI/UI) sobre o control plane AIOS",
+      "description": "Cliente de experiência que consome o AIOS via MCP/CLI (Conversation Manager, doctor, auditoria) sem duplicar engines. Fronteira control plane × experiência (ADR-0014).",
+      "impact": "Complemento do AIOS: prova contratos estáveis entre repos — listado como lab de AI Applied, não destaque de carreira.",
+      "stack": [
+        "TypeScript",
+        "React 19",
+        "Vite",
+        "MCP",
+        "Node.js"
+      ],
+      "url": "https://github.com/KleilsonSantos/aios-companion",
       "featured": false
     },
     {
@@ -130,8 +131,8 @@
       "id": "ai-driven",
       "name": "ai-driven",
       "tagline": "Automações AI-driven para produtividade",
-      "description": "Toolkit open-source de automações AI-driven e fluxos de produtividade para desenvolvedores — linha anterior à plataforma AIOS/Companion.",
-      "impact": "Scripts e workflows reutilizáveis; a direção de produto amadureceu no control plane AIOS.",
+      "description": "Toolkit open-source de automações AI-driven — linha anterior à disciplina AI Applied (AIOS/Companion).",
+      "impact": "Scripts e workflows reutilizáveis de produtividade.",
       "stack": [
         "Shell Script",
         "AI Workflows",

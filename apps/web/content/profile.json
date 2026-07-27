@@ -2,8 +2,8 @@
   "profile": {
     "name": "Kleilson dos Santos",
     "shortName": "Kleilson Santos",
-    "title": "Software Engineer | Full Stack Developer",
-    "headline": "Microsserviços event-driven, AppSec e governança de IA no SDLC — do control plane (AIOS) à experiência (Companion).",
+    "title": "Software Engineer | Senior Backend / Full Stack | AppSec · Banking",
+    "headline": "Microsserviços Java/Spring/Kafka, AppSec e DevSecOps em financial services — AI Applied Engineering como acelerador.",
     "location": "Paulo Afonso, Bahia, Brasil",
     "remote": "Disponível para trabalho remoto",
     "email": "kleilson@icloud.com",
@@ -13,20 +13,20 @@
     "siteUrl": "https://kleilson-portfolio.pages.dev",
     "yearsOfExperience": "9+",
     "currentCompany": "Capgemini Brasil",
-    "certification": "Microsoft Certified: Azure AI Fundamentals (AI-900)",
+    "certification": "Azure AI-900",
     "photo": "/images/profile/kleilson-avatar-320.webp?v=15",
     "photoFallback": "/images/profile/kleilson-avatar.jpg?v=15"
   },
-  "summary": "Desenvolvedor Full Stack com mais de 9 anos de experiência projetando e operando microsserviços event-driven em Java e Spring Boot, com forte atuação em squads de Application Security (AppSec) no setor financeiro (financial services e banking industry). Em paralelo, arquiteta e evolui o AI Operating System (AIOS) — plataforma open source de governança de IA no SDLC (políticas, contexto, agents-as-plugins, quality gates, MCP) — e o AIOS Companion, camada de experiência (CLI/UI) que consome esse control plane sem duplicar engines. Praticante de AI Agentic Engineering e Spec-Driven Development (SDD): agentes customizados do GitHub Copilot, prompts reutilizáveis e arquivos de instruções (applyTo), com a mesma disciplina de ADRs, SemVer e fluxo Git aplicada aos produtos. Especialista em arquitetura hexagonal, APIs RESTful, Apache Kafka, PostgreSQL, Docker, Kubernetes e GitOps com ArgoCD. Experiência consolidada em frontend com Angular (v2 a v17+), AngularJS, React e TypeScript. Práticas DevSecOps com Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check.",
+  "summary": "Software Engineer / Senior Backend (Full Stack com ênfase em backend) com mais de 9 anos de experiência, atuação na Capgemini em sistemas do setor financeiro (banking / financial services): microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em Application Security (AppSec) e DevSecOps — Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check — com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Experiência full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em labs pessoais, evolui ecossistemas Java/Kafka (incl. purchase multi-serviço) e, como acelerador de produtividade, pratica AI Applied Engineering (GitHub Copilot, Spec-Driven Development) e mantém open source de governança de agentes no SDLC (AIOS/Companion) — extensão da disciplina de engenharia, não o eixo da carreira.",
   "highlights": [
-    "AIOS — control plane de governança de IA no SDLC (policies, MCP, agents-as-plugins; SemVer + ADRs)",
-    "AIOS Companion — experiência (CLI/UI) sobre o AIOS, sem segundo control plane (ADR-0014)",
     "Redução de 50% em vulnerabilidades com Mend (SCA) e Fortify (SAST)",
     "Mais de 20 APIs RESTful em Spring Boot com arquitetura hexagonal",
     "Cobertura de testes JaCoCo ≥ 80% com JUnit 5 e Testcontainers",
     "GitOps end-to-end com ArgoCD, Gitea e k3d",
-    "10 agentes Copilot, 7 prompts e 6 applyTo aplicando SDD",
     "Migração Spring Boot 2→3→4 sem downtime (APIs depreciadas eliminadas)",
+    "Labs: ecossistema purchase (4 MS event-driven, Saga, GitOps) — repositórios privados",
+    "10 agentes Copilot, 7 prompts e 6 applyTo aplicando SDD (AI Applied)",
+    "Open source AI Applied: AIOS/Companion (governança de IA no SDLC) — não eixo da carreira",
     "Mais de 330 contribuições no GitHub no último ano",
     "Microsoft Azure AI Fundamentals (AI-900)"
   ],
@@ -78,16 +78,15 @@
       ]
     },
     {
-      "title": "AI Engineering",
+      "title": "AI Applied Engineering",
       "skills": [
-        "AIOS (governança no SDLC)",
-        "MCP",
-        "Agents-as-plugins",
         "GitHub Copilot",
         "Spec-Driven Development",
         "Agentes customizados",
         "Prompt engineering",
         "n8n",
+        "AIOS / Companion (open source)",
+        "MCP",
         "Azure AI-900"
       ]
     },
