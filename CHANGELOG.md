@@ -9,6 +9,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Reposicionamento SWE-first (auditoria branding): headline/title CV-aligned; featured `banking` → VaultSpring → infra; AIOS/Companion como AI Applied (não hero)
 - 📝 Hero meta: localização · remoto · anos · Capgemini (AI-900 sai da primeira linha)
 - 📝 Highlights: AppSec/APIs/GitOps antes de AI Applied; purchase citado como lab privado (sem URL pública)
+- 🧹 Higienização estrutural do repositório: remoção de assets sem uso e consolidação da documentação de agentes
 
 ### Fixed
 
