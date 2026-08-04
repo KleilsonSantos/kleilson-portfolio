@@ -10,6 +10,12 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Hero meta: localização · remoto · anos · Capgemini (AI-900 sai da primeira linha)
 - 📝 Highlights: AppSec/APIs/GitOps antes de AI Applied; purchase citado como lab privado (sem URL pública)
 - 🧹 Higienização estrutural do repositório: remoção de assets sem uso e consolidação da documentação de agentes
+- 💄 Home: chips de stack no hero + CTA de currículo e acesso rápido para rota de experiência
+- 💄 Projetos: seção base de case studies para leitura contexto → solução → resultado técnico
+- ✨ Nova rota `/experiencia` com timeline profissional dedicada
+- ✨ Rotas dedicadas de case study por projeto (`/projetos/:projectId`) com leitura técnica estruturada
+- 💄 Projetos: ações internas para abrir case study além do link externo de repositório
+- 💄 Home: CTA sutil para abrir case study do projeto principal (banking)
 
 ### Fixed
 
