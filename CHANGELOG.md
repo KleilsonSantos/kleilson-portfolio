@@ -9,6 +9,17 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Reposicionamento SWE-first (auditoria branding): headline/title CV-aligned; featured `banking` → VaultSpring → infra; AIOS/Companion como AI Applied (não hero)
 - 📝 Hero meta: localização · remoto · anos · Capgemini (AI-900 sai da primeira linha)
 - 📝 Highlights: AppSec/APIs/GitOps antes de AI Applied; purchase citado como lab privado (sem URL pública)
+- 🧹 Higienização estrutural do repositório: remoção de assets sem uso e consolidação da documentação de agentes
+- 💄 Home: chips de stack no hero + CTA de currículo e acesso rápido para rota de experiência
+- 💄 Projetos: seção base de case studies para leitura contexto → solução → resultado técnico
+- ✨ Nova rota `/experiencia` com timeline profissional dedicada
+- ✨ Rotas dedicadas de case study por projeto (`/projetos/:projectId`) com leitura técnica estruturada
+- 💄 Projetos: ações internas para abrir case study além do link externo de repositório
+- 💄 Home: CTA sutil para abrir case study do projeto principal (banking)
+- ✨ Novo projeto featured: **AI Orchestration & Governance** — demonstra orquestração multi-agente, task decomposition, quality gates e governance aplicados à modernização real
+- 💬 Skills refinadas: "AI Systems & Orchestration" com foco em multi-agent coordination, task routing, spec-driven development e quality gates (não "AI Applied" genérico)
+- 📝 AGENTS.md: nova seção "AI Systems & Orchestration — Arquitetura Aplicada" explicando diferencial de governance, routing, gates e ciclo fechado spec→plan→execute→validate
+ - 📥 Home: placeholder para `Baixar CV` (adicione `apps/web/public/cv/cv-kleilson-2026-ats.pdf` para ativar o download)
 
 ### Fixed
 

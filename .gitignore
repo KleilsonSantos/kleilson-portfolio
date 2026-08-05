@@ -33,6 +33,12 @@ dist-ssr
 .lighthouseci/
 **/.lighthouseci/
 
+# Local AI / session artifacts (não commitar)
+.turbo/
+.github/instructions/mermaid.instructions.md
+.github/prompts/n8n-project-automation-analysis.prompt.md
+docs/audits/staff-platform-career-evolution-audit-2026-07.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

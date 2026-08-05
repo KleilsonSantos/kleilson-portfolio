@@ -3,9 +3,9 @@
     {
       "id": "banking",
       "name": "banking",
-      "tagline": "Plataforma full stack bancária — Java, Angular, obs e GitOps",
-      "description": "Banking Platform — monorepo / ecossistema open source com Java 21, Spring Boot, Angular 18, observabilidade (Prometheus/Grafana), segurança e pipelines CI/CD alinhados a práticas de plataforma bancária. Referência pública de organização full stack com microsserviços e entrega contínua.",
-      "impact": "Vitrine de engenharia de software: backend, frontend, DevSecOps e observabilidade no mesmo sistema — não um demo isolado.",
+      "tagline": "Plataforma full stack bancária — Java, Angular, observabilidade e GitOps",
+      "description": "Monorepo com Java, Angular, observabilidade e GitOps, alinhado a práticas de engenharia em ambientes regulados e com alto foco em confiabilidade.",
+      "impact": "Demonstra integração entre backend, frontend, segurança e operação em uma única base de delivery.",
       "stack": [
         "Java 21",
         "Spring Boot",
@@ -21,8 +21,8 @@
       "id": "vaultspring",
       "name": "VaultSpring",
       "tagline": "Segredos com HashiCorp Vault e Testcontainers",
-      "description": "Aplicação Spring Boot para gestão segura de segredos em ambientes escaláveis, com autenticação robusta e testes de integração.",
-      "impact": "AppSec operacional: segredos fora do código e testes de integração reproduzíveis.",
+      "description": "Aplicação Spring Boot para gestão segura de segredos, com autenticação robusta, testes de integração e operação previsível.",
+      "impact": "Mostra como aplicar AppSec de forma prática em infraestrutura e integração contínua.",
       "stack": [
         "Spring Boot",
         "HashiCorp Vault",
@@ -51,7 +51,7 @@
       "id": "ai-operating-system",
       "name": "AI Operating System (AIOS)",
       "tagline": "AI Applied — control plane de governança de IA no SDLC (open source)",
-      "description": "Extensão da disciplina de engenharia: plataforma open source de governança para IA no desenvolvimento (intent → políticas → agents-as-plugins → quality gates). Monorepo TypeScript com pipeline, MCP e console — separado da experiência de conversa (ADR-0014). Acelerador e laboratório de produtividade, não o eixo da carreira.",
+      "description": "Extensão da disciplina de engenharia: plataforma open source de governança para IA no desenvolvimento (intent → políticas → agents-as-plugins → quality gates). Monorepo TypeScript com pipeline, MCP e console — separado da experiência de conversa (ADR-0014). Acelerador e laboratório de produtividade, complementar à atuação principal em backend, arquitetura e AppSec.",
       "impact": "Mostra maturidade de produto/ADRs/SemVer aplicada a tooling de IA — complementar a Java/AppSec/microsserviços.",
       "stack": [
         "TypeScript",
@@ -71,7 +71,7 @@
       "name": "AIOS Companion",
       "tagline": "AI Applied — experiência (CLI/UI) sobre o control plane AIOS",
       "description": "Cliente de experiência que consome o AIOS via MCP/CLI (Conversation Manager, doctor, auditoria) sem duplicar engines. Fronteira control plane × experiência (ADR-0014).",
-      "impact": "Complemento do AIOS: prova contratos estáveis entre repos — listado como lab de AI Applied, não destaque de carreira.",
+      "impact": "Complemento do AIOS: prova contratos estáveis entre repos — listado como laboratório de AI Applied, não como eixo principal da carreira.",
       "stack": [
         "TypeScript",
         "React 19",
@@ -126,6 +126,25 @@
       ],
       "url": "https://github.com/KleilsonSantos/OrderProcessingSystem",
       "featured": false
+    },
+    {
+      "id": "ai-orchestration-governance",
+      "name": "AI Orchestration & Governance",
+      "tagline": "Multi-agent coordination, task routing e quality gates para modernização de software",
+      "description": "Arquitetura de orquestração de agentes especializados aplicada ao kleilson-portfolio: governance em AGENTS.md, task decomposition com routing automático, quality gates (spec → plan → execution), role-based execution com team charters, e ciclo completo de coordenação multi-agente. Abordagem reproducível para sistemas complexos que requerem coordenação de múltiplos LLMs/prompts com traceability e validation.",
+      "impact": "Demonstra capacidade de estruturar workflows AI-powered com governança, não apenas usar modelos. Aplicável a migration/modernization projects de qualquer escala.",
+      "stack": [
+        "GitHub Copilot",
+        "Claude / ChatGPT",
+        "Prompt Engineering",
+        "Task Decomposition",
+        "Quality Gates",
+        "Governance",
+        "MCP",
+        "Git-backed workflows"
+      ],
+      "url": "https://github.com/KleilsonSantos/kleilson-portfolio",
+      "featured": true
     },
     {
       "id": "ai-driven",

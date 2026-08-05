@@ -33,6 +33,34 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 10. **Autoria Git:** Author/Committer = `Kleilson Santos <kdsddesign1@gmail.com>`. **Proibido** trailers ou co-autoria de IDE/agente (`Co-authored-by: Cursor`, `cursoragent@…`, etc.). Commits são do autor do projeto, não da ferramenta.
 11. **Releases:** após merge releaseable `sandbox` → `main`, alinhar CHANGELOG + `package.json` e publicar tag anotada + GitHub Release (`docs/guides/releases.md`). Não deixar docs/versão à frente da última tag.
 
+## AI Systems & Orchestration — Arquitetura Aplicada
+
+Este portfólio demonstra **AI orchestration em produção**, não apenas "use cases de LLM":
+
+### Por que isso importa
+
+- **Governance**: AGENTS.md é o contrato único. Qualquer agente (Copilot, Claude, ChatGPT) segue o mesmo workflow sem divergência.
+- **Task Routing**: Decomposição automática de tarefas complexas (modernização de software, rearchitetura) em fases estruturadas com quality gates entre elas.
+- **Spec-Driven Development**: Requirements (REQ-XXX) rastreáveis do spec até implementation, com validação de cobertura em cada phase.
+- **Multi-agent Coordination**: Especialização deliberada — architeto, engenheiro, documentalista como "roles" com responsabilidades distintas, não um único LLM genérico.
+- **Quality Gates**: Não apenas gerar código. Validar completeness, plano coverage, task traceability. Ciclo fechado: spec → plan → tasks → execution → validation.
+
+### Aplicação real
+
+- **Modernização do kleilson-portfolio**: visual refresh + case studies + timeline executados por este sistema de orquestração.
+- **Padrão escalável**: mesmo framework funciona para migration de monolith, upgrade de frameworks, ou rearchitecture de produtos complexos.
+
+### Stack
+
+- GitHub Copilot, Claude, ChatGPT (modelos)
+- Prompt engineering + governance explícita
+- MCP (Model Context Protocol) para tooling consistente
+- Git-backed workflows (AGENTS.md, ADRs, specs como fonte de verdade)
+
+**Diferencial**: Estruturado, reproduzível, não depende de "prompt magic" ou trial-and-error. Diferencia staff/senior IC que pensa em sistemas de IA versus JC que usa ChatGPT.
+
+---
+
 ## Escopo típico de mudanças
 
 | Área | Onde | Cuidado |
