@@ -57,7 +57,12 @@ function Home() {
                 Ver currículo
               </a>
               <span aria-hidden="true"> · </span>
-              <a href="/cv/cv-kleilson-2026-ats.pdf" download className="download-cv">
+              <a
+                href="https://sjpauqujihnlfozvisin.supabase.co/storage/v1/object/sign/cv/cv-kleilson-2026-ats.docx?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzRkM2Q0MS00MDlkLTQ2ZjUtYWY4ZS1kNDUxZWQzMDQ2ODQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJjdi9jdi1rbGVpbHNvbi0yMDI2LWF0cy5kb2N4Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTg5MzkyMCwiZXhwIjoxNzg2NDk4NzIwfQ.yvff_LeO3EXNwYAQXEpecdCpU_4sF8rjFbBqbCudVWg"
+                target="_blank"
+                rel="noreferrer"
+                className="download-cv"
+              >
                 Baixar CV
               </a>
               <span aria-hidden="true"> · </span>
