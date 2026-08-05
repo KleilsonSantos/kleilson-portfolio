@@ -57,6 +57,10 @@ function Home() {
                 Ver currículo
               </a>
               <span aria-hidden="true"> · </span>
+              <a href="/cv/cv-kleilson-2026-ats.pdf" download className="download-cv">
+                Baixar CV
+              </a>
+              <span aria-hidden="true"> · </span>
               <Link to="/contatos" viewTransition>
                 Entrar em contato
               </Link>

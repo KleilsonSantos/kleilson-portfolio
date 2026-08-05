@@ -19,6 +19,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - ✨ Novo projeto featured: **AI Orchestration & Governance** — demonstra orquestração multi-agente, task decomposition, quality gates e governance aplicados à modernização real
 - 💬 Skills refinadas: "AI Systems & Orchestration" com foco em multi-agent coordination, task routing, spec-driven development e quality gates (não "AI Applied" genérico)
 - 📝 AGENTS.md: nova seção "AI Systems & Orchestration — Arquitetura Aplicada" explicando diferencial de governance, routing, gates e ciclo fechado spec→plan→execute→validate
+ - 📥 Home: placeholder para `Baixar CV` (adicione `apps/web/public/cv/cv-kleilson-2026-ats.pdf` para ativar o download)
 
 ### Fixed
 
