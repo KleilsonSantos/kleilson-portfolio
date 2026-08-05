@@ -116,7 +116,7 @@ function Home() {
           engenharia sólida, clareza operacional e entregas confiáveis.
         </p>
         <div className="grid-2">
-          {SKILL_GROUPS.slice(0, 3).map((group) => (
+          {SKILL_GROUPS.slice(0, 4).map((group) => (
             <div key={group.title} className="skill-panel">
               <h3>{group.title}</h3>
               <div className="stack-list">

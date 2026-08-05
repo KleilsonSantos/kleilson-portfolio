@@ -2,8 +2,8 @@
   "profile": {
     "name": "Kleilson dos Santos",
     "shortName": "Kleilson Santos",
-    "title": "Software Engineer | Senior Backend / Full Stack | AppSec · Banking",
-    "headline": "Microsserviços Java/Spring/Kafka, AppSec e DevSecOps em financial services — AI Applied Engineering como acelerador.",
+    "title": "Software Engineer | Backend / Full Stack | AppSec · Banking",
+    "headline": "Software Engineer especializado em backend, arquitetura e segurança para sistemas financeiros e plataformas resilientes.",
     "location": "Paulo Afonso, Bahia, Brasil",
     "remote": "Disponível para trabalho remoto",
     "email": "kleilson@icloud.com",
@@ -17,7 +17,7 @@
     "photo": "/images/profile/kleilson-avatar-320.webp?v=15",
     "photoFallback": "/images/profile/kleilson-avatar.jpg?v=15"
   },
-  "summary": "Software Engineer / Senior Backend (Full Stack com ênfase em backend) com mais de 9 anos de experiência, atuação na Capgemini em sistemas do setor financeiro (banking / financial services): microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em Application Security (AppSec) e DevSecOps — Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check — com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Experiência full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em labs pessoais, evolui ecossistemas Java/Kafka (incl. purchase multi-serviço) e, como acelerador de produtividade, pratica AI Applied Engineering (GitHub Copilot, Spec-Driven Development) e mantém open source de governança de agentes no SDLC (AIOS/Companion) — extensão da disciplina de engenharia, não o eixo da carreira.",
+  "summary": "Software Engineer com foco em backend, arquitetura e AppSec, atuando em ambientes financeiros com Java, Spring, Kafka e DevSecOps. Trabalho com APIs, microsserviços, testes e automação para entregar software confiável, seguro e sustentável.",
   "highlights": [
     "Redução de 50% em vulnerabilidades com Mend (SCA) e Fortify (SAST)",
     "Mais de 20 APIs RESTful em Spring Boot com arquitetura hexagonal",
@@ -26,7 +26,7 @@
     "Migração Spring Boot 2→3→4 sem downtime (APIs depreciadas eliminadas)",
     "Labs: ecossistema purchase (4 MS event-driven, Saga, GitOps) — repositórios privados",
     "10 agentes Copilot, 7 prompts e 6 applyTo aplicando SDD (AI Applied)",
-    "Open source AI Applied: AIOS/Companion (governança de IA no SDLC) — não eixo da carreira",
+    "Laboratório de IA aplicada no SDLC com AIOS/Companion — complementar à atuação principal em backend, arquitetura e AppSec",
     "Mais de 330 contribuições no GitHub no último ano",
     "Microsoft Azure AI Fundamentals (AI-900)"
   ],
@@ -78,15 +78,18 @@
       ]
     },
     {
-      "title": "AI Applied Engineering",
+      "title": "AI Systems & Orchestration",
       "skills": [
-        "GitHub Copilot",
-        "Spec-Driven Development",
-        "Agentes customizados",
+        "Multi-agent coordination",
+        "Task decomposition & routing",
+        "Quality gates & validation",
         "Prompt engineering",
-        "n8n",
+        "GitHub Copilot",
+        "Claude / ChatGPT APIs",
+        "Spec-Driven Development",
+        "MCP (Model Context Protocol)",
         "AIOS / Companion (open source)",
-        "MCP",
+        "n8n",
         "Azure AI-900"
       ]
     },

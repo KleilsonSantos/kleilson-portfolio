@@ -16,6 +16,9 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - ✨ Rotas dedicadas de case study por projeto (`/projetos/:projectId`) com leitura técnica estruturada
 - 💄 Projetos: ações internas para abrir case study além do link externo de repositório
 - 💄 Home: CTA sutil para abrir case study do projeto principal (banking)
+- ✨ Novo projeto featured: **AI Orchestration & Governance** — demonstra orquestração multi-agente, task decomposition, quality gates e governance aplicados à modernização real
+- 💬 Skills refinadas: "AI Systems & Orchestration" com foco em multi-agent coordination, task routing, spec-driven development e quality gates (não "AI Applied" genérico)
+- 📝 AGENTS.md: nova seção "AI Systems & Orchestration — Arquitetura Aplicada" explicando diferencial de governance, routing, gates e ciclo fechado spec→plan→execute→validate
 
 ### Fixed
 
