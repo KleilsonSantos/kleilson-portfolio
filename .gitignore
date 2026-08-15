@@ -23,6 +23,12 @@ dist-ssr
 *.local
 *.tsbuildinfo
 
+# Turbo cache
+.turbo/
+
+# pnpm store (local, never commit)
+.pnpm-store/
+
 # Playwright / Lighthouse
 /test-results/
 **/test-results/
