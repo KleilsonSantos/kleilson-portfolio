@@ -4,6 +4,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Fixed
+
+- 🔧 `.gitignore`: cache Turbo (`.turbo/`) e store pnpm local (`.pnpm-store/`)
+
 ### Changed
 
 - 📝 Reposicionamento SWE-first (auditoria branding): headline/title CV-aligned; featured `banking` → VaultSpring → infra; AIOS/Companion como AI Applied (não hero)
