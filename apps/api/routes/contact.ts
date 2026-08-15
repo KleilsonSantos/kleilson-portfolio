@@ -1,22 +1,11 @@
 import type { FastifyPluginAsync } from 'fastify'
 import {
-  assertContactBusinessRules,
   contactBodySchema,
+  sanitizeContactText,
+  validateContactPayload,
   type ContactPayload,
 } from '@kleilson/shared'
 import { saveContact } from '../store/index'
-
-function sanitize(value: string): string {
-  const trimmed = value.trim()
-  let result = ''
-  for (let i = 0; i < trimmed.length; i += 1) {
-    const code = trimmed.charCodeAt(i)
-    if (code === 0x09 || code === 0x0a || code === 0x0d || (code >= 0x20 && code !== 0x7f)) {
-      result += trimmed[i]
-    }
-  }
-  return result
-}
 
 export const contactRoutes: FastifyPluginAsync = async (app) => {
   app.post<{ Body: ContactPayload }>(
@@ -44,15 +33,15 @@ export const contactRoutes: FastifyPluginAsync = async (app) => {
     },
     async (request, reply) => {
       const body: ContactPayload = {
-        name: sanitize(request.body.name),
-        email: sanitize(request.body.email),
-        category: request.body.category ? sanitize(request.body.category) : '',
-        message: sanitize(request.body.message),
+        name: sanitizeContactText(request.body.name),
+        email: sanitizeContactText(request.body.email),
+        category: request.body.category ? sanitizeContactText(request.body.category) : '',
+        message: sanitizeContactText(request.body.message),
       }
 
-      const businessError = assertContactBusinessRules(body)
-      if (businessError) {
-        return reply.code(400).send({ message: businessError })
+      const validationError = validateContactPayload(body)
+      if (validationError) {
+        return reply.code(400).send({ message: validationError })
       }
 
       const saved = await saveContact(body)
