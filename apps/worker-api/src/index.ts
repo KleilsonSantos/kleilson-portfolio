@@ -4,7 +4,8 @@
  * Sentry SDK no Worker omitido (peer conflict com workers-types v5); React/Fastify cobrem DSN opt-in.
  */
 import {
-  assertContactBusinessRules,
+  sanitizeContactText,
+  validateContactPayload,
   type ContactPayload,
 } from '@kleilson/shared'
 
@@ -22,18 +23,6 @@ function requestIdOf(request: Request): string {
   const incoming = request.headers.get('x-request-id')?.trim()
   if (incoming) return incoming
   return crypto.randomUUID()
-}
-
-function sanitize(value: string): string {
-  const trimmed = value.trim()
-  let result = ''
-  for (let i = 0; i < trimmed.length; i += 1) {
-    const code = trimmed.charCodeAt(i)
-    if (code === 0x09 || code === 0x0a || code === 0x0d || (code >= 0x20 && code !== 0x7f)) {
-      result += trimmed[i]
-    }
-  }
-  return result
 }
 
 function allowedOrigins(env: Env): string[] {
@@ -156,28 +145,15 @@ async function handleContact(request: Request, env: Env, requestId: string): Pro
 
   const bodyIn = raw as Record<string, unknown>
   const body: ContactPayload = {
-    name: sanitize(String(bodyIn.name ?? '')),
-    email: sanitize(String(bodyIn.email ?? '')),
-    category: bodyIn.category ? sanitize(String(bodyIn.category)) : '',
-    message: sanitize(String(bodyIn.message ?? '')),
+    name: sanitizeContactText(String(bodyIn.name ?? '')),
+    email: sanitizeContactText(String(bodyIn.email ?? '')),
+    category: bodyIn.category ? sanitizeContactText(String(bodyIn.category)) : '',
+    message: sanitizeContactText(String(bodyIn.message ?? '')),
   }
 
-  if (body.name.length < 2 || body.name.length > 120) {
-    return json({ message: 'Nome inválido.', requestId }, 400, request, env, requestId)
-  }
-  if (body.email.length < 5 || body.email.length > 254) {
-    return json({ message: 'E-mail inválido.', requestId }, 400, request, env, requestId)
-  }
-  if (body.message.length < 10 || body.message.length > 4000) {
-    return json({ message: 'Mensagem inválida.', requestId }, 400, request, env, requestId)
-  }
-  if (body.category && body.category.length > 80) {
-    return json({ message: 'Categoria inválida.', requestId }, 400, request, env, requestId)
-  }
-
-  const businessError = assertContactBusinessRules(body)
-  if (businessError) {
-    return json({ message: businessError, requestId }, 400, request, env, requestId)
+  const validationError = validateContactPayload(body)
+  if (validationError) {
+    return json({ message: validationError, requestId }, 400, request, env, requestId)
   }
 
   const base = env.SUPABASE_URL.replace(/\/$/, '')
@@ -199,7 +175,14 @@ async function handleContact(request: Request, env: Env, requestId: string): Pro
 
   if (!insertRes.ok) {
     const detail = await insertRes.text().catch(() => '')
-    console.error(JSON.stringify({ msg: 'contact insert failed', status: insertRes.status, requestId, detail: detail.slice(0, 200) }))
+    console.error(
+      JSON.stringify({
+        msg: 'contact insert failed',
+        status: insertRes.status,
+        requestId,
+        detail: detail.slice(0, 200),
+      }),
+    )
     return json({ message: 'Não foi possível salvar a mensagem.', requestId }, 502, request, env, requestId)
   }
 
