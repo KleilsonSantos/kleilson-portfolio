@@ -12,8 +12,8 @@ Deploy: Cloudflare Pages + Workers Free (ADR-0008). Conteúdo: apenas fatos veri
 
 - Preferir TypeScript estrito; tipar props e dados.
 - Conteúdo narrativo: editar `apps/web/content/*.json` (wrappers em `apps/web/src/data/`).
-- Seguir Conventional Commits + Gitmoji e fluxo: Issue → `feature/*` → PR → `sandbox` → PR → `main`.
-- Autoria Git: `Kleilson Santos <kdsddesign1@gmail.com>` — sem co-autoria de IDE/agente.
+- Seguir Conventional Commits + Gitmoji e fluxo: Issue → `feature/*` → PR → `sandbox` → PR → `main`. Merge: `bash scripts/merge-pr.sh <n>`.
+- Autoria Git: `Kleilson Santos <kdsdesign1@gmail.com>` — sem co-autoria de IDE/agente.
 - Atualizar `CHANGELOG.md` `[Unreleased]` em mudanças user-facing.
 - Respeitar ADR-0004 (dark-first, teal, Sora + IBM Plex Sans).
 - Manter docs alinhados ao código (ADR-0003).

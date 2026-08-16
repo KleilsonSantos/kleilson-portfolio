@@ -29,4 +29,4 @@ Planejar. **Não implementar** código, não abrir commits, não editar arquivos
 
 - Não inventar experiência, empresa, cargo, data, stack ou credencial
 - Não sugerir push direto em `main`/`sandbox`
-- Autoria Git, se alguém for commitar depois: `Kleilson Santos <kdsddesign1@gmail.com>` — sem co-autoria de IDE/agente
+- Autoria Git, se alguém for commitar depois: `Kleilson Santos <kdsdesign1@gmail.com>` — sem co-autoria de IDE/agente

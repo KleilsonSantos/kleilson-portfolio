@@ -30,6 +30,6 @@ Com base no diff (ou no escopo pedido):
 
 - Commits só se o humano pedir
 - Formato: `type: <gitmoji> descrição`
-- Author/Committer: `Kleilson Santos <kdsddesign1@gmail.com>`
+- Author/Committer: `Kleilson Santos <kdsdesign1@gmail.com>`
 - Proibido: trailers `Co-authored-by: Cursor` / `cursoragent@…`
 - Fluxo: `feature/*` → PR → `sandbox` → PR → `main` (nunca push direto)

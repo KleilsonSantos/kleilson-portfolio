@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Falha se commits do range tiverem subject sem gitmoji (CI).
+# Falha se commits do range tiverem subject sem gitmoji (CI)
+# ou trailer Co-authored-by de IDE/agente (Cursor).
 set -euo pipefail
 
 BASE_REF="${1:-origin/sandbox}"
@@ -15,7 +16,16 @@ while IFS= read -r line; do
   [[ -z "$line" ]] && continue
   hash="${line%% *}"
   subject="${line#* }"
+  body="$(git log -1 --format='%B' "$hash")"
+  if printf '%s' "$body" | grep -Ei 'Co-authored-by:.*Cursor|cursoragent@cursor\.com' >/dev/null; then
+    echo "FAIL $hash  IDE/agent Co-authored-by trailer (author is Kleilson Santos <kdsdesign1@gmail.com> only)"
+    fail=1
+  fi
   if [[ "$subject" =~ ^merge:\ 🔀 ]]; then
+    continue
+  fi
+  # Dependabot version updates cannot emit gitmoji; allow Conventional scope form.
+  if [[ "$subject" =~ ^chore\(deps(-dev)?\):\  ]]; then
     continue
   fi
   if [[ "$subject" =~ ^Merge\ pull\ request ]]; then
@@ -26,8 +36,6 @@ while IFS= read -r line; do
   if ! python3 -c '
 import re, sys
 s = sys.argv[1]
-# ui = alias legítimo de mudanças visuais (espelha Conventional "style")
-# release = preparo SemVer anotado (docs/guides/releases.md)
 m = re.match(
     r"^(feat|fix|docs|chore|ci|refactor|test|style|ui|perf|build|merge|release):\s+(\S+)\s+.+",
     s,
@@ -45,7 +53,7 @@ done < <(git log --pretty=format:'%h %s' "${BASE_REF}..${HEAD_REF}")
 if [[ "$fail" -ne 0 ]]; then
   echo ""
   echo "Commits devem seguir: type: <gitmoji> descrição"
-  echo "Merges: merge: 🔀 PR #<n> — <branch>"
+  echo "Merges: merge: 🔀 PR #<n> — <branch>  (bash scripts/merge-pr.sh <n>)"
   exit 1
 fi
 

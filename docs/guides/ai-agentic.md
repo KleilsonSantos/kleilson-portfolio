@@ -62,9 +62,13 @@ Custom agents no GitHub: `.github/agents/{task-planner,code-reviewer,docs-writer
 - Inventar fatos do CV ou trocar visual sem ADR-0004
 - Ativar MCP fora da matriz (`docs/guides/mcp-tooling.md`) ou empilhar APM redundante
 
-## MCP
+**MCP:** Matriz canônica: [`mcp-tooling.md`](./mcp-tooling.md). Preferir Supabase / Postman / Grafana opcional; **não** Vercel deploy, Datadog ou GitLab neste repo.
 
-Matriz canônica: [`mcp-tooling.md`](./mcp-tooling.md). Preferir Supabase / Postman / Grafana opcional; **não** Vercel deploy, Datadog ou GitLab neste repo.
+## GitHub no agente Cursor
+
+Issue, comment, PR e merge usam `gh` → `api.github.com`. Sem allowlist, o agente falha (às vezes com mensagem de token). Fonte: [`.cursor/sandbox.json`](../../.cursor/sandbox.json). Detalhe: [`task-kickoff.md`](./task-kickoff.md) (secção Cursor agent + `gh`).
+
+Merge canónico: `bash scripts/merge-pr.sh <n>`.
 
 ## Relacionados
 

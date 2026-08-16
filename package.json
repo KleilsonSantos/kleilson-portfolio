@@ -20,7 +20,8 @@
     "preview": "pnpm --filter @kleilson/web preview",
     "optimize:photo": "pnpm --filter @kleilson/web optimize:photo",
     "deploy:api": "pnpm --filter @kleilson/worker-api deploy",
-    "deploy:decap-oauth": "pnpm --filter @kleilson/decap-oauth deploy"
+    "deploy:decap-oauth": "pnpm --filter @kleilson/decap-oauth deploy",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "devDependencies": {
     "concurrently": "^10.0.3",
