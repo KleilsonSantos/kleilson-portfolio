@@ -60,6 +60,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Lighthouse CI scaffold (#5)
 - [x] Camada AI portável (`AGENTS.md` / Copilot / Cursor pointers)
 - [x] Editorial Decap skin token-only + OAuth allowlist — `v0.6.0`
+- [x] UX/a11y + cadeia GitHub (merge-pr / GREEN = CI) — `v0.7.0`
 
 ## Pós-fecho — backlog opcional (não bloqueia o portfólio)
 
