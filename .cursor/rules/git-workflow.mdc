@@ -34,6 +34,7 @@ Guia completo: `docs/guides/task-kickoff.md`
 - Commits: Conventional Commits + Gitmoji obrigatório (`type: <emoji> …`)
 - Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **nunca** `Co-authored-by: Cursor` / `cursoragent@…` / trailers de IDE
 - Merges: **`bash scripts/merge-pr.sh <n>`** → `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub)
+- Após PR: **watch** `gh pr checks` até terminal; FAIL → logs → fix; GREEN → reportar (merge só com pedido)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
 - Autonomia GitHub do agente: `.cursor/sandbox.json` (`api.github.com`); write ops só com pedido explícito
 - Após merge releaseable em `main`: **tag anotada SemVer + GitHub Release** (CHANGELOG e `package.json` alinhados) — ver `docs/guides/releases.md`

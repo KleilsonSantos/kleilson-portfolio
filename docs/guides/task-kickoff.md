@@ -147,6 +147,37 @@ Nunca `gh pr merge` sem `--subject` / `-t`. O CI `merge-tip` rejeita o subject d
 
 **NEXT** = próxima issue/slice após o merge (Project + `CHANGELOG` `[Unreleased]`). Não é comando de chat (`next`/`ok`/`green` do AIOS).
 
+### Loop de eventos GitHub (obrigatório para o agente)
+
+Abrir issue/PR **não encerra** a slice. O agente acompanha cada evento até estado terminal e só então avança ou corrige.
+
+```text
+push / gh pr create
+        ↓
+gh pr checks <n>          (repetir até todos COMPLETED)
+        ↓
+correlacionar jobs: commitlint · quality · e2e · lighthouse · CodeQL · GitGuardian
+        ↓
+     ┌── FAIL ──→ gh run view --log-failed → corrigir na branch → push → voltar ao topo
+     └── SUCCESS + MERGEABLE → GREEN → reportar → merge só com autorização
+                ↓
+     bash scripts/merge-pr.sh <n>
+                ↓
+     watch push em sandbox (merge-tip) → issue Done → NEXT slice
+```
+
+Comandos:
+
+```bash
+gh pr checks 177 --repo KleilsonSantos/kleilson-portfolio
+gh pr view 177 --json state,mergeable,statusCheckRollup
+gh run list --branch feature/ux-visual-excellence --limit 5
+# se falhou:
+gh run view <run-id> --log-failed
+```
+
+Não declarar GREEN sem ler o rollup. Skip (`merge-tip` / `semver-align` em PR para `sandbox`) não é falha.
+
 ### Passo 8 — Tag SemVer + GitHub Release (canônico)
 
 Após **todo** merge `sandbox` → `main` que conclua um marco (fase, feature user-facing, ou sync documental de versão):

@@ -32,6 +32,7 @@ Se houver conflito: **código + ADR vencem** sobre sugestões do modelo.
 9. **Commits** só quando o humano pedir; mensagens `type: <gitmoji> …` (obrigatório). Merges: `bash scripts/merge-pr.sh <n>` → `merge: 🔀 PR #n — branch` (nunca o subject default do GitHub).
 10. **Autoria Git:** Author/Committer = `Kleilson Santos <kdsddesign1@gmail.com>`. **Proibido** trailers ou co-autoria de IDE/agente (`Co-authored-by: Cursor`, `cursoragent@…`, etc.). Commits são do autor do projeto, não da ferramenta.
 11. **Releases:** após merge releaseable `sandbox` → `main`, alinhar CHANGELOG + `package.json` e publicar tag anotada + GitHub Release (`docs/guides/releases.md`). Não deixar docs/versão à frente da última tag. CI `semver-align` bloqueia promote para `main` se houver feat/fix sem bump.
+12. **Loop GitHub:** após push/PR, o agente **monitora** `gh pr checks` / Actions até estado terminal; correlaciona jobs; se FAIL, corrige e re-watch; se GREEN, reporta e **não mergeia** sem pedido. Detalhe: `docs/guides/task-kickoff.md` (Loop de eventos).
 
 ## Escopo típico de mudanças
 

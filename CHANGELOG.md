@@ -13,6 +13,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 - 👷 Dependabot version updates → `sandbox`; PR template em duas etapas
 - 📋 Kickoff: merge canónico, allowlist `gh`, mapeamento GREEN/NEXT
+- 📋 Loop de eventos GitHub no kickoff: watch checks → correlacionar → corrigir ou avançar
 
 ### Fixed
 
