@@ -47,11 +47,11 @@ function Sobre() {
         <div className="hero__copy">
           <span className="badge">Trajetória profissional</span>
           <h1>Sobre</h1>
-          <p>{SUMMARY}</p>
+          <p className="hero__lead">{SUMMARY}</p>
         </div>
       </header>
 
-      <section className="card card--interactive">
+      <section className="card">
         <h2>Informações</h2>
         <ul>
           <li>
@@ -70,7 +70,7 @@ function Sobre() {
         </ul>
       </section>
 
-      <section className="card card--interactive" aria-labelledby="soft-skills-heading">
+      <section className="card" aria-labelledby="soft-skills-heading">
         <h2 id="soft-skills-heading">Habilidades interpessoais</h2>
         <div className="stack-list">
           {SOFT_SKILLS.map((skill) => (
@@ -81,15 +81,15 @@ function Sobre() {
         </div>
       </section>
 
-      <section className="card card--interactive">
+      <section className="card">
         <h2>Experiência profissional</h2>
         {EXPERIENCE.map((job) => (
           <article key={`${job.company}-${job.period}-${job.client}`} className="experience-item">
             <h3>
               {job.role} — {job.company}
             </h3>
-            <p>
-              <strong>{job.period}</strong> · {job.client}
+            <p className="experience-item__meta">
+              {job.period} · {job.client}
             </p>
             <ul>
               {job.highlights.map((item) => (
@@ -100,7 +100,7 @@ function Sobre() {
         ))}
       </section>
 
-      <section className="card card--interactive" aria-labelledby="certifications-heading">
+      <section className="card" aria-labelledby="certifications-heading">
         <h2 id="certifications-heading">Certificações</h2>
         <p className="section-lead">
           Credenciais emitidas por vendors (distintas de cursos online).
@@ -118,7 +118,7 @@ function Sobre() {
                 <a
                   href={cert.verificationUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="credential-link"
                 >
                   Sobre a credencial
@@ -129,7 +129,7 @@ function Sobre() {
         </ul>
       </section>
 
-      <section className="card card--interactive" aria-labelledby="education-heading">
+      <section className="card" aria-labelledby="education-heading">
         <h2 id="education-heading">Educação</h2>
         <ul className="credential-list">
           {EDUCATION.map((item) => (
@@ -145,7 +145,7 @@ function Sobre() {
         </ul>
       </section>
 
-      <section className="card card--interactive" aria-labelledby="courses-heading">
+      <section className="card" aria-labelledby="courses-heading">
         <h2 id="courses-heading">Cursos e treinamentos</h2>
         <p className="section-lead">
           Formação contínua via Udemy, agrupada por domínio. Não equivale a

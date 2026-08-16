@@ -6,11 +6,18 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- ♿ Skip link para o conteúdo principal; formulário de contato com `aria-invalid`, `aria-describedby` e live region
+- 💄 Hero: chips de stack a partir de `skillGroups` (sem conteúdo inventado)
+- 💄 Projetos em destaque: rótulos Contexto / Resultado e CTA alinhado aos botões do design system
 - 👷 Cadeia GitHub: `scripts/merge-pr.sh`, `check-merge-tip.sh`, `check-semver-alignment.sh`, `.cursor/sandbox.json`
 - 📋 Auditoria de governança Git; GREEN = jobs do workflow `CI` (sem workflow paralelo)
 
 ### Changed
 
+- 💄 Cards de conteúdo deixam de usar hover-lift de “interativo” (hover só em painéis/chips com ponteiro fino)
+- ⚡ Fontes Google via `<link>` + `preconnect` (sem `@import` bloqueante no CSS)
+- 💄 Experiência profissional com âncora visual (borda) e meta tipográfica distinta
+- ♿ Links externos com `rel="noopener noreferrer"` e rótulos de GitHub explícitos
 - 👷 Dependabot version updates → `sandbox`; PR template em duas etapas
 - 📋 Autoria Git canónica `Kleilson Santos <kdsdesign1@gmail.com>`; `prepare` liga `.githooks`
 - 📋 Kickoff: merge canónico, allowlist `gh`, mapeamento GREEN/NEXT
@@ -18,6 +25,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Fixed
 
+- 🐛 `#root` com `border-radius: 50px` recortava o viewport
+- ♿ Focus do formulário alinhado ao `--focus-ring`; chevron do select respeita `data-theme`
 - 🔧 `.gitignore`: cache Turbo (`.turbo/`) e store pnpm local (`.pnpm-store/`)
 
 ### Changed
