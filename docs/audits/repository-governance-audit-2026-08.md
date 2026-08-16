@@ -41,7 +41,7 @@ Commits: Conventional + Gitmoji do repositório (`type: <emoji>`, não `feat(ui)
 | Codecov | `@vitest/coverage-v8` instalado; **sem** `test:coverage` no CI | Coverage não visível em PR | Baixo até haver gate interno | Token + ruído em PRs pequenos | **DEFER** (gerar coverage local primeiro) |
 | lint-staged | Só `commit-msg` | Commits com lint óbvio | Médio | Nova dep; oxlint já é rápido no CI | **DEFER** (pre-commit pesado já rejeitado no AIOS copy) |
 | `pnpm audit` em todo push | Não | Supply chain | Médio | Lento / falsos positivos no hook | **DEFER**; Dependabot + alerts **KEEP** |
-| Email Git `kdsddesign1@gmail.com` | Autoria em AGENTS/CONTRIBUTING/hooks | Confusão com `kdsdesign1` (AIOS) e `kleilson@icloud.com` (público) | Identidade Git estável | Mudar quebra atribuição | **KEEP** |
+| Email Git `kdsdesign1@gmail.com` | Autoria em AGENTS/CONTRIBUTING/hooks | Antes documentado como `kdsddesign1` | Identidade Git = AIOS | Drift documental | **STANDARDIZE** `kdsdesign1@gmail.com` |
 | Email público `kleilson@icloud.com` | `profile.json`, `contact.json`, SECURITY.md | Nenhum | Contato do produto | — | **KEEP** (função diferente) |
 | Workflows | `ci`, `codeql`, `deploy-pages`, `deploy-decap-oauth`, `legacy-github-pages-redirect` | Overlap baixo | Cada um tem trigger/propósito | Novo workflow “green” duplicaria `ci.yml` | **KEEP**; **ADD** só jobs no `ci.yml` existente (merge-tip, semver-align) |
 | Tracked 188 | Estrutura OSS | Não é “sujeira” | Docs + CI + app | Delete sem evidência | **KEEP** |
@@ -64,7 +64,7 @@ NEXT = próxima issue/slice após merge — não um comando de chat.
 
 | Identidade | Onde | Função | Decisão |
 | --- | --- | --- | --- |
-| `Kleilson Santos <kdsddesign1@gmail.com>` | AGENTS, CONTRIBUTING, git-workflow, commit-lint | **Git author/committer** | KEEP |
+| `Kleilson Santos <kdsdesign1@gmail.com>` | AGENTS, CONTRIBUTING, git-workflow, commit-lint | **Git author/committer** | KEEP |
 | `kleilson@icloud.com` | content JSON, SECURITY.md | **Contato público / security** | KEEP |
 | `kdsdesign1@gmail.com` | só no AIOS, não neste repo | Outro produto | Não copiar |
 

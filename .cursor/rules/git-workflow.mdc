@@ -32,7 +32,7 @@ Guia completo: `docs/guides/task-kickoff.md`
 - **Nunca** commitar diretamente em `main` ou `sandbox`
 - Branch semântica a partir de `sandbox` atualizada
 - Commits: Conventional Commits + Gitmoji obrigatório (`type: <emoji> …`)
-- Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **nunca** `Co-authored-by: Cursor` / `cursoragent@…` / trailers de IDE
+- Autoria: `Kleilson Santos <kdsdesign1@gmail.com>` — **nunca** `Co-authored-by: Cursor` / `cursoragent@…` / trailers de IDE
 - Merges: **`bash scripts/merge-pr.sh <n>`** → `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub)
 - Após PR: **watch** `gh pr checks` até terminal; FAIL → logs → fix; GREEN → reportar (merge só com pedido)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`

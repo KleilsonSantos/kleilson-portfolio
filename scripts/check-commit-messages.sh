@@ -18,7 +18,7 @@ while IFS= read -r line; do
   subject="${line#* }"
   body="$(git log -1 --format='%B' "$hash")"
   if printf '%s' "$body" | grep -Ei 'Co-authored-by:.*Cursor|cursoragent@cursor\.com' >/dev/null; then
-    echo "FAIL $hash  IDE/agent Co-authored-by trailer (author is Kleilson Santos <kdsddesign1@gmail.com> only)"
+    echo "FAIL $hash  IDE/agent Co-authored-by trailer (author is Kleilson Santos <kdsdesign1@gmail.com> only)"
     fail=1
   fi
   if [[ "$subject" =~ ^merge:\ 🔀 ]]; then

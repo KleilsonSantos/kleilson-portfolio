@@ -83,7 +83,7 @@ git commit -m "feat: ✨ descrição objetiva do que e por quê"
 **Tipos:** `feat` · `fix` · `docs` · `chore` · `ci` · `refactor` · `test` · `style` · `ui` (visual) · `perf` · `build` · `merge` · `release`  
 **Gitmoji de referência:** ✨ feat · 🐛 fix · ♻️ refactor · 📝 docs · 🔧 chore · 🚀 deploy/release · ⚡ perf · 🔒 security · ✅ test · 🎨 style/ui · 🔥 remove · 🏗️ build · 👷 ci · 🔀 merge
 
-**Autoria (obrigatória):** `Kleilson Santos <kdsddesign1@gmail.com>`  
+**Autoria (obrigatória):** `Kleilson Santos <kdsdesign1@gmail.com>`  
 **Proibido:** `Co-authored-by: Cursor`, `cursoragent@cursor.com`, ou qualquer trailer/assinatura de IDE/agente. O commit é do autor do projeto.  
 No Cursor IDE: desative **Settings → Agent → Attribution** (co-author automático).
 
