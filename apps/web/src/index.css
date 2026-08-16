@@ -1,5 +1,4 @@
 @import url('/design-tokens.css');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap');
 
 /* Tokens: public/design-tokens.css (ADR-0004) — fonte única site + editorial. */
 
@@ -100,7 +99,6 @@ body.nav-lock {
 
 #root {
   min-height: 100vh;
-  border-radius: 50px;
 }
 
 :focus-visible {
@@ -114,4 +112,13 @@ h3 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+.error-fallback {
+  margin: var(--space-8) auto;
+  max-width: 36rem;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-error-subtle);
+  color: var(--color-error);
 }
