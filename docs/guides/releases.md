@@ -49,6 +49,8 @@ gh release create vX.Y.Z \
 **Não** usar tag leve (`git tag vX.Y.Z` sem `-a`).  
 **Não** publicar release sem a seção correspondente no CHANGELOG.
 
+Gate CI: `bash scripts/check-semver-alignment.sh` (PRs e push em `main`) — impede `main` à frente da última tag sem bump + seção no CHANGELOG.
+
 ## Alinhamento com ROADMAP
 
 | Fase ROADMAP | Versão | Status |

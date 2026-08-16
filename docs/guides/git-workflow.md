@@ -111,14 +111,16 @@ gh pr create --base sandbox --head feature/minha-tarefa \
   --body "Resumo, contexto técnico e test plan (incluir evidência de QA local)."
 ```
 
-Aguarde CI passar → revise → **merge com subject gitmoji** → delete a branch:
+Aguarde CI passar → revise → merge **somente** via script (subject gitmoji) → delete a branch:
 
 ```bash
-gh pr merge <N> --merge \
-  --subject "merge: 🔀 PR #<N> — <branch>"
+bash scripts/merge-pr.sh <N> --delete-branch
+# equivalente:
+gh pr merge <N> --merge --subject "merge: 🔀 PR #<N> — <branch>"
 ```
 
-Não usar o subject padrão `Merge pull request #…` (sem emoji).
+Não usar o subject padrão `Merge pull request #…` (sem emoji).  
+CI: `scripts/check-commit-messages.sh` (PR) + `scripts/check-merge-tip.sh` (push em `sandbox`/`main`, tip).
 
 ### 4. PR de sandbox para main
 
@@ -130,10 +132,10 @@ gh pr create --base main --head sandbox \
   --body "Release notes e checklist de validação."
 ```
 
-Aguarde CI → merge com subject gitmoji:
+Aguarde CI → merge com o mesmo script:
 
 ```bash
-gh pr merge <N> --merge --subject "merge: 🔀 PR #<N> — sandbox"
+bash scripts/merge-pr.sh <N>
 ```
 
 ### 5. Tag SemVer + GitHub Release (passo canônico)
@@ -194,7 +196,7 @@ flowchart LR
 - ❌ PR de `feature/*` direto para `main` (pular sandbox)
 - ❌ Commits genéricos (`update`, `fix stuff`, `wip`)
 - ❌ Commits/merges sem gitmoji (`docs: polish…`, `Merge pull request #…`)
-- ❌ Tags sem mensagem anotada
+- ❌ `gh pr merge` sem `--subject` / `-t` (use `bash scripts/merge-pr.sh <n>`)
 
 ## CI/CD
 
@@ -202,6 +204,21 @@ O pipeline roda em:
 
 - Push para `sandbox` e `main`
 - Pull Requests para `sandbox` e `main`
+- `workflow_dispatch` (reexecução manual)
+
+Jobs extra alinhados ao AIOS (portfólio): `merge-tip` (subject de merge) e `semver-align` (PRs/`push` em `main`).
+
+## Dependabot
+
+Configurado em [`.github/dependabot.yml`](../../.github/dependabot.yml).
+
+| Tipo | Branch alvo | Notas |
+| --- | --- | --- |
+| **Version updates** (agendado) | `sandbox` | Mesmo fluxo Git; review → merge sandbox → promote |
+| **Security updates** | `main` (default) | Limitação do GitHub quando `target-branch` está setado — não deixar fila grande de bumps de versão em `main` |
+| **Dependabot alerts** | n/a | Aba Security |
+
+Subjects Dependabot (`chore(deps):` / `chore(deps-dev):`) são aceitos em `scripts/check-commit-messages.sh` para não bloquear PRs de promoção.
 
 ## Exceção histórica
 

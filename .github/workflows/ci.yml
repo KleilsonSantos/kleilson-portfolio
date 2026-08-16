@@ -5,6 +5,7 @@ on:
     branches: [main, sandbox]
   pull_request:
     branches: [main, sandbox]
+  workflow_dispatch:
 
 jobs:
   commitlint:
@@ -19,6 +20,16 @@ jobs:
           BASE="${{ github.event.pull_request.base.sha }}"
           HEAD="${{ github.event.pull_request.head.sha }}"
           bash scripts/check-commit-messages.sh "$BASE" "$HEAD"
+
+  merge-tip:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sandbox')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+      - name: Reject default GitHub merge subject on tip
+        run: bash scripts/check-merge-tip.sh 1
 
   quality:
     runs-on: ubuntu-latest
@@ -82,3 +93,13 @@ jobs:
       - run: pnpm lighthouse
         env:
           CI: true
+
+  semver-align:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.base_ref == 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check SemVer alignment vs last tag
+        run: bash scripts/check-semver-alignment.sh

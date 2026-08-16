@@ -4,6 +4,16 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- 👷 Cadeia GitHub: `scripts/merge-pr.sh`, `check-merge-tip.sh`, `check-semver-alignment.sh`, `.cursor/sandbox.json`
+- 📋 Auditoria de governança Git; GREEN = jobs do workflow `CI` (sem workflow paralelo)
+
+### Changed
+
+- 👷 Dependabot version updates → `sandbox`; PR template em duas etapas
+- 📋 Kickoff: merge canónico, allowlist `gh`, mapeamento GREEN/NEXT
+
 ### Fixed
 
 - 🔧 `.gitignore`: cache Turbo (`.turbo/`) e store pnpm local (`.pnpm-store/`)

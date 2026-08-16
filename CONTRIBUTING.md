@@ -25,7 +25,7 @@ flowchart LR
 4. Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **sem** `Co-authored-by: Cursor` / trailers de IDE ([AGENTS.md](./AGENTS.md))
 5. Antes do PR: `pnpm typecheck && pnpm lint && pnpm build`
 6. Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](./docs/adr/0003-documentation-strategy.md))
-7. PR → `sandbox` → depois PR `sandbox` → `main`
+7. PR → `sandbox` → depois PR `sandbox` → `main`. Merge: `bash scripts/merge-pr.sh <n>`
 8. Release: CHANGELOG + bump + tag anotada ([releases.md](./docs/guides/releases.md))
 
 ## Prefixos de branch
