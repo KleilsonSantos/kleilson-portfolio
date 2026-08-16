@@ -23,5 +23,13 @@ const Root = (
 )
 
 createRoot(rootElement).render(
-  import.meta.env.VITE_SENTRY_DSN ? <Sentry.ErrorBoundary fallback={<p>Algo deu errado.</p>}>{Root}</Sentry.ErrorBoundary> : Root,
+  import.meta.env.VITE_SENTRY_DSN ? (
+    <Sentry.ErrorBoundary
+      fallback={<p className="error-fallback">Algo deu errado. Recarregue a página ou volte à Home.</p>}
+    >
+      {Root}
+    </Sentry.ErrorBoundary>
+  ) : (
+    Root
+  ),
 )

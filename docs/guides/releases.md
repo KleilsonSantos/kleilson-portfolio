@@ -21,6 +21,7 @@ vMAJOR.MINOR.PATCH
 | `v0.4.0` | 2026-07-10 | Fase 3 — Persistência Supabase Postgres + Drizzle (#7 / ADR-0006) |
 | `v0.5.0` | 2026-07-13 | Fase 4+5 — Pages/Workers Free, observabilidade, monorepo, Decap, hardening conteúdo |
 | `v0.6.0` | 2026-07-14 | Editorial Decap token-only (`?v=8`), OAuth allowlist, AI governance audit |
+| `v0.7.0` | 2026-08-16 | UX/a11y do portfólio + cadeia GitHub (merge-pr, GREEN = CI) |
 
 ## Criar uma nova release (canônico)
 
@@ -49,6 +50,8 @@ gh release create vX.Y.Z \
 **Não** usar tag leve (`git tag vX.Y.Z` sem `-a`).  
 **Não** publicar release sem a seção correspondente no CHANGELOG.
 
+Gate CI: `bash scripts/check-semver-alignment.sh` (PRs e push em `main`) — impede `main` à frente da última tag sem bump + seção no CHANGELOG.
+
 ## Alinhamento com ROADMAP
 
 | Fase ROADMAP | Versão | Status |
@@ -63,6 +66,7 @@ gh release create vX.Y.Z \
 | Fase 4 — Deploy + observabilidade | `v0.5.0` | ✅ |
 | Fase 5 — Monorepo + Decap | `v0.5.0` | ✅ |
 | Editorial Decap estável + governança AI (audit) | `v0.6.0` | ✅ |
+| UX/a11y + cadeia GitHub (merge-pr / GREEN) | `v0.7.0` | ✅ |
 
 ## Relacionados
 

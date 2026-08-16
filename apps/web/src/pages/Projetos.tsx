@@ -4,18 +4,26 @@ import { PROJECTS } from '../data/projectsData'
 import type { Project } from '../types'
 
 function FeaturedProject({ project, primary }: { project: Project; primary?: boolean }) {
+  const githubLabel = `Ver ${project.name} no GitHub (abre em nova aba)`
+
   return (
     <article className={`project-feature${primary ? ' project-feature--primary' : ''}`}>
       <div className="project-feature__body">
         <p className="project-feature__label">{primary ? 'Projeto em destaque' : 'Destaque'}</p>
         <h3 className="project-feature__title">
-          <a href={project.url} target="_blank" rel="noreferrer">
+          <a href={project.url} target="_blank" rel="noopener noreferrer">
             {project.name}
           </a>
         </h3>
         <p className="project-feature__tagline">{project.tagline}</p>
-        <p className="project-feature__desc">{project.description}</p>
-        <p className="project-feature__impact">{project.impact}</p>
+        <p className="project-feature__desc">
+          <span className="project-kicker">Contexto</span>
+          {project.description}
+        </p>
+        <p className="project-feature__impact">
+          <span className="project-kicker">Resultado</span>
+          {project.impact}
+        </p>
         <div className="stack-list">
           {project.stack.map((tech) => (
             <span key={tech} className="chip">
@@ -23,8 +31,14 @@ function FeaturedProject({ project, primary }: { project: Project; primary?: boo
             </span>
           ))}
         </div>
-        <a className="project-feature__link" href={project.url} target="_blank" rel="noreferrer">
-          Ver no GitHub →
+        <a
+          className="button-link secondary project-feature__cta"
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={githubLabel}
+        >
+          Ver no GitHub
         </a>
       </div>
     </article>
@@ -36,7 +50,7 @@ function CompactProject({ project }: { project: Project }) {
     <article className="project-row">
       <div className="project-row__main">
         <h3>
-          <a href={project.url} target="_blank" rel="noreferrer">
+          <a href={project.url} target="_blank" rel="noopener noreferrer">
             {project.name}
           </a>
         </h3>
@@ -49,8 +63,14 @@ function CompactProject({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-      <a className="project-row__link" href={project.url} target="_blank" rel="noreferrer">
-        GitHub →
+      <a
+        className="project-row__link"
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Ver ${project.name} no GitHub (abre em nova aba)`}
+      >
+        GitHub
       </a>
     </article>
   )

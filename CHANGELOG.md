@@ -4,8 +4,31 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-08-16
+
+### Added
+
+- ♿ Skip link para o conteúdo principal; formulário de contato com `aria-invalid`, `aria-describedby` e live region
+- 💄 Hero: chips de stack a partir de `skillGroups` (sem conteúdo inventado)
+- 💄 Projetos em destaque: rótulos Contexto / Resultado e CTA alinhado aos botões do design system
+- 👷 Cadeia GitHub: `scripts/merge-pr.sh`, `check-merge-tip.sh`, `check-semver-alignment.sh`, `.cursor/sandbox.json`
+- 📋 Auditoria de governança Git; GREEN = jobs do workflow `CI` (sem workflow paralelo)
+
+### Changed
+
+- 💄 Cards de conteúdo deixam de usar hover-lift de “interativo” (hover só em painéis/chips com ponteiro fino)
+- ⚡ Fontes Google via `<link>` + `preconnect` (sem `@import` bloqueante no CSS)
+- 💄 Experiência profissional com âncora visual (borda) e meta tipográfica distinta
+- ♿ Links externos com `rel="noopener noreferrer"` e rótulos de GitHub explícitos
+- 👷 Dependabot version updates → `sandbox`; PR template em duas etapas
+- 📋 Autoria Git canónica `Kleilson Santos <kdsdesign1@gmail.com>`; `prepare` liga `.githooks`
+- 📋 Kickoff: merge canónico, allowlist `gh`, mapeamento GREEN/NEXT
+- 📋 Loop de eventos GitHub no kickoff: watch checks → correlacionar → corrigir ou avançar
+
 ### Fixed
 
+- 🐛 `#root` com `border-radius: 50px` recortava o viewport
+- ♿ Focus do formulário alinhado ao `--focus-ring`; chevron do select respeita `data-theme`
 - 🔧 `.gitignore`: cache Turbo (`.turbo/`) e store pnpm local (`.pnpm-store/`)
 
 ### Changed
@@ -13,7 +36,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Reposicionamento SWE-first (auditoria branding): headline/title CV-aligned; featured `banking` → VaultSpring → infra; AIOS/Companion como AI Applied (não hero)
 - 📝 Hero meta: localização · remoto · anos · Capgemini (AI-900 sai da primeira linha)
 - 📝 Highlights: AppSec/APIs/GitOps antes de AI Applied; purchase citado como lab privado (sem URL pública)
-- 📋 README + system-guide: última release alinhada a `v0.6.0`
+- 📋 README + system-guide: última release alinhada a `v0.7.0`
 - ♻️ Contato: validação/sanitize canônicos em `@kleilson/shared` (Fastify + Worker)
 
 ### Fixed
@@ -210,7 +233,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
 
-[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.3.0...v0.4.0

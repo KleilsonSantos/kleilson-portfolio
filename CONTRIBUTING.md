@@ -22,10 +22,10 @@ flowchart LR
 1. Fork (ou clone com permissão)
 2. Kickoff canônico (`task-kickoff.md`) — issue → In Progress → branch de `sandbox`
 3. Commits: [Conventional Commits](https://www.conventionalcommits.org/) + Gitmoji (`type: <emoji> …`; merges: `merge: 🔀 PR #n — branch`). Hooks: `git config core.hooksPath .githooks`
-4. Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **sem** `Co-authored-by: Cursor` / trailers de IDE ([AGENTS.md](./AGENTS.md))
+4. Autoria: `Kleilson Santos <kdsdesign1@gmail.com>` — **sem** `Co-authored-by: Cursor` / trailers de IDE ([AGENTS.md](./AGENTS.md))
 5. Antes do PR: `pnpm typecheck && pnpm lint && pnpm build`
 6. Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](./docs/adr/0003-documentation-strategy.md))
-7. PR → `sandbox` → depois PR `sandbox` → `main`
+7. PR → `sandbox` → depois PR `sandbox` → `main`. Merge: `bash scripts/merge-pr.sh <n>`
 8. Release: CHANGELOG + bump + tag anotada ([releases.md](./docs/guides/releases.md))
 
 ## Prefixos de branch

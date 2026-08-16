@@ -14,7 +14,8 @@
 ## Checklist
 
 - [ ] Branch semântica criada a partir de `sandbox`
-- [ ] PR aberto para `sandbox` (não para `main` diretamente)
+- [ ] Target correto: trabalho → `sandbox`; promoção `sandbox` → `main`
+- [ ] Merge futuro via `bash scripts/merge-pr.sh <n>` (nunca subject default do GitHub)
 - [ ] `pnpm typecheck` passou
 - [ ] `pnpm lint` passou
 - [ ] `pnpm build` passou

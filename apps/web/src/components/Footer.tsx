@@ -27,10 +27,10 @@ function Footer() {
           <Link to="/contatos" viewTransition>
             Contatos
           </Link>
-          <a href={PROFILE.github} target="_blank" rel="noreferrer">
+          <a href={PROFILE.github} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer">
+          <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
         </nav>

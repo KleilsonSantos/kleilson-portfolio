@@ -33,7 +33,7 @@ Ver `docs/guides/task-kickoff.md` — issue In Progress → `feature/*` from `sa
 ## Princípios
 
 - Agentes: `AGENTS.md` (não duplicar políticas)
-- Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — sem trailer Cursor
+- Autoria: `Kleilson Santos <kdsdesign1@gmail.com>` — sem trailer Cursor
 - Escopo mínimo; evidência para fatos profissionais
 - Validar: `pnpm typecheck && pnpm lint && pnpm build`
 - Docs no mesmo PR se mudar build/test/uso/release/arquitetura ([ADR-0003](../../docs/adr/0003-documentation-strategy.md))

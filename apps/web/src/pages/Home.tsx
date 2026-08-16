@@ -3,6 +3,8 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE, SUMMARY, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
 import { ProfilePhoto } from '../components/ProfilePhoto'
 
+const HERO_STACK = [...new Set(SKILL_GROUPS.flatMap((group) => group.skills))].slice(0, 10)
+
 function Home() {
   const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/profile/kleilson-avatar.webp`
 
@@ -42,6 +44,13 @@ function Home() {
               {PROFILE.location} · {PROFILE.remote} · {PROFILE.yearsOfExperience} anos ·{' '}
               {PROFILE.currentCompany}
             </p>
+            <ul className="hero__stack" aria-label="Tecnologias principais">
+              {HERO_STACK.map((skill) => (
+                <li key={skill}>
+                  <span className="chip chip--muted">{skill}</span>
+                </li>
+              ))}
+            </ul>
             <div className="cta-row">
               <Link to="/projetos" className="button-link" viewTransition>
                 Ver projetos
@@ -54,12 +63,12 @@ function Home() {
         </div>
       </header>
 
-      <section className="card card--interactive" aria-labelledby="summary-heading">
+      <section className="card" aria-labelledby="summary-heading">
         <h2 id="summary-heading">Resumo profissional</h2>
         <p>{SUMMARY}</p>
       </section>
 
-      <section className="card card--interactive" aria-labelledby="highlights-heading">
+      <section className="card" aria-labelledby="highlights-heading">
         <h2 id="highlights-heading">Destaques</h2>
         <ul className="highlight-grid">
           {HIGHLIGHTS.map((item) => (
@@ -70,7 +79,7 @@ function Home() {
         </ul>
       </section>
 
-      <section className="card card--interactive" aria-labelledby="skills-heading">
+      <section className="card" aria-labelledby="skills-heading">
         <h2 id="skills-heading">Competências</h2>
         <div className="grid-2">
           {SKILL_GROUPS.map((group) => (

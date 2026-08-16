@@ -126,12 +126,57 @@ gh pr create --base sandbox --head feature/<slug> \
 
 ### Passo 7 — Integração e promoção
 
-1. Merge PR → `sandbox` com subject `merge: 🔀 PR #<n> — <branch>` (e delete a branch)
+1. Merge PR → `sandbox` **somente** com `bash scripts/merge-pr.sh <n>` (subject `merge: 🔀 PR #<n> — <branch>`; delete a branch com `--delete-branch` se quiser)
 2. PR `sandbox` → `main` (após CI verde)
-3. Merge em `main` com subject `merge: 🔀 PR #<n> — sandbox`
+3. Merge em `main` com o mesmo script (`bash scripts/merge-pr.sh <n>`)
 4. **Atualizar checkboxes da issue:** o que a PR entregou → `[x]` no corpo (`gh issue edit`). Não deixar Aceite “aberto” pedindo clique manual do humano no que já está feito. O que **não** entrou na entrega permanece `[ ]`.
 5. **Release canônica (obrigatória quando a entrega for releaseable):** ver Passo 8
 6. Mover issue para **Done** no Project (quando Aceite de implementação estiver completo)
+
+Nunca `gh pr merge` sem `--subject` / `-t`. O CI `merge-tip` rejeita o subject default do GitHub no tip de `sandbox`/`main`.
+
+### GREEN e NEXT (sem workflow extra)
+
+**GREEN** = checks do workflow `CI` no GitHub (fonte de verdade: Actions, não um job paralelo):
+
+- PR para `sandbox` ou `main`: `commitlint` + `quality` (typecheck, lint, test, build) + `e2e` + `lighthouse`
+- Push em `sandbox`/`main`: `merge-tip`
+- PR ou push para `main`: `semver-align`
+
+**NOT GREEN** = qualquer um desses jobs failed. Enforcement: branch protection no GitHub.
+
+**NEXT** = próxima issue/slice após o merge (Project + `CHANGELOG` `[Unreleased]`). Não é comando de chat (`next`/`ok`/`green` do AIOS).
+
+### Loop de eventos GitHub (obrigatório para o agente)
+
+Abrir issue/PR **não encerra** a slice. O agente acompanha cada evento até estado terminal e só então avança ou corrige.
+
+```text
+push / gh pr create
+        ↓
+gh pr checks <n>          (repetir até todos COMPLETED)
+        ↓
+correlacionar jobs: commitlint · quality · e2e · lighthouse · CodeQL · GitGuardian
+        ↓
+     ┌── FAIL ──→ gh run view --log-failed → corrigir na branch → push → voltar ao topo
+     └── SUCCESS + MERGEABLE → GREEN → reportar → merge só com autorização
+                ↓
+     bash scripts/merge-pr.sh <n>
+                ↓
+     watch push em sandbox (merge-tip) → issue Done → NEXT slice
+```
+
+Comandos:
+
+```bash
+gh pr checks 177 --repo KleilsonSantos/kleilson-portfolio
+gh pr view 177 --json state,mergeable,statusCheckRollup
+gh run list --branch feature/ux-visual-excellence --limit 5
+# se falhou:
+gh run view <run-id> --log-failed
+```
+
+Não declarar GREEN sem ler o rollup. Skip (`merge-tip` / `semver-align` em PR para `sandbox`) não é falha.
 
 ### Passo 8 — Tag SemVer + GitHub Release (canônico)
 
@@ -178,6 +223,16 @@ gh issue comment 2 --repo KleilsonSantos/kleilson-portfolio \
 git push -u origin feature/typescript-migration
 ```
 
+## Cursor agent + `gh` (allowlist de rede)
+
+O Shell do agente Cursor allowlista `github.com` (git) por padrão, mas **não** `api.github.com` (REST/GraphQL do `gh`). Chamada bloqueada costuma aparecer como “token inválido” mesmo com `gh auth status` ok no Terminal.
+
+Este repositório inclui [`.cursor/sandbox.json`](../../.cursor/sandbox.json) permitindo `api.github.com`. No Cursor: **Settings → Agents → Auto Run → Auto-Run Network Access** → `sandbox.json + Defaults` (ou Allow All).
+
+Opcional (todos os workspaces): `bash scripts/install-cursor-sandbox-allowlist.sh` → `~/.cursor/sandbox.json`.
+
+Write ops GitHub (criar issue, merge, Project) só com pedido explícito do humano. Kickoff (comentar na issue, PR) segue este guia quando a tarefa já tem issue.
+
 ## O que NUNCA fazer no kickoff
 
 - ❌ Criar branch a partir de `main` (sempre `sandbox`)
@@ -190,6 +245,6 @@ git push -u origin feature/typescript-migration
 
 - [git-workflow.md](./git-workflow.md) — fluxo completo
 - [documentation-sync.md](./documentation-sync.md) — docs no PR
-- [ai-agentic.md](./ai-agentic.md) — agentes no kickoff
+- [ai-agentic.md](./ai-agentic.md) — agentes no kickoff + `gh` / sandbox.json
 - [ADR-0002](../adr/0002-git-branching-strategy.md)
 - [CONTRIBUTING.md](../../CONTRIBUTING.md)

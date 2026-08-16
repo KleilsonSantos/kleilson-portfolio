@@ -40,6 +40,9 @@ function Layout() {
 
   return (
     <div className="layout">
+      <a className="skip-link" href="#conteudo-principal">
+        Ir para o conteúdo
+      </a>
       <nav
         className={`navbar${menuOpen ? ' navbar--open' : ''}`}
         aria-label="Navegação principal"
@@ -103,7 +106,11 @@ function Layout() {
         />
       ) : null}
 
-      <main className={`app${isWidePage ? ' app--wide' : ''}`}>
+      <main
+        id="conteudo-principal"
+        className={`app${isWidePage ? ' app--wide' : ''}`}
+        tabIndex={-1}
+      >
         <Outlet />
       </main>
 
