@@ -32,10 +32,13 @@ Guia completo: `docs/guides/task-kickoff.md`
 - **Nunca** commitar diretamente em `main` ou `sandbox`
 - Branch semântica a partir de `sandbox` atualizada
 - Commits: Conventional Commits + Gitmoji obrigatório (`type: <emoji> …`)
-- Autoria: `Kleilson Santos <kdsddesign1@gmail.com>` — **nunca** `Co-authored-by: Cursor` / `cursoragent@…` / trailers de IDE
-- Merges: `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub sem emoji)
+- Autoria: `Kleilson Santos <kdsdesign1@gmail.com>` — **nunca** `Co-authored-by: Cursor` / `cursoragent@…` / trailers de IDE
+- Merges: **`bash scripts/merge-pr.sh <n>`** → `merge: 🔀 PR #<n> — <branch>` (nunca o subject padrão do GitHub)
+- Após PR: **watch** `gh pr checks` até terminal; FAIL → logs → fix; GREEN → reportar (merge só com pedido)
 - Dois PRs por entrega: `branch → sandbox` e `sandbox → main`
+- Autonomia GitHub do agente: `.cursor/sandbox.json` (`api.github.com`); write ops só com pedido explícito
 - Após merge releaseable em `main`: **tag anotada SemVer + GitHub Release** (CHANGELOG e `package.json` alinhados) — ver `docs/guides/releases.md`
+- CI: `check-commit-messages.sh` (PR) · `check-merge-tip.sh` (push sandbox/main) · `check-semver-alignment.sh` (promote `main`)
 - Releases: SemVer com tags anotadas (`v0.1.0`, `v0.2.0`, `v0.3.0`, …)
 - PR body deve referenciar issue: `Closes #N`
 
