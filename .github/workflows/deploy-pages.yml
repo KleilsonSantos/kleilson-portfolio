@@ -38,7 +38,7 @@ jobs:
       # Wrangler na raiz (package.json) — wrangler-action + pnpm workspace falha com
       # ERR_PNPM_ADDING_TO_ROOT se tentar `pnpm add wrangler` sem -w (CF #181/#338).
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
