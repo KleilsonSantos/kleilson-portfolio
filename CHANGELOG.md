@@ -4,6 +4,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Changed
+
+- 📝 Capgemini como última empresa (`Ago 2022 – Jul 2026`); status **aberto a oportunidades** (CLT ou PJ), sem vínculo vigente; AppSec encerra em Jul 2026
+
 ## [0.7.0] - 2026-08-16
 
 ### Added

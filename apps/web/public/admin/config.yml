@@ -43,13 +43,15 @@ collections:
               - { label: Headline, name: headline, widget: text }
               - { label: Localização, name: location, widget: string }
               - { label: Remoto, name: remote, widget: string }
+              - { label: Status (aberto a oportunidades), name: availability, widget: string }
               - { label: E-mail, name: email, widget: string }
               - { label: Telefone, name: phone, widget: string }
               - { label: LinkedIn, name: linkedin, widget: string }
               - { label: GitHub, name: github, widget: string }
               - { label: Site URL, name: siteUrl, widget: string }
               - { label: Anos de experiência, name: yearsOfExperience, widget: string }
-              - { label: Empresa atual, name: currentCompany, widget: string }
+              - { label: Última empresa, name: currentCompany, widget: string }
+              - { label: Período na última empresa, name: lastCompanyPeriod, widget: string }
               - { label: Certificação (resumo), name: certification, widget: string }
               - { label: Foto WebP, name: photo, widget: string }
               - { label: Foto JPEG fallback, name: photoFallback, widget: string }
