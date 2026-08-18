@@ -4,9 +4,12 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-08-18
+
 ### Changed
 
 - 📝 Capgemini como última empresa (`Ago 2022 – Jul 2026`); status **aberto a oportunidades** (CLT ou PJ), sem vínculo vigente; AppSec encerra em Jul 2026
+- 📋 README + system-guide: última release alinhada a `v0.7.1`
 
 ## [0.7.0] - 2026-08-16
 
@@ -237,7 +240,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
 
-[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.1...HEAD
+[0.7.1]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.4.0...v0.5.0
