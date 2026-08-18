@@ -22,6 +22,7 @@ vMAJOR.MINOR.PATCH
 | `v0.5.0` | 2026-07-13 | Fase 4+5 — Pages/Workers Free, observabilidade, monorepo, Decap, hardening conteúdo |
 | `v0.6.0` | 2026-07-14 | Editorial Decap token-only (`?v=8`), OAuth allowlist, AI governance audit |
 | `v0.7.0` | 2026-08-16 | UX/a11y do portfólio + cadeia GitHub (merge-pr, GREEN = CI) |
+| `v0.7.1` | 2026-08-18 | Capgemini encerrada (ago. 2022 – jul. 2026); aberto a oportunidades CLT/PJ |
 
 ## Criar uma nova release (canônico)
 
@@ -67,6 +68,7 @@ Gate CI: `bash scripts/check-semver-alignment.sh` (PRs e push em `main`) — imp
 | Fase 5 — Monorepo + Decap | `v0.5.0` | ✅ |
 | Editorial Decap estável + governança AI (audit) | `v0.6.0` | ✅ |
 | UX/a11y + cadeia GitHub (merge-pr / GREEN) | `v0.7.0` | ✅ |
+| Capgemini encerrada + aberto a oportunidades | `v0.7.1` | ✅ |
 
 ## Relacionados
 

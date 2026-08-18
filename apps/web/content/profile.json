@@ -5,7 +5,8 @@
     "title": "Software Engineer | Senior Backend / Full Stack | AppSec · Banking",
     "headline": "Microsserviços Java/Spring/Kafka, AppSec e DevSecOps em financial services — AI Applied Engineering como acelerador.",
     "location": "Paulo Afonso, Bahia, Brasil",
-    "remote": "Disponível para trabalho remoto",
+    "remote": "Disponível para trabalho remoto (CLT ou PJ)",
+    "availability": "Aberto a oportunidades",
     "email": "kleilson@icloud.com",
     "phone": "+55 75 99161-0301",
     "linkedin": "https://www.linkedin.com/in/kleilson-dev-full-stack/",
@@ -13,11 +14,12 @@
     "siteUrl": "https://kleilson-portfolio.pages.dev",
     "yearsOfExperience": "9+",
     "currentCompany": "Capgemini Brasil",
+    "lastCompanyPeriod": "Ago 2022 – Jul 2026",
     "certification": "Azure AI-900",
     "photo": "/images/profile/kleilson-avatar-320.webp?v=15",
     "photoFallback": "/images/profile/kleilson-avatar.jpg?v=15"
   },
-  "summary": "Software Engineer / Senior Backend (Full Stack com ênfase em backend) com mais de 9 anos de experiência, atuação na Capgemini em sistemas do setor financeiro (banking / financial services): microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em Application Security (AppSec) e DevSecOps — Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check — com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Experiência full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em labs pessoais, evolui ecossistemas Java/Kafka (incl. purchase multi-serviço) e, como acelerador de produtividade, pratica AI Applied Engineering (GitHub Copilot, Spec-Driven Development) e mantém open source de governança de agentes no SDLC (AIOS/Companion) — extensão da disciplina de engenharia, não o eixo da carreira.",
+  "summary": "Software Engineer / Senior Backend (Full Stack com ênfase em backend) com mais de 9 anos de experiência, incluindo atuação na Capgemini (ago. 2022 – jul. 2026) em sistemas do setor financeiro (banking / financial services): microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em Application Security (AppSec) e DevSecOps — Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check — com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Experiência full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em labs pessoais, evolui ecossistemas Java/Kafka (incl. purchase multi-serviço) e, como acelerador de produtividade, pratica AI Applied Engineering (GitHub Copilot, Spec-Driven Development) e mantém open source de governança de agentes no SDLC (AIOS/Companion) — extensão da disciplina de engenharia, não o eixo da carreira.",
   "highlights": [
     "Redução de 50% em vulnerabilidades com Mend (SCA) e Fortify (SAST)",
     "Mais de 20 APIs RESTful em Spring Boot com arquitetura hexagonal",
@@ -140,7 +142,7 @@
     {
       "company": "Capgemini Brasil",
       "role": "Desenvolvedor Full Stack",
-      "period": "Ago 2024 – Presente",
+      "period": "Ago 2024 – Jul 2026",
       "client": "Setor Financeiro (Bradesco) — Squad Application Security e Backend Java",
       "highlights": [
         "Mend (SCA) e Fortify (SAST) em pipelines de CI de microsserviços Java e Node.js",
