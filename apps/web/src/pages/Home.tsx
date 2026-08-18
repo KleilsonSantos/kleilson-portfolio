@@ -41,8 +41,8 @@ function Home() {
             <h1>{PROFILE.headline}</h1>
             <p className="hero__lead">{PROFILE.title}</p>
             <p className="hero__meta">
-              {PROFILE.location} · {PROFILE.remote} · {PROFILE.yearsOfExperience} anos ·{' '}
-              {PROFILE.currentCompany}
+              {PROFILE.location} · {PROFILE.availability} · {PROFILE.remote} ·{' '}
+              {PROFILE.yearsOfExperience} anos · {PROFILE.currentCompany} ({PROFILE.lastCompanyPeriod})
             </p>
             <ul className="hero__stack" aria-label="Tecnologias principais">
               {HERO_STACK.map((skill) => (
