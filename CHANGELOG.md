@@ -4,6 +4,11 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Changed
+
+- 👷 CodeQL Action **v4** (Node 24); `pnpm/action-setup@v5`; `configure-pages@v6`
+- 📦 Dependabot: workers-types, Sentry, tsx, Fastify, jest-dom 7
+
 ## [0.7.1] - 2026-08-18
 
 ### Changed
