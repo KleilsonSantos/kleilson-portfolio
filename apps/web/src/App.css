@@ -261,6 +261,16 @@
   .page > *:nth-child(n + 6) {
     animation-delay: 280ms;
   }
+
+  /* Revelação ao entrar no viewport (Chrome/Safari 26+; Firefox mantém o fade-up acima). */
+  @supports (animation-timeline: view()) {
+    .page > *,
+    .page > *:nth-child(n) {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
 }
 
 @keyframes fade-up {
@@ -867,6 +877,7 @@
 }
 
 .project-feature {
+  position: relative;
   padding: var(--space-6);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -920,6 +931,35 @@
 
 .project-feature__title a:hover {
   color: var(--color-primary);
+}
+
+/* Link único por projeto: o ::after do título cobre o card (ou a linha) inteiro. */
+.project-feature__title a::after,
+.project-row__main h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.project-feature__title a:focus-visible,
+.project-row__main h3 a:focus-visible {
+  box-shadow: none;
+}
+
+.project-feature:has(.project-feature__title a:focus-visible) {
+  box-shadow: var(--focus-ring);
+}
+
+.project-row:has(.project-row__main h3 a:focus-visible) {
+  outline: 3px solid var(--color-primary-ring);
+  outline-offset: -3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-feature:hover .project-feature__cta {
+    background: var(--color-primary-subtle);
+    border-color: var(--color-primary);
+  }
 }
 
 .project-feature__tagline {
@@ -981,6 +1021,7 @@
 }
 
 .project-row {
+  position: relative;
   display: grid;
   gap: var(--space-3);
   padding: var(--space-5) var(--space-6);
@@ -1036,7 +1077,7 @@
   white-space: nowrap;
 }
 
-.project-row__link:hover {
+.project-row:hover .project-row__link {
   text-decoration: underline;
 }
 
@@ -1164,14 +1205,15 @@
 
 .footer {
   margin-top: auto;
-  padding: var(--space-8) var(--space-6);
+  padding: var(--space-8) var(--page-pad-inline);
   padding-bottom: max(var(--space-8), env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--color-border);
   background: var(--color-bg-elevated);
 }
 
 .footer-content {
-  width: min(var(--container-wide), 100%);
+  /* Mesma largura útil da navegação (container menos o padding lateral). */
+  width: min(calc(var(--container-wide) - 2 * var(--page-pad-inline)), 100%);
   margin: 0 auto var(--space-4);
   display: flex;
   justify-content: space-between;
