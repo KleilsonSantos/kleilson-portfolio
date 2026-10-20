@@ -36,9 +36,15 @@ export const experienceSchema = z.object({
   highlights: z.array(nonEmpty).min(1),
 })
 
+export const metricSchema = z.object({
+  value: nonEmpty,
+  label: nonEmpty,
+})
+
 export const profileContentSchema = z.object({
   profile: profileSchema,
   summary: z.string().min(40),
+  metrics: z.array(metricSchema).min(1),
   highlights: z.array(nonEmpty).min(1),
   softSkills: z.array(nonEmpty).min(1),
   skillGroups: z.array(skillGroupSchema).min(1),

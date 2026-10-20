@@ -9,6 +9,31 @@ test.describe('Portfolio smoke', () => {
     await expect(page.getByRole('link', { name: 'Entrar em contato' })).toBeVisible()
   })
 
+  test('home mostra status, métricas e links externos do hero', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.getByText(/Aberto a oportunidades/).first()).toBeVisible()
+
+    const metrics = page.locator('.metric-card')
+    await expect(metrics).toHaveCount(4)
+    await expect(metrics.first()).toContainText('50%')
+
+    const profiles = page.getByRole('list', { name: 'Perfis externos' })
+    await expect(profiles.getByRole('link', { name: /GitHub/ })).toHaveAttribute('target', '_blank')
+    await expect(profiles.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('rel', /noopener/)
+  })
+
+  test('Home usa container largo, alinhado à navegação; Sobre fica estreita', async ({ page }) => {
+    const width = (selector: string) =>
+      page.locator(selector).first().evaluate((el) => el.getBoundingClientRect().width)
+
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('/')
+    const home = await width('main')
+    await page.goto('/sobre')
+    const sobre = await width('main')
+    expect(home).toBeGreaterThan(sobre)
+  })
+
   test('navegação entre rotas principais', async ({ page }) => {
     const nav = page.getByRole('navigation', { name: 'Navegação principal' })
 

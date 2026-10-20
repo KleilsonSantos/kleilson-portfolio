@@ -20,16 +20,30 @@
     "photoFallback": "/images/profile/kleilson-avatar.jpg?v=15"
   },
   "summary": "Software Engineer / Senior Backend (Full Stack com ênfase em backend) com mais de 9 anos de experiência, incluindo atuação na Capgemini (ago. 2022 – jul. 2026) em sistemas do setor financeiro (banking / financial services): microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em Application Security (AppSec) e DevSecOps — Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check — com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Experiência full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em labs pessoais, evolui ecossistemas Java/Kafka (incl. purchase multi-serviço) e, como acelerador de produtividade, pratica AI Applied Engineering (GitHub Copilot, Spec-Driven Development) e mantém open source de governança de agentes no SDLC (AIOS/Companion) — extensão da disciplina de engenharia, não o eixo da carreira.",
+  "metrics": [
+    {
+      "value": "50%",
+      "label": "Redução em vulnerabilidades com Mend (SCA) e Fortify (SAST)"
+    },
+    {
+      "value": "20+",
+      "label": "APIs RESTful em Spring Boot com arquitetura hexagonal"
+    },
+    {
+      "value": "≥ 80%",
+      "label": "Cobertura de testes JaCoCo com JUnit 5 e Testcontainers"
+    },
+    {
+      "value": "330+",
+      "label": "Contribuições no GitHub no último ano"
+    }
+  ],
   "highlights": [
-    "Redução de 50% em vulnerabilidades com Mend (SCA) e Fortify (SAST)",
-    "Mais de 20 APIs RESTful em Spring Boot com arquitetura hexagonal",
-    "Cobertura de testes JaCoCo ≥ 80% com JUnit 5 e Testcontainers",
     "GitOps end-to-end com ArgoCD, Gitea e k3d",
     "Migração Spring Boot 2→3→4 sem downtime (APIs depreciadas eliminadas)",
     "Labs: ecossistema purchase (4 MS event-driven, Saga, GitOps) — repositórios privados",
     "10 agentes Copilot, 7 prompts e 6 applyTo aplicando SDD (AI Applied)",
     "Open source AI Applied: AIOS/Companion (governança de IA no SDLC) — não eixo da carreira",
-    "Mais de 330 contribuições no GitHub no último ano",
     "Microsoft Azure AI Fundamentals (AI-900)"
   ],
   "softSkills": [
