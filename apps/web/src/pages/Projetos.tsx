@@ -73,7 +73,7 @@ function Projetos() {
   useDocumentMeta({
     title: `Projetos | ${PROFILE.shortName}`,
     description:
-      'Projetos open source: banking (Java/Angular), VaultSpring, DevSecOps, microsserviços — e labs de AI Applied (AIOS/Companion).',
+      'Projetos open source: VaultSpring (Spring/Vault), cloud-event-lab (multi-cloud), DevSecOps — e labs de AI Applied (AIOS/Companion).',
     canonical: `${PROFILE.siteUrl}/projetos`,
   })
 

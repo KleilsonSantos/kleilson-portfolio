@@ -11,7 +11,7 @@ test.describe('Portfolio smoke', () => {
 
   test('home mostra status, métricas e links externos do hero', async ({ page }) => {
     await page.goto('/')
-    await expect(page.getByText(/Aberto a oportunidades/).first()).toBeVisible()
+    await expect(page.getByText(/CI&T/).first()).toBeVisible()
 
     const metrics = page.locator('.metric-card')
     await expect(metrics).toHaveCount(4)
@@ -45,7 +45,7 @@ test.describe('Portfolio smoke', () => {
     await nav.getByRole('link', { name: 'Projetos' }).click()
     await expect(page).toHaveURL(/\/projetos$/)
     await expect(page.getByRole('heading', { name: 'Projetos', exact: true })).toBeVisible()
-    await expect(page.getByRole('link', { name: 'banking' }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: 'VaultSpring' }).first()).toBeVisible()
 
     await nav.getByRole('link', { name: 'Contatos' }).click()
     await expect(page).toHaveURL(/\/contatos$/)

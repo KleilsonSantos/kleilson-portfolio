@@ -1,34 +1,37 @@
 {
   "projects": [
     {
-      "id": "banking",
-      "name": "banking",
-      "tagline": "Plataforma full stack bancária — Java, Angular, obs e GitOps",
-      "description": "Banking Platform — monorepo / ecossistema open source com Java 21, Spring Boot, Angular 18, observabilidade (Prometheus/Grafana), segurança e pipelines CI/CD alinhados a práticas de plataforma bancária. Referência pública de organização full stack com microsserviços e entrega contínua.",
-      "impact": "Vitrine de engenharia de software: backend, frontend, DevSecOps e observabilidade no mesmo sistema — não um demo isolado.",
-      "stack": [
-        "Java 21",
-        "Spring Boot",
-        "Angular 18",
-        "Kubernetes",
-        "Prometheus",
-        "GitOps"
-      ],
-      "url": "https://github.com/KleilsonSantos/banking",
-      "featured": true
-    },
-    {
       "id": "vaultspring",
       "name": "VaultSpring",
       "tagline": "Segredos com HashiCorp Vault e Testcontainers",
-      "description": "Aplicação Spring Boot para gestão segura de segredos em ambientes escaláveis, com autenticação robusta e testes de integração.",
+      "description": "Serviço Spring Boot de credenciais seguras: PostgreSQL com Flyway, segredos no HashiCorp Vault, autenticação JWT/RBAC e CI DevSecOps.",
       "impact": "AppSec operacional: segredos fora do código e testes de integração reproduzíveis.",
       "stack": [
         "Spring Boot",
         "HashiCorp Vault",
+        "PostgreSQL",
+        "Flyway",
+        "JWT/RBAC",
         "Testcontainers"
       ],
       "url": "https://github.com/KleilsonSantos/VaultSpring",
+      "featured": true
+    },
+    {
+      "id": "cloud-event-lab",
+      "name": "cloud-event-lab",
+      "tagline": "Plataforma de eventos cloud-native multi-cloud (lab)",
+      "description": "Lab técnico autônomo: a mesma aplicação de eventos (ingestão REST, processamento assíncrono, persistência e object storage) roda com profiles local, AWS (LocalStack), Azure (Azurite), GCP (Pub/Sub emulator) e OpenTelemetry, em Java 21/Spring Boot com React/TypeScript. Documentado com proposta de arquitetura, matriz multi-cloud e ADRs; usa emuladores — não é produção em cloud real.",
+      "impact": "Portabilidade multi-cloud verificável por profiles, sem acoplar o domínio ao provedor.",
+      "stack": [
+        "Java 21",
+        "Spring Boot",
+        "React",
+        "TypeScript",
+        "Kubernetes",
+        "OpenTelemetry"
+      ],
+      "url": "https://github.com/KleilsonSantos/cloud-event-lab",
       "featured": true
     },
     {
@@ -125,20 +128,6 @@
         "Redis"
       ],
       "url": "https://github.com/KleilsonSantos/OrderProcessingSystem",
-      "featured": false
-    },
-    {
-      "id": "ai-driven",
-      "name": "ai-driven",
-      "tagline": "Automações AI-driven para produtividade",
-      "description": "Toolkit open-source de automações AI-driven — linha anterior à disciplina AI Applied (AIOS/Companion).",
-      "impact": "Scripts e workflows reutilizáveis de produtividade.",
-      "stack": [
-        "Shell Script",
-        "AI Workflows",
-        "Automação"
-      ],
-      "url": "https://github.com/KleilsonSantos/ai-driven",
       "featured": false
     }
   ]

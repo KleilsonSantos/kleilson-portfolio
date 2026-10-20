@@ -24,6 +24,7 @@ vMAJOR.MINOR.PATCH
 | `v0.7.0` | 2026-08-16 | UX/a11y do portfólio + cadeia GitHub (merge-pr, GREEN = CI) |
 | `v0.7.1` | 2026-08-18 | Capgemini encerrada (ago. 2022 – jul. 2026); aberto a oportunidades CLT/PJ |
 | `v0.8.0` | 2026-10-20 | UX audit fatias A–D (a11y/SEO, Home, interações, contato) + lote Dependabot |
+| `v0.9.0` | 2026-10-20 | Novo cargo na CI&T (status) + projetos repriorizados pelo GitHub |
 
 ## Criar uma nova release (canônico)
 
@@ -71,6 +72,7 @@ Gate CI: `bash scripts/check-semver-alignment.sh` (PRs e push em `main`) — imp
 | UX/a11y + cadeia GitHub (merge-pr / GREEN) | `v0.7.0` | ✅ |
 | Capgemini encerrada + aberto a oportunidades | `v0.7.1` | ✅ |
 | UX audit fatias A–D + lote Dependabot | `v0.8.0` | ✅ |
+| Novo cargo CI&T + projetos repriorizados | `v0.9.0` | ✅ |
 
 ## Relacionados
 
