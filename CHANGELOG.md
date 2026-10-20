@@ -4,7 +4,17 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- 🔍 Metadados estáticos no `index.html` (`description`, `og:*`, `twitter:*`, `theme-color`) e imagem OG 1200×630 (`/images/og-image.png`): previews de compartilhamento funcionam sem JS (#207)
+- ♿ Teste axe (WCAG 2.2 AA) em `/`, `/sobre`, `/projetos`, `/contatos` nos temas escuro e claro (`e2e/a11y.spec.ts`, devDependency `@axe-core/playwright`)
+- 👷 Lighthouse CI também em emulação mobile (`pnpm --filter @kleilson/web lighthouse:mobile`)
+
 ### Changed
+
+- ♿ Tema claro: texto do botão primário branco e teal `#0d6b64` (contraste 6,36:1; antes 3,52:1); `text-muted` `#566980` e fundo de chip `0.08`, ambos ≥ 4,5:1
+- ♿ Botão "Ver no GitHub" (destaques): nome acessível contém o texto visível (WCAG 2.5.3)
+- 💄 `theme-color` acompanha o tema ativo (lido de `--color-bg`) em vez de teal fixo
 
 - 👷 CodeQL Action **v4** (Node 24); `pnpm/action-setup@v5`; `configure-pages@v6`
 - 📦 Dependabot: workers-types, Sentry, tsx, Fastify, jest-dom 7

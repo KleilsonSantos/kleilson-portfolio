@@ -5,15 +5,16 @@
  * Usa staticDistDir (mais estável que preview server no CI).
  * Rotas SPA profundas ficam para evolução com server SPA-aware.
  */
+const mobile = process.env.LH_FORM_FACTOR === 'mobile'
+
 module.exports = {
   ci: {
     collect: {
       staticDistDir: './dist',
       url: ['http://localhost/'],
       numberOfRuns: 1,
-      settings: {
-        preset: 'desktop',
-      },
+      // Sem preset, o Lighthouse usa a emulação mobile padrão.
+      settings: mobile ? {} : { preset: 'desktop' },
     },
     assert: {
       assertions: {
@@ -25,7 +26,7 @@ module.exports = {
     },
     upload: {
       target: 'filesystem',
-      outputDir: '.lighthouseci',
+      outputDir: mobile ? '.lighthouseci/mobile' : '.lighthouseci',
     },
   },
 }

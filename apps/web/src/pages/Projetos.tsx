@@ -4,8 +4,6 @@ import { PROJECTS } from '../data/projectsData'
 import type { Project } from '../types'
 
 function FeaturedProject({ project, primary }: { project: Project; primary?: boolean }) {
-  const githubLabel = `Ver ${project.name} no GitHub (abre em nova aba)`
-
   return (
     <article className={`project-feature${primary ? ' project-feature--primary' : ''}`}>
       <div className="project-feature__body">
@@ -36,9 +34,9 @@ function FeaturedProject({ project, primary }: { project: Project; primary?: boo
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={githubLabel}
         >
           Ver no GitHub
+          <span className="visually-hidden"> — {project.name} (abre em nova aba)</span>
         </a>
       </div>
     </article>

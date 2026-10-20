@@ -24,6 +24,17 @@ export function resolveTheme(stored: ThemeMode | null = readStoredTheme()): Them
 export function applyTheme(theme: ThemeMode): void {
   document.documentElement.dataset.theme = theme
   document.documentElement.style.colorScheme = theme
+  syncThemeColor()
+}
+
+/** Alinha a barra do navegador ao fundo do tema; lê o token em vez de duplicar o hex. */
+function syncThemeColor(): void {
+  const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim()
+  if (!bg) return
+  document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+    meta.setAttribute('content', bg)
+    meta.removeAttribute('media')
+  })
 }
 
 export function persistTheme(theme: ThemeMode): void {

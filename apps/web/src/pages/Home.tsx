@@ -6,7 +6,7 @@ import { ProfilePhoto } from '../components/ProfilePhoto'
 const HERO_STACK = [...new Set(SKILL_GROUPS.flatMap((group) => group.skills))].slice(0, 10)
 
 function Home() {
-  const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/profile/kleilson-avatar.webp`
+  const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/og-image.png`
 
   useDocumentMeta({
     title: `${PROFILE.name} | ${PROFILE.title}`,

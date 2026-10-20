@@ -40,6 +40,18 @@ describe('theme utils', () => {
     expect(document.documentElement.style.colorScheme).toBe('light')
   })
 
+  it('applyTheme alinha theme-color ao token --color-bg e remove o media', () => {
+    document.head.innerHTML = '<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">'
+    document.documentElement.style.setProperty('--color-bg', '#f4f7fb')
+
+    applyTheme('light')
+
+    const meta = document.querySelector('meta[name="theme-color"]')
+    expect(meta?.getAttribute('content')).toBe('#f4f7fb')
+    expect(meta?.hasAttribute('media')).toBe(false)
+    document.documentElement.style.removeProperty('--color-bg')
+  })
+
   it('getSystemTheme respeita matchMedia', () => {
     const matches = vi.fn().mockReturnValue(true)
     vi.stubGlobal(
