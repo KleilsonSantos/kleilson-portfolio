@@ -58,13 +58,13 @@ function Sobre() {
             <strong>Experiência:</strong> {PROFILE.yearsOfExperience} anos
           </li>
           <li>
-            <strong>Última empresa:</strong> {PROFILE.currentCompany} ({PROFILE.lastCompanyPeriod})
+            <strong>Empresa atual:</strong> {PROFILE.currentCompany} ({PROFILE.currentCompanyPeriod})
           </li>
           <li>
-            <strong>Status:</strong> {PROFILE.availability}
+            <strong>Cargo:</strong> {PROFILE.currentRole}
           </li>
           <li>
-            <strong>Disponibilidade:</strong> {PROFILE.remote}
+            <strong>Modelo:</strong> {PROFILE.remote}
           </li>
           <li>
             <strong>Certificação:</strong> {PROFILE.certification}

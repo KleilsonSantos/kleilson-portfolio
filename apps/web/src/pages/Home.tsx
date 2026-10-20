@@ -41,14 +41,13 @@ function Home() {
           <ProfilePhoto size="lg" className="hero__photo" />
           <div className="hero__copy">
             <p className="hero__status">
-              {PROFILE.availability} · {PROFILE.remote}
+              {PROFILE.currentRole} · {PROFILE.currentCompany}
             </p>
             <p className="hero__brand">{PROFILE.shortName}</p>
             <h1>{PROFILE.headline}</h1>
             <p className="hero__lead">{PROFILE.title}</p>
             <p className="hero__meta">
-              {PROFILE.location} · {PROFILE.yearsOfExperience} anos · {PROFILE.currentCompany} (
-              {PROFILE.lastCompanyPeriod})
+              {PROFILE.location} · {PROFILE.remote} · {PROFILE.yearsOfExperience} anos
             </p>
             <div className="cta-row">
               <Link to="/projetos" className="button-link" viewTransition>
