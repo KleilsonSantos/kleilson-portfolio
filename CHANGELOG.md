@@ -4,11 +4,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-10-20
+
 ### Changed
 
 - 💼 Situação profissional atualizada com base no LinkedIn: Analista de Sistemas Sênior na CI&T (tempo integral, remoto, desde out. de 2026); hero e Sobre deixam de exibir “aberto a oportunidades” e passam a mostrar cargo/empresa atuais (#220)
 - 💼 Projetos repriorizados a partir do GitHub público e ativo: destaques VaultSpring, cloud-event-lab (multi-cloud Java/Spring) e infra-devtools; `banking` (repositório privado) e `ai-driven` (arquivado) saem da vitrine pública sem depreciação (#220)
 - 🧹 `.playwright-mcp/` (screenshots/logs de QA local) adicionado ao `.gitignore` (#220)
+- 📋 README + system-guide: última release alinhada a `v0.9.0`
 
 ## [0.8.0] - 2026-10-20
 
@@ -273,7 +276,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
 
-[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.6.0...v0.7.0

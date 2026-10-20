@@ -8,7 +8,7 @@
 | --- | --- |
 | **Versão do guia** | 2026-08-10 |
 | **Baseline de código** | monorepo pnpm + Turborepo; Pages + Workers Free; Decap |
-| **Última release tag** | `v0.8.0` |
+| **Última release tag** | `v0.9.0` |
 | **Site** | https://kleilson-portfolio.pages.dev |
 
 ---
