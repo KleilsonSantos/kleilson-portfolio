@@ -7,6 +7,9 @@ import { INITIAL_FORM, validateField, validateForm, hasErrors } from '../utils/v
 import { sanitizeFormData } from '../utils/sanitize'
 import type { ContactForm, ContactFormField, FormErrors, FormStatus } from '../types'
 
+/** Ordem visual do formulário: o foco vai ao primeiro campo com erro nessa ordem. */
+const FIELD_ORDER: readonly ContactFormField[] = ['name', 'email', 'category', 'message']
+
 function Contatos() {
   const [form, setForm] = useState<ContactForm>(INITIAL_FORM)
   const [errors, setErrors] = useState<FormErrors>({})
@@ -28,7 +31,12 @@ function Contatos() {
     event.preventDefault()
     const validationErrors = validateForm(form)
     setErrors(validationErrors)
-    if (hasErrors(validationErrors)) return
+    if (hasErrors(validationErrors)) {
+      const firstInvalid = FIELD_ORDER.find((field) => validationErrors[field])
+      const control = firstInvalid ? event.currentTarget.elements.namedItem(firstInvalid) : null
+      if (control instanceof HTMLElement) control.focus()
+      return
+    }
 
     setStatus('loading')
     setMessage('')
@@ -141,15 +149,14 @@ function Contatos() {
               {status === 'loading' ? 'Enviando...' : 'Enviar mensagem'}
             </button>
 
-            {message ? (
-              <p
-                className={`form-status form-status--${status === 'success' ? 'success' : 'error'}`}
-                role="status"
-                aria-live="polite"
-              >
-                {message}
-              </p>
-            ) : null}
+            {/* Sempre montada: leitores de tela só anunciam mudanças em regiões já existentes. */}
+            <div role="status">
+              {message ? (
+                <p className={`form-status form-status--${status === 'success' ? 'success' : 'error'}`}>
+                  {message}
+                </p>
+              ) : null}
+            </div>
           </form>
         </section>
 

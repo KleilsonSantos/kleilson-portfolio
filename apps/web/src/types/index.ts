@@ -24,6 +24,12 @@ export interface Profile {
   photoFallback: string
 }
 
+/** Número em destaque na Home; `value` e `label` vêm do mesmo fato verificável do CV. */
+export interface Metric {
+  value: string
+  label: string
+}
+
 export interface SkillGroup {
   title: string
   skills: string[]

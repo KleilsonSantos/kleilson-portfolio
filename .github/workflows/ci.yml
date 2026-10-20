@@ -36,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
         with:
           version: 11.5.2
 
@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
         with:
           version: 11.5.2
 
@@ -79,7 +79,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
         with:
           version: 11.5.2
 
@@ -91,6 +91,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm lighthouse
+        env:
+          CI: true
+      # Reusa o dist gerado (sem VITE_API_BASE_URL) pelo passo anterior.
+      - run: env -u VITE_API_BASE_URL pnpm --filter @kleilson/web lighthouse:mobile
         env:
           CI: true
 

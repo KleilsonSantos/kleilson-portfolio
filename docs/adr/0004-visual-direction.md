@@ -68,6 +68,26 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 - `prefers-reduced-motion` desativa view transitions
 - **Não** adotar MUI/Chakra/Motion: redundante com tokens ADR-0004 e motion CSS existente
 
+## V6 — Hero com status, métricas e container por tipo de conteúdo
+
+- **Data:** 2026-10-20 · **Issue:** #209 · **Protótipo:** Figma "Portfólio Kleilson — UX audit" (página "Depois — proposta B")
+- Não reverte nenhuma decisão acima (dark-first, Sora + IBM Plex Sans, teal): é extensão incremental, como V2–V5.
+
+**Emenda à tabela de Direção (Hero):** o hero continua com brand + headline + lead + CTAs e passa a incluir (1) um pill de status (`availability` + `remote`, mesmos textos do perfil) e (2) links externos GitHub/LinkedIn ao lado dos CTAs. Saem os chips de stack do hero, que repetiam a seção Competências. "Sem cards no 1º viewport" passa a valer **para o bloco do hero**: as métricas começam logo abaixo dele e, em desktop, já aparecem na primeira tela.
+
+**Destaques:** 4 métricas (valor + descrição) seguidas de lista compacta. Os números vêm do texto já verificado (50%, 20+, ≥ 80%, 330+); entram em `profile.json › metrics` e saem de `highlights` para não duplicar conteúdo.
+
+**Container por tipo de conteúdo** (`WIDE_PAGES` em `Layout.tsx`):
+
+| Tipo | Container | Páginas |
+| --- | --- | --- |
+| Vitrine em grade (hero em colunas, cards/métricas) | `--container-wide`, alinhado à navegação | Home, Projetos, Contatos |
+| Leitura longa (texto corrido, listas) | `--container-narrow` | Sobre, 404 |
+
+**Contraste (sem mudar a paleta):** no tema claro, texto do botão primário branco e teal `#0d6b64`; `text-muted` `#566980` — ver #207 / PR #208.
+
+**Alternativa rejeitada:** manter a Home estreita. O conteúdo (hero em 2 colunas, 4 métricas) é de vitrine, e a navegação já é larga; o container estreito deixava o logo desalinhado do conteúdo e quebrava o título em 6 linhas.
+
 ## Consequences
 
 ### Positivas

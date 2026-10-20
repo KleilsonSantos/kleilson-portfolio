@@ -1,9 +1,12 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom'
 import Footer from './Footer'
 import { PROFILE } from '../data/profileData'
 import { useTheme } from '../hooks/useTheme'
 import { useAnalytics } from '../hooks/useAnalytics'
+
+/** Vitrine em grade usa o container largo (alinhado à navegação); páginas de leitura longa ficam estreitas (ADR-0004 V6). */
+const WIDE_PAGES: readonly string[] = ['/', '/projetos', '/contatos']
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -14,10 +17,11 @@ const navItems = [
 
 function Layout() {
   const { pathname } = useLocation()
-  const isWidePage = pathname === '/contatos' || pathname === '/projetos'
+  const isWidePage = WIDE_PAGES.includes(pathname)
   const { isDark, toggle } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
+  const menuToggleRef = useRef<HTMLButtonElement>(null)
   useAnalytics()
 
   useEffect(() => {
@@ -27,7 +31,9 @@ function Layout() {
   useEffect(() => {
     if (!menuOpen) return
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMenuOpen(false)
+      if (event.key !== 'Escape') return
+      setMenuOpen(false)
+      menuToggleRef.current?.focus()
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
@@ -53,6 +59,7 @@ function Layout() {
           </Link>
 
           <button
+            ref={menuToggleRef}
             type="button"
             className="nav-toggle"
             aria-expanded={menuOpen}
@@ -85,7 +92,6 @@ function Layout() {
             className="theme-toggle"
             onClick={toggle}
             aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
-            aria-pressed={isDark}
           >
             <span className="theme-toggle__icon" aria-hidden="true">
               {isDark ? '☀︎' : '☾'}
