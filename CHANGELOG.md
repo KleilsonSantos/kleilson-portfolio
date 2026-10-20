@@ -6,6 +6,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Added
 
+- ✨ Revelação ao rolar (`animation-timeline: view()`) como melhoria progressiva sob `@supports`; Firefox (sem suporte) mantém o fade-up de entrada (#211)
 - 💄 Home: pill de status no hero, links externos GitHub/LinkedIn e 4 métricas nos Destaques (`profile.json › metrics`, schema, tipos e config do Decap); ADR-0004 V6 (#209)
 - 🔍 Metadados estáticos no `index.html` (`description`, `og:*`, `twitter:*`, `theme-color`) e imagem OG 1200×630 (`/images/og-image.png`): previews de compartilhamento funcionam sem JS (#207)
 - ♿ Teste axe (WCAG 2.2 AA) em `/`, `/sobre`, `/projetos`, `/contatos` nos temas escuro e claro (`e2e/a11y.spec.ts`, devDependency `@axe-core/playwright`)
@@ -13,6 +14,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
+- ♿ Projetos: um único link por card/linha (card inteiro clicável, foco visível no card); botão do menu recebe o foco de volta ao fechar com Esc; toggle de tema sem `aria-pressed` (rótulo já muda)
+- 💄 Rodapé alinhado à navegação (margem lateral e largura úteis iguais)
 - 💄 Home usa o container largo (alinhado à navegação); Sobre e 404 seguem estreitas. Chips de stack saem do hero (repetiam Competências) e o `min-height` do hero foi removido
 - ♿ Tema claro: texto do botão primário branco e teal `#0d6b64` (contraste 6,36:1; antes 3,52:1); `text-muted` `#566980` e fundo de chip `0.08`, ambos ≥ 4,5:1
 - ♿ Botão "Ver no GitHub" (destaques): nome acessível contém o texto visível (WCAG 2.5.3)

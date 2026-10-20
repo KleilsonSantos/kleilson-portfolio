@@ -67,6 +67,37 @@ test.describe('Portfolio smoke', () => {
     expect(px).toBeGreaterThanOrEqual(16)
   })
 
+  test('cada projeto tem um único link (card inteiro clicável)', async ({ page }) => {
+    await page.goto('/projetos')
+    const cards = page.locator('.project-feature, .project-row')
+    expect(await cards.count()).toBeGreaterThan(0)
+    for (const card of await cards.all()) {
+      await expect(card.getByRole('link')).toHaveCount(1)
+    }
+  })
+
+  test('menu mobile: Esc fecha e devolve o foco ao botão', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    await page.goto('/')
+    // Seletor estável: o nome acessível muda entre "Abrir menu" e "Fechar menu".
+    const toggle = page.locator('.nav-toggle')
+    await toggle.click()
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+
+    await page.keyboard.press('Escape')
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    await expect(toggle).toBeFocused()
+  })
+
+  test('toggle de tema usa rótulo que muda, sem aria-pressed', async ({ page }) => {
+    await page.goto('/')
+    const toggle = page.locator('.theme-toggle')
+    await expect(toggle).not.toHaveAttribute('aria-pressed', /.*/)
+    const before = await toggle.getAttribute('aria-label')
+    await toggle.click()
+    expect(await toggle.getAttribute('aria-label')).not.toBe(before)
+  })
+
   test('formulário de contato valida e envia (mock API)', async ({ page }) => {
     await page.goto('/contatos')
     await page.getByLabel('Nome *').fill('Kleilson QA')

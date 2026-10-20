@@ -11,6 +11,7 @@ function FeaturedProject({ project, primary }: { project: Project; primary?: boo
         <h3 className="project-feature__title">
           <a href={project.url} target="_blank" rel="noopener noreferrer">
             {project.name}
+            <span className="visually-hidden"> (abre em nova aba)</span>
           </a>
         </h3>
         <p className="project-feature__tagline">{project.tagline}</p>
@@ -29,15 +30,10 @@ function FeaturedProject({ project, primary }: { project: Project; primary?: boo
             </span>
           ))}
         </div>
-        <a
-          className="button-link secondary project-feature__cta"
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ver no GitHub
-          <span className="visually-hidden"> — {project.name} (abre em nova aba)</span>
-        </a>
+        {/* Visual apenas: o link do título cobre o card inteiro (um tab stop por projeto). */}
+        <span className="button-link secondary project-feature__cta" aria-hidden="true">
+          Ver no GitHub ↗
+        </span>
       </div>
     </article>
   )
@@ -50,6 +46,7 @@ function CompactProject({ project }: { project: Project }) {
         <h3>
           <a href={project.url} target="_blank" rel="noopener noreferrer">
             {project.name}
+            <span className="visually-hidden"> (abre em nova aba)</span>
           </a>
         </h3>
         <p>{project.tagline}</p>
@@ -61,15 +58,9 @@ function CompactProject({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-      <a
-        className="project-row__link"
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Ver ${project.name} no GitHub (abre em nova aba)`}
-      >
-        GitHub
-      </a>
+      <span className="project-row__link" aria-hidden="true">
+        GitHub ↗
+      </span>
     </article>
   )
 }
