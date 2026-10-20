@@ -98,6 +98,20 @@ test.describe('Portfolio smoke', () => {
     expect(await toggle.getAttribute('aria-label')).not.toBe(before)
   })
 
+  test('contato: erro de validação usa a cor de erro e leva o foco ao primeiro campo', async ({ page }) => {
+    await page.goto('/contatos')
+    await page.getByRole('button', { name: 'Enviar mensagem' }).click()
+
+    await expect(page.getByLabel('Nome *')).toBeFocused()
+    const [r, g, b] = await page
+      .locator('.form-field__error')
+      .first()
+      .evaluate((el) => getComputedStyle(el).color.match(/\d+/g)!.slice(0, 3).map(Number))
+    // `.card p` (cinza-azulado, canais próximos) não pode sobrescrever o vermelho do erro.
+    expect(r).toBeGreaterThan(g + 60)
+    expect(r).toBeGreaterThan(b + 60)
+  })
+
   test('formulário de contato valida e envia (mock API)', async ({ page }) => {
     await page.goto('/contatos')
     await page.getByLabel('Nome *').fill('Kleilson QA')
