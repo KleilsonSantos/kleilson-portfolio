@@ -56,6 +56,12 @@ collections:
               - { label: Foto WebP, name: photo, widget: string }
               - { label: Foto JPEG fallback, name: photoFallback, widget: string }
           - { label: Resumo, name: summary, widget: text }
+          - label: Métricas (números em destaque na Home)
+            name: metrics
+            widget: list
+            fields:
+              - { label: Valor, name: value, widget: string }
+              - { label: Descrição, name: label, widget: string }
           - label: Destaques
             name: highlights
             widget: list

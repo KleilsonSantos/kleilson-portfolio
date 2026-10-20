@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
-import { PROFILE, SUMMARY, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
+import { PROFILE, SUMMARY, METRICS, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
 import { ProfilePhoto } from '../components/ProfilePhoto'
 
-const HERO_STACK = [...new Set(SKILL_GROUPS.flatMap((group) => group.skills))].slice(0, 10)
+const EXTERNAL_PROFILES = [
+  { label: 'GitHub', href: PROFILE.github },
+  { label: 'LinkedIn', href: PROFILE.linkedin },
+] as const
 
 function Home() {
   const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/og-image.png`
@@ -37,20 +40,16 @@ function Home() {
         <div className="hero__intro">
           <ProfilePhoto size="lg" className="hero__photo" />
           <div className="hero__copy">
+            <p className="hero__status">
+              {PROFILE.availability} · {PROFILE.remote}
+            </p>
             <p className="hero__brand">{PROFILE.shortName}</p>
             <h1>{PROFILE.headline}</h1>
             <p className="hero__lead">{PROFILE.title}</p>
             <p className="hero__meta">
-              {PROFILE.location} · {PROFILE.availability} · {PROFILE.remote} ·{' '}
-              {PROFILE.yearsOfExperience} anos · {PROFILE.currentCompany} ({PROFILE.lastCompanyPeriod})
+              {PROFILE.location} · {PROFILE.yearsOfExperience} anos · {PROFILE.currentCompany} (
+              {PROFILE.lastCompanyPeriod})
             </p>
-            <ul className="hero__stack" aria-label="Tecnologias principais">
-              {HERO_STACK.map((skill) => (
-                <li key={skill}>
-                  <span className="chip chip--muted">{skill}</span>
-                </li>
-              ))}
-            </ul>
             <div className="cta-row">
               <Link to="/projetos" className="button-link" viewTransition>
                 Ver projetos
@@ -58,6 +57,17 @@ function Home() {
               <Link to="/contatos" className="button-link secondary" viewTransition>
                 Entrar em contato
               </Link>
+              <ul className="hero__links" aria-label="Perfis externos">
+                {EXTERNAL_PROFILES.map(({ label, href }) => (
+                  <li key={label}>
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      {label}
+                      <span className="visually-hidden"> (abre em nova aba)</span>
+                      <span aria-hidden="true"> ↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -68,8 +78,18 @@ function Home() {
         <p>{SUMMARY}</p>
       </section>
 
-      <section className="card" aria-labelledby="highlights-heading">
-        <h2 id="highlights-heading">Destaques</h2>
+      <section aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading" className="section-heading">
+          Destaques
+        </h2>
+        <ul className="metric-grid">
+          {METRICS.map((metric) => (
+            <li key={metric.value} className="metric-card">
+              <p className="metric-card__value">{metric.value}</p>
+              <p className="metric-card__label">{metric.label}</p>
+            </li>
+          ))}
+        </ul>
         <ul className="highlight-grid">
           {HIGHLIGHTS.map((item) => (
             <li key={item} className="highlight-card">

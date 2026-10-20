@@ -5,6 +5,9 @@ import { PROFILE } from '../data/profileData'
 import { useTheme } from '../hooks/useTheme'
 import { useAnalytics } from '../hooks/useAnalytics'
 
+/** Vitrine em grade usa o container largo (alinhado à navegação); páginas de leitura longa ficam estreitas (ADR-0004 V6). */
+const WIDE_PAGES: readonly string[] = ['/', '/projetos', '/contatos']
+
 const navItems = [
   { to: '/', label: 'Home' },
   { to: '/sobre', label: 'Sobre' },
@@ -14,7 +17,7 @@ const navItems = [
 
 function Layout() {
   const { pathname } = useLocation()
-  const isWidePage = pathname === '/contatos' || pathname === '/projetos'
+  const isWidePage = WIDE_PAGES.includes(pathname)
   const { isDark, toggle } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
