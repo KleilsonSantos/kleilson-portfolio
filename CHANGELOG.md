@@ -4,6 +4,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-20
+
 ### Added
 
 - ✨ Revelação ao rolar (`animation-timeline: view()`) como melhoria progressiva sob `@supports`; Firefox (sem suporte) mantém o fade-up de entrada (#211)
@@ -27,6 +29,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📦 Dependabot: workers-types, Sentry, tsx, Fastify, jest-dom 7
 - 👷 `pnpm/action-setup@v6`; `actions/deploy-pages@v5`
 - 📦 Dependabot: user-event 14.6.4, rate-limit 11.2.0, oxlint 1.78.0, Sentry React 10.70.0, jsdom 30
+- 📋 README + system-guide: última release alinhada a `v0.8.0`
 
 ## [0.7.1] - 2026-08-18
 
@@ -264,7 +267,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
 
-[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.5.0...v0.6.0

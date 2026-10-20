@@ -62,6 +62,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Editorial Decap skin token-only + OAuth allowlist — `v0.6.0`
 - [x] UX/a11y + cadeia GitHub (merge-pr / GREEN = CI) — `v0.7.0`
 - [x] Capgemini encerrada (ago. 2022 – jul. 2026) + aberto a oportunidades — `v0.7.1`
+- [x] UX audit fatias A–D (a11y/SEO, Home, interações, contato) + lote Dependabot — `v0.8.0`
 
 ## Pós-fecho — backlog opcional (não bloqueia o portfólio)
 
