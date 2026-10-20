@@ -14,6 +14,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ### Changed
 
+- ♿ Contato: região de status sempre montada, foco no primeiro campo inválido ao enviar, marcador ✓/! além da cor no feedback (#213)
+- 🐛 Contato: mensagens de erro e de status voltam a usar as cores de erro/sucesso (`.card p` sobrescrevia por especificidade)
 - ♿ Projetos: um único link por card/linha (card inteiro clicável, foco visível no card); botão do menu recebe o foco de volta ao fechar com Esc; toggle de tema sem `aria-pressed` (rótulo já muda)
 - 💄 Rodapé alinhado à navegação (margem lateral e largura úteis iguais)
 - 💄 Home usa o container largo (alinhado à navegação); Sobre e 404 seguem estreitas. Chips de stack saem do hero (repetiam Competências) e o `min-height` do hero foi removido
