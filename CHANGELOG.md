@@ -25,6 +25,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 - 👷 CodeQL Action **v4** (Node 24); `pnpm/action-setup@v5`; `configure-pages@v6`
 - 📦 Dependabot: workers-types, Sentry, tsx, Fastify, jest-dom 7
+- 👷 `pnpm/action-setup@v6`; `actions/deploy-pages@v5`
+- 📦 Dependabot: user-event 14.6.4, rate-limit 11.2.0, oxlint 1.78.0, Sentry React 10.70.0, jsdom 30
 
 ## [0.7.1] - 2026-08-18
 
