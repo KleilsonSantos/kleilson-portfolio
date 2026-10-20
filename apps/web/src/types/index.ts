@@ -5,18 +5,18 @@ export interface Profile {
   headline: string
   location: string
   remote: string
-  /** Status atual: aberto a oportunidades (aceita CLT ou PJ). */
-  availability: string
+  /** Cargo atual (empresa em `currentCompany`). */
+  currentRole: string
   email: string
   phone: string
   linkedin: string
   github: string
   siteUrl: string
   yearsOfExperience: string
-  /** Última empresa (não implica vínculo vigente). */
+  /** Empresa atual. */
   currentCompany: string
-  /** Período do último vínculo corporativo. */
-  lastCompanyPeriod: string
+  /** Período na empresa atual. */
+  currentCompanyPeriod: string
   certification: string
   /** Avatar otimizado (WebP) — path sob `public/` */
   photo: string

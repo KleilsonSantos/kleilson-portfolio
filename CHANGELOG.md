@@ -4,6 +4,12 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Changed
+
+- 💼 Situação profissional atualizada com base no LinkedIn: Analista de Sistemas Sênior na CI&T (tempo integral, remoto, desde out. de 2026); hero e Sobre deixam de exibir “aberto a oportunidades” e passam a mostrar cargo/empresa atuais (#220)
+- 💼 Projetos repriorizados a partir do GitHub público e ativo: destaques VaultSpring, cloud-event-lab (multi-cloud Java/Spring) e infra-devtools; `banking` (repositório privado) e `ai-driven` (arquivado) saem da vitrine pública sem depreciação (#220)
+- 🧹 `.playwright-mcp/` (screenshots/logs de QA local) adicionado ao `.gitignore` (#220)
+
 ## [0.8.0] - 2026-10-20
 
 ### Added
