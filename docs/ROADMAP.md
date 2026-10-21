@@ -64,6 +64,7 @@ Ordem: **#8 → #9 → analytics**; Grafana opcional pós-deploy. Detalhe: [`gui
 - [x] Capgemini encerrada (ago. 2022 – jul. 2026) + aberto a oportunidades — `v0.7.1`
 - [x] UX audit fatias A–D (a11y/SEO, Home, interações, contato) + lote Dependabot — `v0.8.0`
 - [x] Novo cargo na CI&T (status) + projetos repriorizados pelo GitHub — `v0.9.0`
+- [x] Home e Projetos v2 — posicionamento com IA (AIOS) + copy alinhada ao LinkedIn — `v0.10.0`
 
 ## Pós-fecho — backlog opcional (não bloqueia o portfólio)
 
