@@ -273,6 +273,15 @@
   }
 }
 
+/* A revelação ao rolar deixaria seções abaixo da dobra invisíveis na impressão / PDF. */
+@media print {
+  .page > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -616,6 +625,11 @@
     transform var(--duration-fast) var(--ease-out);
 }
 
+.skill-panel--lead {
+  grid-column: 1 / -1;
+  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+}
+
 .skill-panel h3 {
   margin: 0;
   font-size: var(--font-size-base);
@@ -736,6 +750,19 @@
 
 .credential-link:hover {
   text-decoration: underline;
+}
+
+.disclosure > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.disclosure[open] > summary {
+  margin-bottom: var(--space-4);
 }
 
 .course-groups {
@@ -1000,6 +1027,69 @@
   width: fit-content;
 }
 
+.project-teaser-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 900px) {
+  .project-teaser-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.project-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.project-teaser .project-feature__label,
+.project-teaser .project-feature__title,
+.project-teaser .project-feature__tagline {
+  margin: 0;
+}
+
+.project-teaser .project-feature__tagline {
+  font-size: var(--font-size-base);
+}
+
+.project-teaser .stack-list {
+  margin-top: 0;
+}
+
+.project-teaser__why {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.project-teaser__why .project-kicker {
+  margin-bottom: var(--space-1);
+}
+
+.project-teaser__cta {
+  margin-top: auto;
+  padding-top: var(--space-2);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.section-link {
+  display: inline-block;
+  margin-top: var(--space-4);
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.section-link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
 .project-feature-grid {
   display: grid;
   gap: var(--space-4);
@@ -1117,7 +1207,7 @@
   font-size: var(--font-size-sm);
 }
 
-.aside-heading {
+.card .aside-heading {
   margin-top: var(--space-8);
 }
 
@@ -1213,6 +1303,8 @@
 }
 
 .info-list a {
+  display: inline-block;
+  padding-block: var(--space-1);
   color: var(--color-primary);
   text-decoration: none;
 }
@@ -1248,6 +1340,12 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+}
+
+.footer > .footer-copy {
+  /* Alinha o copyright à mesma largura útil do bloco acima. */
+  width: min(calc(var(--container-wide) - 2 * var(--page-pad-inline)), 100%);
+  margin-inline: auto;
 }
 
 .footer-copy {
@@ -1439,6 +1537,11 @@
   .hero h1 {
     font-size: clamp(1.55rem, 6.5vw, 2.1rem);
     max-width: 18ch;
+  }
+
+  /* Só os heroes centralizados (Home, Sobre); Projetos e Contatos seguem à esquerda. */
+  .hero__intro h1,
+  .hero--about h1 {
     margin-inline: auto;
   }
 

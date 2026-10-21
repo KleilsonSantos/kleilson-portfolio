@@ -1,19 +1,23 @@
 import { Link } from 'react-router-dom'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
-import { PROFILE, SUMMARY, METRICS, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
+import { PROFILE, METRICS, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
+import { PROJECTS } from '../data/projectsData'
 import { ProfilePhoto } from '../components/ProfilePhoto'
+import { ProjectTeaser } from '../components/ProjectTeaser'
 
 const EXTERNAL_PROFILES = [
   { label: 'GitHub', href: PROFILE.github },
   { label: 'LinkedIn', href: PROFILE.linkedin },
 ] as const
 
+const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured).slice(0, 3)
+
 function Home() {
   const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/og-image.png`
 
   useDocumentMeta({
-    title: `${PROFILE.name} | ${PROFILE.title}`,
-    description: SUMMARY,
+    title: `${PROFILE.name} | ${PROFILE.currentRole} · ${PROFILE.currentCompany}`,
+    description: PROFILE.metaDescription,
     canonical: PROFILE.siteUrl,
     ogImage,
     jsonLd: {
@@ -45,7 +49,7 @@ function Home() {
             </p>
             <p className="hero__brand">{PROFILE.shortName}</p>
             <h1>{PROFILE.headline}</h1>
-            <p className="hero__lead">{PROFILE.title}</p>
+            <p className="hero__lead">{PROFILE.lead}</p>
             <p className="hero__meta">
               {PROFILE.location} · {PROFILE.remote} · {PROFILE.yearsOfExperience} anos
             </p>
@@ -72,11 +76,6 @@ function Home() {
         </div>
       </header>
 
-      <section className="card" aria-labelledby="summary-heading">
-        <h2 id="summary-heading">Resumo profissional</h2>
-        <p>{SUMMARY}</p>
-      </section>
-
       <section aria-labelledby="highlights-heading">
         <h2 id="highlights-heading" className="section-heading">
           Destaques
@@ -98,11 +97,28 @@ function Home() {
         </ul>
       </section>
 
+      <section aria-labelledby="featured-projects-heading">
+        <h2 id="featured-projects-heading" className="section-heading">
+          Projetos em destaque
+        </h2>
+        <div className="project-teaser-grid">
+          {FEATURED_PROJECTS.map((project) => (
+            <ProjectTeaser key={project.id} project={project} />
+          ))}
+        </div>
+        <Link to="/projetos" className="section-link" viewTransition>
+          Ver todos os projetos <span aria-hidden="true">→</span>
+        </Link>
+      </section>
+
       <section className="card" aria-labelledby="skills-heading">
         <h2 id="skills-heading">Competências</h2>
         <div className="grid-2">
-          {SKILL_GROUPS.map((group) => (
-            <div key={group.title} className="skill-panel">
+          {SKILL_GROUPS.map((group, index) => (
+            <div
+              key={group.title}
+              className={`skill-panel${index === 0 ? ' skill-panel--lead' : ''}`}
+            >
               <h3>{group.title}</h3>
               <div className="stack-list">
                 {group.skills.map((skill) => (
