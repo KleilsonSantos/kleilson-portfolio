@@ -98,6 +98,15 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 - **Processo:** o protótipo Figma (página "Proposta v2 (canônica)") é o contrato da implementação; usa as medidas do CSS e os dados reais dos JSONs.
 - **Alternativa rejeitada:** manter o `summary` na Home. O card ocupava a primeira tela com 8 linhas antes de qualquer projeto.
 
+## V8 — Fontes auto-hospedadas
+
+- **Data:** 2026-10-21 · **Issue:** #229 · Sem mudança visual (nenhum frame do Figma muda); não reverte nenhuma decisão acima.
+- Sora e IBM Plex Sans passam a ser servidas de `apps/web/public/fonts/` (WOFF2 variável, subconjunto `latin`, que cobre o português), com `fonts.css` próprio (`font-display: swap`) e `preload` das duas fontes no `index.html`. As três páginas do admin do Decap usam o mesmo `fonts.css`. Licença SIL OFL 1.1 de cada família na mesma pasta.
+- Remove `fonts.googleapis.com` e `fonts.gstatic.com` (2 origens, 1 CSS de terceiro bloqueante e a cadeia CSS → fonte).
+- **Medição** (build local, rede emulada 170 ms / 9 Mbps, mediana de 6 execuções): FCP e LCP 828 → 678 ms; CLS 0,0004 → 0; origens externas 2 → 0; peso das fontes 64 → 65 KB. Comparação de screenshots com a produção nas 4 rotas: 0,000% de pixels diferentes.
+- **Fora do subconjunto latin** (como já ocorria com o Google Fonts, por `unicode-range`): caracteres como `→` e `≥` usam a fonte do sistema.
+- **Alternativa rejeitada:** dependência npm (`@fontsource/*`). Dois arquivos estáticos versionados bastam e evitam dependência nova.
+
 ## Consequences
 
 ### Positivas
@@ -110,7 +119,7 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 
 - Light mode é secundário (dark-first)
 - Sem âncora imagética full-bleed ainda (hero tipográfico)
-- Tipografia via Google Fonts (latência; aceitável na V1)
+- ~~Tipografia via Google Fonts (latência; aceitável na V1)~~ — superado na V8 (fontes auto-hospedadas)
 
 ## Confirmation
 
