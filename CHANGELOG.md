@@ -4,6 +4,10 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Changed
+
+- ⚡ Fontes Sora e IBM Plex Sans auto-hospedadas (WOFF2 variável, subconjunto latin, licença OFL) no site e nas páginas do admin do Decap; sem requisições a `fonts.googleapis.com`/`fonts.gstatic.com`. FCP/LCP 828 → 678 ms e CLS 0,0004 → 0 (mediana de 6, 4G emulado); 0,000% de diferença visual nas 4 rotas (#229)
+
 ## [0.10.0] - 2026-10-21
 
 ### Added
