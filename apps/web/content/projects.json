@@ -1,6 +1,26 @@
 {
   "projects": [
     {
+      "id": "ai-operating-system",
+      "name": "AIOS",
+      "tagline": "AI Operating System: control plane de governança de IA no SDLC",
+      "description": "Plataforma open source de governança para IA no desenvolvimento (intent → políticas → agents-as-plugins → quality gates). Monorepo TypeScript com pipeline, MCP e console, separado da experiência de conversa (ADR-0014).",
+      "impact": "Maturidade de produto aplicada a tooling de IA: ADRs, quality gates e releases SemVer (v0.48.x).",
+      "stack": [
+        "MCP",
+        "TypeScript",
+        "Turborepo",
+        "Node.js",
+        "pnpm",
+        "React",
+        "Vite",
+        "Vitest"
+      ],
+      "url": "https://github.com/KleilsonSantos/ai-operating-system",
+      "kind": "open-source",
+      "featured": true
+    },
+    {
       "id": "vaultspring",
       "name": "VaultSpring",
       "tagline": "Segredos com HashiCorp Vault e Testcontainers",
@@ -15,23 +35,25 @@
         "Testcontainers"
       ],
       "url": "https://github.com/KleilsonSantos/VaultSpring",
+      "kind": "open-source",
       "featured": true
     },
     {
       "id": "cloud-event-lab",
       "name": "cloud-event-lab",
       "tagline": "Plataforma de eventos cloud-native multi-cloud (lab)",
-      "description": "Lab técnico autônomo: a mesma aplicação de eventos (ingestão REST, processamento assíncrono, persistência e object storage) roda com profiles local, AWS (LocalStack), Azure (Azurite), GCP (Pub/Sub emulator) e OpenTelemetry, em Java 21/Spring Boot com React/TypeScript. Documentado com proposta de arquitetura, matriz multi-cloud e ADRs; usa emuladores — não é produção em cloud real.",
-      "impact": "Portabilidade multi-cloud verificável por profiles, sem acoplar o domínio ao provedor.",
+      "description": "Lab técnico autônomo: a mesma aplicação de eventos (ingestão REST, processamento assíncrono, persistência e object storage) roda com profiles local, AWS (LocalStack), Azure (Azurite), GCP (Pub/Sub emulator) e OpenTelemetry, em Java 21/Spring Boot com React/TypeScript. Documentado com proposta de arquitetura, matriz multi-cloud e ADRs; usa emuladores, não é produção em cloud real.",
+      "impact": "Portabilidade multi-cloud por profiles, validada com emuladores, sem acoplar o domínio ao provedor.",
       "stack": [
         "Java 21",
         "Spring Boot",
+        "OpenTelemetry",
         "React",
         "TypeScript",
-        "Kubernetes",
-        "OpenTelemetry"
+        "Kubernetes"
       ],
       "url": "https://github.com/KleilsonSantos/cloud-event-lab",
+      "kind": "lab",
       "featured": true
     },
     {
@@ -48,25 +70,7 @@
         "Makefile"
       ],
       "url": "https://github.com/KleilsonSantos/infra-devtools",
-      "featured": true
-    },
-    {
-      "id": "ai-operating-system",
-      "name": "AI Operating System (AIOS)",
-      "tagline": "AI Applied — control plane de governança de IA no SDLC (open source)",
-      "description": "Extensão da disciplina de engenharia: plataforma open source de governança para IA no desenvolvimento (intent → políticas → agents-as-plugins → quality gates). Monorepo TypeScript com pipeline, MCP e console — separado da experiência de conversa (ADR-0014). Acelerador e laboratório de produtividade, não o eixo da carreira.",
-      "impact": "Mostra maturidade de produto/ADRs/SemVer aplicada a tooling de IA — complementar a Java/AppSec/microsserviços.",
-      "stack": [
-        "TypeScript",
-        "Node.js",
-        "pnpm",
-        "Turborepo",
-        "MCP",
-        "React",
-        "Vite",
-        "Vitest"
-      ],
-      "url": "https://github.com/KleilsonSantos/ai-operating-system",
+      "kind": "open-source",
       "featured": false
     },
     {
@@ -74,7 +78,7 @@
       "name": "AIOS Companion",
       "tagline": "AI Applied — experiência (CLI/UI) sobre o control plane AIOS",
       "description": "Cliente de experiência que consome o AIOS via MCP/CLI (Conversation Manager, doctor, auditoria) sem duplicar engines. Fronteira control plane × experiência (ADR-0014).",
-      "impact": "Complemento do AIOS: prova contratos estáveis entre repos — listado como lab de AI Applied, não destaque de carreira.",
+      "impact": "Complemento do AIOS: contratos estáveis entre repositórios.",
       "stack": [
         "TypeScript",
         "React 19",
@@ -83,6 +87,7 @@
         "Node.js"
       ],
       "url": "https://github.com/KleilsonSantos/aios-companion",
+      "kind": "open-source",
       "featured": false
     },
     {
@@ -99,6 +104,7 @@
         "JWT"
       ],
       "url": "https://github.com/KleilsonSantos/Mongo-RestFull-API",
+      "kind": "open-source",
       "featured": false
     },
     {
@@ -113,6 +119,7 @@
         "DevSecOps"
       ],
       "url": "https://github.com/KleilsonSantos/appsec-daily-hub",
+      "kind": "open-source",
       "featured": false
     },
     {
@@ -128,6 +135,7 @@
         "Redis"
       ],
       "url": "https://github.com/KleilsonSantos/OrderProcessingSystem",
+      "kind": "open-source",
       "featured": false
     }
   ]

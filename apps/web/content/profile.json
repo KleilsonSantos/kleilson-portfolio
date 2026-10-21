@@ -3,7 +3,9 @@
     "name": "Kleilson dos Santos",
     "shortName": "Kleilson Santos",
     "title": "Senior Systems Analyst | Java · Spring Boot · Kafka | Backend · Full Stack · AppSec",
-    "headline": "Microsserviços Java/Spring/Kafka, AppSec e DevSecOps — AI Applied Engineering como acelerador.",
+    "headline": "Engenharia backend e full stack sênior: microsserviços Java, AppSec e DevSecOps, com IA aplicada e governança.",
+    "lead": "Mais de 9 anos em sistemas do setor financeiro: microsserviços event-driven, Kafka e AppSec. Autor do AIOS, plataforma open source de governança de IA no SDLC.",
+    "metaDescription": "Engenheiro backend e full stack sênior (Java, Spring Boot, Kafka), AppSec e DevSecOps com IA aplicada. Analista de Sistemas Sênior na CI&T.",
     "location": "Paulo Afonso, Bahia, Brasil",
     "remote": "Remoto · Tempo integral",
     "currentRole": "Analista de Sistemas Sênior",
@@ -19,7 +21,7 @@
     "photo": "/images/profile/kleilson-avatar-320.webp?v=15",
     "photoFallback": "/images/profile/kleilson-avatar.jpg?v=15"
   },
-  "summary": "Software Engineer / Senior Backend (Full Stack com ênfase em backend) com mais de 9 anos de experiência, atualmente Analista de Sistemas Sênior na CI&T (desde out. de 2026, em trabalho remoto). Na Capgemini (ago. de 2022 – jul. de 2026), atuou em sistemas do setor financeiro (banking / financial services): microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em Application Security (AppSec) e DevSecOps — Mend (SCA), Fortify (SAST), SonarQube e OWASP Dependency-Check — com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Experiência full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em labs pessoais, evolui ecossistemas Java/Kafka (incl. purchase multi-serviço) e, como acelerador de produtividade, pratica AI Applied Engineering (GitHub Copilot, Spec-Driven Development) e mantém open source de governança de agentes no SDLC (AIOS/Companion) — extensão da disciplina de engenharia, não o eixo da carreira.",
+  "summary": "Software Engineer sênior (backend e full stack), com mais de 9 anos de experiência, atualmente Analista de Sistemas Sênior na CI&T (desde out. de 2026, em trabalho remoto). Na Capgemini (ago. de 2022 – jul. de 2026), atuou em sistemas do setor financeiro: microsserviços event-driven com Java e Spring Boot, Apache Kafka, arquitetura hexagonal, APIs RESTful, Saga, DLQ e idempotência. Forte atuação em AppSec e DevSecOps (Mend, Fortify, SonarQube e OWASP Dependency-Check), com testes (JUnit 5, Testcontainers) e cobertura JaCoCo ≥ 80%. Full stack com Angular (v2 a v17+), AngularJS, React e TypeScript; Docker, Kubernetes e GitOps com ArgoCD. Em IA aplicada, pratica desenvolvimento assistido por IA (GitHub Copilot, Spec-Driven Development, agentes customizados) e é autor do AIOS e do AIOS Companion, plataforma open source de governança de IA no SDLC.",
   "metrics": [
     {
       "value": "50%",
@@ -41,9 +43,8 @@
   "highlights": [
     "GitOps end-to-end com ArgoCD, Gitea e k3d",
     "Migração Spring Boot 2→3→4 sem downtime (APIs depreciadas eliminadas)",
-    "Labs: ecossistema purchase (4 MS event-driven, Saga, GitOps) — repositórios privados",
     "10 agentes Copilot, 7 prompts e 6 applyTo aplicando SDD (AI Applied)",
-    "Open source AI Applied: AIOS/Companion (governança de IA no SDLC) — não eixo da carreira",
+    "Open source AI Applied: AIOS/Companion (governança de IA no SDLC)",
     "Microsoft Azure AI Fundamentals (AI-900)"
   ],
   "softSkills": [
@@ -70,17 +71,6 @@
       ]
     },
     {
-      "title": "Frontend",
-      "skills": [
-        "React",
-        "Angular",
-        "TypeScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3"
-      ]
-    },
-    {
       "title": "DevSecOps & Cloud",
       "skills": [
         "Docker",
@@ -104,6 +94,17 @@
         "AIOS / Companion (open source)",
         "MCP",
         "Azure AI-900"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "skills": [
+        "React",
+        "Angular",
+        "TypeScript",
+        "JavaScript",
+        "HTML5",
+        "CSS3"
       ]
     },
     {
@@ -137,8 +138,7 @@
       "highlights": [
         "Cadeia Angular → backend Java → ingestão → análise (fullstack com prioridade backend)",
         "Bibliotecas Java de OCR, extração de conteúdo e conversão PDF no pipeline documental",
-        "Integração do motor de regras GraalVM e fluxos de CRUD/operacionais no frontend",
-        "Atuação alinhada a go-live previsto para out/2026 (repos Azure DevOps: edox-services, edox-frontend, eDOX — branch feature/V1)"
+        "Integração do motor de regras GraalVM e fluxos de CRUD/operacionais no frontend"
       ]
     },
     {
