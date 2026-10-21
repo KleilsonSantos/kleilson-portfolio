@@ -7,6 +7,8 @@ export const profileSchema = z.object({
   shortName: nonEmpty,
   title: nonEmpty,
   headline: nonEmpty,
+  lead: nonEmpty,
+  metaDescription: z.string().trim().min(40).max(160),
   location: nonEmpty,
   remote: nonEmpty,
   currentRole: nonEmpty,
@@ -59,6 +61,7 @@ export const projectSchema = z.object({
   impact: nonEmpty,
   stack: z.array(nonEmpty).min(1),
   url: z.string().url(),
+  kind: z.enum(['open-source', 'lab']),
   featured: z.boolean(),
 })
 

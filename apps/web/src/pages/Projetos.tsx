@@ -1,13 +1,15 @@
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE } from '../data/profileData'
-import { PROJECTS } from '../data/projectsData'
+import { PROJECTS, PROJECT_KIND_LABEL } from '../data/projectsData'
 import type { Project } from '../types'
 
 function FeaturedProject({ project, primary }: { project: Project; primary?: boolean }) {
   return (
     <article className={`project-feature${primary ? ' project-feature--primary' : ''}`}>
       <div className="project-feature__body">
-        <p className="project-feature__label">{primary ? 'Projeto em destaque' : 'Destaque'}</p>
+        <p className="project-feature__label">
+          {primary ? 'Projeto em destaque' : 'Destaque'} · {PROJECT_KIND_LABEL[project.kind]}
+        </p>
         <h3 className="project-feature__title">
           <a href={project.url} target="_blank" rel="noopener noreferrer">
             {project.name}
@@ -20,7 +22,7 @@ function FeaturedProject({ project, primary }: { project: Project; primary?: boo
           {project.description}
         </p>
         <p className="project-feature__impact">
-          <span className="project-kicker">Resultado</span>
+          <span className="project-kicker">Por que importa</span>
           {project.impact}
         </p>
         <div className="stack-list">

@@ -4,6 +4,39 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-10-21
+
+### Added
+
+- ✨ Home: seção "Projetos em destaque" (até 3 projetos `featured`, componente `ProjectTeaser`) logo após os Destaques
+- ✨ `profile.lead` (resumo curto do hero) e `profile.metaDescription` (≤ 160 caracteres); `projects[].kind` (`open-source` | `lab`) — schema, tipos e config do Decap
+- ✅ e2e: Home mostra 3 projetos em destaque, cada um com um único link
+
+### Changed
+
+- 💄 Hero: H1 alinhado ao LinkedIn ("Engenharia backend e full stack sênior: microsserviços Java, AppSec e DevSecOps, com IA aplicada e governança"); lead curto cita o AIOS no lugar do título em inglês; o resumo longo sai da Home e fica em Sobre
+- 💄 Competências: primeiro grupo em destaque na largura total (sem painel órfão); rodapé com a linha de copyright alinhada ao conteúdo
+- 📝 Projetos: rótulo "Resultado" → "Por que importa"; destaque mostra o tipo (Open source / Laboratório); texto do cloud-event-lab informa validação com emuladores
+- 💄 Sobre: experiências anteriores (4) e a lista de 24 cursos ficam em `<details>` recolhido; as 5 experiências mais recentes continuam abertas
+- 🔍 Meta description de Home e Sobre deixa de usar o `summary` (1.069 caracteres); título da Home passa de 105 para 56 caracteres (`nome | cargo · empresa`)
+- 🐛 Mobile: H1 de Projetos e Contatos deixa de ficar recuado 6,5 px em relação ao rótulo e ao lead (a margem automática valia só para os heroes centralizados)
+- 📋 README, system-guide, ROADMAP e releases: última release alinhada a `v0.10.0`
+
+### Fixed
+
+- 🐛 Impressão/PDF: a revelação ao rolar deixava seções abaixo da dobra com `opacity: 0`; `@media print` desliga a animação (e2e cobre Home, Sobre e Projetos)
+- 🐛 Contatos: "Redes" volta a ter espaço acima (`.card h2` vencia `.aside-heading` por especificidade) e os links de contato passam de 21 para 35 px de altura (WCAG 2.5.8)
+
+- 🚀 AIOS vira destaque principal (Home e Projetos, `name: AIOS`, stack com MCP/TypeScript/Turborepo à frente); infra-devtools passa para "Outros projetos"; ordem dos projetos e das competências (Backend, DevSecOps & Cloud, AI Applied, Frontend, Dados) definidas no protótipo Figma v2
+- 💄 Rodapé mostra `cargo · empresa · local` no lugar do título em inglês; cards de projeto da Home sem margem extra acima dos chips
+
+### Removed
+
+- 🧹 Sobras do template Vite/React sem nenhuma referência: `src/assets/{hero.png,react.svg,vite.svg}` e `public/icons.svg`
+- 🔒 Sobre: nomes de repositórios e branch internos do projeto eDOX (Azure DevOps) e a previsão de go-live vencida
+- 📝 Frases "não é o eixo da carreira" do resumo, destaques e projetos AIOS
+- 📝 Destaque "Labs: ecossistema purchase… repositórios privados" (não verificável pelo visitante)
+
 ## [0.9.0] - 2026-10-20
 
 ### Changed
@@ -276,7 +309,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
 
-[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...v0.7.1

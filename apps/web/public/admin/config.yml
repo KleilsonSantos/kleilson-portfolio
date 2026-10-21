@@ -41,6 +41,8 @@ collections:
               - { label: Nome curto, name: shortName, widget: string }
               - { label: Título, name: title, widget: string }
               - { label: Headline, name: headline, widget: text }
+              - { label: Lead (resumo curto do hero), name: lead, widget: text }
+              - { label: Meta description (até 160 caracteres), name: metaDescription, widget: text }
               - { label: Localização, name: location, widget: string }
               - { label: Remoto, name: remote, widget: string }
               - { label: Cargo atual, name: currentRole, widget: string }
@@ -110,12 +112,19 @@ collections:
               - { label: Nome, name: name, widget: string }
               - { label: Tagline, name: tagline, widget: string }
               - { label: Descrição, name: description, widget: text }
-              - { label: Impacto, name: impact, widget: text }
+              - { label: Por que importa, name: impact, widget: text }
               - label: Stack
                 name: stack
                 widget: list
                 field: { label: Tech, name: item, widget: string }
               - { label: URL GitHub, name: url, widget: string }
+              - label: Tipo
+                name: kind
+                widget: select
+                options:
+                  - { label: Open source, value: open-source }
+                  - { label: Laboratório, value: lab }
+                default: open-source
               - { label: Featured, name: featured, widget: boolean, default: false }
 
   - name: credentials

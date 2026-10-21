@@ -76,6 +76,44 @@ test.describe('Portfolio smoke', () => {
     }
   })
 
+  test('home mostra projetos em destaque, cada um com um único link', async ({ page }) => {
+    await page.goto('/')
+    const cards = page.locator('.project-teaser')
+    await expect(cards).toHaveCount(3)
+    for (const card of await cards.all()) {
+      await expect(card.getByRole('link')).toHaveCount(1)
+    }
+    await expect(page.getByRole('link', { name: /Ver todos os projetos/ })).toBeVisible()
+  })
+
+  test('impressão: nenhuma seção fica invisível pela revelação ao rolar', async ({ page }) => {
+    for (const route of ['/', '/sobre', '/projetos']) {
+      await page.goto(route)
+      await page.emulateMedia({ media: 'print' })
+      const hidden = await page
+        .locator('.page > *')
+        .evaluateAll((els) => els.filter((el) => getComputedStyle(el).opacity !== '1').length)
+      expect(hidden, route).toBe(0)
+    }
+  })
+
+  test('Sobre: experiências anteriores e cursos começam recolhidos e abrem pelo teclado', async ({
+    page,
+  }) => {
+    await page.goto('/sobre')
+    const items = page.locator('.experience-item')
+    const shown = () =>
+      items.evaluateAll((els) => els.filter((el) => !el.closest('details:not([open])')).length)
+    expect(await shown()).toBe(5)
+
+    const toggles = page.locator('details.disclosure > summary')
+    await expect(toggles).toHaveCount(2)
+    await toggles.first().focus()
+    await page.keyboard.press('Enter')
+    await expect(page.locator('details.disclosure').first()).toHaveJSProperty('open', true)
+    expect(await shown()).toBe(9)
+  })
+
   test('menu mobile: Esc fecha e devolve o foco ao botão', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 })
     await page.goto('/')

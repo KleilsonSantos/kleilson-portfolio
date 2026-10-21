@@ -7,14 +7,38 @@ import {
   EDUCATION,
 } from '../data/credentialsData'
 import { ProfilePhoto } from '../components/ProfilePhoto'
+import type { Experience } from '../types'
+
+/** Experiências mais recentes ficam abertas; as anteriores ficam recolhidas. */
+const RECENT_EXPERIENCE_COUNT = 5
+
+function ExperienceItem({ job }: { job: Experience }) {
+  return (
+    <article className="experience-item">
+      <h3>
+        {job.role} — {job.company}
+      </h3>
+      <p className="experience-item__meta">
+        {job.period} · {job.client}
+      </p>
+      <ul>
+        {job.highlights.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </article>
+  )
+}
 
 function Sobre() {
   const primaryCert = CERTIFICATIONS[0]
+  const earlierExperience = EXPERIENCE.slice(RECENT_EXPERIENCE_COUNT)
+  const courseCount = COURSE_GROUPS.reduce((total, group) => total + group.courses.length, 0)
   const ogImage = `${PROFILE.siteUrl.replace(/\/$/, '')}/images/profile/kleilson-avatar.webp`
 
   useDocumentMeta({
     title: `Sobre | ${PROFILE.shortName}`,
-    description: SUMMARY,
+    description: PROFILE.metaDescription,
     canonical: `${PROFILE.siteUrl}/sobre`,
     ogImage,
     jsonLd: primaryCert
@@ -47,9 +71,14 @@ function Sobre() {
         <div className="hero__copy">
           <span className="badge">Trajetória profissional</span>
           <h1>Sobre</h1>
-          <p className="hero__lead">{SUMMARY}</p>
+          <p className="hero__lead">{PROFILE.lead}</p>
         </div>
       </header>
+
+      <section className="card" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Resumo profissional</h2>
+        <p>{SUMMARY}</p>
+      </section>
 
       <section className="card">
         <h2>Informações</h2>
@@ -89,21 +118,17 @@ function Sobre() {
 
       <section className="card">
         <h2>Experiência profissional</h2>
-        {EXPERIENCE.map((job) => (
-          <article key={`${job.company}-${job.period}-${job.client}`} className="experience-item">
-            <h3>
-              {job.role} — {job.company}
-            </h3>
-            <p className="experience-item__meta">
-              {job.period} · {job.client}
-            </p>
-            <ul>
-              {job.highlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
+        {EXPERIENCE.slice(0, RECENT_EXPERIENCE_COUNT).map((job) => (
+          <ExperienceItem key={`${job.company}-${job.period}-${job.client}`} job={job} />
         ))}
+        {earlierExperience.length > 0 ? (
+          <details className="disclosure">
+            <summary>Experiências anteriores ({earlierExperience.length})</summary>
+            {earlierExperience.map((job) => (
+              <ExperienceItem key={`${job.company}-${job.period}-${job.client}`} job={job} />
+            ))}
+          </details>
+        ) : null}
       </section>
 
       <section className="card" aria-labelledby="certifications-heading">
@@ -157,21 +182,24 @@ function Sobre() {
           Formação contínua via Udemy, agrupada por domínio. Não equivale a
           certificação vendor.
         </p>
-        <div className="course-groups">
-          {COURSE_GROUPS.map((group) => (
-            <div key={group.id} className="course-group">
-              <h3>{group.title}</h3>
-              <ul>
-                {group.courses.map((course) => (
-                  <li key={course.id}>
-                    {course.title}
-                    <span className="chip chip--muted">{course.provider}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <details className="disclosure">
+          <summary>Ver os {courseCount} cursos</summary>
+          <div className="course-groups">
+            {COURSE_GROUPS.map((group) => (
+              <div key={group.id} className="course-group">
+                <h3>{group.title}</h3>
+                <ul>
+                  {group.courses.map((course) => (
+                    <li key={course.id}>
+                      {course.title}
+                      <span className="chip chip--muted">{course.provider}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </details>
         <p className="source-note">{COURSES_SOURCE_NOTE}</p>
       </section>
     </div>
