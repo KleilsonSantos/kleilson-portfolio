@@ -4,6 +4,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-10-21
+
 ### Added
 
 - ✨ Home: seção "Projetos em destaque" (até 3 projetos `featured`, componente `ProjectTeaser`) logo após os Destaques
@@ -18,6 +20,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 💄 Sobre: experiências anteriores (4) e a lista de 24 cursos ficam em `<details>` recolhido; as 5 experiências mais recentes continuam abertas
 - 🔍 Meta description de Home e Sobre deixa de usar o `summary` (1.069 caracteres); título da Home passa de 105 para 56 caracteres (`nome | cargo · empresa`)
 - 🐛 Mobile: H1 de Projetos e Contatos deixa de ficar recuado 6,5 px em relação ao rótulo e ao lead (a margem automática valia só para os heroes centralizados)
+- 📋 README, system-guide, ROADMAP e releases: última release alinhada a `v0.10.0`
 
 ### Fixed
 
@@ -306,7 +309,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 - 📝 Documentação OSS inicial + ADR-0001
 - 👷 CI: lint + build
 
-[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/KleilsonSantos/kleilson-portfolio/compare/v0.7.0...v0.7.1
