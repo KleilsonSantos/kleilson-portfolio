@@ -3,6 +3,10 @@ export interface Profile {
   shortName: string
   title: string
   headline: string
+  /** Resumo curto (2 frases) exibido no hero da Home e da Sobre. */
+  lead: string
+  /** Meta description (≤160 caracteres) da Home e da Sobre. */
+  metaDescription: string
   location: string
   remote: string
   /** Cargo atual (empresa em `currentCompany`). */
@@ -72,6 +76,8 @@ export interface EducationItem {
   status: string
 }
 
+export type ProjectKind = 'open-source' | 'lab'
+
 export interface Project {
   id: string
   name: string
@@ -82,6 +88,8 @@ export interface Project {
   impact: string
   stack: string[]
   url: string
+  /** Natureza do projeto: repositório open source ou laboratório técnico. */
+  kind: ProjectKind
   featured: boolean
 }
 

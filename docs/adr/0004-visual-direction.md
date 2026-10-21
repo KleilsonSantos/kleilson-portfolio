@@ -88,6 +88,16 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 
 **Alternativa rejeitada:** manter a Home estreita. O conteúdo (hero em 2 colunas, 4 métricas) é de vitrine, e a navegação já é larga; o container estreito deixava o logo desalinhado do conteúdo e quebrava o título em 6 linhas.
 
+## V7 — Home com prova de trabalho e copy curta
+
+- **Data:** 2026-10-20 · **Protótipo:** Figma "Portfólio Kleilson — Proposta A1–A6 (v0.10)" · Extensão incremental; não reverte nenhuma decisão acima.
+- **Hero:** H1 passa a declarar a função alinhada ao headline do LinkedIn (backend e full stack sênior, microsserviços Java, AppSec/DevSecOps, IA aplicada e governança); o lead usa `profile.lead` (2 frases, só PT). O parágrafo longo (`summary`) sai da Home e fica em Sobre. `profile.metaDescription` (≤ 160) substitui o `summary` como meta description.
+- **Home:** seção "Projetos em destaque" (até 3 `featured`, componente `ProjectTeaser`) entre Destaques e Competências; em Competências o primeiro grupo ocupa a linha inteira (sem painel órfão).
+- **Projetos:** novo campo `kind` (`open-source` | `lab`) e rótulo "Por que importa" no lugar de "Resultado" (o texto descreve propósito, não resultado medido).
+- **Copy:** removidas as frases "não é o eixo da carreira" (nota de bastidor). IA aplicada e governança passam a fazer parte do núcleo do posicionamento (AIOS é destaque principal em Home e Projetos); o backend segue à frente na ordem das competências.
+- **Processo:** o protótipo Figma (página "Proposta v2 (canônica)") é o contrato da implementação; usa as medidas do CSS e os dados reais dos JSONs.
+- **Alternativa rejeitada:** manter o `summary` na Home. O card ocupava a primeira tela com 8 linhas antes de qualquer projeto.
+
 ## Consequences
 
 ### Positivas

@@ -14,8 +14,8 @@ flowchart LR
 
 | Domínio | Arquivo JSON (editável) | Wrapper TS | Página |
 | --- | --- | --- | --- |
-| Perfil, summary, skills, soft skills, experiência | `apps/web/content/profile.json` | `apps/web/src/data/profileData.ts` | Home, Sobre |
-| Projetos | `apps/web/content/projects.json` | `apps/web/src/data/projectsData.ts` | Projetos |
+| Perfil (`lead` e `metaDescription` ≤ 160 caracteres), summary, skills, soft skills, experiência | `apps/web/content/profile.json` | `apps/web/src/data/profileData.ts` | Home, Sobre |
+| Projetos (`kind`: `open-source` ou `lab`; `impact` aparece como "Por que importa") | `apps/web/content/projects.json` | `apps/web/src/data/projectsData.ts` | Home (3 destaques), Projetos |
 | Credenciais / educação / cursos | `apps/web/content/credentials.json` | `apps/web/src/data/credentialsData.ts` | Sobre |
 | Contato / canais / redes | `apps/web/content/contact.json` | `apps/web/src/data/contactData.ts` | Contatos |
 

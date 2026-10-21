@@ -10,7 +10,7 @@ function Footer() {
         <div>
           <strong>{PROFILE.name}</strong>
           <p className="footer-copy">
-            {PROFILE.title} · {PROFILE.location}
+            {PROFILE.currentRole} · {PROFILE.currentCompany} · {PROFILE.location}
           </p>
         </div>
 
