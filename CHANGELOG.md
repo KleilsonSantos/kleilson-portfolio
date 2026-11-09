@@ -4,6 +4,13 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-11-09
+
+### Fixed
+
+- 🐛 Chips com logo de marca (`.chip--icon`) e chips de texto puro (`.chip`/`.chip--muted`) usavam duas linguagens visuais diferentes (moldura neutra com borda vs. pill teal/cinza) misturadas na mesma linha — ex. "Java 21" com ícone ao lado de "Arquitetura Hexagonal" sem ícone em Competências. `.chip--icon` agora herda o mesmo pill dos demais chips; o ícone é só um elemento a mais, não um estilo à parte
+- 🐛 Rodapé: removidos os ícones de GitHub/LinkedIn — eram os únicos 2 de 6 links da mesma linha de navegação com ícone, quebrando o ritmo visual
+
 ## [0.11.0] - 2026-11-09
 
 ### Added
