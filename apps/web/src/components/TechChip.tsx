@@ -1,4 +1,5 @@
 import { getTechIconSlug } from '../data/techIcons'
+import { BrandIcon } from './BrandIcon'
 
 type TechChipProps = {
   label: string
@@ -16,7 +17,7 @@ export function TechChip({ label, muted = false }: TechChipProps) {
 
   return (
     <span className={className}>
-      <img className="chip__icon" src={`/icons/tech/${slug}.svg`} alt="" width={14} height={14} loading="lazy" />
+      <BrandIcon slug={slug} className="chip__icon" />
       {label}
     </span>
   )
