@@ -3,6 +3,9 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE } from '../data/profileData'
 import { CONTACT_INFO, SOCIAL_LINKS, CATEGORIES } from '../data/contactData'
 import { sendContactForm } from '../api/contact'
+import { ContactIcon } from '../components/ContactIcon'
+import { BrandIcon } from '../components/BrandIcon'
+import { HeroMesh } from '../components/HeroMesh'
 import { INITIAL_FORM, validateField, validateForm, hasErrors } from '../utils/validation'
 import { sanitizeFormData } from '../utils/sanitize'
 import type { ContactForm, ContactFormField, FormErrors, FormStatus } from '../types'
@@ -56,6 +59,7 @@ function Contatos() {
   return (
     <div className="page">
       <header className="hero">
+        <HeroMesh />
         <span className="badge">Contato profissional</span>
         <h1>Contatos</h1>
         <p className="hero__lead">
@@ -164,23 +168,26 @@ function Contatos() {
           <h2>Canais diretos</h2>
           <ul className="info-list">
             {CONTACT_INFO.map((item) => (
-              <li key={item.id}>
-                <strong>{item.label}</strong>
-                <br />
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    {...(item.href.startsWith('http')
-                      ? { target: '_blank', rel: 'noopener noreferrer' }
-                      : {})}
-                  >
-                    {item.value}
-                  </a>
-                ) : (
-                  item.value
-                )}
-                <br />
-                <small>{item.detail}</small>
+              <li key={item.id} className="info-list__item">
+                <ContactIcon name={item.icon} />
+                <div>
+                  <strong>{item.label}</strong>
+                  <br />
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      {...(item.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    item.value
+                  )}
+                  <br />
+                  <small>{item.detail}</small>
+                </div>
               </li>
             ))}
           </ul>
@@ -190,6 +197,7 @@ function Contatos() {
             {SOCIAL_LINKS.map((item) => (
               <li key={item.id}>
                 <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  <BrandIcon slug={item.icon} />
                   {item.label}
                 </a>
               </li>

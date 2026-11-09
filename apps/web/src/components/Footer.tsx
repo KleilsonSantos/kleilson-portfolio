@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { PROFILE } from '../data/profileData'
+import { BrandIcon } from './BrandIcon'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
@@ -28,9 +29,11 @@ function Footer() {
             Contatos
           </Link>
           <a href={PROFILE.github} target="_blank" rel="noopener noreferrer">
+            <BrandIcon slug="github" />
             GitHub
           </a>
           <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer">
+            <BrandIcon slug="linkedin" />
             LinkedIn
           </a>
         </nav>

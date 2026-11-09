@@ -7,6 +7,10 @@ import {
   EDUCATION,
 } from '../data/credentialsData'
 import { ProfilePhoto } from '../components/ProfilePhoto'
+import { TechChip } from '../components/TechChip'
+import { BrandIcon } from '../components/BrandIcon'
+import { HeroMesh } from '../components/HeroMesh'
+import { getTechIconSlug } from '../data/techIcons'
 import type { Experience } from '../types'
 
 /** Experiências mais recentes ficam abertas; as anteriores ficam recolhidas. */
@@ -67,6 +71,7 @@ function Sobre() {
   return (
     <div className="page">
       <header className="hero hero--about">
+        <HeroMesh />
         <ProfilePhoto size="md" className="hero__photo" />
         <div className="hero__copy">
           <span className="badge">Trajetória profissional</span>
@@ -75,9 +80,11 @@ function Sobre() {
         </div>
       </header>
 
-      <section className="card" aria-labelledby="summary-heading">
-        <h2 id="summary-heading">Resumo profissional</h2>
-        <p>{SUMMARY}</p>
+      <section aria-labelledby="summary-heading">
+        <h2 id="summary-heading" className="section-heading">
+          Resumo profissional
+        </h2>
+        <p className="lead-paragraph">{SUMMARY}</p>
       </section>
 
       <section className="card">
@@ -116,8 +123,10 @@ function Sobre() {
         </div>
       </section>
 
-      <section className="card">
-        <h2>Experiência profissional</h2>
+      <section aria-labelledby="experience-heading">
+        <h2 id="experience-heading" className="section-heading">
+          Experiência profissional
+        </h2>
         {EXPERIENCE.slice(0, RECENT_EXPERIENCE_COUNT).map((job) => (
           <ExperienceItem key={`${job.company}-${job.period}-${job.client}`} job={job} />
         ))}
@@ -137,10 +146,15 @@ function Sobre() {
           Credenciais emitidas por vendors (distintas de cursos online).
         </p>
         <ul className="credential-list">
-          {CERTIFICATIONS.map((cert) => (
+          {CERTIFICATIONS.map((cert) => {
+            const iconSlug = getTechIconSlug(cert.name)
+            return (
             <li key={cert.id} className="credential-item">
               <div>
-                <strong>{cert.name}</strong>
+                <strong>
+                  {iconSlug ? <BrandIcon slug={iconSlug} /> : null}
+                  {cert.name}
+                </strong>
                 <p>
                   {cert.issuer} · {cert.year}
                 </p>
@@ -156,7 +170,8 @@ function Sobre() {
                 </a>
               ) : null}
             </li>
-          ))}
+            )
+          })}
         </ul>
       </section>
 
@@ -192,7 +207,7 @@ function Sobre() {
                   {group.courses.map((course) => (
                     <li key={course.id}>
                       {course.title}
-                      <span className="chip chip--muted">{course.provider}</span>
+                      <TechChip label={course.provider} muted />
                     </li>
                   ))}
                 </ul>

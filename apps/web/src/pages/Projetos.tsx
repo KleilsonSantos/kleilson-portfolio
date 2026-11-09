@@ -1,6 +1,9 @@
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { PROFILE } from '../data/profileData'
 import { PROJECTS, PROJECT_KIND_LABEL } from '../data/projectsData'
+import { TechChip } from '../components/TechChip'
+import { BrandIcon } from '../components/BrandIcon'
+import { HeroMesh } from '../components/HeroMesh'
 import type { Project } from '../types'
 
 function FeaturedProject({ project, primary }: { project: Project; primary?: boolean }) {
@@ -27,13 +30,12 @@ function FeaturedProject({ project, primary }: { project: Project; primary?: boo
         </p>
         <div className="stack-list">
           {project.stack.map((tech) => (
-            <span key={tech} className="chip">
-              {tech}
-            </span>
+            <TechChip key={tech} label={tech} />
           ))}
         </div>
         {/* Visual apenas: o link do título cobre o card inteiro (um tab stop por projeto). */}
         <span className="button-link secondary project-feature__cta" aria-hidden="true">
+          <BrandIcon slug="github" />
           Ver no GitHub ↗
         </span>
       </div>
@@ -45,6 +47,7 @@ function CompactProject({ project }: { project: Project }) {
   return (
     <article className="project-row">
       <div className="project-row__main">
+        <p className="project-row__kind">{PROJECT_KIND_LABEL[project.kind]}</p>
         <h3>
           <a href={project.url} target="_blank" rel="noopener noreferrer">
             {project.name}
@@ -55,12 +58,11 @@ function CompactProject({ project }: { project: Project }) {
       </div>
       <div className="project-row__stack">
         {project.stack.slice(0, 4).map((tech) => (
-          <span key={tech} className="chip chip--muted">
-            {tech}
-          </span>
+          <TechChip key={tech} label={tech} muted />
         ))}
       </div>
       <span className="project-row__link" aria-hidden="true">
+        <BrandIcon slug="github" />
         GitHub ↗
       </span>
     </article>
@@ -82,6 +84,7 @@ function Projetos() {
   return (
     <div className="page">
       <header className="hero">
+        <HeroMesh />
         <p className="hero__brand">Open Source</p>
         <h1>Projetos</h1>
         <p className="hero__lead">

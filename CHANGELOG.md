@@ -4,6 +4,18 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/) e [Convention
 
 ## [Unreleased]
 
+### Added
+
+- ✨ Ícones reais de tecnologia e marca (Simple Icons, CC0, auto-hospedados em `public/icons/tech/`) nos chips de stack/competência, links de GitHub/LinkedIn (hero, rodapé, CTAs de projeto, Contatos), provedor "Udemy" dos cursos e emissor "Azure" da certificação; conceitos/práticas sem produto real continuam em texto puro
+- ✨ Contatos: ícone por canal direto (e-mail, telefone, WhatsApp, localização) — o campo `icon` do `content/contact.json` existia no modelo de dados e nunca tinha sido renderizado
+- ✨ Grade de nós/linhas decorativa (`HeroMesh`) em toda hero do site (Home, Sobre, Projetos, Contatos, 404), com pulsação sutil (respeitando `prefers-reduced-motion` e oculta em `@media print`); `--hero-glow` reforçado (ADR-0004 V8)
+
+### Changed
+
+- 💄 Sobre: "Resumo profissional" e "Experiência profissional" saem do `.card` padrão (viram texto/timeline soltos); `.card` passa a marcar só os blocos de referência
+- 💄 Home: bloco de marcos recentes ganha heading próprio ("Marcos recentes"); item órfão na última linha da grade de Destaques deixa de abrir buraco (768–1279px); `.skill-panel--lead` ganha gradiente teal além da borda
+- 💄 Projetos: cada linha de "Outros projetos" mostra o rótulo de tipo (Open Source/Laboratório), como os cards de destaque já mostravam
+
 ## [0.10.0] - 2026-10-21
 
 ### Added
