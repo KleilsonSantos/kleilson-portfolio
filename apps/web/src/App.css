@@ -296,7 +296,6 @@
 
 .hero {
   position: relative;
-  overflow: hidden;
   text-align: left;
 }
 
@@ -778,7 +777,6 @@
   @media (hover: hover) and (pointer: fine) {
     .skill-panel:hover .chip--icon,
     .chip--icon:hover {
-      background: var(--color-bg-elevated);
       border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
     }
   }
@@ -822,6 +820,13 @@
   margin: 0 0 var(--space-3);
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
+}
+
+/* Fora do .card desde a V8 (ADR-0004): os bullets de cada vaga perdiam `.card li` e
+   caíam no contraste total do body em vez do tom secundário usado no resto da página. */
+.experience-item li {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
 }
 
 .section-lead {

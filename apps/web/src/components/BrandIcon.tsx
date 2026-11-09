@@ -1,8 +1,8 @@
-/** Logo real de marca (Simple Icons, CC0) para prefixar links de GitHub/LinkedIn/provedores de curso. Decorativo: o texto ao lado já identifica o link. */
-export function BrandIcon({ slug }: { slug: string }) {
+/** Logo real de marca (Simple Icons, CC0) — `public/icons/tech/<slug>.svg`. Decorativo: o texto ao lado já identifica o link/chip. */
+export function BrandIcon({ slug, className = 'icon-badge' }: { slug: string; className?: string }) {
   return (
     <img
-      className="icon-badge"
+      className={className}
       src={`/icons/tech/${slug}.svg`}
       alt=""
       width={14}
