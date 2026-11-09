@@ -4,10 +4,13 @@ import { PROFILE, METRICS, HIGHLIGHTS, SKILL_GROUPS } from '../data/profileData'
 import { PROJECTS } from '../data/projectsData'
 import { ProfilePhoto } from '../components/ProfilePhoto'
 import { ProjectTeaser } from '../components/ProjectTeaser'
+import { TechChip } from '../components/TechChip'
+import { BrandIcon } from '../components/BrandIcon'
+import { HeroMesh } from '../components/HeroMesh'
 
 const EXTERNAL_PROFILES = [
-  { label: 'GitHub', href: PROFILE.github },
-  { label: 'LinkedIn', href: PROFILE.linkedin },
+  { label: 'GitHub', href: PROFILE.github, icon: 'github' },
+  { label: 'LinkedIn', href: PROFILE.linkedin, icon: 'linkedin' },
 ] as const
 
 const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured).slice(0, 3)
@@ -41,6 +44,7 @@ function Home() {
   return (
     <div className="page">
       <header className="hero hero--home">
+        <HeroMesh />
         <div className="hero__intro">
           <ProfilePhoto size="lg" className="hero__photo" />
           <div className="hero__copy">
@@ -61,9 +65,10 @@ function Home() {
                 Entrar em contato
               </Link>
               <ul className="hero__links" aria-label="Perfis externos">
-                {EXTERNAL_PROFILES.map(({ label, href }) => (
+                {EXTERNAL_PROFILES.map(({ label, href, icon }) => (
                   <li key={label}>
                     <a href={href} target="_blank" rel="noopener noreferrer">
+                      <BrandIcon slug={icon} />
                       {label}
                       <span className="visually-hidden"> (abre em nova aba)</span>
                       <span aria-hidden="true"> ↗</span>
@@ -88,7 +93,10 @@ function Home() {
             </li>
           ))}
         </ul>
-        <ul className="highlight-grid">
+        <h3 className="subsection-heading" id="recent-highlights-heading">
+          Marcos recentes
+        </h3>
+        <ul className="highlight-grid" aria-labelledby="recent-highlights-heading">
           {HIGHLIGHTS.map((item) => (
             <li key={item} className="highlight-card">
               {item}
@@ -122,9 +130,7 @@ function Home() {
               <h3>{group.title}</h3>
               <div className="stack-list">
                 {group.skills.map((skill) => (
-                  <span key={skill} className="chip">
-                    {skill}
-                  </span>
+                  <TechChip key={skill} label={skill} />
                 ))}
               </div>
             </div>

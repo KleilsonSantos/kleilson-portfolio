@@ -1,4 +1,6 @@
 import { PROJECT_KIND_LABEL } from '../data/projectsData'
+import { TechChip } from './TechChip'
+import { BrandIcon } from './BrandIcon'
 import type { Project } from '../types'
 
 /** Card compacto de projeto (Home): um único link, no título, cobre o card inteiro. */
@@ -19,12 +21,11 @@ export function ProjectTeaser({ project }: { project: Project }) {
       </p>
       <div className="stack-list">
         {project.stack.slice(0, 3).map((tech) => (
-          <span key={tech} className="chip">
-            {tech}
-          </span>
+          <TechChip key={tech} label={tech} />
         ))}
       </div>
       <span className="project-teaser__cta" aria-hidden="true">
+        <BrandIcon slug="github" />
         Ver no GitHub ↗
       </span>
     </article>

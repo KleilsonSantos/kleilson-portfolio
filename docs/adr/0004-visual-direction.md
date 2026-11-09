@@ -98,6 +98,19 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 - **Processo:** o protótipo Figma (página "Proposta v2 (canônica)") é o contrato da implementação; usa as medidas do CSS e os dados reais dos JSONs.
 - **Alternativa rejeitada:** manter o `summary` na Home. O card ocupava a primeira tela com 8 linhas antes de qualquer projeto.
 
+## V8 — Hierarquia visual, ícones reais e âncora do hero
+
+- **Data:** 2026-11-08 · **Motivação:** auditoria de UI/UX end-to-end (Home, Sobre, Projetos, Contatos); extensão incremental, não reverte nenhuma decisão acima.
+- **Sobre:** "Resumo profissional" e "Experiência profissional" saem do `.card` padrão — viram `.section-heading` + texto/timeline soltos (mesmo padrão já usado em "Destaques"/"Projetos em destaque" na Home), criando 2 níveis de leitura em vez de 7 caixas idênticas. `.card` fica só para blocos de referência (Informações, Habilidades, Certificações, Educação, Cursos).
+- **Home — Destaques:** o bloco de marcos ganha heading próprio ("Marcos recentes", `.subsection-heading`) separado dos 4 cards de métrica; item órfão na última linha da grade de 2 colunas passa a ocupar a linha inteira (sem buraco), limitado à faixa 768–1279px — em ≥1280px (3 colunas) aceita-se 1 coluna livre em vez de esticar 1 card pelas 3 colunas.
+- **Home — Competências:** `.skill-panel--lead` (grupo "Backend & Arquitetura") ganha gradiente teal sutil além da borda, pra ler como grupo principal de fato.
+- **Projetos:** cada linha de "Outros projetos" mostra o rótulo de `kind` (Open Source/Laboratório) acima do título — mesma informação que já aparecia nos cards de destaque, agora também na lista compacta.
+- **Contatos:** canais diretos (e-mail, telefone, WhatsApp, localização) ganham ícone — o campo `icon` do `content/contact.json` já existia no modelo de dados e nunca tinha sido renderizado.
+- **Ícones reais de tecnologia e marca:** chips de stack/competência que correspondem a um produto real (Java, Spring, Docker, Kubernetes, React, PostgreSQL etc.) passam a mostrar o logo oficial da marca (Simple Icons, CC0, auto-hospedado em `public/icons/tech/`) em vez de só texto; chips de conceito/prática (Microsserviços, DevSecOps, Spec-Driven Development, MCP) continuam em texto puro — não é todo chip que vira ícone, só os que são produto reconhecível. A mesma lógica cobre links de GitHub/LinkedIn (hero da Home, rodapé, CTAs "Ver no GitHub" em Projetos, "Redes" em Contatos), o provedor "Udemy" dos cursos em Sobre e o emissor "Azure" da certificação AI-900.
+- **Hero — âncora visual, em todas as páginas:** o token `--hero-glow` (já existia, a 10–14% de opacidade, quase imperceptível) sobe pra 16–26% e ganha uma segunda camada sutil; toda hero do site (Home, Sobre, Projetos, Contatos, 404) ganha uma grade de nós/linhas decorativa (`HeroMesh`, SVG compartilhado) — tema de microsserviços/sistemas distribuídos, não gradiente genérico de "produto de IA" (sem roxo/indigo, mantendo a proibição da V1). Pulsação lenta nos nós (4.5s), desativada por `prefers-reduced-motion` e oculta em `@media print`.
+- **Emenda à V1:** "Motion V1: apenas transitions de hover/focus" passa a admitir, nas heroes do site, uma animação ambiente contínua e de baixa amplitude (pulsação de opacidade nos nós), sempre condicionada a `prefers-reduced-motion: no-preference`. "Sem âncora imagética full-bleed ainda (hero tipográfico)" (Consequences, abaixo) deixa de ser verdade como estava escrita: o hero segue tipográfico (sem foto/ilustração full-bleed), mas ganha uma âncora decorativa sutil.
+- **Alternativa rejeitada:** gradiente mesh genérico (blob roxo/azul) no hero, no estilo "AI-default" — rejeitado por contrariar a Decision Driver #2 (evitar look AI-default) e por não ter relação com o conteúdo; a grade de nós foi escolhida por referenciar diretamente a área de atuação (microsserviços, sistemas distribuídos).
+
 ## Consequences
 
 ### Positivas
@@ -109,7 +122,7 @@ Inspiração: Anthony Fu (apresentação) + Brittany Chiang (hierarquia) + Lee R
 ### Negativas / limitações
 
 - Light mode é secundário (dark-first)
-- Sem âncora imagética full-bleed ainda (hero tipográfico)
+- Hero segue tipográfico, sem foto/ilustração full-bleed; ganhou âncora decorativa sutil (glow + grade de nós) na V8, mas não é imagem real do trabalho
 - Tipografia via Google Fonts (latência; aceitável na V1)
 
 ## Confirmation

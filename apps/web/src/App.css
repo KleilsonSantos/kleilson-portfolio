@@ -295,6 +295,8 @@
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   text-align: left;
 }
 
@@ -309,6 +311,63 @@
   max-width: none;
   width: 100%;
   padding-bottom: var(--space-6);
+}
+
+/* Grade de nós/linhas sutil atrás de toda hero do site — tema de microsserviços, não "blob" genérico de IA. */
+.hero__mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero__mesh-lines {
+  stroke: var(--color-primary);
+  stroke-width: 1;
+  fill: none;
+}
+
+.hero__mesh-nodes {
+  fill: var(--color-primary);
+}
+
+/* Qualquer conteúdo real da hero fica acima do mesh, em qualquer página. */
+.hero > :not(.hero__mesh) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__mesh-nodes circle {
+    animation: hero-mesh-pulse 4.5s ease-in-out infinite;
+  }
+
+  .hero__mesh-nodes circle:nth-child(2n) {
+    animation-delay: -1.1s;
+  }
+
+  .hero__mesh-nodes circle:nth-child(3n) {
+    animation-delay: -2.6s;
+  }
+}
+
+@keyframes hero-mesh-pulse {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@media print {
+  .hero__mesh {
+    display: none;
+  }
 }
 
 /* Grid intrínseco (web.dev): mobile empilha; tablet+ duas colunas */
@@ -580,6 +639,24 @@
   }
 }
 
+/* Item sozinho na última linha de uma grade de 2 colunas (total ímpar): ocupa as 2 colunas
+   em vez de deixar um buraco. Só nessa faixa — em 3 colunas (≥1280px) esticar 1 card pelas
+   3 colunas fica vazio demais; melhor aceitar uma coluna livre na última linha. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .highlight-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+.subsection-heading {
+  margin: var(--space-6) 0 var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
 .highlight-card {
   margin: 0;
   padding: var(--space-4);
@@ -628,6 +705,11 @@
 .skill-panel--lead {
   grid-column: 1 / -1;
   border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 10%, var(--color-bg-subtle)),
+    var(--color-bg-subtle) 60%
+  );
 }
 
 .skill-panel h3 {
@@ -682,6 +764,50 @@
   font-weight: 500;
 }
 
+/* Chip com logo real da tecnologia (Simple Icons, CC0): moldura neutra, o logo carrega a cor. */
+.chip--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) and (pointer: fine) {
+    .skill-panel:hover .chip--icon,
+    .chip--icon:hover {
+      background: var(--color-bg-elevated);
+      border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+    }
+  }
+}
+
+.chip__icon {
+  flex: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  padding: 0.1875rem;
+  border-radius: 4px;
+  background: #fff;
+  box-sizing: content-box;
+}
+
+/* Logo de marca inline (links de GitHub/LinkedIn, provedor de curso): mesma lógica do chip__icon,
+   em unidades `em` pra acompanhar o tamanho do texto em qualquer contexto (hero, rodapé, botão). */
+.icon-badge {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  padding: 0.15em;
+  margin-right: 0.35em;
+  background: #fff;
+  border-radius: 3px;
+  vertical-align: -0.12em;
+  flex: none;
+}
+
 .experience-item {
   margin-bottom: var(--space-6);
   padding-left: var(--space-4);
@@ -701,6 +827,15 @@
 .section-lead {
   margin: 0 0 var(--space-4);
   color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Parágrafo de abertura fora de `.card` (ex. Resumo profissional em Sobre): maior peso de leitura, sem virar caixa. */
+.lead-paragraph {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
 }
 
@@ -1132,6 +1267,15 @@
   }
 }
 
+.project-row__kind {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
 .project-row__main h3 {
   margin: 0 0 var(--space-2);
   font-size: var(--font-size-base);
@@ -1307,6 +1451,20 @@
   padding-block: var(--space-1);
   color: var(--color-primary);
   text-decoration: none;
+}
+
+.info-list__item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.info-list__icon {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
+  color: var(--color-primary);
 }
 
 .footer {
