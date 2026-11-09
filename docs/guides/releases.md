@@ -26,6 +26,7 @@ vMAJOR.MINOR.PATCH
 | `v0.8.0` | 2026-10-20 | UX audit fatias A–D (a11y/SEO, Home, interações, contato) + lote Dependabot |
 | `v0.9.0` | 2026-10-20 | Novo cargo na CI&T (status) + projetos repriorizados pelo GitHub |
 | `v0.10.0` | 2026-10-21 | Home e Projetos v2: posicionamento com IA (AIOS), copy alinhada ao LinkedIn, Sobre/Contatos refinados |
+| `v0.11.0` | 2026-11-09 | Hierarquia visual, ícones reais de tecnologia/marca e âncora do hero em todo o site (ADR-0004 V8) |
 
 ## Criar uma nova release (canônico)
 
