@@ -27,6 +27,7 @@ vMAJOR.MINOR.PATCH
 | `v0.9.0` | 2026-10-20 | Novo cargo na CI&T (status) + projetos repriorizados pelo GitHub |
 | `v0.10.0` | 2026-10-21 | Home e Projetos v2: posicionamento com IA (AIOS), copy alinhada ao LinkedIn, Sobre/Contatos refinados |
 | `v0.11.0` | 2026-11-09 | Hierarquia visual, ícones reais de tecnologia/marca e âncora do hero em todo o site (ADR-0004 V8) |
+| `v0.11.1` | 2026-11-09 | Patch: unifica estilo dos chips com e sem ícone de marca; remove ícones assimétricos do rodapé |
 
 ## Criar uma nova release (canônico)
 
